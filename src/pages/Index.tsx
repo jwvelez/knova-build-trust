@@ -128,7 +128,7 @@ const Index = () => {
                   <Link to="/services">Explore services</Link>
                 </Button>
               </div>
-              <div className="flex items-center gap-3 text-sm">
+              <div className="flex items-center gap-3 text-sm md:text-[15px]">
                 <Phone className="h-4 w-4 text-accent" />
                 <span className="text-muted-foreground">24/7 Service:</span>
                 <a href="tel:2015255365" className="font-medium link-accent">
@@ -151,7 +151,7 @@ const Index = () => {
               {trustBadges.map((badge, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                  <span className="text-sm font-medium">{badge}</span>
+                  <span className="text-sm md:text-[15px] font-medium">{badge}</span>
                 </div>
               ))}
             </div>
@@ -331,7 +331,7 @@ const Index = () => {
             Built for the places people live, learn, heal, and work
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Serving diverse sectors with specialized expertise</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
               return (

@@ -111,6 +111,11 @@ const Services = () => {
         {/* Services Accordion */}
         <section className="section-padding">
           <div className="container-narrow max-w-4xl">
+            <h2 className="text-2xl md:text-3xl mb-2">Comprehensive Services</h2>
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+              From general construction to specialized MEP systems, we deliver integrated solutions that meet your project needs
+            </p>
+            
             <Accordion type="single" collapsible className="w-full space-y-4">
               {services.map((service, i) => {
                 const Icon = service.icon;

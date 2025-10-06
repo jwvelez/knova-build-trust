@@ -9,9 +9,8 @@ import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
 
 const Projects = () => {
-  const [filter, setFilter] = useState("All");
 
-  const filters = ["All", "Healthcare", "Housing", "Commercial", "Education", "Community Facilities"];
+  
 
   const projects = [
     {
@@ -76,9 +75,6 @@ const Projects = () => {
     },
   ];
 
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter(p => p.category === filter);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -92,34 +88,19 @@ const Projects = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
               Results over rhetoric
             </h1>
-          </div>
-        </section>
-
-        {/* Filters */}
-        <section className="py-8 border-b border-border">
-          <div className="container-narrow">
-            <div className="flex flex-wrap gap-3">
-              {filters.map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    filter === f
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
+            <h2 className="text-2xl md:text-3xl mb-2">
+              Featured Projects
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Recent work showcasing our commitment to quality and performance across diverse sectors
+            </p>
           </div>
         </section>
 
         {/* Projects Grid */}
         <section className="section-padding">
           <div className="container-narrow space-y-16">
-            {filteredProjects.map((project, i) => (
+            {projects.map((project, i) => (
               <div key={i} className="border-b border-accent/20 pb-16 last:border-b-0 last:pb-0">
                 <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
                   <div className="relative overflow-hidden rounded-lg group">
@@ -131,13 +112,18 @@ const Projects = () => {
                   </div>
                   <div className="space-y-6">
                     <div>
-                      <p className="text-xs overline mb-2">{project.year}</p>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full">
+                          {project.category}
+                        </span>
+                        <p className="text-xs overline">{project.year}</p>
+                      </div>
                       <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
                       <p className="text-sm text-accent font-medium">{project.size}</p>
                     </div>
                     <ul className="space-y-3">
                       {project.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-sm">
+                        <li key={idx} className="flex items-start gap-3 text-base">
                           <span className="h-1.5 w-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
                           <span className="text-muted-foreground leading-relaxed">{detail}</span>
                         </li>

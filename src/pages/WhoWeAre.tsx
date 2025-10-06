@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import { Building2, Users, Heart } from "lucide-react";
 import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
 const WhoWeAre = () => {
@@ -122,14 +123,22 @@ const WhoWeAre = () => {
 
         {/* Leadership */}
         <section className="section-padding bg-secondary/30">
-          <div className="container-narrow max-w-4xl">
+          <div className="container-narrow max-w-6xl">
             <h2 className="text-2xl md:text-3xl mb-2">Leadership</h2>
-            <p className="text-base text-muted-foreground mb-12">Experience you can trust</p>
+            <p className="text-lg text-muted-foreground mb-12">Experience you can trust</p>
 
-            <div className="space-y-12">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Keily J. Nova</h3>
-                <p className="text-sm text-muted-foreground mb-4">Founder and President</p>
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+              {/* Keily J. Nova */}
+              <Card className="p-8 lg:p-10 border-border bg-background hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Building2 className="h-8 w-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-1">Keily J. Nova</h3>
+                    <p className="text-base text-accent font-medium">Founder and President</p>
+                  </div>
+                </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>
                     Keily brings 20+ years in construction with deep MEP expertise that anchors KNova's delivery. Licensed in New York and New Jersey, he leads field operations with a focus on safety, quality, and performance.
@@ -144,11 +153,19 @@ const WhoWeAre = () => {
                     Keily is known for disciplined scheduling, code-first execution, and tenant-safe phasing that reduces downtime. He sets standards on site, communicates issues early, and drives projects to close with minimal punch lists and predictable outcomes.
                   </p>
                 </div>
-              </div>
+              </Card>
 
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Lymaris Albors</h3>
-                <p className="text-sm text-muted-foreground mb-4">Co-Founder</p>
+              {/* Lymaris Albors */}
+              <Card className="p-8 lg:p-10 border-border bg-background hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Users className="h-8 w-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-1">Lymaris Albors</h3>
+                    <p className="text-base text-accent font-medium">Co-Founder</p>
+                  </div>
+                </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>
                     Lymaris brings 20+ years of nonprofit executive leadership to KNova, guiding growth with a focus on quality, compliance, and sustainability. Her expertise in operations and strategic partnerships helps deliver projects with integrity and accountability.
@@ -160,23 +177,31 @@ const WhoWeAre = () => {
                     She also brings a strong foundation in construction, affordable, supportive, and transitional housing development, property and asset management, and capital expansions for primary and behavioral health care and community facilities, including nursing homes, senior centers, and multi-purpose art spaces.
                   </p>
                 </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Office & Field Assistance</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Luna and Lady — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.
-                </p>
-                <a
-                  href="#"
-                  className="text-sm text-accent hover:underline inline-flex items-center gap-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit Luna and Lady Cleaning Services →
-                </a>
-              </div>
+              </Card>
             </div>
+
+            {/* Office & Field Assistance */}
+            <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <Heart className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Office & Field Assistance</h3>
+                  <p className="text-base text-muted-foreground mb-4">
+                    Luna and Lady — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.
+                  </p>
+                  <a
+                    href="#"
+                    className="text-base text-accent hover:underline inline-flex items-center gap-2 font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Luna and Lady Cleaning Services →
+                  </a>
+                </div>
+              </div>
+            </Card>
           </div>
         </section>
 
