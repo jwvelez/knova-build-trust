@@ -293,7 +293,7 @@ const Index = () => {
               return (
                 <Card key={i} className="p-6 card-lift border-border group">
                   <Icon className="h-9 w-9 mb-4 text-accent stroke-[2px] group-hover:scale-110 transition-transform" />
-                  <h3 className="font-bold text-[20px] md:text-[22px] mb-2">{service.title}</h3>
+                  <h3 className="font-bold text-[19px] md:text-[22px] mb-2">{service.title}</h3>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{service.desc}</p>
                 </Card>
               );
@@ -367,7 +367,7 @@ const Index = () => {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <h3 className="font-semibold mb-2">{project.title}</h3>
+                  <h3 className="font-semibold text-lg md:text-base mb-2">{project.title}</h3>
                   <p className="text-sm text-muted-foreground">{project.desc}</p>
                 </div>
               </Card>
