@@ -89,12 +89,17 @@ const Projects = () => {
           <div className="container-narrow">
             <div className="grid md:grid-cols-2 gap-8">
               {filteredProjects.map((project, i) => (
-                <Card key={i} className="overflow-hidden card-lift border-border">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 object-cover"
-                  />
+                <Card key={i} className="overflow-hidden card-lift border-border group">
+                  <div className="relative aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-primary-foreground font-semibold">View project</span>
+                    </div>
+                  </div>
                   <div className="p-6">
                     <p className="text-xs overline mb-2">{project.year}</p>
                     <h3 className="text-xl font-semibold mb-3">{project.title}</h3>

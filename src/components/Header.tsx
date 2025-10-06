@@ -8,11 +8,9 @@ const Header = () => {
   const location = useLocation();
 
   const navItems = [
-    { label: "Home", path: "/" },
     { label: "Who We Are", path: "/who-we-are" },
     { label: "Services", path: "/services" },
     { label: "Projects", path: "/projects" },
-    { label: "Work With Us", path: "/work-with-us" },
     { label: "Contact", path: "/contact" },
   ];
 

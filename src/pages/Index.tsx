@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Check, Phone } from "lucide-react";
+import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2, Heart, GraduationCap, Users, Store, ShoppingBag, Building, Factory } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-construction.jpg";
@@ -36,38 +36,44 @@ const Index = () => {
     {
       title: "General Construction",
       desc: "Ground-up builds and full gut renovations with rigorous quality control",
+      icon: Hammer,
     },
     {
       title: "HVAC Systems",
       desc: "Design, installation, and service that support electrification and better air quality",
+      icon: Wind,
     },
     {
       title: "Electrical and Low-Voltage",
       desc: "Modern power, upgrades, and structured cabling built for today's demand",
+      icon: Zap,
     },
     {
       title: "Plumbing and Piping",
       desc: "Efficient water, sanitary, and gas with minimal disruption to occupants",
+      icon: Droplet,
     },
     {
       title: "Fire and Life Safety",
       desc: "Sprinkler design, installation, and maintenance that protect people and assets",
+      icon: Flame,
     },
     {
       title: "Property and Facility Management",
       desc: "Preventive programs and 24/7 service that keep facilities reliable",
+      icon: Building2,
     },
   ];
 
   const industries = [
-    { label: "Healthcare", detail: "FQHC, Article 28 and 31, behavioral health" },
-    { label: "Housing", detail: "supportive, transitional, private residential, multifamily" },
-    { label: "Education and Day Care", detail: "safe, code-ready learning spaces" },
-    { label: "Senior Living", detail: "reliable systems, quiet operations" },
-    { label: "Community Facilities", detail: "arts and cultural, community centers" },
-    { label: "Commercial and Office", detail: "tenant-ready buildouts and refresh" },
-    { label: "Mixed-Use", detail: "retail and residential coordination" },
-    { label: "Restaurants and Retail", detail: "fast turnarounds, clean inspections" },
+    { label: "Healthcare", detail: "FQHC, Article 28 and 31, behavioral health", icon: Heart },
+    { label: "Housing", detail: "supportive, transitional, private residential, multifamily", icon: Building },
+    { label: "Education and Day Care", detail: "safe, code-ready learning spaces", icon: GraduationCap },
+    { label: "Senior Living", detail: "reliable systems, quiet operations", icon: Users },
+    { label: "Community Facilities", detail: "arts and cultural, community centers", icon: Users },
+    { label: "Commercial and Office", detail: "tenant-ready buildouts and refresh", icon: Building2 },
+    { label: "Mixed-Use", detail: "retail and residential coordination", icon: Store },
+    { label: "Restaurants and Retail", detail: "fast turnarounds, clean inspections", icon: ShoppingBag },
   ];
 
   const projects = [
@@ -115,7 +121,7 @@ const Index = () => {
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="h-4 w-4 text-accent" />
                 <span className="text-muted-foreground">24/7 Service:</span>
-                <a href="tel:1234567890" className="font-medium text-primary hover:text-accent transition-colors">
+                <a href="tel:1234567890" className="font-medium link-accent">
                   (123) 456-7890
                 </a>
               </div>
@@ -130,7 +136,7 @@ const Index = () => {
           </div>
 
           {/* Trust Bar */}
-          <div className="mt-16 pt-8 border-t border-border">
+          <div className="mt-16 pt-8 border-t accent-divider">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {trustBadges.map((badge, i) => (
                 <div key={i} className="flex items-center gap-2">
@@ -155,7 +161,7 @@ const Index = () => {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <Link to="/services" className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all group">
+            <Link to="/services" className="inline-flex items-center gap-2 link-accent font-medium hover:gap-3 transition-all group">
               See how we deliver
               <ArrowRight className="h-4 w-4 arrow-shift" />
             </Link>
@@ -170,12 +176,16 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl mb-4">From new builds to building systems, one team delivers</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-            {services.map((service, i) => (
-              <Card key={i} className="p-6 card-lift border-border">
-                <h3 className="font-semibold mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">{service.desc}</p>
-              </Card>
-            ))}
+            {services.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <Card key={i} className="p-6 card-lift border-border group">
+                  <Icon className="h-9 w-9 mb-4 text-primary stroke-[2px] group-hover:text-accent transition-colors" />
+                  <h3 className="font-semibold mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                </Card>
+              );
+            })}
           </div>
 
           <div className="mt-12 text-center">
@@ -195,13 +205,19 @@ const Index = () => {
           <h2 className="text-2xl md:text-3xl mb-8 text-center">
             Built for the places people live, learn, heal, and work
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {industries.map((industry, i) => (
-              <div key={i} className="bg-background rounded-lg p-4 border border-border">
-                <h4 className="font-semibold text-sm mb-1">{industry.label}</h4>
-                <p className="text-xs text-muted-foreground">{industry.detail}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {industries.map((industry, i) => {
+              const Icon = industry.icon;
+              return (
+                <div key={i} className="bg-background rounded-lg p-4 border border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all group cursor-pointer">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="h-5 w-5 text-primary group-hover:text-accent-foreground stroke-[2px]" />
+                    <h4 className="font-semibold text-sm">{industry.label}</h4>
+                  </div>
+                  <p className="text-xs text-muted-foreground group-hover:text-accent-foreground/90 hidden md:block">{industry.detail}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -297,7 +313,7 @@ const Index = () => {
                 </Button>
                 <div className="flex items-center justify-center gap-2 text-sm">
                   <Phone className="h-4 w-4" />
-                  <a href="tel:1234567890" className="font-medium hover:text-accent transition-colors">
+                  <a href="tel:1234567890" className="font-medium hover:opacity-80 transition-opacity">
                     (123) 456-7890
                   </a>
                 </div>
