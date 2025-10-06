@@ -152,11 +152,13 @@ const Projects = () => {
 
         {/* CTA */}
         <section className="section-padding bg-secondary/30">
-          <div className="container-narrow text-center">
-            <h2 className="text-2xl md:text-3xl mb-6">Ready to start your project?</h2>
-            <Button size="lg" asChild>
-              <Link to="/contact">Request a project walkthrough</Link>
-            </Button>
+          <div className="container-narrow">
+            <div className="text-center md:text-center">
+              <h2 className="text-2xl md:text-3xl mb-6">Ready to start your project?</h2>
+              <Button size="lg" asChild>
+                <Link to="/contact">Request a project walkthrough</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

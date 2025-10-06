@@ -123,7 +123,7 @@ const Services = () => {
                     <AccordionTrigger className="hover:no-underline py-6">
                       <div className="flex items-center gap-4 text-left">
                         <Icon className="h-7 w-7 text-accent stroke-[2px] flex-shrink-0" />
-                        <h3 className="font-bold text-[20px]">{service.title}</h3>
+                        <h3 className="font-bold text-[20px] md:text-[20px] text-[19px]">{service.title}</h3>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pb-6 pl-11">
