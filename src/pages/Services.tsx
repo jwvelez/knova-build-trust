@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Hammer, Wind, Zap, Droplet, Flame, Network, Home, Factory, Thermometer, FileText, Building2, Wrench } from "lucide-react";
 import fullWidthServices from "@/assets/full-width-services.jpg";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Services = () => {
   const services = [
@@ -101,21 +106,31 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* Services Accordion */}
         <section className="section-padding">
-          <div className="container-narrow">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="container-narrow max-w-4xl">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {services.map((service, i) => {
                 const Icon = service.icon;
                 return (
-                  <Card key={i} className="p-6 card-lift border-border group">
-                    <Icon className="h-9 w-9 mb-4 text-accent stroke-[2px] group-hover:scale-110 transition-transform" />
-                    <h3 className="font-bold text-[22px] mb-3">{service.title}</h3>
-                    <p className="text-base text-muted-foreground leading-relaxed">{service.desc}</p>
-                  </Card>
+                  <AccordionItem 
+                    key={i} 
+                    value={`item-${i}`} 
+                    className="border border-border rounded-lg px-6 bg-background hover:shadow-md transition-shadow"
+                  >
+                    <AccordionTrigger className="hover:no-underline py-6">
+                      <div className="flex items-center gap-4 text-left">
+                        <Icon className="h-7 w-7 text-accent stroke-[2px] flex-shrink-0" />
+                        <h3 className="font-bold text-[20px]">{service.title}</h3>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="pb-6 pl-11">
+                      <p className="text-base text-muted-foreground leading-relaxed">{service.desc}</p>
+                    </AccordionContent>
+                  </AccordionItem>
                 );
               })}
-            </div>
+            </Accordion>
           </div>
         </section>
 

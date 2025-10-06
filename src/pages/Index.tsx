@@ -11,6 +11,7 @@ import projectDaycare from "@/assets/project-daycare.jpg";
 import interstitial1 from "@/assets/interstitial-1.jpg";
 import interstitial2 from "@/assets/interstitial-2.jpg";
 import fullWidthServices from "@/assets/full-width-services.jpg";
+import howWeDeliver from "@/assets/how-we-deliver.jpg";
 
 const Index = () => {
   const trustBadges = [
@@ -113,17 +114,17 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
               <p className="overline">General Contracting + Building Systems</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl md:leading-tight leading-snug">
                 Construction you can trust, building systems that just work
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
                 MBE-certified, licensed, and insured general contractor for New York and New Jersey with deep HVAC, electrical, and plumbing expertise
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" asChild>
+              <div className="flex flex-wrap gap-4 md:flex-nowrap">
+                <Button size="lg" asChild className="flex-1 md:flex-initial">
                   <Link to="/contact">Request a bid</Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild>
+                <Button size="lg" variant="outline" asChild className="flex-1 md:flex-initial">
                   <Link to="/services">Explore services</Link>
                 </Button>
               </div>
@@ -171,8 +172,8 @@ const Index = () => {
                     <PrimaryIcon className="absolute inset-0 w-12 h-12 text-primary" strokeWidth={2} />
                     <AccentIcon className="absolute top-1.5 left-1.5 w-7 h-7 text-accent" strokeWidth={2} />
                   </div>
-                  <h3 className="text-xl font-bold text-primary max-w-xs">{prop.title}</h3>
-                  <p className="text-base text-muted-foreground">{prop.desc}</p>
+                  <h3 className="text-[22px] font-bold text-primary max-w-xs">{prop.title}</h3>
+                  <p className="text-lg text-muted-foreground">{prop.desc}</p>
                 </div>
               );
             })}
@@ -212,7 +213,7 @@ const Index = () => {
                 <Card key={i} className="p-6 card-lift border-border group">
                   <Icon className="h-9 w-9 mb-4 text-accent stroke-[2px] group-hover:scale-110 transition-transform" />
                   <h3 className="font-bold text-[22px] mb-2">{service.title}</h3>
-                  <p className="text-base text-muted-foreground leading-relaxed">{service.desc}</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">{service.desc}</p>
                 </Card>
               );
             })}
@@ -260,8 +261,8 @@ const Index = () => {
                   <div className="w-16 h-16 rounded-full bg-background border-2 border-secondary flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all">
                     <Icon className="h-6 w-6 text-accent stroke-[2px] group-hover:text-accent-foreground" />
                   </div>
-                  <h4 className="font-semibold text-base group-hover:text-accent transition-colors">{industry.label}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
+                  <h4 className="font-semibold text-[22px] group-hover:text-accent transition-colors">{industry.label}</h4>
+                  <p className="text-lg text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
                 </div>
               );
             })}
@@ -315,8 +316,53 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Leadership Snapshot */}
+      {/* How We Deliver */}
       <section className="section-padding">
+        <div className="container-narrow">
+          <p className="overline mb-4">How we deliver</p>
+          <h2 className="text-3xl md:text-4xl mb-2">Proven process, predictable outcomes</h2>
+          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Our approach ensures quality at every stage</p>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Column - 3 items stacked */}
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <Check className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-[22px] font-bold mb-2">Pre-construction planning</h3>
+                  <p className="text-lg text-muted-foreground">Thorough scoping, clear timelines, and upfront budgets</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-[22px] font-bold mb-2">Quality control checkpoints</h3>
+                  <p className="text-lg text-muted-foreground">Regular inspections and documentation at every phase</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Building2 className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-[22px] font-bold mb-2">Closeout and handover</h3>
+                  <p className="text-lg text-muted-foreground">Complete documentation, training, and ongoing support</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative">
+              <img
+                src={howWeDeliver}
+                alt="Construction team delivering quality"
+                className="rounded-lg shadow-xl w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Snapshot */}
+      <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
           <p className="overline mb-4">Leadership</p>
           <h2 className="text-3xl md:text-4xl mb-2">Accountability at the top, reliability in the field</h2>
@@ -351,7 +397,7 @@ const Index = () => {
       </section>
 
       {/* Final Blades */}
-      <section className="section-padding bg-secondary/30">
+      <section className="section-padding">
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
