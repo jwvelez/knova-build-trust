@@ -79,7 +79,7 @@ const Footer = () => {
             {/* Contact Block */}
             <div>
               <h3 className="font-semibold text-lg mb-4">Contact</h3>
-              <div className="space-y-3 text-sm opacity-90">
+              <div className="space-y-3 text-[15px] opacity-90">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <span>252 Hudson St<br />Hackensack, NJ 07601</span>
@@ -107,7 +107,7 @@ const Footer = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="block text-sm opacity-90 hover:text-accent hover:opacity-100 transition-all"
+                    className="block text-[15px] opacity-90 hover:text-accent hover:opacity-100 transition-all"
                   >
                     {link.label}
                   </Link>
@@ -118,8 +118,8 @@ const Footer = () => {
             {/* Description */}
             <div>
               <h2 className="text-xl font-bold mb-3">KNova Contractors</h2>
-              <p className="text-sm opacity-90 mb-4">Building Trust. Delivering Quality.</p>
-              <p className="text-xs opacity-75">
+              <p className="text-[15px] opacity-90 mb-4">Building Trust. Delivering Quality.</p>
+              <p className="text-[13px] opacity-75">
                 MBE-certified general contractor serving New York and New Jersey
               </p>
             </div>
@@ -130,7 +130,7 @@ const Footer = () => {
             {/* Contact Block */}
             <div>
               <h3 className="font-semibold text-lg mb-4">Contact</h3>
-              <div className="space-y-3 text-sm opacity-90">
+              <div className="space-y-3 text-[15px] opacity-90">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                   <span>252 Hudson St<br />Hackensack, NJ 07601</span>
@@ -158,7 +158,7 @@ const Footer = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="block text-sm opacity-90 hover:text-accent hover:opacity-100 transition-all"
+                    className="block text-[15px] opacity-90 hover:text-accent hover:opacity-100 transition-all"
                   >
                     {link.label}
                   </Link>
@@ -169,8 +169,8 @@ const Footer = () => {
             {/* Description - Below Quick Links on Mobile */}
             <div>
               <h2 className="text-xl font-bold mb-3">KNova Contractors</h2>
-              <p className="text-sm opacity-90 mb-4">Building Trust. Delivering Quality.</p>
-              <p className="text-xs opacity-75">
+              <p className="text-[15px] opacity-90 mb-4">Building Trust. Delivering Quality.</p>
+              <p className="text-[13px] opacity-75">
                 MBE-certified general contractor serving New York and New Jersey
               </p>
             </div>

@@ -184,21 +184,21 @@ const Index = () => {
                     <div className="flex items-start gap-4">
                       <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[22px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
                         <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[22px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
                         <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[22px] font-bold mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
                         <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
                       </div>
                     </div>
@@ -210,7 +210,7 @@ const Index = () => {
                   <img
                     src="/src/assets/knova-reverse.svg"
                     alt="KNova Contractors"
-                    className="h-16 mb-6"
+                    className="h-40 mb-6"
                   />
                   <p className="text-white text-xl font-bold italic text-center">
                     Building trust. Delivering quality
@@ -222,26 +222,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Full-Width Image Band */}
-      <section className="py-0 bg-secondary/30 relative">
-        <div className="w-full relative">
-          <img
-            src={fullWidthServices}
-            alt="Construction and building systems"
-            className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-primary/15"></div>
-        </div>
-      </section>
 
       {/* Services Teaser */}
       <section className="section-padding">
         <div className="container-narrow">
           <div className="text-center mb-12">
-            <p className="overline mb-4">What we do</p>
-            <h2 className="text-3xl md:text-4xl mb-2">From new builds to building systems, one team delivers</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Comprehensive construction and MEP services tailored to your project needs</p>
+            <p className="overline mb-4 text-center">What we do</p>
+            <h2 className="text-3xl md:text-4xl mb-2 text-center">From new builds to building systems, one team delivers</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center">Comprehensive construction and MEP services tailored to your project needs</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -294,11 +282,9 @@ const Index = () => {
               return (
                 <div 
                   key={i} 
-                  className="flex flex-col items-center text-center space-y-3 group cursor-pointer transition-all"
+                  className="flex flex-col items-start text-left space-y-3 group cursor-pointer transition-all"
                 >
-                  <div className="w-16 h-16 rounded-full bg-background border-2 border-secondary flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all">
-                    <Icon className="h-6 w-6 text-accent stroke-[2px] group-hover:text-accent-foreground" />
-                  </div>
+                  <Icon className="h-6 w-6 text-accent stroke-[2px]" />
                   <h4 className="font-semibold text-[22px] group-hover:text-accent transition-colors">{industry.label}</h4>
                   <p className="text-lg text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
                 </div>
