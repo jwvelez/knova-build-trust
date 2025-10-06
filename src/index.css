@@ -101,11 +101,11 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans antialiased;
   }
   
-  h1, h2 {
-    @apply font-bold;
+  h1, h2, h3 {
+    @apply font-bold max-w-[700px];
   }
   
-  h3, h4 {
+  h4 {
     @apply font-semibold;
   }
 }

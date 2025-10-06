@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import knovaLogo from "@/assets/knova.svg";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,8 +22,8 @@ const Header = () => {
       <div className="container-narrow">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="font-bold text-xl text-primary">
-            KNova
+          <Link to="/" className="flex items-center">
+            <img src={knovaLogo} alt="KNova Contractors" className="h-8" />
           </Link>
 
           {/* Desktop Nav */}
@@ -47,7 +48,7 @@ const Header = () => {
               <span>(201) 525-5365</span>
             </a>
             <Button asChild size="sm">
-              <Link to="/contact">Request Service 24/7</Link>
+              <Link to="/contact">Request a Bid</Link>
             </Button>
           </div>
 
@@ -85,7 +86,7 @@ const Header = () => {
               </a>
               <Button asChild className="w-full">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  Request Service 24/7
+                  Request a Bid
                 </Link>
               </Button>
             </div>

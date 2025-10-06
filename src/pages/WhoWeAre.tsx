@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
 const WhoWeAre = () => {
   const certifications = [
@@ -40,16 +41,33 @@ const WhoWeAre = () => {
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow">
             <p className="overline mb-4">About us</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8 max-w-4xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl">
               Building Trust. Delivering Quality.
             </h1>
+            <p className="text-base text-muted-foreground max-w-2xl">
+              MBE-certified general contractor with deep MEP expertise serving New York and New Jersey
+            </p>
+          </div>
+        </section>
+
+        {/* Full-Width Image Band */}
+        <section className="py-0 bg-secondary/30 relative">
+          <div className="w-full relative">
+            <img
+              src={fullWidthWhoWeAre}
+              alt="KNova team and leadership"
+              className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-primary/15"></div>
           </div>
         </section>
 
         {/* Overview */}
         <section className="section-padding">
           <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-6">Overview</h2>
+            <h2 className="text-2xl md:text-3xl mb-2">Overview</h2>
+            <p className="text-base text-muted-foreground mb-6">Licensed, insured, and ready to deliver</p>
             <div className="prose prose-lg max-w-none space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 KNova Contractors is a Certified Minority Business Enterprise and a licensed, insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
@@ -67,7 +85,8 @@ const WhoWeAre = () => {
         {/* Our Story */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-6">Our Story</h2>
+            <h2 className="text-2xl md:text-3xl mb-2">Our Story</h2>
+            <p className="text-base text-muted-foreground mb-6">Building since 2009 with the same values</p>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Founded in 2009 with a small crew of electricians, carpenters, and painters. Today we build, renovate, and manage properties across New York and New Jersey.
@@ -83,7 +102,8 @@ const WhoWeAre = () => {
         <section className="section-padding">
           <div className="container-narrow">
             <div className="max-w-4xl mb-12">
-              <h2 className="text-2xl md:text-3xl mb-6">Mission & Values</h2>
+              <h2 className="text-2xl md:text-3xl mb-2">Mission & Values</h2>
+              <p className="text-base text-muted-foreground mb-6">What drives our work</p>
               <p className="text-xl font-semibold text-primary mb-8">
                 Mission: Build trusted spaces that perform
               </p>
@@ -103,7 +123,8 @@ const WhoWeAre = () => {
         {/* Leadership */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-12">Leadership</h2>
+            <h2 className="text-2xl md:text-3xl mb-2">Leadership</h2>
+            <p className="text-base text-muted-foreground mb-12">Experience you can trust</p>
 
             <div className="space-y-12">
               <div>
@@ -162,7 +183,8 @@ const WhoWeAre = () => {
         {/* Certifications */}
         <section className="section-padding">
           <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-8">Certifications</h2>
+            <h2 className="text-2xl md:text-3xl mb-2">Certifications</h2>
+            <p className="text-base text-muted-foreground mb-8">Licensed and compliant across all work</p>
             <div className="grid md:grid-cols-2 gap-4">
               {certifications.map((cert, i) => (
                 <div key={i} className="flex items-center gap-3 p-4 bg-secondary/30 rounded-lg">

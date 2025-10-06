@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import knovaReverseLogo from "@/assets/knova-reverse.svg";
 
 const Footer = () => {
   const certifications = [
@@ -37,8 +38,9 @@ const Footer = () => {
       {/* Main Footer */}
       <div className="container-narrow py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {/* Contact Block */}
+          {/* Brand + Contact Block */}
           <div>
+            <img src={knovaReverseLogo} alt="KNova Contractors" className="h-10 mb-8 mx-auto md:mx-0" />
             <h3 className="font-semibold text-lg mb-6">Contact</h3>
             <div className="space-y-4 text-sm opacity-90">
               <div className="flex items-start gap-3">
@@ -76,7 +78,7 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Brand */}
+          {/* Description */}
           <div>
             <h2 className="text-2xl font-bold mb-4">KNova Contractors</h2>
             <p className="text-sm opacity-90 mb-6">Building Trust. Delivering Quality.</p>

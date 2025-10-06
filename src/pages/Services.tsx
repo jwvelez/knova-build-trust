@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Hammer, Wind, Zap, Droplet, Flame, Network, Home, Factory, Thermometer, FileText, Building2, Wrench } from "lucide-react";
+import fullWidthServices from "@/assets/full-width-services.jpg";
 
 const Services = () => {
   const services = [
@@ -78,9 +79,25 @@ const Services = () => {
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow">
             <p className="overline mb-4">What we do</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4">
               Building systems that just work
             </h1>
+            <p className="text-base text-muted-foreground max-w-2xl">
+              Comprehensive construction and MEP services backed by deep technical expertise and proven reliability
+            </p>
+          </div>
+        </section>
+
+        {/* Full-Width Image Band */}
+        <section className="py-0 bg-secondary/30 relative">
+          <div className="w-full relative">
+            <img
+              src={fullWidthServices}
+              alt="Construction and building systems"
+              className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-primary/15"></div>
           </div>
         </section>
 
@@ -92,9 +109,9 @@ const Services = () => {
                 const Icon = service.icon;
                 return (
                   <Card key={i} className="p-6 card-lift border-border group">
-                    <Icon className="h-9 w-9 mb-4 text-primary stroke-[2px] group-hover:text-accent transition-colors" />
-                    <h3 className="font-semibold mb-3 text-lg">{service.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
+                    <Icon className="h-9 w-9 mb-4 text-accent stroke-[2px] group-hover:scale-110 transition-transform" />
+                    <h3 className="font-bold text-[22px] mb-3">{service.title}</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">{service.desc}</p>
                   </Card>
                 );
               })}

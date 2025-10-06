@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2, Heart, GraduationCap, Users, Store, ShoppingBag, Building, Factory } from "lucide-react";
+import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2, Heart, GraduationCap, Users, Store, ShoppingBag, Building, Wrench, Shield } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-construction.jpg";
@@ -10,6 +10,7 @@ import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
 import interstitial1 from "@/assets/interstitial-1.jpg";
 import interstitial2 from "@/assets/interstitial-2.jpg";
+import fullWidthServices from "@/assets/full-width-services.jpg";
 
 const Index = () => {
   const trustBadges = [
@@ -23,14 +24,20 @@ const Index = () => {
     {
       title: "GC leadership — from preconstruction to closeout",
       desc: "Comprehensive project management with rigorous quality control at every phase",
+      primaryIcon: Hammer,
+      accentIcon: Shield,
     },
     {
       title: "MEP depth — HVAC, electrical, plumbing delivered right",
       desc: "Deep technical expertise in building systems that ensures reliable performance",
+      primaryIcon: Wrench,
+      accentIcon: Zap,
     },
     {
       title: "Compliance first — predictable schedules and inspections",
       desc: "Code-compliant execution that keeps projects on track and on budget",
+      primaryIcon: Check,
+      accentIcon: Building2,
     },
   ];
 
@@ -123,8 +130,8 @@ const Index = () => {
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="h-4 w-4 text-accent" />
                 <span className="text-muted-foreground">24/7 Service:</span>
-                <a href="tel:1234567890" className="font-medium link-accent">
-                  (123) 456-7890
+                <a href="tel:2015255365" className="font-medium link-accent">
+                  (201) 525-5365
                 </a>
               </div>
             </div>
@@ -155,19 +162,39 @@ const Index = () => {
       <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
           <div className="grid md:grid-cols-3 gap-8">
-            {valueProps.map((prop, i) => (
-              <Card key={i} className="p-8 card-lift bg-card">
-                <h3 className="text-lg font-semibold mb-3 text-primary">{prop.title}</h3>
-                <p className="text-sm text-muted-foreground">{prop.desc}</p>
-              </Card>
-            ))}
+            {valueProps.map((prop, i) => {
+              const PrimaryIcon = prop.primaryIcon;
+              const AccentIcon = prop.accentIcon;
+              return (
+                <div key={i} className="flex flex-col items-center text-center space-y-4">
+                  <div className="relative w-10 h-10">
+                    <PrimaryIcon className="absolute inset-0 w-10 h-10 text-primary" strokeWidth={2} />
+                    <AccentIcon className="absolute top-1 left-1 w-6 h-6 text-accent" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-lg font-bold text-primary max-w-xs">{prop.title}</h3>
+                  <p className="text-sm text-muted-foreground">{prop.desc}</p>
+                </div>
+              );
+            })}
           </div>
-          <div className="mt-8 text-center">
-            <Link to="/services" className="inline-flex items-center gap-2 link-accent font-medium hover:gap-3 transition-all group">
-              See how we deliver
-              <ArrowRight className="h-4 w-4 arrow-shift" />
-            </Link>
+          <div className="mt-10 text-center">
+            <Button variant="outline" size="default" asChild>
+              <Link to="/services">See how we deliver</Link>
+            </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Full-Width Image Band */}
+      <section className="py-0 bg-secondary/30 relative">
+        <div className="w-full relative">
+          <img
+            src={fullWidthServices}
+            alt="Construction and building systems"
+            className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-primary/15"></div>
         </div>
       </section>
 
@@ -175,16 +202,17 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-narrow">
           <p className="overline mb-4">What we do</p>
-          <h2 className="text-3xl md:text-4xl mb-4">From new builds to building systems, one team delivers</h2>
+          <h2 className="text-3xl md:text-4xl mb-2">From new builds to building systems, one team delivers</h2>
+          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Comprehensive construction and MEP services tailored to your project needs</p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => {
               const Icon = service.icon;
               return (
                 <Card key={i} className="p-6 card-lift border-border group">
-                  <Icon className="h-9 w-9 mb-4 text-primary stroke-[2px] group-hover:text-accent transition-colors" />
-                  <h3 className="font-semibold mb-2">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                  <Icon className="h-9 w-9 mb-4 text-accent stroke-[2px] group-hover:scale-110 transition-transform" />
+                  <h3 className="font-bold text-[22px] mb-2">{service.title}</h3>
+                  <p className="text-base text-muted-foreground leading-relaxed">{service.desc}</p>
                 </Card>
               );
             })}
@@ -216,16 +244,21 @@ const Index = () => {
       {/* Industries Strip */}
       <section className="section-padding">
         <div className="container-narrow">
-          <h2 className="text-2xl md:text-3xl mb-12 text-center">
+          <p className="overline mb-4">Who we serve</p>
+          <h2 className="text-2xl md:text-3xl mb-2">
             Built for the places people live, learn, heal, and work
           </h2>
+          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Serving diverse sectors with specialized expertise</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
               return (
-                <div key={i} className="text-center space-y-3 group cursor-pointer">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-secondary/50 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all">
-                    <Icon className="h-8 w-8 text-primary group-hover:text-accent-foreground stroke-[2px]" />
+                <div 
+                  key={i} 
+                  className="flex flex-col items-center text-center space-y-3 group cursor-pointer transition-all"
+                >
+                  <div className="w-16 h-16 rounded-full bg-background border-2 border-secondary flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all">
+                    <Icon className="h-6 w-6 text-accent stroke-[2px] group-hover:text-accent-foreground" />
                   </div>
                   <h4 className="font-semibold text-sm group-hover:text-accent transition-colors">{industry.label}</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
@@ -237,10 +270,11 @@ const Index = () => {
       </section>
 
       {/* Featured Projects */}
-      <section className="section-padding">
+      <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
           <p className="overline mb-4">Results over rhetoric</p>
-          <h2 className="text-3xl md:text-4xl mb-12">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl mb-2">Featured Projects</h2>
+          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Recent work showcasing our commitment to quality and performance</p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, i) => (
@@ -282,9 +316,11 @@ const Index = () => {
       </section>
 
       {/* Leadership Snapshot */}
-      <section className="section-padding bg-secondary/30">
+      <section className="section-padding">
         <div className="container-narrow">
-          <h2 className="text-3xl md:text-4xl mb-12">Accountability at the top, reliability in the field</h2>
+          <p className="overline mb-4">Leadership</p>
+          <h2 className="text-3xl md:text-4xl mb-2">Accountability at the top, reliability in the field</h2>
+          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Experienced leaders committed to quality and integrity</p>
           
           <div className="grid md:grid-cols-2 gap-12">
             <div>
@@ -315,7 +351,7 @@ const Index = () => {
       </section>
 
       {/* Final Blades */}
-      <section className="section-padding">
+      <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
@@ -339,8 +375,8 @@ const Index = () => {
                 </Button>
                 <div className="flex items-center justify-center gap-2 text-sm">
                   <Phone className="h-4 w-4" />
-                  <a href="tel:1234567890" className="font-medium hover:opacity-80 transition-opacity">
-                    (123) 456-7890
+                  <a href="tel:2015255365" className="font-medium hover:opacity-80 transition-opacity">
+                    (201) 525-5365
                   </a>
                 </div>
               </div>
