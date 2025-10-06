@@ -112,7 +112,7 @@ All colors MUST be HSL.
 
 @layer components {
   .overline {
-    @apply uppercase text-xs tracking-[0.08em] opacity-80 text-primary font-medium pb-2 border-b border-primary/80 inline-block;
+    @apply uppercase text-xs tracking-[0.08em] opacity-80 text-primary font-medium inline-block;
   }
   
   .section-padding {

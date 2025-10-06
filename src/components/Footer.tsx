@@ -40,7 +40,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Brand + Contact Block */}
           <div>
-            <img src={knovaReverseLogo} alt="KNova Contractors" className="h-10 mb-8 mx-auto md:mx-0" />
+            <img src={knovaReverseLogo} alt="KNova Contractors" className="h-14 mb-8 mx-auto md:mx-0" />
             <h3 className="font-semibold text-lg mb-6">Contact</h3>
             <div className="space-y-4 text-sm opacity-90">
               <div className="flex items-start gap-3">

@@ -100,8 +100,8 @@ const WhoWeAre = () => {
 
         {/* Mission & Values */}
         <section className="section-padding">
-          <div className="container-narrow">
-            <div className="max-w-4xl mb-12">
+          <div className="container-narrow max-w-4xl">
+            <div className="mb-12">
               <h2 className="text-2xl md:text-3xl mb-2">Mission & Values</h2>
               <p className="text-base text-muted-foreground mb-6">What drives our work</p>
               <p className="text-xl font-semibold text-primary mb-8">

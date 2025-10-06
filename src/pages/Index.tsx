@@ -167,12 +167,12 @@ const Index = () => {
               const AccentIcon = prop.accentIcon;
               return (
                 <div key={i} className="flex flex-col items-center text-center space-y-4">
-                  <div className="relative w-10 h-10">
-                    <PrimaryIcon className="absolute inset-0 w-10 h-10 text-primary" strokeWidth={2} />
-                    <AccentIcon className="absolute top-1 left-1 w-6 h-6 text-accent" strokeWidth={2} />
+                  <div className="relative w-12 h-12">
+                    <PrimaryIcon className="absolute inset-0 w-12 h-12 text-primary" strokeWidth={2} />
+                    <AccentIcon className="absolute top-1.5 left-1.5 w-7 h-7 text-accent" strokeWidth={2} />
                   </div>
-                  <h3 className="text-lg font-bold text-primary max-w-xs">{prop.title}</h3>
-                  <p className="text-sm text-muted-foreground">{prop.desc}</p>
+                  <h3 className="text-xl font-bold text-primary max-w-xs">{prop.title}</h3>
+                  <p className="text-base text-muted-foreground">{prop.desc}</p>
                 </div>
               );
             })}
@@ -260,8 +260,8 @@ const Index = () => {
                   <div className="w-16 h-16 rounded-full bg-background border-2 border-secondary flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all">
                     <Icon className="h-6 w-6 text-accent stroke-[2px] group-hover:text-accent-foreground" />
                   </div>
-                  <h4 className="font-semibold text-sm group-hover:text-accent transition-colors">{industry.label}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
+                  <h4 className="font-semibold text-base group-hover:text-accent transition-colors">{industry.label}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
                 </div>
               );
             })}
@@ -355,7 +355,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
-            <div className="space-y-4">
+            <div className="bg-white p-8 rounded-lg border border-border space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold">We build for people, not just places</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.

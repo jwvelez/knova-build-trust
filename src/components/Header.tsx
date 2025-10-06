@@ -23,7 +23,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={knovaLogo} alt="KNova Contractors" className="h-8" />
+            <img src={knovaLogo} alt="KNova Contractors" className="h-[110px]" />
           </Link>
 
           {/* Desktop Nav */}
@@ -32,8 +32,8 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
-                  isActive(item.path) ? "text-primary" : "text-muted-foreground"
+                className={`text-base font-medium transition-colors hover:text-accent ${
+                  isActive(item.path) ? "text-primary" : "text-primary"
                 }`}
               >
                 {item.label}
@@ -47,7 +47,7 @@ const Header = () => {
               <Phone className="h-4 w-4" />
               <span>(201) 525-5365</span>
             </a>
-            <Button asChild size="sm">
+            <Button asChild size="lg">
               <Link to="/contact">Request a Bid</Link>
             </Button>
           </div>
