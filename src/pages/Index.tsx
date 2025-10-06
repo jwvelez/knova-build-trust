@@ -229,7 +229,7 @@ const Index = () => {
         <div className="md:hidden w-full">
           <div className="w-full">
             {/* Left Column - White Box */}
-            <div className="bg-[#FAFAFA] p-6">
+            <div className="bg-[#FAFAFA] p-8 py-12">
               <p className="overline mb-3 text-primary text-xs">Our Approach</p>
               <h2 className="text-2xl mb-2 text-primary">How we deliver</h2>
               <p className="text-base text-muted-foreground mb-6 max-w-2xl">Proven process, predictable outcomes at every stage</p>
@@ -260,7 +260,7 @@ const Index = () => {
             </div>
 
             {/* Right Column - Blue Box */}
-            <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8">
+            <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 py-12">
               <img
                 src="/src/assets/knova-reverse.svg"
                 alt="KNova Contractors"
@@ -341,7 +341,7 @@ const Index = () => {
                 >
                   <Icon className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-[22px] group-hover:text-accent transition-colors mb-1">{industry.label}</h4>
+                    <h4 className="font-semibold text-[21px] md:text-[22px] group-hover:text-accent transition-colors mb-1">{industry.label}</h4>
                     <p className="text-base text-muted-foreground leading-relaxed">{industry.detail}</p>
                   </div>
                 </div>
