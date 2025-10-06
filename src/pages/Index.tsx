@@ -161,65 +161,117 @@ const Index = () => {
 
       {/* How We Deliver - Redesigned */}
       <section className="py-0 bg-secondary/30 relative">
-        <div className="w-full relative">
+        {/* Desktop: Image with overlay */}
+        <div className="hidden md:block w-full relative">
           <img
             src={howWeDeliver}
             alt="Construction and building systems"
-            className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+            className="w-full h-[600px] lg:h-[900px] object-cover"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-[#00020E] opacity-40"></div>
           
-          {/* Content Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center py-8 md:py-0">
+          {/* Content Overlay - Desktop */}
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="container-narrow w-full px-4">
-              <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0">
+              <div className="grid grid-cols-[60%_40%] gap-0">
                 {/* Left Column - White Box */}
-                <div className="bg-[#FAFAFA] p-6 md:p-12 lg:p-16">
-                  <p className="overline mb-3 md:mb-4 text-primary text-xs md:text-sm">Our Approach</p>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl mb-2 text-primary">How we deliver</h2>
-                  <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+                <div className="bg-[#FAFAFA] p-12 lg:p-16">
+                  <p className="overline mb-4 text-primary text-sm">Our Approach</p>
+                  <h2 className="text-3xl lg:text-4xl mb-2 text-primary">How we deliver</h2>
+                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
                   
-                  <div className="space-y-4 md:space-y-6">
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <Hammer className="h-6 w-6 md:h-8 md:w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-base md:text-[21px] font-bold mb-1 md:mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
-                        <p className="text-sm md:text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
+                        <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <Zap className="h-6 w-6 md:h-8 md:w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                    <div className="flex items-start gap-4">
+                      <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-base md:text-[21px] font-bold mb-1 md:mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
-                        <p className="text-sm md:text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                        <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <Shield className="h-6 w-6 md:h-8 md:w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                    <div className="flex items-start gap-4">
+                      <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-base md:text-[21px] font-bold mb-1 md:mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
-                        <p className="text-sm md:text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
+                        <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Right Column - Blue Box */}
-                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-6 md:p-12 lg:p-16">
+                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-12 lg:p-16">
                   <img
                     src="/src/assets/knova-reverse.svg"
                     alt="KNova Contractors"
-                    className="h-24 md:h-32 lg:h-40 mb-4 md:mb-6"
+                    className="h-32 lg:h-40 mb-6"
                   />
-                  <p className="text-white text-base md:text-xl font-bold italic text-center mb-4 md:mb-6">
+                  <p className="text-white text-xl font-bold italic text-center mb-6">
                     Building trust. Delivering quality.
                   </p>
-                  <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full md:w-auto">
+                  <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
                     <Link to="/contact">Request a bid</Link>
                   </Button>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile: No image, full-width boxes */}
+        <div className="md:hidden w-full">
+          <div className="w-full">
+            {/* Left Column - White Box */}
+            <div className="bg-[#FAFAFA] p-6">
+              <p className="overline mb-3 text-primary text-xs">Our Approach</p>
+              <h2 className="text-2xl mb-2 text-primary">How we deliver</h2>
+              <p className="text-base text-muted-foreground mb-6 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Hammer className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-base font-bold mb-1 text-primary">GC leadership — from preconstruction to closeout</h3>
+                    <p className="text-sm text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Zap className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-base font-bold mb-1 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                    <p className="text-sm text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Shield className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-base font-bold mb-1 text-primary">Compliance first — predictable schedules and inspections</h3>
+                    <p className="text-sm text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Blue Box */}
+            <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8">
+              <img
+                src="/src/assets/knova-reverse.svg"
+                alt="KNova Contractors"
+                className="h-24 mb-4"
+              />
+              <p className="text-white text-base font-bold italic text-center mb-4">
+                Building trust. Delivering quality.
+              </p>
+              <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
+                <Link to="/contact">Request a bid</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -241,8 +293,8 @@ const Index = () => {
               return (
                 <Card key={i} className="p-6 card-lift border-border group">
                   <Icon className="h-9 w-9 mb-4 text-accent stroke-[2px] group-hover:scale-110 transition-transform" />
-                  <h3 className="font-bold text-[22px] mb-2">{service.title}</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed">{service.desc}</p>
+                  <h3 className="font-bold text-[20px] md:text-[22px] mb-2">{service.title}</h3>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{service.desc}</p>
                 </Card>
               );
             })}
@@ -285,11 +337,13 @@ const Index = () => {
               return (
                 <div 
                   key={i} 
-                  className="flex flex-col items-start text-left space-y-3 group cursor-pointer transition-all"
+                  className="flex items-start gap-3 text-left group cursor-pointer transition-all"
                 >
-                  <Icon className="h-6 w-6 text-accent stroke-[2px]" />
-                  <h4 className="font-semibold text-[22px] group-hover:text-accent transition-colors">{industry.label}</h4>
-                  <p className="text-lg text-muted-foreground leading-relaxed">{industry.detail}</p>
+                  <Icon className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-[22px] group-hover:text-accent transition-colors mb-1">{industry.label}</h4>
+                    <p className="text-base text-muted-foreground leading-relaxed">{industry.detail}</p>
+                  </div>
                 </div>
               );
             })}
