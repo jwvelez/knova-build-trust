@@ -159,29 +159,47 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Value Trio */}
+      {/* How We Deliver - Moved from below */}
       <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
-          <div className="grid md:grid-cols-3 gap-8">
-            {valueProps.map((prop, i) => {
-              const PrimaryIcon = prop.primaryIcon;
-              const AccentIcon = prop.accentIcon;
-              return (
-                <div key={i} className="flex flex-col items-center text-center space-y-4">
-                  <div className="relative w-12 h-12">
-                    <PrimaryIcon className="absolute inset-0 w-12 h-12 text-primary" strokeWidth={2} />
-                    <AccentIcon className="absolute top-1.5 left-1.5 w-7 h-7 text-accent" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-[22px] font-bold text-primary max-w-xs">{prop.title}</h3>
-                  <p className="text-lg text-muted-foreground">{prop.desc}</p>
+          <p className="overline mb-4">Our Approach</p>
+          <h2 className="text-3xl md:text-4xl mb-2">How we deliver</h2>
+          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Column - 3 items stacked */}
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-[22px] font-bold mb-2">GC leadership — from preconstruction to closeout</h3>
+                  <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                 </div>
-              );
-            })}
-          </div>
-          <div className="mt-10 text-center">
-            <Button variant="outline" size="default" asChild>
-              <Link to="/services">See how we deliver</Link>
-            </Button>
+              </div>
+              <div className="flex items-start gap-4">
+                <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-[22px] font-bold mb-2">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                  <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-[22px] font-bold mb-2">Compliance first — predictable schedules and inspections</h3>
+                  <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative">
+              <img
+                src={howWeDeliver}
+                alt="Construction team delivering quality"
+                className="rounded-lg shadow-xl w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -316,82 +334,49 @@ const Index = () => {
         </div>
       </section>
 
-      {/* How We Deliver */}
-      <section className="section-padding">
-        <div className="container-narrow">
-          <p className="overline mb-4">How we deliver</p>
-          <h2 className="text-3xl md:text-4xl mb-2">Proven process, predictable outcomes</h2>
-          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Our approach ensures quality at every stage</p>
-          
+
+      {/* Leadership Snapshot - Enhanced */}
+      <section className="section-padding bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/30 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="container-narrow relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - 3 items stacked */}
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <Check className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-[22px] font-bold mb-2">Pre-construction planning</h3>
-                  <p className="text-lg text-muted-foreground">Thorough scoping, clear timelines, and upfront budgets</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-[22px] font-bold mb-2">Quality control checkpoints</h3>
-                  <p className="text-lg text-muted-foreground">Regular inspections and documentation at every phase</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Building2 className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-[22px] font-bold mb-2">Closeout and handover</h3>
-                  <p className="text-lg text-muted-foreground">Complete documentation, training, and ongoing support</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Image */}
-            <div className="relative">
-              <img
-                src={howWeDeliver}
-                alt="Construction team delivering quality"
-                className="rounded-lg shadow-xl w-full h-auto"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Snapshot */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container-narrow">
-          <p className="overline mb-4">Leadership</p>
-          <h2 className="text-3xl md:text-4xl mb-2">Accountability at the top, reliability in the field</h2>
-          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Experienced leaders committed to quality and integrity</p>
-          
-          <div className="grid md:grid-cols-2 gap-12">
+            {/* Left Column - Content */}
             <div>
-              <h3 className="text-xl font-semibold mb-3">Keily J. Nova</h3>
-              <p className="text-sm text-muted-foreground mb-4">Founder and President</p>
-              <p className="text-sm leading-relaxed">
-                Field-first leader with deep HVAC expertise and 20+ years in construction. Licensed in New York and New Jersey, leading operations with a focus on safety, quality, and performance.
+              <p className="overline mb-4">Leadership</p>
+              <h2 className="text-3xl md:text-4xl mb-4">Builders who understand your goals</h2>
+              <p className="text-base text-muted-foreground mb-8 leading-relaxed">
+                Our team has delivered projects across healthcare, education, and commercial sectors. We understand the nuances of regulated environments—and the importance of zero disruption.
               </p>
+              <Button variant="outline" size="lg" asChild className="group">
+                <Link to="/who-we-are" className="flex items-center gap-2">
+                  Meet the Team
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+              </Button>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-3">Lymaris Albors</h3>
-              <p className="text-sm text-muted-foreground mb-4">Co-Founder</p>
-              <p className="text-sm leading-relaxed">
-                Executive operator focused on quality, compliance, and sustainable growth. 20+ years of nonprofit leadership with expertise in operations and strategic partnerships.
-              </p>
-            </div>
-          </div>
 
-          <div className="mt-12 text-center">
-            <Button variant="outline" asChild>
-              <Link to="/who-we-are" className="group">
-                Meet the team
-                <ArrowRight className="ml-2 h-4 w-4 arrow-shift" />
-              </Link>
-            </Button>
+            {/* Right Column - Stats/Highlights */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-4xl font-bold text-primary mb-2">20+</div>
+                <p className="text-sm text-muted-foreground">Years Combined Experience</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-4xl font-bold text-accent mb-2">100+</div>
+                <p className="text-sm text-muted-foreground">Projects Delivered</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-4xl font-bold text-primary mb-2">MBE</div>
+                <p className="text-sm text-muted-foreground">Certified Contractor</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-4xl font-bold text-accent mb-2">2</div>
+                <p className="text-sm text-muted-foreground">State Coverage</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -401,12 +386,15 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
-            <div className="bg-white p-8 rounded-lg border border-border space-y-4">
+            <div className="bg-white p-8 rounded-lg border border-border space-y-4 flex flex-col">
               <h2 className="text-2xl md:text-3xl font-bold">We build for people, not just places</h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed flex-grow">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.
               </p>
-              <p className="font-medium text-primary">Because building better places means investing in people</p>
+              <p className="font-medium text-primary mb-4">Because building better places means investing in people</p>
+              <Button size="lg" variant="default" asChild className="w-full">
+                <Link to="/contact">Contact Us</Link>
+              </Button>
             </div>
 
             {/* 24/7 Service */}

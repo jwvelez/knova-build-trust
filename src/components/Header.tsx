@@ -20,10 +20,10 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container-narrow">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between py-[15px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={knovaLogo} alt="KNova Contractors" className="h-[77px]" />
+            <img src={knovaLogo} alt="KNova Contractors" className="h-[65px] md:h-[65px]" />
           </Link>
 
           {/* Desktop Nav */}
@@ -42,7 +42,7 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA + Phone */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6">
             <a href="tel:2015255365" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
               <Phone className="h-4 w-4" />
               <span>(201) 525-5365</span>
