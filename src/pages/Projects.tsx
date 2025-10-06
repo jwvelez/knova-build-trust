@@ -120,8 +120,8 @@ const Projects = () => {
                       </div>
                       <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="text-muted-foreground">{project.year}</span>
-                        <span className="text-muted-foreground">•</span>
+                        <span className="text-accent font-medium">{project.year}</span>
+                        <span className="text-accent">•</span>
                         <span className="text-accent font-medium">{project.size}</span>
                       </div>
                     </div>

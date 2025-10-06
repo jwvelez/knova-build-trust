@@ -65,18 +65,17 @@ const WhoWeAre = () => {
         </section>
 
         {/* Overview */}
-        <section className="section-padding">
+        <section className="section-padding bg-[#1E3480]">
           <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-2">Overview</h2>
-            <p className="text-base text-muted-foreground mb-6">Licensed, insured, and ready to deliver</p>
-            <div className="prose prose-lg max-w-none space-y-4 text-muted-foreground leading-relaxed">
-              <p className="text-lg">
+            <h2 className="text-2xl md:text-3xl mb-6 text-white">Overview</h2>
+            <div className="prose prose-lg max-w-none space-y-4 leading-relaxed">
+              <p className="text-lg text-white">
                 KNova Contractors is a Certified Minority Business Enterprise and a licensed, insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
               </p>
-              <p className="text-lg">
+              <p className="text-lg text-white">
                 We partner with property management teams to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing.
               </p>
-              <p className="text-lg">
+              <p className="text-lg text-white">
                 We keep schedules tight and deliver quality results on budget and on schedule.
               </p>
             </div>
@@ -87,12 +86,12 @@ const WhoWeAre = () => {
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow max-w-4xl">
             <h2 className="text-2xl md:text-3xl mb-2">Our Story</h2>
-            <p className="text-base text-muted-foreground mb-6">Building since 2009 with the same values</p>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p className="text-lg">
+            <p className="text-lg text-muted-foreground mb-6">Building since 2009 with the same values</p>
+            <div className="space-y-4 leading-relaxed">
+              <p className="text-lg text-[#1E3480]">
                 Founded in 2009 with a small crew of electricians, carpenters, and painters. Today we build, renovate, and manage properties across New York and New Jersey.
               </p>
-              <p className="font-medium text-primary text-lg">
+              <p className="font-medium text-[#1E3480] text-lg">
                 The mindset from day one still applies: build well, operate better, and treat clients like long-term partners.
               </p>
             </div>
@@ -101,7 +100,7 @@ const WhoWeAre = () => {
 
         {/* Mission & Values */}
         <section className="section-padding">
-          <div className="container-narrow max-w-4xl">
+          <div className="container-narrow max-w-6xl">
             <div className="mb-12">
               <h2 className="text-2xl md:text-3xl mb-2">Mission & Values</h2>
               <p className="text-lg text-muted-foreground mb-6">What drives our work</p>
