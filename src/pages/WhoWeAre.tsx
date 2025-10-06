@@ -39,20 +39,7 @@ const WhoWeAre = () => {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="section-padding bg-secondary/30">
-          <div className="container-narrow">
-            <p className="overline mb-4">About us</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl">
-              Building Trust. Delivering Quality.
-            </h1>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              MBE-certified general contractor with deep MEP expertise serving New York and New Jersey
-            </p>
-          </div>
-        </section>
-
-        {/* Full-Width Image Band */}
-        <section className="py-0 bg-secondary/30 relative">
+        <section className="py-0 relative">
           <div className="w-full relative">
             <img
               src={fullWidthWhoWeAre}
@@ -61,6 +48,19 @@ const WhoWeAre = () => {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-primary/15"></div>
+            <div className="absolute inset-0 flex items-center justify-center px-4">
+              <div className="w-full max-w-4xl" style={{ backgroundColor: '#FAFAFA' }}>
+                <div className="p-8 md:p-12 lg:p-16">
+                  <p className="overline mb-4 text-muted-foreground">About us</p>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
+                    Building Trust. Delivering Quality.
+                  </h1>
+                  <p className="text-base text-muted-foreground max-w-2xl">
+                    MBE-certified general contractor with deep MEP expertise serving New York and New Jersey
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
