@@ -164,7 +164,7 @@ const Index = () => {
         <div className="container-narrow">
           <p className="overline mb-4">Our Approach</p>
           <h2 className="text-3xl md:text-4xl mb-2">How we deliver</h2>
-          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Proven process, predictable outcomes at every stage</p>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column - 3 items stacked */}
@@ -222,7 +222,7 @@ const Index = () => {
         <div className="container-narrow">
           <p className="overline mb-4">What we do</p>
           <h2 className="text-3xl md:text-4xl mb-2">From new builds to building systems, one team delivers</h2>
-          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Comprehensive construction and MEP services tailored to your project needs</p>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Comprehensive construction and MEP services tailored to your project needs</p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => {
@@ -264,10 +264,10 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-narrow">
           <p className="overline mb-4">Who we serve</p>
-          <h2 className="text-2xl md:text-3xl mb-2">
+          <h2 className="text-3xl md:text-4xl mb-2">
             Built for the places people live, learn, heal, and work
           </h2>
-          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Serving diverse sectors with specialized expertise</p>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Serving diverse sectors with specialized expertise</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
@@ -293,7 +293,7 @@ const Index = () => {
         <div className="container-narrow">
           <p className="overline mb-4">Results over rhetoric</p>
           <h2 className="text-3xl md:text-4xl mb-2">Featured Projects</h2>
-          <p className="text-base text-muted-foreground mb-12 max-w-2xl">Recent work showcasing our commitment to quality and performance</p>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Recent work showcasing our commitment to quality and performance</p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, i) => (
@@ -347,7 +347,7 @@ const Index = () => {
             <div>
               <p className="overline mb-4">Leadership</p>
               <h2 className="text-3xl md:text-4xl mb-4">Builders who understand your goals</h2>
-              <p className="text-base text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Our team has delivered projects across healthcare, education, and commercial sectors. We understand the nuances of regulated environments—and the importance of zero disruption.
               </p>
               <Button variant="outline" size="lg" asChild className="group">
@@ -387,7 +387,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
             <div className="bg-white p-8 rounded-lg border border-border space-y-4 flex flex-col">
-              <h2 className="text-2xl md:text-3xl font-bold">We build for people, not just places</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">We build for people, not just places</h2>
               <p className="text-muted-foreground leading-relaxed flex-grow">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.
               </p>

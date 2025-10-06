@@ -80,29 +80,31 @@ const Services = () => {
       <Header />
 
       <main className="flex-1">
-        {/* Hero */}
-        <section className="section-padding bg-secondary/30">
-          <div className="container-narrow">
-            <p className="overline mb-4">What we do</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4">
-              Building systems that just work
-            </h1>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              Comprehensive construction and MEP services backed by deep technical expertise and proven reliability
-            </p>
-          </div>
-        </section>
-
-        {/* Full-Width Image Band */}
-        <section className="py-0 bg-secondary/30 relative">
+        {/* Hero with Image and Overlay */}
+        <section className="relative">
           <div className="w-full relative">
             <img
               src={fullWidthServices}
               alt="Construction and building systems"
               className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
-              loading="lazy"
             />
-            <div className="absolute inset-0 bg-primary/15"></div>
+            {/* Dark overlay #00020E at 60% opacity */}
+            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
+            
+            {/* Content Box */}
+            <div className="absolute inset-0 flex items-center justify-center px-4">
+              <div className="w-full max-w-4xl" style={{ backgroundColor: '#FAFAFA' }}>
+                <div className="p-8 md:p-12 lg:p-16">
+                  <p className="overline mb-4 text-muted-foreground">What we do</p>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
+                    Building systems that just work
+                  </h1>
+                  <p className="text-base text-muted-foreground max-w-2xl">
+                    Comprehensive construction and MEP services backed by deep technical expertise and proven reliability
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
