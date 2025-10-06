@@ -8,6 +8,8 @@ import heroImage from "@/assets/hero-construction.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
+import interstitial1 from "@/assets/interstitial-1.jpg";
+import interstitial2 from "@/assets/interstitial-2.jpg";
 
 const Index = () => {
   const trustBadges = [
@@ -199,22 +201,34 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Photo Interstitial 1 */}
+      <section className="py-0 bg-secondary/30">
+        <div className="w-full">
+          <img
+            src={interstitial1}
+            alt="Construction team at work"
+            className="w-full h-64 md:h-80 object-cover"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* Industries Strip */}
-      <section className="section-padding bg-secondary/30">
+      <section className="section-padding">
         <div className="container-narrow">
-          <h2 className="text-2xl md:text-3xl mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl mb-12 text-center">
             Built for the places people live, learn, heal, and work
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
               return (
-                <div key={i} className="bg-background rounded-lg p-4 border border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all group cursor-pointer">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Icon className="h-5 w-5 text-primary group-hover:text-accent-foreground stroke-[2px]" />
-                    <h4 className="font-semibold text-sm">{industry.label}</h4>
+                <div key={i} className="text-center space-y-3 group cursor-pointer">
+                  <div className="w-16 h-16 mx-auto rounded-full bg-secondary/50 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all">
+                    <Icon className="h-8 w-8 text-primary group-hover:text-accent-foreground stroke-[2px]" />
                   </div>
-                  <p className="text-xs text-muted-foreground group-hover:text-accent-foreground/90 hidden md:block">{industry.detail}</p>
+                  <h4 className="font-semibold text-sm group-hover:text-accent transition-colors">{industry.label}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
                 </div>
               );
             })}
@@ -252,6 +266,18 @@ const Index = () => {
               </Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Photo Interstitial 2 */}
+      <section className="py-0 bg-secondary/30">
+        <div className="w-full">
+          <img
+            src={interstitial2}
+            alt="Building systems installation"
+            className="w-full h-64 md:h-80 object-cover"
+            loading="lazy"
+          />
         </div>
       </section>
 
