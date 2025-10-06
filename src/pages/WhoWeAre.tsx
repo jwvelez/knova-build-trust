@@ -104,8 +104,8 @@ const WhoWeAre = () => {
           <div className="container-narrow max-w-4xl">
             <div className="mb-12">
               <h2 className="text-2xl md:text-3xl mb-2">Mission & Values</h2>
-              <p className="text-base text-muted-foreground mb-6">What drives our work</p>
-              <p className="text-xl font-semibold text-primary mb-8">
+              <p className="text-lg text-muted-foreground mb-6">What drives our work</p>
+              <p className="text-xl md:text-2xl font-semibold text-primary mb-8">
                 Mission: Build trusted spaces that perform
               </p>
             </div>
@@ -113,8 +113,8 @@ const WhoWeAre = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, i) => (
                 <Card key={i} className="p-6 border-border">
-                  <h3 className="font-semibold text-lg mb-2">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground">{value.desc}</p>
+                  <h3 className="font-semibold text-xl mb-3">{value.title}</h3>
+                  <p className="text-base text-muted-foreground">{value.desc}</p>
                 </Card>
               ))}
             </div>
