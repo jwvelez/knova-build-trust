@@ -159,46 +159,64 @@ const Index = () => {
         </div>
       </section>
 
-      {/* How We Deliver - Moved from below */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container-narrow">
-          <p className="overline mb-4">Our Approach</p>
-          <h2 className="text-3xl md:text-4xl mb-2">How we deliver</h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+      {/* How We Deliver - Redesigned */}
+      <section className="py-0 bg-secondary/30 relative">
+        <div className="w-full relative">
+          <img
+            src={howWeDeliver}
+            alt="Construction and building systems"
+            className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-[#00020E] opacity-40"></div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - 3 items stacked */}
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-[22px] font-bold mb-2">GC leadership — from preconstruction to closeout</h3>
-                  <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
+          {/* Content Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="container-narrow w-full">
+              <div className="grid md:grid-cols-[60%_40%] gap-0">
+                {/* Left Column - White Box */}
+                <div className="bg-[#FAFAFA] p-8 md:p-12 lg:p-16">
+                  <p className="overline mb-4 text-primary">Our Approach</p>
+                  <h2 className="text-3xl md:text-4xl mb-2 text-primary">How we deliver</h2>
+                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="text-[22px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
+                        <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="text-[22px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                        <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="text-[22px] font-bold mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
+                        <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-[22px] font-bold mb-2">MEP depth — HVAC, electrical, plumbing delivered right</h3>
-                  <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-[22px] font-bold mb-2">Compliance first — predictable schedules and inspections</h3>
-                  <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
-                </div>
-              </div>
-            </div>
 
-            {/* Right Column - Image */}
-            <div className="relative">
-              <img
-                src={howWeDeliver}
-                alt="Construction team delivering quality"
-                className="rounded-lg shadow-xl w-full h-auto"
-              />
+                {/* Right Column - Blue Box */}
+                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 md:p-12 lg:p-16">
+                  <img
+                    src="/src/assets/knova-reverse.svg"
+                    alt="KNova Contractors"
+                    className="h-16 mb-6"
+                  />
+                  <p className="text-white text-xl font-bold italic text-center">
+                    Building trust. Delivering quality
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -220,9 +238,11 @@ const Index = () => {
       {/* Services Teaser */}
       <section className="section-padding">
         <div className="container-narrow">
-          <p className="overline mb-4">What we do</p>
-          <h2 className="text-3xl md:text-4xl mb-2">From new builds to building systems, one team delivers</h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Comprehensive construction and MEP services tailored to your project needs</p>
+          <div className="text-center mb-12">
+            <p className="overline mb-4">What we do</p>
+            <h2 className="text-3xl md:text-4xl mb-2">From new builds to building systems, one team delivers</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Comprehensive construction and MEP services tailored to your project needs</p>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => {
@@ -386,24 +406,26 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
-            <div className="bg-white p-8 rounded-lg border border-border space-y-4 flex flex-col">
-              <h2 className="text-3xl md:text-4xl font-bold">We build for people, not just places</h2>
-              <p className="text-muted-foreground leading-relaxed flex-grow">
+            <div className="bg-white p-8 rounded-lg border border-border flex flex-col h-full">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">We build for people, not just places</h2>
+              <p className="text-muted-foreground leading-relaxed flex-grow mb-6">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.
               </p>
               <p className="font-medium text-primary mb-4">Because building better places means investing in people</p>
-              <Button size="lg" variant="default" asChild className="w-full">
-                <Link to="/contact">Contact Us</Link>
-              </Button>
+              <div className="mt-auto space-y-4">
+                <Button size="lg" variant="default" asChild className="w-full">
+                  <Link to="/contact">Contact Us</Link>
+                </Button>
+              </div>
             </div>
 
             {/* 24/7 Service */}
-            <Card className="p-8 bg-primary text-primary-foreground">
+            <Card className="p-8 bg-primary text-primary-foreground flex flex-col h-full">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Reactive when you need it, preventive before you do</h2>
-              <p className="mb-6 opacity-90">
+              <p className="mb-6 opacity-90 flex-grow">
                 Facility management, preventive programs, and 24/7 response that keep buildings running
               </p>
-              <div className="space-y-4">
+              <div className="mt-auto space-y-4">
                 <Button size="lg" variant="secondary" asChild className="w-full">
                   <Link to="/contact">Request Service 24/7</Link>
                 </Button>
