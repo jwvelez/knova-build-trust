@@ -118,7 +118,7 @@ const Services = () => {
                   <AccordionItem 
                     key={i} 
                     value={`item-${i}`} 
-                    className="border border-border rounded-lg px-6 bg-background hover:shadow-md transition-shadow"
+                    className="border border-border rounded-lg px-6 bg-background hover:shadow-sm transition-shadow"
                   >
                     <AccordionTrigger className="hover:no-underline py-6">
                       <div className="flex items-center gap-4 text-left">

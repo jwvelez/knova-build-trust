@@ -171,50 +171,53 @@ const Index = () => {
           <div className="absolute inset-0 bg-[#00020E] opacity-40"></div>
           
           {/* Content Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="container-narrow w-full">
-              <div className="grid md:grid-cols-[60%_40%] gap-0">
+          <div className="absolute inset-0 flex items-center justify-center py-8 md:py-0">
+            <div className="container-narrow w-full px-4">
+              <div className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-0">
                 {/* Left Column - White Box */}
-                <div className="bg-[#FAFAFA] p-8 md:p-12 lg:p-16">
-                  <p className="overline mb-4 text-primary">Our Approach</p>
-                  <h2 className="text-3xl md:text-4xl mb-2 text-primary">How we deliver</h2>
-                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+                <div className="bg-[#FAFAFA] p-6 md:p-12 lg:p-16">
+                  <p className="overline mb-3 md:mb-4 text-primary text-xs md:text-sm">Our Approach</p>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl mb-2 text-primary">How we deliver</h2>
+                  <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
                   
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <Hammer className="h-6 w-6 md:h-8 md:w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
-                        <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
+                        <h3 className="text-base md:text-[21px] font-bold mb-1 md:mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
+                        <p className="text-sm md:text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <Zap className="h-6 w-6 md:h-8 md:w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
-                        <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
+                        <h3 className="text-base md:text-[21px] font-bold mb-1 md:mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                        <p className="text-sm md:text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4">
-                      <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <Shield className="h-6 w-6 md:h-8 md:w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[21px] font-bold mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
-                        <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
+                        <h3 className="text-base md:text-[21px] font-bold mb-1 md:mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
+                        <p className="text-sm md:text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Right Column - Blue Box */}
-                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 md:p-12 lg:p-16">
+                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-6 md:p-12 lg:p-16">
                   <img
                     src="/src/assets/knova-reverse.svg"
                     alt="KNova Contractors"
-                    className="h-40 mb-6"
+                    className="h-24 md:h-32 lg:h-40 mb-4 md:mb-6"
                   />
-                  <p className="text-white text-xl font-bold italic text-center">
-                    Building trust. Delivering quality
+                  <p className="text-white text-base md:text-xl font-bold italic text-center mb-4 md:mb-6">
+                    Building trust. Delivering quality.
                   </p>
+                  <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full md:w-auto">
+                    <Link to="/contact">Request a bid</Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -226,10 +229,10 @@ const Index = () => {
       {/* Services Teaser */}
       <section className="section-padding">
         <div className="container-narrow">
-          <div className="text-center mb-12">
+          <div className="flex flex-col items-center mb-12">
             <p className="overline mb-4 text-center">What we do</p>
             <h2 className="text-3xl md:text-4xl mb-2 text-center">From new builds to building systems, one team delivers</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center">Comprehensive construction and MEP services tailored to your project needs</p>
+            <p className="text-lg text-muted-foreground max-w-2xl text-center">Comprehensive construction and MEP services tailored to your project needs</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -276,7 +279,7 @@ const Index = () => {
             Built for the places people live, learn, heal, and work
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Serving diverse sectors with specialized expertise</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
               return (
@@ -286,7 +289,7 @@ const Index = () => {
                 >
                   <Icon className="h-6 w-6 text-accent stroke-[2px]" />
                   <h4 className="font-semibold text-[22px] group-hover:text-accent transition-colors">{industry.label}</h4>
-                  <p className="text-lg text-muted-foreground leading-relaxed hidden md:block">{industry.detail}</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">{industry.detail}</p>
                 </div>
               );
             })}
@@ -393,7 +396,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
             <div className="bg-white p-8 rounded-lg border border-border flex flex-col h-full">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">We build for people, not just places</h2>
+              <h2 className="text-2xl font-bold mb-4">We build for people, not just places</h2>
               <p className="text-muted-foreground leading-relaxed flex-grow mb-6">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.
               </p>
@@ -407,15 +410,15 @@ const Index = () => {
 
             {/* 24/7 Service */}
             <Card className="p-8 bg-primary text-primary-foreground flex flex-col h-full">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Reactive when you need it, preventive before you do</h2>
+              <h2 className="text-2xl font-bold mb-4">Reactive when you need it, preventive before you do</h2>
               <p className="mb-6 opacity-90 flex-grow">
                 Facility management, preventive programs, and 24/7 response that keep buildings running
               </p>
-              <div className="mt-auto space-y-4">
+              <div className="mt-auto flex flex-col items-end justify-end space-y-4">
                 <Button size="lg" variant="secondary" asChild className="w-full">
                   <Link to="/contact">Request Service 24/7</Link>
                 </Button>
-                <div className="flex items-center justify-center gap-2 text-sm">
+                <div className="flex items-center justify-center gap-2 text-sm w-full">
                   <Phone className="h-4 w-4" />
                   <a href="tel:2015255365" className="font-medium hover:opacity-80 transition-opacity">
                     (201) 525-5365

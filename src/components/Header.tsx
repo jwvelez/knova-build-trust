@@ -20,10 +20,10 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container-narrow">
-        <div className="flex items-center justify-between py-[15px]">
+        <div className="flex items-center justify-between py-[12px] md:py-[15px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={knovaLogo} alt="KNova Contractors" className="h-[65px] md:h-[65px]" />
+            <img src={knovaLogo} alt="KNova Contractors" className="h-[49px] md:h-[65px]" />
           </Link>
 
           {/* Desktop Nav */}
@@ -54,11 +54,11 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-primary"
+            className="lg:hidden bg-[#1E3480] p-3 flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
           </button>
         </div>
       </div>
