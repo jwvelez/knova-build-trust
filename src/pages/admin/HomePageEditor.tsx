@@ -112,6 +112,7 @@ const HomePageEditor = () => {
 
   const loadHomePage = async () => {
     try {
+      console.log('Loading homepage...');
       const { data, error } = await supabase
         .from("cms_pages")
         .select("*")
@@ -119,15 +120,20 @@ const HomePageEditor = () => {
         .limit(1)
         .maybeSingle();
 
+      console.log('Query result:', { data, error });
+
       if (error && error.code !== "PGRST116") throw error;
 
       if (data) {
+        console.log('Setting page ID:', data.id);
         setPageId(data.id);
-        console.log('Loaded page data:', data);
-        console.log('Sections data:', data.sections);
+        console.log('Raw sections data type:', typeof data.sections);
+        console.log('Raw sections data:', JSON.stringify(data.sections, null, 2));
+        
         const sections = data.sections as any || {};
-        console.log('Parsed sections:', sections);
-        form.reset({
+        console.log('Parsed sections keys:', Object.keys(sections));
+        
+        const formValues = {
           hero_eyebrow: sections.hero_eyebrow || "",
           hero_heading: sections.hero_heading || "",
           hero_description: sections.hero_description || "",
@@ -156,9 +162,16 @@ const HomePageEditor = () => {
           cta_heading: sections.cta_heading || "",
           cta_description: sections.cta_description || "",
           cta_button_text: sections.cta_button_text || "",
-        });
+        };
+        
+        console.log('Form values to set:', formValues);
+        form.reset(formValues);
+        console.log('Form reset complete');
+      } else {
+        console.log('No homepage data found, using defaults');
       }
     } catch (error: any) {
+      console.error('Error loading homepage:', error);
       toast({
         title: "Error loading homepage",
         description: error.message,
