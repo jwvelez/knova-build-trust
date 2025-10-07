@@ -49,7 +49,7 @@ const Contact = () => {
         {/* Hero */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow">
-            <p className="overline mb-4">Contact</p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Contact</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
               Let's discuss your project
             </h1>

@@ -95,7 +95,7 @@ const Services = () => {
             <div className="absolute inset-0 flex items-center justify-center px-4">
               <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
-                  <p className="overline mb-4 text-muted-foreground">What we do</p>
+                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
                     Building systems that just work
                   </h1>
@@ -143,8 +143,8 @@ const Services = () => {
 
         {/* CTA Section */}
         <section className="section-padding bg-secondary/30">
-          <div className="container-narrow text-center">
-            <h2 className="text-2xl md:text-3xl mb-6">Ready to start your project?</h2>
+          <div className="container-narrow text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
             <Button size="lg" asChild>
               <Link to="/contact">Contact Us Today</Link>
             </Button>

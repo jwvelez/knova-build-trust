@@ -113,7 +113,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
-              <p className="overline">General Contracting + Building Systems</p>
+              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">General Contracting + Building Systems</p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl md:leading-tight leading-snug md:leading-[1.2] leading-[1.2]">
                 Construction you can trust, building systems that just work
               </h1>
@@ -177,7 +177,7 @@ const Index = () => {
               <div className="grid grid-cols-[60%_40%] gap-0">
                 {/* Left Column - White Box */}
                 <div className="bg-[#FAFAFA] p-12 lg:p-16">
-                  <p className="overline mb-4 text-primary text-sm">Our Approach</p>
+                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Our Approach</p>
                   <h2 className="text-3xl lg:text-4xl mb-2 text-primary">How we deliver</h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
                   
@@ -230,7 +230,7 @@ const Index = () => {
           <div className="w-full">
             {/* Left Column - White Box */}
             <div className="bg-[#FAFAFA] p-8 py-12">
-              <p className="overline mb-3 text-primary text-xs">Our Approach</p>
+              <p className="uppercase text-xs tracking-wider text-accent font-medium mb-3">Our Approach</p>
               <h2 className="text-2xl mb-2 text-primary">How we deliver</h2>
               <p className="text-base text-muted-foreground mb-6 max-w-2xl">Proven process, predictable outcomes at every stage</p>
               
@@ -282,7 +282,7 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-narrow">
           <div className="flex flex-col items-center mb-12">
-            <p className="overline mb-4 text-center">What we do</p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-center">What we do</p>
             <h2 className="text-3xl md:text-4xl mb-2 text-center">From new builds to building systems, one team delivers</h2>
             <p className="text-lg text-muted-foreground max-w-2xl text-center">Comprehensive construction and MEP services tailored to your project needs</p>
           </div>
@@ -326,7 +326,7 @@ const Index = () => {
       {/* Industries Strip */}
       <section className="section-padding">
         <div className="container-narrow">
-          <p className="overline mb-4">Who we serve</p>
+          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Who we serve</p>
           <h2 className="text-3xl md:text-4xl mb-2">
             Built for the places people live, learn, heal, and work
           </h2>
@@ -354,7 +354,7 @@ const Index = () => {
       {/* Featured Projects */}
       <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
-          <p className="overline mb-4">Results over rhetoric</p>
+          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Results over rhetoric</p>
           <h2 className="text-3xl md:text-4xl mb-2">Featured Projects</h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Recent work showcasing our commitment to quality and performance</p>
 
@@ -408,7 +408,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column - Content */}
             <div>
-              <p className="overline mb-4">Leadership</p>
+              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Leadership</p>
               <h2 className="text-3xl md:text-4xl mb-4">Builders who understand your goals</h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Our team has delivered projects across healthcare, education, and commercial sectors. We understand the nuances of regulated environments—and the importance of zero disruption.
