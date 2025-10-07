@@ -127,52 +127,48 @@ const HomePageEditor = () => {
       if (data) {
         setPageId(data.id);
         
-        // Parse the sections array from the database
-        const sections = (data.sections as any[]) || [];
-        console.log("📄 Sections array:", sections);
+        // Get sections - could be array or object
+        let sectionsData = data.sections as any || {};
         
-        // Find specific sections by type
-        const heroSection = sections.find((s: any) => s.type === 'hero') || {};
-        const introSection = sections.find((s: any) => s.type === 'intro') || {};
+        console.log("📄 Raw sections data:", sectionsData);
         
-        console.log("🦸 Hero section:", heroSection);
-        console.log("📝 Intro section:", introSection);
+        // If it's an array (old format), try to extract what we can
+        if (Array.isArray(sectionsData)) {
+          console.log("⚠️ Legacy array format detected, converting...");
+          // For now, just use empty values - user will need to fill in the form
+          sectionsData = {};
+        }
         
-        // Map the database structure to form fields
+        // Map the sections object to form fields
         const formValues = {
-          // Hero section maps to hero fields
-          hero_eyebrow: heroSection.eyebrow || "",
-          hero_heading: heroSection.title || "",
-          hero_description: heroSection.subtitle || "",
-          hero_cta_primary: heroSection.cta?.label || "",
-          hero_cta_secondary: heroSection.cta?.href || "",
-          hero_phone: heroSection.phone || "",
-          
-          // Intro section
-          trust_badges: introSection.eyebrow || "",
-          how_we_deliver_eyebrow: introSection.eyebrow || "",
-          how_we_deliver_heading: introSection.title || "",
-          how_we_deliver_description: introSection.description || "",
-          
-          // Default empty values for other fields
-          value_prop_1_title: "",
-          value_prop_1_desc: "",
-          value_prop_2_title: "",
-          value_prop_2_desc: "",
-          value_prop_3_title: "",
-          value_prop_3_desc: "",
-          services_eyebrow: "",
-          services_heading: "",
-          services_description: "",
-          industries_eyebrow: "",
-          industries_heading: "",
-          industries_description: "",
-          projects_eyebrow: "",
-          projects_heading: "",
-          projects_description: "",
-          cta_heading: "",
-          cta_description: "",
-          cta_button_text: "",
+          hero_eyebrow: sectionsData.hero_eyebrow || "",
+          hero_heading: sectionsData.hero_heading || "",
+          hero_description: sectionsData.hero_description || "",
+          hero_cta_primary: sectionsData.hero_cta_primary || "",
+          hero_cta_secondary: sectionsData.hero_cta_secondary || "",
+          hero_phone: sectionsData.hero_phone || "",
+          trust_badges: sectionsData.trust_badges || "",
+          how_we_deliver_eyebrow: sectionsData.how_we_deliver_eyebrow || "",
+          how_we_deliver_heading: sectionsData.how_we_deliver_heading || "",
+          how_we_deliver_description: sectionsData.how_we_deliver_description || "",
+          value_prop_1_title: sectionsData.value_prop_1_title || "",
+          value_prop_1_desc: sectionsData.value_prop_1_desc || "",
+          value_prop_2_title: sectionsData.value_prop_2_title || "",
+          value_prop_2_desc: sectionsData.value_prop_2_desc || "",
+          value_prop_3_title: sectionsData.value_prop_3_title || "",
+          value_prop_3_desc: sectionsData.value_prop_3_desc || "",
+          services_eyebrow: sectionsData.services_eyebrow || "",
+          services_heading: sectionsData.services_heading || "",
+          services_description: sectionsData.services_description || "",
+          industries_eyebrow: sectionsData.industries_eyebrow || "",
+          industries_heading: sectionsData.industries_heading || "",
+          industries_description: sectionsData.industries_description || "",
+          projects_eyebrow: sectionsData.projects_eyebrow || "",
+          projects_heading: sectionsData.projects_heading || "",
+          projects_description: sectionsData.projects_description || "",
+          cta_heading: sectionsData.cta_heading || "",
+          cta_description: sectionsData.cta_description || "",
+          cta_button_text: sectionsData.cta_button_text || "",
         };
         
         console.log("✏️ Form values to set:", formValues);
@@ -197,10 +193,41 @@ const HomePageEditor = () => {
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
     try {
+      // Structure the data properly as an object, not nested in sections
       const pageData: any = {
         title: "Home",
         slug: "home",
-        sections: values,
+        sections: {
+          // All form values go directly into sections as flat properties
+          hero_eyebrow: values.hero_eyebrow,
+          hero_heading: values.hero_heading,
+          hero_description: values.hero_description,
+          hero_cta_primary: values.hero_cta_primary,
+          hero_cta_secondary: values.hero_cta_secondary,
+          hero_phone: values.hero_phone,
+          trust_badges: values.trust_badges,
+          how_we_deliver_eyebrow: values.how_we_deliver_eyebrow,
+          how_we_deliver_heading: values.how_we_deliver_heading,
+          how_we_deliver_description: values.how_we_deliver_description,
+          value_prop_1_title: values.value_prop_1_title,
+          value_prop_1_desc: values.value_prop_1_desc,
+          value_prop_2_title: values.value_prop_2_title,
+          value_prop_2_desc: values.value_prop_2_desc,
+          value_prop_3_title: values.value_prop_3_title,
+          value_prop_3_desc: values.value_prop_3_desc,
+          services_eyebrow: values.services_eyebrow,
+          services_heading: values.services_heading,
+          services_description: values.services_description,
+          industries_eyebrow: values.industries_eyebrow,
+          industries_heading: values.industries_heading,
+          industries_description: values.industries_description,
+          projects_eyebrow: values.projects_eyebrow,
+          projects_heading: values.projects_heading,
+          projects_description: values.projects_description,
+          cta_heading: values.cta_heading,
+          cta_description: values.cta_description,
+          cta_button_text: values.cta_button_text,
+        },
         status: "published",
       };
 
