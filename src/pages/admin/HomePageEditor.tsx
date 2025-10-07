@@ -112,6 +112,7 @@ const HomePageEditor = () => {
 
   const loadHomePage = async () => {
     try {
+      console.log("🔍 Loading homepage data...");
       const { data, error } = await supabase
         .from("cms_pages")
         .select("*")
@@ -121,46 +122,59 @@ const HomePageEditor = () => {
 
       if (error && error.code !== "PGRST116") throw error;
 
+      console.log("📦 Page data received:", data);
+
       if (data) {
         setPageId(data.id);
         
         const sections = data.sections as any || {};
+        console.log("📄 Sections object:", sections);
+        
+        const formValues = {
+          hero_eyebrow: sections.hero_eyebrow || "",
+          hero_heading: sections.hero_heading || "",
+          hero_description: sections.hero_description || "",
+          hero_cta_primary: sections.hero_cta_primary || "",
+          hero_cta_secondary: sections.hero_cta_secondary || "",
+          hero_phone: sections.hero_phone || "",
+          trust_badges: sections.trust_badges || "",
+          how_we_deliver_eyebrow: sections.how_we_deliver_eyebrow || "",
+          how_we_deliver_heading: sections.how_we_deliver_heading || "",
+          how_we_deliver_description: sections.how_we_deliver_description || "",
+          value_prop_1_title: sections.value_prop_1_title || "",
+          value_prop_1_desc: sections.value_prop_1_desc || "",
+          value_prop_2_title: sections.value_prop_2_title || "",
+          value_prop_2_desc: sections.value_prop_2_desc || "",
+          value_prop_3_title: sections.value_prop_3_title || "",
+          value_prop_3_desc: sections.value_prop_3_desc || "",
+          services_eyebrow: sections.services_eyebrow || "",
+          services_heading: sections.services_heading || "",
+          services_description: sections.services_description || "",
+          industries_eyebrow: sections.industries_eyebrow || "",
+          industries_heading: sections.industries_heading || "",
+          industries_description: sections.industries_description || "",
+          projects_eyebrow: sections.projects_eyebrow || "",
+          projects_heading: sections.projects_heading || "",
+          projects_description: sections.projects_description || "",
+          cta_heading: sections.cta_heading || "",
+          cta_description: sections.cta_description || "",
+          cta_button_text: sections.cta_button_text || "",
+        };
+        
+        console.log("✏️ Form values to set:", formValues);
+        console.log("🎯 Current form values before reset:", form.getValues());
         
         // Use setTimeout to ensure form is ready to accept values
         setTimeout(() => {
-          form.reset({
-            hero_eyebrow: sections.hero_eyebrow || "",
-            hero_heading: sections.hero_heading || "",
-            hero_description: sections.hero_description || "",
-            hero_cta_primary: sections.hero_cta_primary || "",
-            hero_cta_secondary: sections.hero_cta_secondary || "",
-            hero_phone: sections.hero_phone || "",
-            trust_badges: sections.trust_badges || "",
-            how_we_deliver_eyebrow: sections.how_we_deliver_eyebrow || "",
-            how_we_deliver_heading: sections.how_we_deliver_heading || "",
-            how_we_deliver_description: sections.how_we_deliver_description || "",
-            value_prop_1_title: sections.value_prop_1_title || "",
-            value_prop_1_desc: sections.value_prop_1_desc || "",
-            value_prop_2_title: sections.value_prop_2_title || "",
-            value_prop_2_desc: sections.value_prop_2_desc || "",
-            value_prop_3_title: sections.value_prop_3_title || "",
-            value_prop_3_desc: sections.value_prop_3_desc || "",
-            services_eyebrow: sections.services_eyebrow || "",
-            services_heading: sections.services_heading || "",
-            services_description: sections.services_description || "",
-            industries_eyebrow: sections.industries_eyebrow || "",
-            industries_heading: sections.industries_heading || "",
-            industries_description: sections.industries_description || "",
-            projects_eyebrow: sections.projects_eyebrow || "",
-            projects_heading: sections.projects_heading || "",
-            projects_description: sections.projects_description || "",
-            cta_heading: sections.cta_heading || "",
-            cta_description: sections.cta_description || "",
-            cta_button_text: sections.cta_button_text || "",
-          }, { keepDefaultValues: false });
+          console.log("⏰ Setting form values now...");
+          form.reset(formValues, { keepDefaultValues: false });
+          console.log("✅ Form values after reset:", form.getValues());
         }, 100);
+      } else {
+        console.log("⚠️ No page data found for slug 'home'");
       }
     } catch (error: any) {
+      console.error("❌ Error loading homepage:", error);
       toast({
         title: "Error loading homepage",
         description: error.message,

@@ -21,14 +21,18 @@ const Services = () => {
 
   const loadServices = async () => {
     try {
+      console.log("🔍 Loading services...");
       const { data, error } = await supabase
         .from("cms_services")
         .select("*")
         .order("display_order", { ascending: true });
 
       if (error) throw error;
+      console.log(`📋 Services loaded: ${data?.length || 0} services found`);
+      console.log("📦 Services data:", data);
       setServices(data || []);
     } catch (error: any) {
+      console.error("❌ Error loading services:", error);
       toast({
         title: "Error loading services",
         description: error.message,
