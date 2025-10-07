@@ -127,51 +127,60 @@ const HomePageEditor = () => {
       if (data) {
         setPageId(data.id);
         
-        // Handle sections - it might be an array or object from the database
-        let sectionsData = data.sections as any || {};
+        // Parse the sections array from the database
+        const sections = (data.sections as any[]) || [];
+        console.log("📄 Sections array:", sections);
         
-        // If sections is an array, convert it to an object by merging all items
-        if (Array.isArray(sectionsData)) {
-          sectionsData = sectionsData.reduce((acc, item) => ({ ...acc, ...item }), {});
-        }
+        // Find specific sections by type
+        const heroSection = sections.find((s: any) => s.type === 'hero') || {};
+        const introSection = sections.find((s: any) => s.type === 'intro') || {};
         
-        console.log("📄 Processed sections object:", sectionsData);
+        console.log("🦸 Hero section:", heroSection);
+        console.log("📝 Intro section:", introSection);
         
+        // Map the database structure to form fields
         const formValues = {
-          hero_eyebrow: sectionsData.hero_eyebrow || "",
-          hero_heading: sectionsData.hero_heading || "",
-          hero_description: sectionsData.hero_description || "",
-          hero_cta_primary: sectionsData.hero_cta_primary || "",
-          hero_cta_secondary: sectionsData.hero_cta_secondary || "",
-          hero_phone: sectionsData.hero_phone || "",
-          trust_badges: sectionsData.trust_badges || "",
-          how_we_deliver_eyebrow: sectionsData.how_we_deliver_eyebrow || "",
-          how_we_deliver_heading: sectionsData.how_we_deliver_heading || "",
-          how_we_deliver_description: sectionsData.how_we_deliver_description || "",
-          value_prop_1_title: sectionsData.value_prop_1_title || "",
-          value_prop_1_desc: sectionsData.value_prop_1_desc || "",
-          value_prop_2_title: sectionsData.value_prop_2_title || "",
-          value_prop_2_desc: sectionsData.value_prop_2_desc || "",
-          value_prop_3_title: sectionsData.value_prop_3_title || "",
-          value_prop_3_desc: sectionsData.value_prop_3_desc || "",
-          services_eyebrow: sectionsData.services_eyebrow || "",
-          services_heading: sectionsData.services_heading || "",
-          services_description: sectionsData.services_description || "",
-          industries_eyebrow: sectionsData.industries_eyebrow || "",
-          industries_heading: sectionsData.industries_heading || "",
-          industries_description: sectionsData.industries_description || "",
-          projects_eyebrow: sectionsData.projects_eyebrow || "",
-          projects_heading: sectionsData.projects_heading || "",
-          projects_description: sectionsData.projects_description || "",
-          cta_heading: sectionsData.cta_heading || "",
-          cta_description: sectionsData.cta_description || "",
-          cta_button_text: sectionsData.cta_button_text || "",
+          // Hero section maps to hero fields
+          hero_eyebrow: heroSection.eyebrow || "",
+          hero_heading: heroSection.title || "",
+          hero_description: heroSection.subtitle || "",
+          hero_cta_primary: heroSection.cta?.label || "",
+          hero_cta_secondary: heroSection.cta?.href || "",
+          hero_phone: heroSection.phone || "",
+          
+          // Intro section
+          trust_badges: introSection.eyebrow || "",
+          how_we_deliver_eyebrow: introSection.eyebrow || "",
+          how_we_deliver_heading: introSection.title || "",
+          how_we_deliver_description: introSection.description || "",
+          
+          // Default empty values for other fields
+          value_prop_1_title: "",
+          value_prop_1_desc: "",
+          value_prop_2_title: "",
+          value_prop_2_desc: "",
+          value_prop_3_title: "",
+          value_prop_3_desc: "",
+          services_eyebrow: "",
+          services_heading: "",
+          services_description: "",
+          industries_eyebrow: "",
+          industries_heading: "",
+          industries_description: "",
+          projects_eyebrow: "",
+          projects_heading: "",
+          projects_description: "",
+          cta_heading: "",
+          cta_description: "",
+          cta_button_text: "",
         };
         
         console.log("✏️ Form values to set:", formValues);
         
         // Reset form with the loaded values
         form.reset(formValues);
+        
+        console.log("✅ Form reset complete");
       } else {
         console.log("⚠️ No page data found for slug 'home'");
       }
