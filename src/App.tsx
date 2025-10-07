@@ -15,6 +15,13 @@ import Dashboard from "./pages/admin/Dashboard";
 import AdminProjects from "./pages/admin/Projects";
 import ProjectForm from "./pages/admin/ProjectForm";
 import AdminServices from "./pages/admin/Services";
+import ServiceForm from "./pages/admin/ServiceForm";
+import Pages from "./pages/admin/Pages";
+import Media from "./pages/admin/Media";
+import SEO from "./pages/admin/SEO";
+import Users from "./pages/admin/Users";
+import Audit from "./pages/admin/Audit";
+import Settings from "./pages/admin/Settings";
 
 const queryClient = new QueryClient();
 
@@ -37,10 +44,18 @@ const App = () => (
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
+            <Route path="pages" element={<Pages />} />
             <Route path="projects" element={<AdminProjects />} />
             <Route path="projects/new" element={<ProjectForm />} />
             <Route path="projects/:id" element={<ProjectForm />} />
             <Route path="services" element={<AdminServices />} />
+            <Route path="services/new" element={<ServiceForm />} />
+            <Route path="services/:id" element={<ServiceForm />} />
+            <Route path="media" element={<Media />} />
+            <Route path="seo" element={<SEO />} />
+            <Route path="users" element={<Users />} />
+            <Route path="audit" element={<Audit />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
