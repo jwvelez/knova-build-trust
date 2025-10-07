@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Building2, Users, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
 const WhoWeAre = () => {
@@ -46,10 +46,10 @@ const WhoWeAre = () => {
             <img
               src={fullWidthWhoWeAre}
               alt="KNova team and leadership"
-              className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+              className="w-full h-[420px] md:h-[600px] object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-primary/15"></div>
+            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
             <div className="absolute inset-0 flex items-center justify-center px-4">
               <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
@@ -131,14 +131,9 @@ const WhoWeAre = () => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Keily J. Nova */}
               <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Building2 className="h-8 w-8 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-1">Keily J. Nova</h3>
-                    <p className="text-base text-accent font-medium">Founder and President</p>
-                  </div>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold mb-1">Keily J. Nova</h3>
+                  <p className="text-base text-accent font-medium">Founder and President</p>
                 </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>
@@ -158,14 +153,9 @@ const WhoWeAre = () => {
 
               {/* Lymaris Albors */}
               <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Users className="h-8 w-8 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-1">Lymaris Albors</h3>
-                    <p className="text-base text-accent font-medium">Co-Founder</p>
-                  </div>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold mb-1">Lymaris Albors</h3>
+                  <p className="text-base text-accent font-medium">Co-Founder</p>
                 </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>

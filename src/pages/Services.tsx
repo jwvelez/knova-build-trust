@@ -56,12 +56,10 @@ const Services = () => {
             <img
               src={fullWidthServices}
               alt="Construction and building systems"
-              className="w-full h-[420px] md:h-[600px] lg:h-[900px] object-cover"
+              className="w-full h-[420px] md:h-[600px] object-cover"
             />
-            {/* Dark overlay #00020E at 60% opacity */}
             <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
             
-            {/* Content Box */}
             <div className="absolute inset-0 flex items-center justify-center px-4">
               <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
