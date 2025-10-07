@@ -71,7 +71,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 md:gap-12">
           {/* Logo - Centered on mobile */}
           <div className="flex justify-center md:justify-start">
-            <img src={knovaReverseLogo} alt="KNova Contractors" className="h-20" />
+            <img src={knovaReverseLogo} alt="KNova Contractors" style={{ width: '200px' }} />
           </div>
 
           {/* Desktop: Three columns */}

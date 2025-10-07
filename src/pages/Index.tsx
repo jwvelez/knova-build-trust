@@ -204,7 +204,7 @@ const Index = () => {
             className="w-full h-[600px] lg:h-[900px] object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-[#00020E] opacity-40"></div>
+          <div className="absolute inset-0 bg-[#1a2850] opacity-90"></div>
           
           {/* Content Overlay - Desktop */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -223,14 +223,14 @@ const Index = () => {
                   </p>
                   
               <div className="space-y-6 md:space-y-6">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 mb-[10px]">
                       <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
                         <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
                         <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 mb-[10px]">
                       <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
                         <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
@@ -326,7 +326,7 @@ const Index = () => {
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-center">
               {content.services_eyebrow || "What we do"}
             </p>
-            <h2 className="text-3xl md:text-4xl mb-2 text-center">
+            <h2 className="text-3xl md:text-4xl mb-2 text-center" style={{ marginBottom: '23px' }}>
               {content.services_heading || "From new builds to building systems, one team delivers"}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl text-center">
@@ -376,10 +376,10 @@ const Index = () => {
           <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
             {content.industries_eyebrow || "Who we serve"}
           </p>
-          <h2 className="text-3xl md:text-4xl mb-2">
+          <h2 className="text-3xl md:text-4xl mb-2" style={{ marginBottom: '23px' }}>
             {content.industries_heading || "Built for the places people live, learn, heal, and work"}
           </h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl" style={{ marginBottom: '32px' }}>
             {content.industries_description || "Serving diverse sectors with specialized expertise"}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12">
