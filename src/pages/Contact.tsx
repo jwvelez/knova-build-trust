@@ -99,18 +99,18 @@ const Contact = () => {
                 </div>
 
                 {/* 24/7 Service Card */}
-                <Card className="p-6 bg-primary text-primary-foreground">
+                <Card className="p-6 bg-background border-2 border-primary">
                   <div className="flex items-start gap-3 mb-4">
-                    <Clock className="h-5 w-5 flex-shrink-0 mt-0.5" />
+                    <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="font-semibold mb-1">24/7 Service & Emergency Dispatch</h3>
-                      <p className="text-sm opacity-90">
+                      <h3 className="font-semibold text-primary mb-1">24/7 Service & Emergency Dispatch</h3>
+                      <p className="text-sm text-primary/80">
                         Emergency repairs and troubleshooting available around the clock
                       </p>
                     </div>
                   </div>
                   <div className="pl-8">
-                    <a href="tel:1234567890" className="text-lg font-semibold hover:text-accent transition-colors">
+                    <a href="tel:1234567890" className="text-lg font-semibold text-primary hover:text-accent transition-colors">
                       (123) 456-7890
                     </a>
                   </div>
