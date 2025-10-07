@@ -109,12 +109,12 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-gradient-to-br from-accent/5 to-accent/10">
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
               <p className="overline">General Contracting + Building Systems</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl md:leading-tight leading-snug">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl md:leading-tight leading-snug md:leading-[1.2] leading-[1.2]">
                 Construction you can trust, building systems that just work
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
@@ -181,8 +181,8 @@ const Index = () => {
                   <h2 className="text-3xl lg:text-4xl mb-2 text-primary">How we deliver</h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
                   
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
+              <div className="space-y-6 md:space-y-6">
+                <div className="flex items-start gap-4">
                       <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
                         <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
@@ -234,15 +234,15 @@ const Index = () => {
               <h2 className="text-2xl mb-2 text-primary">How we deliver</h2>
               <p className="text-base text-muted-foreground mb-6 max-w-2xl">Proven process, predictable outcomes at every stage</p>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
+              <div className="space-y-4 md:space-y-4" style={{ marginTop: '10px', marginBottom: '10px' }}>
+                <div className="flex items-start gap-3 mb-[10px]">
                   <Hammer className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-base font-bold mb-1 text-primary">GC leadership — from preconstruction to closeout</h3>
                     <p className="text-sm text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 mb-[10px]">
                   <Zap className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-base font-bold mb-1 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
@@ -423,19 +423,19 @@ const Index = () => {
 
             {/* Right Column - Stats/Highlights */}
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-lg border border-border">
                 <div className="text-4xl font-bold text-primary mb-2">20+</div>
                 <p className="text-sm text-muted-foreground">Years Combined Experience</p>
               </div>
-              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-lg border border-border">
                 <div className="text-4xl font-bold text-accent mb-2">100+</div>
                 <p className="text-sm text-muted-foreground">Projects Delivered</p>
               </div>
-              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-lg border border-border">
                 <div className="text-4xl font-bold text-primary mb-2">MBE</div>
                 <p className="text-sm text-muted-foreground">Certified Contractor</p>
               </div>
-              <div className="bg-white p-6 rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white p-6 rounded-lg border border-border">
                 <div className="text-4xl font-bold text-accent mb-2">2</div>
                 <p className="text-sm text-muted-foreground">State Coverage</p>
               </div>

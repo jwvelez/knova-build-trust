@@ -93,7 +93,7 @@ const Services = () => {
             
             {/* Content Box */}
             <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="w-full max-w-4xl" style={{ backgroundColor: '#FAFAFA' }}>
+              <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
                   <p className="overline mb-4 text-muted-foreground">What we do</p>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
@@ -141,17 +141,13 @@ const Services = () => {
           </div>
         </section>
 
-        {/* CTA Bar */}
+        {/* CTA Section */}
         <section className="section-padding bg-secondary/30">
-          <div className="container-narrow">
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              <Button size="lg" asChild>
-                <Link to="/contact">Request a bid</Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/contact">Request Service 24/7</Link>
-              </Button>
-            </div>
+          <div className="container-narrow text-center">
+            <h2 className="text-2xl md:text-3xl mb-6">Ready to start your project?</h2>
+            <Button size="lg" asChild>
+              <Link to="/contact">Contact Us Today</Link>
+            </Button>
           </div>
         </section>
       </main>

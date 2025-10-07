@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Building2, Users, Heart } from "lucide-react";
 import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
@@ -49,7 +51,7 @@ const WhoWeAre = () => {
             />
             <div className="absolute inset-0 bg-primary/15"></div>
             <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="w-full max-w-4xl" style={{ backgroundColor: '#FAFAFA' }}>
+              <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
                   <p className="overline mb-4 text-muted-foreground">About us</p>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
@@ -128,7 +130,7 @@ const WhoWeAre = () => {
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Keily J. Nova */}
-              <Card className="p-8 lg:p-10 border-border bg-background hover:shadow-lg transition-shadow">
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Building2 className="h-8 w-8 text-primary" />
@@ -155,7 +157,7 @@ const WhoWeAre = () => {
               </Card>
 
               {/* Lymaris Albors */}
-              <Card className="p-8 lg:p-10 border-border bg-background hover:shadow-lg transition-shadow">
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Users className="h-8 w-8 text-primary" />
@@ -217,6 +219,16 @@ const WhoWeAre = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="section-padding bg-secondary/30">
+          <div className="container-narrow text-center">
+            <h2 className="text-2xl md:text-3xl mb-6">Ready to start your project?</h2>
+            <Button size="lg" asChild>
+              <Link to="/contact">Contact Us Today</Link>
+            </Button>
           </div>
         </section>
       </main>
