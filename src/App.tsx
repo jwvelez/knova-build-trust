@@ -18,6 +18,7 @@ import AdminServices from "./pages/admin/Services";
 import ServiceForm from "./pages/admin/ServiceForm";
 import Pages from "./pages/admin/Pages";
 import PageForm from "./pages/admin/PageForm";
+import HomePageEditor from "./pages/admin/HomePageEditor";
 import Media from "./pages/admin/Media";
 import SEO from "./pages/admin/SEO";
 import Users from "./pages/admin/Users";
@@ -47,6 +48,7 @@ const App = () => (
             <Route index element={<Dashboard />} />
             <Route path="pages" element={<Pages />} />
             <Route path="pages/new" element={<PageForm />} />
+            <Route path="pages/home/edit" element={<HomePageEditor />} />
             <Route path="pages/:id" element={<PageForm />} />
             <Route path="projects" element={<AdminProjects />} />
             <Route path="projects/new" element={<ProjectForm />} />

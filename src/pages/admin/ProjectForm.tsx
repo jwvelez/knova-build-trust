@@ -113,9 +113,15 @@ const ProjectForm = () => {
       projectSchema.parse(formData);
 
       const projectData = {
-        ...formData,
+        title: formData.title,
+        slug: formData.slug,
+        year: formData.year,
+        category: formData.category,
+        size: formData.size || null,
+        description: formData.description || null,
         details: formData.details.filter((d) => d.trim() !== ""),
-        updated_at: new Date().toISOString(),
+        image_url: formData.image_url || null,
+        featured: formData.featured,
       };
 
       let error;

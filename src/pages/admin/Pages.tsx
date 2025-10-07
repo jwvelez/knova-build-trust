@@ -68,6 +68,13 @@ const Pages = () => {
     }
   };
 
+  const getEditLink = (page: Page) => {
+    if (page.slug === "home") {
+      return `/admin/pages/home/edit`;
+    }
+    return `/admin/pages/${page.id}`;
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -115,7 +122,7 @@ const Pages = () => {
                     <Eye className="h-4 w-4 mr-1" />
                     {page.status === "published" ? "Unpublish" : "Publish"}
                   </Button>
-                  <Link to={`/admin/pages/${page.id}`}>
+                  <Link to={getEditLink(page)}>
                     <Button variant="outline" size="sm">
                       <Edit className="h-4 w-4" />
                     </Button>
