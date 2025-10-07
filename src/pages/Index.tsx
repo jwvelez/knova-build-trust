@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2, Heart, GraduationCap, Users, Store, ShoppingBag, Building, Wrench, Shield } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage from "@/assets/hero-construction.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
@@ -13,30 +15,53 @@ import interstitial2 from "@/assets/interstitial-2.jpg";
 import fullWidthServices from "@/assets/full-width-services.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
 
+
 const Index = () => {
-  const trustBadges = [
-    "MBE certified",
-    "Fully licensed and insured",
-    "NYC DOB compliant",
-    "EPA Certified Firm",
-  ];
+  const [content, setContent] = useState<any>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadContent();
+  }, []);
+
+  const loadContent = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("cms_pages")
+        .select("sections")
+        .eq("slug", "home")
+        .maybeSingle();
+
+      if (error) throw error;
+      
+      if (data?.sections) {
+        setContent(data.sections);
+      }
+    } catch (error) {
+      console.error("Error loading homepage content:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const trustBadges = (content.trust_badges || "MBE certified, Fully licensed and insured, NYC DOB compliant, EPA Certified Firm").split(", ");
 
   const valueProps = [
     {
-      title: "GC leadership — from preconstruction to closeout",
-      desc: "Comprehensive project management with rigorous quality control at every phase",
+      title: content.value_prop_1_title || "GC leadership — from preconstruction to closeout",
+      desc: content.value_prop_1_desc || "Comprehensive project management with rigorous quality control at every phase",
       primaryIcon: Hammer,
       accentIcon: Shield,
     },
     {
-      title: "MEP depth — HVAC, electrical, plumbing delivered right",
-      desc: "Deep technical expertise in building systems that ensures reliable performance",
+      title: content.value_prop_2_title || "MEP depth — HVAC, electrical, plumbing delivered right",
+      desc: content.value_prop_2_desc || "Deep technical expertise in building systems that ensures reliable performance",
       primaryIcon: Wrench,
       accentIcon: Zap,
     },
     {
-      title: "Compliance first — predictable schedules and inspections",
-      desc: "Code-compliant execution that keeps projects on track and on budget",
+      title: content.value_prop_3_title || "Compliance first — predictable schedules and inspections",
+      desc: content.value_prop_3_desc || "Code-compliant execution that keeps projects on track and on budget",
       primaryIcon: Check,
       accentIcon: Building2,
     },
@@ -104,6 +129,14 @@ const Index = () => {
     },
   ];
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -113,26 +146,28 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
-              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">General Contracting + Building Systems</p>
+              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
+                {content.hero_eyebrow || "General Contracting + Building Systems"}
+              </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl md:leading-tight leading-snug md:leading-[1.2] leading-[1.2]">
-                Construction you can trust, building systems that just work
+                {content.hero_heading || "Construction you can trust, building systems that just work"}
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
-                MBE-certified, licensed, and insured general contractor for New York and New Jersey with deep HVAC, electrical, and plumbing expertise
+                {content.hero_description || "MBE-certified, licensed, and insured general contractor for New York and New Jersey with deep HVAC, electrical, and plumbing expertise"}
               </p>
               <div className="flex flex-wrap gap-4 md:flex-nowrap">
                 <Button size="lg" asChild className="flex-1 md:flex-initial">
-                  <Link to="/contact">Request a bid</Link>
+                  <Link to="/contact">{content.hero_cta_primary || "Request a bid"}</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="flex-1 md:flex-initial">
-                  <Link to="/services">Explore services</Link>
+                  <Link to="/services">{content.hero_cta_secondary || "Explore services"}</Link>
                 </Button>
               </div>
               <div className="flex items-center gap-3 text-sm md:text-[15px]">
                 <Phone className="h-4 w-4 text-accent" />
                 <span className="text-muted-foreground">24/7 Service:</span>
-                <a href="tel:2015255365" className="font-medium link-accent">
-                  (201) 525-5365
+                <a href={`tel:${(content.hero_phone || "(201) 525-5365").replace(/[^0-9]/g, '')}`} className="font-medium link-accent">
+                  {content.hero_phone || "(201) 525-5365"}
                 </a>
               </div>
             </div>
@@ -177,9 +212,15 @@ const Index = () => {
               <div className="grid grid-cols-[60%_40%] gap-0">
                 {/* Left Column - White Box */}
                 <div className="bg-[#FAFAFA] p-12 lg:p-16">
-                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Our Approach</p>
-                  <h2 className="text-3xl lg:text-4xl mb-2 text-primary">How we deliver</h2>
-                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl">Proven process, predictable outcomes at every stage</p>
+                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
+                    {content.how_we_deliver_eyebrow || "Our Approach"}
+                  </p>
+                  <h2 className="text-3xl lg:text-4xl mb-2 text-primary">
+                    {content.how_we_deliver_heading || "How we deliver"}
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
+                    {content.how_we_deliver_description || "Proven process, predictable outcomes at every stage"}
+                  </p>
                   
               <div className="space-y-6 md:space-y-6">
                 <div className="flex items-start gap-4">
@@ -282,9 +323,15 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-narrow">
           <div className="flex flex-col items-center mb-12">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-center">What we do</p>
-            <h2 className="text-3xl md:text-4xl mb-2 text-center">From new builds to building systems, one team delivers</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl text-center">Comprehensive construction and MEP services tailored to your project needs</p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-center">
+              {content.services_eyebrow || "What we do"}
+            </p>
+            <h2 className="text-3xl md:text-4xl mb-2 text-center">
+              {content.services_heading || "From new builds to building systems, one team delivers"}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl text-center">
+              {content.services_description || "Comprehensive construction and MEP services tailored to your project needs"}
+            </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -326,11 +373,15 @@ const Index = () => {
       {/* Industries Strip */}
       <section className="section-padding">
         <div className="container-narrow">
-          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Who we serve</p>
+          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
+            {content.industries_eyebrow || "Who we serve"}
+          </p>
           <h2 className="text-3xl md:text-4xl mb-2">
-            Built for the places people live, learn, heal, and work
+            {content.industries_heading || "Built for the places people live, learn, heal, and work"}
           </h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Serving diverse sectors with specialized expertise</p>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+            {content.industries_description || "Serving diverse sectors with specialized expertise"}
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
@@ -354,9 +405,15 @@ const Index = () => {
       {/* Featured Projects */}
       <section className="section-padding bg-secondary/30">
         <div className="container-narrow">
-          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Results over rhetoric</p>
-          <h2 className="text-3xl md:text-4xl mb-2">Featured Projects</h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">Recent work showcasing our commitment to quality and performance</p>
+          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
+            {content.projects_eyebrow || "Results over rhetoric"}
+          </p>
+          <h2 className="text-3xl md:text-4xl mb-2">
+            {content.projects_heading || "Featured Projects"}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+            {content.projects_description || "Recent work showcasing our commitment to quality and performance"}
+          </p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, i) => (
