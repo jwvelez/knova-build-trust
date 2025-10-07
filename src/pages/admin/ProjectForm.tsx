@@ -124,6 +124,8 @@ const ProjectForm = () => {
         featured: formData.featured,
       };
 
+      console.log('Saving project data:', projectData);
+
       let error;
       if (id) {
         ({ error } = await supabase

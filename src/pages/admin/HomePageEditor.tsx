@@ -123,7 +123,10 @@ const HomePageEditor = () => {
 
       if (data) {
         setPageId(data.id);
+        console.log('Loaded page data:', data);
+        console.log('Sections data:', data.sections);
         const sections = data.sections as any || {};
+        console.log('Parsed sections:', sections);
         form.reset({
           hero_eyebrow: sections.hero_eyebrow || "",
           hero_heading: sections.hero_heading || "",
@@ -167,28 +170,42 @@ const HomePageEditor = () => {
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
     try {
-      const pageData = {
+      console.log('Form values to save:', values);
+      const pageData: any = {
         title: "Home",
         slug: "home",
         sections: values,
+        status: "published",
       };
 
+      // Only include version for updates, not inserts
       if (pageId) {
+        console.log('Updating existing page:', pageId);
         const { error } = await supabase
           .from("cms_pages")
-          .update(pageData)
+          .update({ sections: values })
           .eq("id", pageId);
 
-        if (error) throw error;
+        if (error) {
+          console.error('Update error:', error);
+          throw error;
+        }
       } else {
+        console.log('Creating new page');
         const { data, error } = await supabase
           .from("cms_pages")
-          .insert([{ ...pageData, status: "published" }])
+          .insert([pageData])
           .select()
           .single();
 
-        if (error) throw error;
-        if (data) setPageId(data.id);
+        if (error) {
+          console.error('Insert error:', error);
+          throw error;
+        }
+        if (data) {
+          console.log('Created page:', data);
+          setPageId(data.id);
+        }
       }
 
       toast({
