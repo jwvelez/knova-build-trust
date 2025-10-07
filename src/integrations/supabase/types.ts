@@ -266,6 +266,7 @@ export type Database = {
           display_order: number | null
           featured: boolean | null
           icon: string
+          icon_url: string | null
           id: string
           published_at: string | null
           slug: string
@@ -282,6 +283,7 @@ export type Database = {
           display_order?: number | null
           featured?: boolean | null
           icon: string
+          icon_url?: string | null
           id?: string
           published_at?: string | null
           slug: string
@@ -298,6 +300,7 @@ export type Database = {
           display_order?: number | null
           featured?: boolean | null
           icon?: string
+          icon_url?: string | null
           id?: string
           published_at?: string | null
           slug?: string

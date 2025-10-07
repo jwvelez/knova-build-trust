@@ -112,7 +112,6 @@ const HomePageEditor = () => {
 
   const loadHomePage = async () => {
     try {
-      console.log('Loading homepage...');
       const { data, error } = await supabase
         .from("cms_pages")
         .select("*")
@@ -120,58 +119,48 @@ const HomePageEditor = () => {
         .limit(1)
         .maybeSingle();
 
-      console.log('Query result:', { data, error });
-
       if (error && error.code !== "PGRST116") throw error;
 
       if (data) {
-        console.log('Setting page ID:', data.id);
         setPageId(data.id);
-        console.log('Raw sections data type:', typeof data.sections);
-        console.log('Raw sections data:', JSON.stringify(data.sections, null, 2));
         
         const sections = data.sections as any || {};
-        console.log('Parsed sections keys:', Object.keys(sections));
         
-        const formValues = {
-          hero_eyebrow: sections.hero_eyebrow || "",
-          hero_heading: sections.hero_heading || "",
-          hero_description: sections.hero_description || "",
-          hero_cta_primary: sections.hero_cta_primary || "",
-          hero_cta_secondary: sections.hero_cta_secondary || "",
-          hero_phone: sections.hero_phone || "",
-          trust_badges: sections.trust_badges || "",
-          how_we_deliver_eyebrow: sections.how_we_deliver_eyebrow || "",
-          how_we_deliver_heading: sections.how_we_deliver_heading || "",
-          how_we_deliver_description: sections.how_we_deliver_description || "",
-          value_prop_1_title: sections.value_prop_1_title || "",
-          value_prop_1_desc: sections.value_prop_1_desc || "",
-          value_prop_2_title: sections.value_prop_2_title || "",
-          value_prop_2_desc: sections.value_prop_2_desc || "",
-          value_prop_3_title: sections.value_prop_3_title || "",
-          value_prop_3_desc: sections.value_prop_3_desc || "",
-          services_eyebrow: sections.services_eyebrow || "",
-          services_heading: sections.services_heading || "",
-          services_description: sections.services_description || "",
-          industries_eyebrow: sections.industries_eyebrow || "",
-          industries_heading: sections.industries_heading || "",
-          industries_description: sections.industries_description || "",
-          projects_eyebrow: sections.projects_eyebrow || "",
-          projects_heading: sections.projects_heading || "",
-          projects_description: sections.projects_description || "",
-          cta_heading: sections.cta_heading || "",
-          cta_description: sections.cta_description || "",
-          cta_button_text: sections.cta_button_text || "",
-        };
-        
-        console.log('Form values to set:', formValues);
-        form.reset(formValues);
-        console.log('Form reset complete');
-      } else {
-        console.log('No homepage data found, using defaults');
+        // Use setTimeout to ensure form is ready to accept values
+        setTimeout(() => {
+          form.reset({
+            hero_eyebrow: sections.hero_eyebrow || "",
+            hero_heading: sections.hero_heading || "",
+            hero_description: sections.hero_description || "",
+            hero_cta_primary: sections.hero_cta_primary || "",
+            hero_cta_secondary: sections.hero_cta_secondary || "",
+            hero_phone: sections.hero_phone || "",
+            trust_badges: sections.trust_badges || "",
+            how_we_deliver_eyebrow: sections.how_we_deliver_eyebrow || "",
+            how_we_deliver_heading: sections.how_we_deliver_heading || "",
+            how_we_deliver_description: sections.how_we_deliver_description || "",
+            value_prop_1_title: sections.value_prop_1_title || "",
+            value_prop_1_desc: sections.value_prop_1_desc || "",
+            value_prop_2_title: sections.value_prop_2_title || "",
+            value_prop_2_desc: sections.value_prop_2_desc || "",
+            value_prop_3_title: sections.value_prop_3_title || "",
+            value_prop_3_desc: sections.value_prop_3_desc || "",
+            services_eyebrow: sections.services_eyebrow || "",
+            services_heading: sections.services_heading || "",
+            services_description: sections.services_description || "",
+            industries_eyebrow: sections.industries_eyebrow || "",
+            industries_heading: sections.industries_heading || "",
+            industries_description: sections.industries_description || "",
+            projects_eyebrow: sections.projects_eyebrow || "",
+            projects_heading: sections.projects_heading || "",
+            projects_description: sections.projects_description || "",
+            cta_heading: sections.cta_heading || "",
+            cta_description: sections.cta_description || "",
+            cta_button_text: sections.cta_button_text || "",
+          }, { keepDefaultValues: false });
+        }, 100);
       }
     } catch (error: any) {
-      console.error('Error loading homepage:', error);
       toast({
         title: "Error loading homepage",
         description: error.message,
@@ -183,7 +172,6 @@ const HomePageEditor = () => {
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
     try {
-      console.log('Form values to save:', values);
       const pageData: any = {
         title: "Home",
         slug: "home",
@@ -191,32 +179,22 @@ const HomePageEditor = () => {
         status: "published",
       };
 
-      // Only include version for updates, not inserts
       if (pageId) {
-        console.log('Updating existing page:', pageId);
         const { error } = await supabase
           .from("cms_pages")
           .update({ sections: values })
           .eq("id", pageId);
 
-        if (error) {
-          console.error('Update error:', error);
-          throw error;
-        }
+        if (error) throw error;
       } else {
-        console.log('Creating new page');
         const { data, error } = await supabase
           .from("cms_pages")
           .insert([pageData])
           .select()
           .single();
 
-        if (error) {
-          console.error('Insert error:', error);
-          throw error;
-        }
+        if (error) throw error;
         if (data) {
-          console.log('Created page:', data);
           setPageId(data.id);
         }
       }

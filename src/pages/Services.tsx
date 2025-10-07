@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Hammer, Wind, Zap, Droplet, Flame, Network, Home, Factory, Thermometer, FileText, Building2, Wrench } from "lucide-react";
+import * as Icons from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import fullWidthServices from "@/assets/full-width-services.jpg";
 import {
   Accordion,
@@ -11,69 +13,37 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+type Service = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  icon_url?: string | null;
+};
+
 const Services = () => {
-  const services = [
-    {
-      title: "Comprehensive General Construction",
-      desc: "Ground-up builds and full gut renovations with rigorous quality control",
-      icon: Hammer,
-    },
-    {
-      title: "Energy-Efficient HVAC Systems",
-      desc: "Design, installation, and service that support electrification and better air quality",
-      icon: Wind,
-    },
-    {
-      title: "Electrical and Low-Voltage Systems",
-      desc: "Modern power, upgrades, and structured cabling built for today's demand",
-      icon: Zap,
-    },
-    {
-      title: "Plumbing and Piping Systems",
-      desc: "Efficient water, sanitary, and gas with minimal disruption to occupants",
-      icon: Droplet,
-    },
-    {
-      title: "Fire and Life Safety",
-      desc: "Sprinkler design, installation, and maintenance that protect people and assets",
-      icon: Flame,
-    },
-    {
-      title: "Structured Cabling and Networks",
-      desc: "Reliable connectivity for housing, offices, and clinics",
-      icon: Network,
-    },
-    {
-      title: "Building Envelope and Roofing",
-      desc: "Weather protection that extends roof life and prevents leaks",
-      icon: Home,
-    },
-    {
-      title: "Structural Steel and Metals",
-      desc: "Framing, reinforcements, and secure gates with precision fabrication",
-      icon: Factory,
-    },
-    {
-      title: "High-Efficiency Boiler Systems",
-      desc: "Hydronic and steam boilers with modern controls for efficient heat",
-      icon: Thermometer,
-    },
-    {
-      title: "Consulting and Permitting",
-      desc: "Code consulting • approvals and permits • violation resolution",
-      icon: FileText,
-    },
-    {
-      title: "Property and Facility Management",
-      desc: "Preventive programs and 24/7 service that keep facilities reliable",
-      icon: Building2,
-    },
-    {
-      title: "24/7 Reactive and Preventive Maintenance",
-      desc: "Rapid repairs and scheduled care that minimize downtime and extend asset life",
-      icon: Wrench,
-    },
-  ];
+  const [services, setServices] = useState<Service[]>([]);
+
+  useEffect(() => {
+    loadServices();
+  }, []);
+
+  const loadServices = async () => {
+    const { data, error } = await supabase
+      .from("cms_services")
+      .select("*")
+      .eq("status", "published")
+      .order("display_order", { ascending: true });
+
+    if (!error && data) {
+      setServices(data);
+    }
+  };
+
+  const getIcon = (iconName: string) => {
+    const Icon = (Icons as any)[iconName];
+    return Icon || Icons.Circle;
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -117,22 +87,30 @@ const Services = () => {
             </p>
             
             <Accordion type="single" collapsible className="w-full space-y-4">
-              {services.map((service, i) => {
-                const Icon = service.icon;
+              {services.map((service) => {
+                const Icon = getIcon(service.icon);
                 return (
                   <AccordionItem 
-                    key={i} 
-                    value={`item-${i}`} 
+                    key={service.id} 
+                    value={service.id} 
                     className="border border-border rounded-lg px-6 bg-background hover:shadow-sm transition-shadow"
                   >
                     <AccordionTrigger className="hover:no-underline py-6">
                       <div className="flex items-center gap-4 text-left">
-                        <Icon className="h-7 w-7 text-accent stroke-[2px] flex-shrink-0" />
+                        {service.icon_url ? (
+                          <img 
+                            src={service.icon_url} 
+                            alt="" 
+                            className="h-7 w-7 flex-shrink-0 object-contain"
+                          />
+                        ) : (
+                          <Icon className="h-7 w-7 text-accent stroke-[2px] flex-shrink-0" />
+                        )}
                         <h3 className="font-bold text-[20px] md:text-[20px] text-[19px]">{service.title}</h3>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pb-6 pl-11">
-                      <p className="text-base text-muted-foreground leading-relaxed">{service.desc}</p>
+                      <p className="text-base text-muted-foreground leading-relaxed">{service.description}</p>
                     </AccordionContent>
                   </AccordionItem>
                 );

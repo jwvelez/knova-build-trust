@@ -16,9 +16,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Upload, X } from "lucide-react";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -37,6 +38,9 @@ const ServiceForm = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [iconFile, setIconFile] = useState<File | null>(null);
+  const [iconPreview, setIconPreview] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -77,6 +81,10 @@ const ServiceForm = () => {
           featured: data.featured || false,
           display_order: data.display_order || 0,
         });
+        
+        if (data.icon_url) {
+          setIconPreview(data.icon_url);
+        }
       }
     } catch (error: any) {
       toast({
@@ -94,13 +102,87 @@ const ServiceForm = () => {
       .replace(/(^-|-$)/g, "");
   };
 
+  const handleIconUpload = async (file: File) => {
+    setUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `service-icons/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('cms-media')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('cms-media')
+        .getPublicUrl(filePath);
+
+      setIconPreview(publicUrl);
+      
+      // If editing, update the service with the new icon
+      if (id) {
+        const { error: updateError } = await supabase
+          .from("cms_services")
+          .update({ icon_url: publicUrl })
+          .eq("id", id);
+
+        if (updateError) throw updateError;
+
+        toast({
+          title: "Icon uploaded",
+          description: "The service icon has been updated.",
+        });
+      }
+
+      return publicUrl;
+    } catch (error: any) {
+      toast({
+        title: "Error uploading icon",
+        description: error.message,
+        variant: "destructive",
+      });
+      return null;
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleIconFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.includes('svg')) {
+      toast({
+        title: "Invalid file type",
+        description: "Please upload an SVG file.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIconFile(file);
+    await handleIconUpload(file);
+  };
+
   const onSubmit = async (values: FormValues) => {
     setLoading(true);
     try {
+      let icon_url = iconPreview;
+      
+      // Upload icon if there's a new file and we're creating a new service
+      if (iconFile && !id) {
+        icon_url = await handleIconUpload(iconFile);
+      }
+
       if (id) {
         const { error } = await supabase
           .from("cms_services")
-          .update(values)
+          .update({
+            ...values,
+            icon_url: icon_url || undefined
+          })
           .eq("id", id);
 
         if (error) throw error;
@@ -113,12 +195,15 @@ const ServiceForm = () => {
         const { error } = await supabase
           .from("cms_services")
           .insert([{ 
-            ...values, 
-            status: "draft" as const,
+            title: values.title,
+            slug: values.slug,
             description: values.description,
             icon: values.icon,
-            title: values.title,
-            slug: values.slug
+            details: values.details,
+            featured: values.featured,
+            display_order: values.display_order,
+            status: "draft" as const,
+            icon_url: icon_url || undefined
           }]);
 
         if (error) throw error;
@@ -205,10 +290,52 @@ const ServiceForm = () => {
                     <FormControl>
                       <Input {...field} placeholder="e.g., Hammer, Wrench, Building" />
                     </FormControl>
+                    <FormDescription>
+                      Fallback icon name if no SVG is uploaded
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
+              <div className="space-y-2">
+                <FormLabel>Custom SVG Icon (Optional)</FormLabel>
+                <div className="flex items-center gap-4">
+                  {iconPreview && (
+                    <div className="relative">
+                      <img 
+                        src={iconPreview} 
+                        alt="Icon preview" 
+                        className="h-12 w-12 object-contain border rounded p-1"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="absolute -top-2 -right-2 h-5 w-5 rounded-full"
+                        onClick={() => {
+                          setIconPreview(null);
+                          setIconFile(null);
+                        }}
+                      >
+                        <X className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  )}
+                  <div>
+                    <Input
+                      type="file"
+                      accept=".svg"
+                      onChange={handleIconFileChange}
+                      disabled={uploading}
+                      className="max-w-xs"
+                    />
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Upload an SVG icon (will be displayed at 28x28px)
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               <FormField
                 control={form.control}
