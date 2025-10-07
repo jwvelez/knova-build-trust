@@ -12,8 +12,6 @@ import {
   Image,
   Settings,
   Users,
-  History,
-  Search,
   LogOut,
 } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
@@ -69,9 +67,7 @@ const AdminLayout = () => {
     { icon: Briefcase, label: "Projects", href: "/admin/projects" },
     { icon: Wrench, label: "Services", href: "/admin/services" },
     { icon: Image, label: "Media Library", href: "/admin/media" },
-    { icon: Search, label: "SEO", href: "/admin/seo" },
     { icon: Users, label: "Users & Roles", href: "/admin/users" },
-    { icon: History, label: "Audit Log", href: "/admin/audit" },
     { icon: Settings, label: "Site Settings", href: "/admin/settings" },
   ];
 

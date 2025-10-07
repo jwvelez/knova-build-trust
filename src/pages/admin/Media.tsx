@@ -7,7 +7,35 @@ import { useToast } from "@/hooks/use-toast";
 import { Upload, Trash2, Copy, Image as ImageIcon } from "lucide-react";
 import type { Database } from "@/integrations/supabase/types";
 
+// Import all asset images
+import heroConstruction from "@/assets/hero-construction.jpg";
+import fullWidthServices from "@/assets/full-width-services.jpg";
+import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
+import howWeDeliver from "@/assets/how-we-deliver.jpg";
+import interstitial1 from "@/assets/interstitial-1.jpg";
+import interstitial2 from "@/assets/interstitial-2.jpg";
+import projectDaycare from "@/assets/project-daycare.jpg";
+import projectHealth from "@/assets/project-health.jpg";
+import projectOffice from "@/assets/project-office.jpg";
+import knovaLogo from "@/assets/knova.svg";
+import knovaReverse from "@/assets/knova-reverse.svg";
+
 type Media = Database["public"]["Tables"]["cms_media"]["Row"];
+
+// Static asset images that are part of the project
+const assetImages = [
+  { name: "Hero Construction", url: heroConstruction },
+  { name: "Full Width Services", url: fullWidthServices },
+  { name: "Full Width Who We Are", url: fullWidthWhoWeAre },
+  { name: "How We Deliver", url: howWeDeliver },
+  { name: "Interstitial 1", url: interstitial1 },
+  { name: "Interstitial 2", url: interstitial2 },
+  { name: "Project Daycare", url: projectDaycare },
+  { name: "Project Health", url: projectHealth },
+  { name: "Project Office", url: projectOffice },
+  { name: "Knova Logo", url: knovaLogo },
+  { name: "Knova Logo Reverse", url: knovaReverse },
+];
 
 const Media = () => {
   const [media, setMedia] = useState<Media[]>([]);
@@ -162,62 +190,98 @@ const Media = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {media.map((item) => (
-          <Card key={item.id}>
-            <CardContent className="p-4">
-              <div className="aspect-video bg-muted rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-                {item.mime_type.startsWith("image/") ? (
+      {/* Project Assets Section */}
+      <div className="space-y-4">
+        <div>
+          <h2 className="text-xl font-semibold">Project Assets</h2>
+          <p className="text-sm text-muted-foreground">
+            Images included in your project's assets folder
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {assetImages.map((asset, index) => (
+            <Card key={index}>
+              <CardContent className="p-4">
+                <div className="aspect-video bg-muted rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                   <img
-                    src={item.url}
-                    alt={item.alt_text || item.filename}
+                    src={asset.url}
+                    alt={asset.name}
                     className="w-full h-full object-cover"
                   />
-                ) : (
-                  <ImageIcon className="h-12 w-12 text-muted-foreground" />
-                )}
-              </div>
-              <div className="space-y-2">
-                <p className="text-sm font-medium truncate">{item.filename}</p>
-                <p className="text-xs text-muted-foreground">
-                  {(item.size_bytes / 1024).toFixed(1)} KB
-                </p>
-                <div className="flex gap-2">
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-medium truncate">{asset.name}</p>
+                  <p className="text-xs text-muted-foreground">Project Asset</p>
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => copyUrl(item.url)}
-                    className="flex-1"
+                    onClick={() => copyUrl(asset.url)}
+                    className="w-full"
                   >
                     <Copy className="h-3 w-3 mr-1" />
-                    Copy URL
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => handleDelete(item)}
-                  >
-                    <Trash2 className="h-3 w-3" />
+                    Copy Path
                   </Button>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-
-        {media.length === 0 && (
-          <Card className="col-span-full">
-            <CardContent className="p-12 text-center">
-              <ImageIcon className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <p className="text-muted-foreground mb-4">No media files yet</p>
-              <Button onClick={() => document.getElementById("file-upload")?.click()}>
-                <Upload className="h-4 w-4 mr-2" />
-                Upload Your First File
-              </Button>
-            </CardContent>
-          </Card>
-        )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
+
+      {/* Uploaded Media Section */}
+      {media.length > 0 && (
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-xl font-semibold">Uploaded Media</h2>
+            <p className="text-sm text-muted-foreground">
+              Files uploaded through the CMS
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {media.map((item) => (
+              <Card key={item.id}>
+                <CardContent className="p-4">
+                  <div className="aspect-video bg-muted rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                    {item.mime_type.startsWith("image/") ? (
+                      <img
+                        src={item.url}
+                        alt={item.alt_text || item.filename}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <ImageIcon className="h-12 w-12 text-muted-foreground" />
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium truncate">{item.filename}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {(item.size_bytes / 1024).toFixed(1)} KB
+                    </p>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => copyUrl(item.url)}
+                        className="flex-1"
+                      >
+                        <Copy className="h-3 w-3 mr-1" />
+                        Copy URL
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => handleDelete(item)}
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

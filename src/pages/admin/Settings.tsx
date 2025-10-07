@@ -66,14 +66,14 @@ const Settings = () => {
         .from("cms_site_settings")
         .select("*")
         .limit(1)
-        .single();
+        .maybeSingle();
 
-      if (error && error.code !== "PGRST116") throw error;
+      if (error) throw error;
 
       if (data) {
         setSettingsId(data.id);
         form.reset({
-          site_title: data.site_title,
+          site_title: data.site_title || "Knova Construction",
           site_description: data.site_description || "",
           contact_email: data.contact_email || "",
           contact_phone: data.contact_phone || "",
@@ -81,9 +81,9 @@ const Settings = () => {
           logo_url: data.logo_url || "",
           favicon_url: data.favicon_url || "",
           brand_color: data.brand_color || "#0F172A",
-          navigation: JSON.stringify(data.navigation, null, 2),
-          footer_content: JSON.stringify(data.footer_content, null, 2),
-          social_links: JSON.stringify(data.social_links, null, 2),
+          navigation: JSON.stringify(data.navigation || [], null, 2),
+          footer_content: JSON.stringify(data.footer_content || {}, null, 2),
+          social_links: JSON.stringify(data.social_links || {}, null, 2),
         });
       }
     } catch (error: any) {
