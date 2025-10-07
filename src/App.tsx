@@ -17,6 +17,7 @@ import ProjectForm from "./pages/admin/ProjectForm";
 import AdminServices from "./pages/admin/Services";
 import ServiceForm from "./pages/admin/ServiceForm";
 import Pages from "./pages/admin/Pages";
+import PageForm from "./pages/admin/PageForm";
 import Media from "./pages/admin/Media";
 import SEO from "./pages/admin/SEO";
 import Users from "./pages/admin/Users";
@@ -45,6 +46,8 @@ const App = () => (
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="pages" element={<Pages />} />
+            <Route path="pages/new" element={<PageForm />} />
+            <Route path="pages/:id" element={<PageForm />} />
             <Route path="projects" element={<AdminProjects />} />
             <Route path="projects/new" element={<ProjectForm />} />
             <Route path="projects/:id" element={<ProjectForm />} />
