@@ -71,7 +71,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-sm font-medium py-2 transition-colors ${
+                className={`text-[16px] font-medium py-2 transition-colors ${
                   isActive(item.path) ? "text-primary" : "text-muted-foreground"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -80,14 +80,16 @@ const Header = () => {
               </Link>
             ))}
             <div className="pt-4 border-t border-border flex flex-col gap-3">
-              <a href="tel:2015255365" className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4" />
-                <span>(201) 525-5365</span>
-              </a>
               <Button asChild className="w-full">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  Request a Bid
+                  Contact Us Today
                 </Link>
+              </Button>
+              <Button asChild variant="outline" className="w-full border-2 border-primary text-primary bg-white hover:bg-primary hover:text-white">
+                <a href="tel:2015255365">
+                  <Phone className="h-4 w-4" />
+                  <span>(201) 525-5365</span>
+                </a>
               </Button>
             </div>
           </nav>

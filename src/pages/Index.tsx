@@ -146,10 +146,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
-              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
-                {content.hero_eyebrow || "General Contracting + Building Systems"}
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl md:leading-tight leading-snug md:leading-[1.2] leading-[1.2]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.15] md:leading-tight lg:leading-tight">
                 {content.hero_heading || "Construction you can trust, building systems that just work"}
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
@@ -163,20 +160,18 @@ const Index = () => {
                   <Link to="/services">{content.hero_cta_secondary || "Explore services"}</Link>
                 </Button>
               </div>
-              <div className="flex items-center gap-3 text-sm md:text-[15px]">
-                <Phone className="h-4 w-4 text-accent" />
-                <span className="text-muted-foreground">24/7 Service:</span>
-                <a href={`tel:${(content.hero_phone || "(201) 525-5365").replace(/[^0-9]/g, '')}`} className="font-medium link-accent">
-                  {content.hero_phone || "(201) 525-5365"}
-                </a>
-              </div>
             </div>
             <div className="relative">
-              <img
-                src={heroImage}
-                alt="Construction team collaborating on site"
-                className="rounded-lg shadow-2xl w-full h-auto"
-              />
+              <div className="relative overflow-hidden rounded-lg">
+                <img
+                  src={heroImage}
+                  alt="Construction team collaborating on site"
+                  className="w-full h-[500px] lg:h-[700px] object-cover object-center"
+                  loading="eager"
+                  style={{ objectPosition: 'center' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white"></div>
+              </div>
             </div>
           </div>
 
@@ -211,26 +206,26 @@ const Index = () => {
             <div className="container-narrow w-full px-4">
               <div className="grid grid-cols-[60%_40%] gap-0">
                 {/* Left Column - White Box */}
-                <div className="bg-[#FAFAFA] p-12 lg:p-16">
+                <div className="bg-[#FAFAFA] p-14 lg:p-16">
                   <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
                     {content.how_we_deliver_eyebrow || "Our Approach"}
                   </p>
                   <h2 className="text-3xl lg:text-4xl mb-2 text-primary">
                     {content.how_we_deliver_heading || "How we deliver"}
                   </h2>
-                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
+                  <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
                     {content.how_we_deliver_description || "Proven process, predictable outcomes at every stage"}
                   </p>
                   
-              <div className="space-y-6 md:space-y-6">
-                <div className="flex items-start gap-4 mb-[10px]">
+              <div className="space-y-8 md:space-y-8">
+                <div className="flex items-start gap-4">
                       <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
                         <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
                         <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-4 mb-[10px]">
+                    <div className="flex items-start gap-4">
                       <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
                         <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
@@ -248,13 +243,13 @@ const Index = () => {
                 </div>
 
                 {/* Right Column - Blue Box */}
-                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-12 lg:p-16">
+                <div className="bg-[#1E3480] flex flex-col items-center justify-center p-14 lg:p-16">
                   <img
                     src="/src/assets/knova-reverse.svg"
                     alt="KNova Contractors"
                     className="h-32 lg:h-40 mb-6"
                   />
-                  <p className="text-white text-xl font-bold italic text-center mb-6">
+                  <p className="text-white text-2xl font-bold italic text-center mb-10">
                     Building trust. Delivering quality.
                   </p>
                   <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
@@ -301,13 +296,13 @@ const Index = () => {
             </div>
 
             {/* Right Column - Blue Box */}
-            <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 py-12">
+            <div className="bg-[#1E3480] flex flex-col items-start justify-center p-8 py-12">
               <img
                 src="/src/assets/knova-reverse.svg"
                 alt="KNova Contractors"
                 className="h-24 mb-4"
               />
-              <p className="text-white text-base font-bold italic text-center mb-4">
+              <p className="text-white text-xl font-bold italic mb-6">
                 Building trust. Delivering quality.
               </p>
               <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
@@ -323,13 +318,13 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-narrow">
           <div className="flex flex-col items-center mb-12">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-center">
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-6 text-center">
               {content.services_eyebrow || "What we do"}
             </p>
-            <h2 className="text-3xl md:text-4xl mb-2 text-center" style={{ marginBottom: '23px' }}>
+            <h2 className="text-3xl md:text-4xl mb-8 text-center">
               {content.services_heading || "From new builds to building systems, one team delivers"}
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl text-center">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center">
               {content.services_description || "Comprehensive construction and MEP services tailored to your project needs"}
             </p>
           </div>
@@ -373,16 +368,16 @@ const Index = () => {
       {/* Industries Strip */}
       <section className="section-padding">
         <div className="container-narrow">
-          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
+          <p className="uppercase text-sm tracking-wider text-accent font-medium mb-6">
             {content.industries_eyebrow || "Who we serve"}
           </p>
-          <h2 className="text-3xl md:text-4xl mb-2" style={{ marginBottom: '23px' }}>
+          <h2 className="text-3xl md:text-4xl mb-8">
             {content.industries_heading || "Built for the places people live, learn, heal, and work"}
           </h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl" style={{ marginBottom: '32px' }}>
+          <p className="text-lg text-muted-foreground mb-16 max-w-2xl">
             {content.industries_description || "Serving diverse sectors with specialized expertise"}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-16 md:gap-y-12">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
               return (
@@ -506,7 +501,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
-            <div className="bg-white p-8 rounded-lg border border-border flex flex-col h-full">
+            <div className="bg-white p-12 rounded-lg border border-border flex flex-col h-full">
               <h2 className="text-2xl font-bold mb-4">We build for people, not just places</h2>
               <p className="text-muted-foreground leading-relaxed flex-grow mb-6">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.
@@ -520,7 +515,7 @@ const Index = () => {
             </div>
 
             {/* 24/7 Service */}
-            <Card className="p-8 bg-primary text-primary-foreground flex flex-col h-full">
+            <Card className="p-12 bg-primary text-primary-foreground flex flex-col h-full">
               <h2 className="text-2xl font-bold mb-4">Reactive when you need it, preventive before you do</h2>
               <p className="mb-6 opacity-90 flex-grow">
                 Facility management, preventive programs, and 24/7 response that keep buildings running
