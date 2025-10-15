@@ -140,7 +140,7 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-accent/5 to-accent/10">
+      <section className="pt-8 pb-8 md:pt-16 md:pb-16 lg:pt-24 lg:pb-24 bg-gradient-to-br from-accent/5 to-accent/10">
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
@@ -409,17 +409,19 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, i) => (
-              <Card key={i} className="overflow-hidden card-lift border-border">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="font-semibold text-lg md:text-base mb-2">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground">{project.desc}</p>
-                </div>
-              </Card>
+              <Link key={i} to="/projects?filter=all">
+                <Card className="overflow-hidden card-lift border-border">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="font-semibold text-lg md:text-base mb-2">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground">{project.desc}</p>
+                  </div>
+                </Card>
+              </Link>
             ))}
           </div>
 
@@ -471,7 +473,7 @@ const Index = () => {
             </div>
 
             {/* Right Column - Stats/Highlights */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 mt-6 md:mt-0">
               <div className="bg-white p-6 rounded-lg border border-border">
                 <div className="text-4xl font-bold text-primary mb-2">20+</div>
                 <p className="text-sm text-muted-foreground">Years Combined Experience</p>

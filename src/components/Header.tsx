@@ -33,7 +33,7 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 className={`text-base font-medium transition-colors hover:text-accent ${
-                  isActive(item.path) ? "text-primary" : "text-primary"
+                  isActive(item.path) ? "text-accent font-semibold" : "text-primary"
                 }`}
               >
                 {item.label}
