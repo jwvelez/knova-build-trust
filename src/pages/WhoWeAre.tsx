@@ -83,7 +83,7 @@ const WhoWeAre = () => {
         <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-6xl mx-auto text-center">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">MISSION & VALUES</p>
-            <h2 className="text-3xl md:text-4xl mb-4 text-primary text-center">Build trusted spaces that perform</h2>
+            <h2 className="text-3xl md:text-4xl mb-4 text-primary text-center mx-auto">Build trusted spaces that perform</h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
               <Card className="p-6 bg-background border-border">
@@ -118,7 +118,7 @@ const WhoWeAre = () => {
         <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
           <div className="max-w-6xl mx-auto text-center">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">LEADERSHIP TEAM</p>
-            <h2 className="text-3xl md:text-4xl mb-12 text-primary text-center">Accountability at the top, reliability in the field</h2>
+            <h2 className="text-3xl md:text-4xl mb-12 text-primary text-center mx-auto">Accountability at the top, reliability in the field</h2>
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Keily J. Nova */}
