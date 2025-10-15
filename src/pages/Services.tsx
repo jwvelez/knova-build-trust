@@ -69,16 +69,19 @@ const Services = () => {
       id: "consulting",
       title: "Consulting",
       description: "Expert building code consulting to preempt compliance issues and accelerate project timelines. We provide strategic guidance for all structures, from landmarked buildings to innovative new constructions.",
+      icon: Building2,
     },
     {
       id: "approvals",
       title: "Approvals & Permits",
       description: "Seasoned project managers and permit expediters secure timely approvals, ensuring seamless progress for minor alterations or complex, long-term construction projects.",
+      icon: Cable,
     },
     {
       id: "violations",
       title: "Violations",
       description: "Experienced violation resolution for issues from ECB, DOB, FDNY, and other agencies. We analyze and develop effective strategies to clear violations and get your project back on track.",
+      icon: Wrench,
     },
   ];
 
@@ -113,15 +116,25 @@ const Services = () => {
           </div>
         </section>
 
+        {/* Intro Section */}
+        <section className="pt-12 pb-8 md:pt-16 md:pb-10 px-6 md:px-8 bg-background">
+          <div className="max-w-[1240px] mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl mb-4">Our Services</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive construction and MEP capabilities backed by deep technical expertise and proven reliability
+            </p>
+          </div>
+        </section>
+
         {/* Blade 1: General Construction + Consulting (50/50 Desktop) */}
-        <section className="pt-12 pb-12 md:pt-[72px] md:pb-[72px] px-6 md:px-8 bg-background">
+        <section className="pt-8 pb-12 md:pt-10 md:pb-[72px] px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
               {/* General Construction */}
               <div>
                 <h2 className="text-2xl md:text-3xl mb-3">General Construction</h2>
                 <p className="text-base text-muted-foreground mb-8 max-w-xl">
-                  Ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities, managed end to end with rigorous quality control and compliance
+                  We deliver ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities with end-to-end quality control.
                 </p>
                 
                 <Accordion type="multiple" className="w-full space-y-3">
@@ -140,7 +153,7 @@ const Services = () => {
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="pb-4 pl-8">
-                          <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                          <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
                         </AccordionContent>
                       </AccordionItem>
                     );
@@ -152,24 +165,30 @@ const Services = () => {
               <div>
                 <h2 className="text-2xl md:text-3xl mb-3">Consulting and Permitting</h2>
                 <p className="text-base text-muted-foreground mb-8 max-w-xl">
-                  Design coordination, engineering oversight, permits, and violation resolution
+                  We provide design coordination, engineering oversight, permits, and strategic violation resolution to keep your project compliant and on schedule.
                 </p>
                 
                 <Accordion type="multiple" className="w-full space-y-3">
-                  {consultingServices.map((service) => (
-                    <AccordionItem 
-                      key={service.id} 
-                      value={service.id} 
-                      className="border border-border rounded-lg px-4 bg-background"
-                    >
-                      <AccordionTrigger className="hover:no-underline py-4">
-                        <h3 className="font-semibold text-base text-left">{service.title}</h3>
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
+                  {consultingServices.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <AccordionItem 
+                        key={service.id} 
+                        value={service.id} 
+                        className="border border-border rounded-lg px-4 bg-background"
+                      >
+                        <AccordionTrigger className="hover:no-underline py-4">
+                          <div className="flex items-center gap-3 text-left">
+                            <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
+                            <h3 className="font-semibold text-base">{service.title}</h3>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pl-8">
+                          <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                    );
+                  })}
                 </Accordion>
               </div>
             </div>

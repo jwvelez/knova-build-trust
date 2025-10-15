@@ -67,60 +67,58 @@ const WhoWeAre = () => {
         </section>
 
         {/* Overview */}
-        <section className="section-padding bg-[#1E3480]">
-          <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-6 text-white">Overview</h2>
-            <div className="prose prose-lg max-w-none space-y-4 leading-relaxed">
-              <p className="text-lg text-white">
-                KNova Contractors is a Certified Minority Business Enterprise (MBE), licensed and insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients. We partner with property management teams to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing. We keep schedules tight and deliver quality results on budget and on schedule.
-              </p>
-            </div>
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed mb-6">
+              KNova Contractors is a Certified Minority Business Enterprise (MBE), licensed and insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
+            </p>
+            <p className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed">
+              We also partner with property management companies to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing. We keep schedules tight and deliver quality results on budget and on schedule.
+            </p>
           </div>
         </section>
 
-        {/* Our Story */}
-        <section className="section-padding bg-secondary/30">
-          <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-2">Our Story</h2>
-            <p className="text-lg text-muted-foreground mb-6">Building since 2009 with the same values</p>
-            <div className="space-y-4 leading-relaxed">
-              <p className="text-lg text-[#1E3480]">
-                Founded in 2009 with a small crew of electricians, carpenters, and painters. Today we build, renovate, and manage properties across New York and New Jersey.
-              </p>
-              <p className="font-medium text-[#1E3480] text-lg">
-                The mindset from day one still applies: build well, operate better, and treat clients like long-term partners.
-              </p>
-            </div>
-          </div>
-        </section>
 
         {/* Mission & Values */}
-        <section className="section-padding">
-          <div className="container-narrow max-w-6xl">
-            <div className="mb-12">
-              <h2 className="text-2xl md:text-3xl mb-2">Mission & Values</h2>
-              <p className="text-lg text-muted-foreground mb-6">What drives our work</p>
-              <p className="text-xl md:text-2xl font-semibold text-primary mb-8">
-                Mission: Build trusted spaces that perform
-              </p>
-            </div>
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
+          <div className="max-w-6xl mx-auto">
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">MISSION & VALUES</p>
+            <h2 className="text-3xl md:text-4xl mb-4 text-primary">Build trusted spaces that perform</h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, i) => (
-                <Card key={i} className="p-6 border-border">
-                  <h3 className="font-semibold text-xl mb-3">{value.title}</h3>
-                  <p className="text-base text-muted-foreground">{value.desc}</p>
-                </Card>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              <Card className="p-6 bg-background border-border">
+                <h3 className="text-xl font-semibold mb-2 text-primary">People</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  We build environments where communities can thrive
+                </p>
+              </Card>
+              <Card className="p-6 bg-background border-border">
+                <h3 className="text-xl font-semibold mb-2 text-primary">Quality</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  We pursue excellence with continuous improvement
+                </p>
+              </Card>
+              <Card className="p-6 bg-background border-border">
+                <h3 className="text-xl font-semibold mb-2 text-primary">Integrity</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  We do the right thing and own the outcome
+                </p>
+              </Card>
+              <Card className="p-6 bg-background border-border">
+                <h3 className="text-xl font-semibold mb-2 text-primary">Stewardship</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  We exceed expectations to create long-term value
+                </p>
+              </Card>
             </div>
           </div>
         </section>
 
         {/* Leadership */}
-        <section className="section-padding bg-secondary/30">
-          <div className="container-narrow max-w-6xl">
-            <h2 className="text-2xl md:text-3xl mb-2">Leadership</h2>
-            <p className="text-lg text-muted-foreground mb-12">Experience you can trust</p>
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
+          <div className="max-w-6xl mx-auto">
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">LEADERSHIP TEAM</p>
+            <h2 className="text-3xl md:text-4xl mb-12 text-primary">Accountability at the top, reliability in the field</h2>
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Keily J. Nova */}
@@ -190,11 +188,31 @@ const WhoWeAre = () => {
           </div>
         </section>
 
+        {/* Consultants */}
+        <section className="py-12 md:py-16 px-6 md:px-8 bg-secondary/30">
+          <div className="max-w-4xl mx-auto">
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">CONSULTANTS & SUBJECT EXPERTS</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              We collaborate with experienced consultants and subject-matter experts to accelerate approvals, resolve complex site conditions, and deliver compliant, predictable outcomes.
+            </p>
+          </div>
+        </section>
+
+        {/* Social Impact */}
+        <section className="py-12 md:py-16 px-6 md:px-8 bg-background">
+          <div className="max-w-4xl mx-auto">
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">SOCIAL IMPACT</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              As a family-owned company rooted in humble beginnings, our faith and values guide our work. In 2018, we donated land to a local church in the Dominican Republic to enable a new temple and community center. As we grow, we reinvest in the communities we serve—because building better places starts with investing in people.
+            </p>
+          </div>
+        </section>
+
         {/* Certifications */}
-        <section className="section-padding">
-          <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-2">Certifications</h2>
-            <p className="text-base text-muted-foreground mb-8">Licensed and compliant across all work</p>
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
+          <div className="max-w-6xl mx-auto">
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">CERTIFICATIONS</p>
+            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Professional credentials</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {certifications.map((cert, i) => (
                 <div key={i} className="flex items-center gap-3 p-4 bg-secondary/30 rounded-lg">
