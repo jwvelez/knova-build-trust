@@ -48,7 +48,7 @@ const Contact = () => {
         <section className="pt-10 pb-10 md:pt-12 md:pb-12 bg-secondary/30">
           <div className="container-narrow text-left md:text-center">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-left">Contact</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8 ml-0">
               Let's discuss your project
             </h1>
           </div>
