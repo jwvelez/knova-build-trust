@@ -14,6 +14,7 @@ import interstitial1 from "@/assets/interstitial-1.jpg";
 import interstitial2 from "@/assets/interstitial-2.jpg";
 import fullWidthServices from "@/assets/full-width-services.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
+import knovaReverse from "@/assets/knova-reverse.svg";
 
 
 const Index = () => {
@@ -242,7 +243,7 @@ const Index = () => {
                 {/* Right Column - Blue Box */}
                 <div className="bg-[#1E3480] flex flex-col items-center justify-center p-14 lg:p-16">
                   <img
-                    src="/knova-reverse.svg"
+                    src={knovaReverse}
                     alt="KNova Contractors"
                     className="h-32 lg:h-40"
                   />
@@ -294,7 +295,7 @@ const Index = () => {
             {/* Right Column - Blue Box */}
             <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 py-12">
               <img
-                src="/knova-reverse.svg"
+                src={knovaReverse}
                 alt="KNova Contractors"
                 className="h-24"
               />
