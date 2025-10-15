@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire } from "lucide-react";
-import fullWidthServices from "@/assets/full-width-services.jpg";
+import heroHvac from "@/assets/hero-hvac.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
 import consultingMeeting from "@/assets/consulting-meeting.jpg";
 import {
@@ -95,7 +95,7 @@ const Services = () => {
         <section className="relative">
           <div className="w-full relative">
             <img
-              src={fullWidthServices}
+              src={heroHvac}
               alt="Construction and building systems"
               className="w-full h-[420px] md:h-[600px] object-cover"
             />
@@ -120,7 +120,7 @@ const Services = () => {
         {/* Intro Section */}
         <section className="pt-12 pb-8 md:pt-16 md:pb-10 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl mb-4">Our Services</h2>
+            <h2 className="text-4xl md:text-5xl mb-4 mx-auto">Our Services</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Comprehensive construction and MEP capabilities backed by deep technical expertise and proven reliability
             </p>
