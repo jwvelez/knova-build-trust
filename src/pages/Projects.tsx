@@ -82,9 +82,9 @@ const Projects = () => {
         {/* Hero */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Selected work</p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Projects</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
-              Results over rhetoric
+              Work that speaks for itself
             </h1>
           </div>
         </section>
@@ -93,7 +93,7 @@ const Projects = () => {
         <section className="section-padding">
           <div className="container-narrow">
             <h2 className="text-2xl md:text-3xl mb-2">
-              Featured Projects
+              Experience Highlights
             </h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
               Recent work showcasing our commitment to quality and performance across diverse sectors
