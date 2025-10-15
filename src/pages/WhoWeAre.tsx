@@ -122,7 +122,7 @@ const WhoWeAre = () => {
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Keily J. Nova */}
-              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold mb-1">Keily J. Nova</h3>
                   <p className="text-base text-accent font-medium">Founder and President</p>
@@ -144,7 +144,7 @@ const WhoWeAre = () => {
               </Card>
 
               {/* Lymaris Albors */}
-              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold mb-1">Lymaris Albors</h3>
                   <p className="text-base text-accent font-medium">Co-Founder</p>
@@ -164,12 +164,12 @@ const WhoWeAre = () => {
             </div>
 
             {/* Office & Field Assistance */}
-            <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10">
+            <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10 text-left">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
                   <Heart className="h-6 w-6 text-accent" />
                 </div>
-                <div>
+                <div className="text-left">
                   <h3 className="text-xl font-semibold mb-2">Office & Field Assistance</h3>
                   <p className="text-base text-muted-foreground mb-4">
                     Luna and Lady — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.
