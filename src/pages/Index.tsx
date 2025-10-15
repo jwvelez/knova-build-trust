@@ -101,14 +101,12 @@ const Index = () => {
   ];
 
   const industries = [
-    { label: "Healthcare", detail: "FQHC, Article 28 and 31, behavioral health", icon: Heart },
-    { label: "Housing", detail: "supportive, transitional, private residential, multifamily", icon: Building },
-    { label: "Education and Day Care", detail: "safe, code-ready learning spaces", icon: GraduationCap },
-    { label: "Senior Living", detail: "reliable systems, quiet operations", icon: Users },
-    { label: "Community Facilities", detail: "arts and cultural, community centers", icon: Users },
-    { label: "Commercial and Office", detail: "tenant-ready buildouts and refresh", icon: Building2 },
-    { label: "Mixed-Use", detail: "retail and residential coordination", icon: Store },
-    { label: "Restaurants and Retail", detail: "fast turnarounds, clean inspections", icon: ShoppingBag },
+    { label: "Healthcare", detail: "FQHCs and Article 28/31 facilities, including OASAS programs", icon: Heart, filter: "healthcare" },
+    { label: "Senior Living", detail: "Nursing homes and senior centers with quiet, reliable systems", icon: Users, filter: "housing" },
+    { label: "Education & Day Care", detail: "Safe, code-ready spaces for learning and care", icon: GraduationCap, filter: "education" },
+    { label: "Housing", detail: "Supportive, transitional, and private residential projects", icon: Building, filter: "housing" },
+    { label: "Restaurants & Retail", detail: "Fast turnarounds, clean inspections, tenant-ready", icon: ShoppingBag, filter: "restaurants-retail" },
+    { label: "Community & Culture", detail: "Arts and cultural spaces built for daily use", icon: Users, filter: "all" },
   ];
 
   const projects = [
@@ -377,20 +375,22 @@ const Index = () => {
           <p className="text-lg text-muted-foreground mb-16 max-w-2xl">
             {content.industries_description || "Serving diverse sectors with specialized expertise"}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-16 md:gap-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {industries.map((industry, i) => {
               const Icon = industry.icon;
               return (
-                <div 
-                  key={i} 
-                  className="flex items-start gap-3 text-left group cursor-pointer transition-all"
+                <Link
+                  key={i}
+                  to={`/projects?filter=${industry.filter}`}
+                  className="flex flex-col items-start gap-3 p-6 text-left group cursor-pointer transition-all border border-border rounded-lg hover:border-accent"
+                  aria-label={`${industry.label}: ${industry.detail}`}
                 >
-                  <Icon className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
+                  <Icon className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 group-hover:scale-110 transition-transform" />
                   <div>
-                    <h4 className="font-semibold text-[21px] md:text-[22px] group-hover:text-accent transition-colors mb-1">{industry.label}</h4>
-                    <p className="text-base text-muted-foreground leading-relaxed">{industry.detail}</p>
+                    <h4 className="font-semibold text-lg mb-1 group-hover:text-accent group-hover:underline transition-colors">{industry.label}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{industry.detail}</p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

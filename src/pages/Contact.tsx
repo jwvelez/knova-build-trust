@@ -47,7 +47,7 @@ const Contact = () => {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="pt-10 pb-10 md:pt-16 md:pb-16 px-6 md:px-8 bg-secondary/30">
+        <section className="pt-10 pb-10 md:pt-12 md:pb-12 px-6 md:px-8 bg-secondary/30">
           <div className="container-narrow">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Contact</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">

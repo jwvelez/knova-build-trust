@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire, ClipboardList, Wrench as Tool } from "lucide-react";
+import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire } from "lucide-react";
 import fullWidthServices from "@/assets/full-width-services.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
 import {
@@ -113,114 +113,96 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Blade A: General Construction */}
-        <section className="pt-12 pb-12 md:pt-[72px] md:pb-[72px] px-6 md:px-8">
+        {/* Blade 1: General Construction + Consulting (50/50 Desktop) */}
+        <section className="pt-12 pb-12 md:pt-[72px] md:pb-[72px] px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
-            <div className="flex items-center gap-3 mb-3">
-              <Building2 className="h-7 w-7 text-accent" />
-              <h2 className="text-2xl md:text-3xl">General Construction</h2>
-            </div>
-            <p className="text-base text-muted-foreground mb-8 max-w-4xl">
-              Ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities, managed end to end with rigorous quality control and compliance
-            </p>
-            
-            <Accordion type="multiple" className="w-full space-y-3 max-w-3xl">
-              {generalConstructionServices.map((service) => {
-                const Icon = service.icon;
-                return (
-                  <AccordionItem 
-                    key={service.id} 
-                    value={service.id} 
-                    className="border border-border rounded-lg px-4 bg-background"
-                  >
-                    <AccordionTrigger className="hover:no-underline py-4">
-                      <div className="flex items-center gap-3 text-left">
-                        <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
-                        <h3 className="font-semibold text-base">{service.title}</h3>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-4 pl-8">
-                      <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                    </AccordionContent>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
-          </div>
-        </section>
-
-        {/* Blade B: Consulting and Permitting */}
-        <section className="pt-12 pb-12 md:pt-[72px] md:pb-[72px] px-6 md:px-8 bg-secondary/30">
-          <div className="max-w-[1240px] mx-auto">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
-            <div className="flex items-center gap-3 mb-3">
-              <ClipboardList className="h-7 w-7 text-accent" />
-              <h2 className="text-2xl md:text-3xl">Consulting and Permitting</h2>
-            </div>
-            <p className="text-base text-muted-foreground mb-8 max-w-4xl">
-              Design coordination, engineering oversight, permits, and violation resolution
-            </p>
-            
-            <Accordion type="multiple" className="w-full space-y-3 max-w-3xl">
-              {consultingServices.map((service) => (
-                <AccordionItem 
-                  key={service.id} 
-                  value={service.id} 
-                  className="border border-border rounded-lg px-4 bg-background"
-                >
-                  <AccordionTrigger className="hover:no-underline py-4">
-                    <h3 className="font-semibold text-base text-left">{service.title}</h3>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
-
-        {/* Blade C: Property and Facility Management */}
-        <section className="pt-12 pb-16 md:pt-[72px] md:pb-[80px] px-6 md:px-8">
-          <div className="max-w-[1240px] mx-auto">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
-            <div className="flex items-center gap-3 mb-3">
-              <Tool className="h-7 w-7 text-accent" />
-              <h2 className="text-2xl md:text-3xl">Property and Facility Management</h2>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mt-8">
-              <div className="space-y-6 order-2 md:order-1">
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  Scheduled maintenance and rapid response to keep operations smooth.
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* General Construction */}
+              <div>
+                <h2 className="text-2xl md:text-3xl mb-3">General Construction</h2>
+                <p className="text-base text-muted-foreground mb-8 max-w-xl">
+                  Ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities, managed end to end with rigorous quality control and compliance
                 </p>
                 
-                <div className="space-y-4">
-                  <Button size="lg" asChild className="w-full md:w-auto">
-                    <Link to="/contact">Request Service 24/7</Link>
-                  </Button>
-                  <div className="text-center md:text-left">
-                    <a href="tel:1234567890" className="text-lg font-semibold text-primary hover:text-accent transition-colors">
-                      (123) 456-7890
-                    </a>
-                  </div>
-                </div>
+                <Accordion type="multiple" className="w-full space-y-3">
+                  {generalConstructionServices.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <AccordionItem 
+                        key={service.id} 
+                        value={service.id} 
+                        className="border border-border rounded-lg px-4 bg-background"
+                      >
+                        <AccordionTrigger className="hover:no-underline py-4">
+                          <div className="flex items-center gap-3 text-left">
+                            <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
+                            <h3 className="font-semibold text-base">{service.title}</h3>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pl-8">
+                          <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                    );
+                  })}
+                </Accordion>
               </div>
-              
-              <div className="relative overflow-hidden rounded-lg order-1 md:order-2">
+
+              {/* Consulting and Permitting */}
+              <div>
+                <h2 className="text-2xl md:text-3xl mb-3">Consulting and Permitting</h2>
+                <p className="text-base text-muted-foreground mb-8 max-w-xl">
+                  Design coordination, engineering oversight, permits, and violation resolution
+                </p>
+                
+                <Accordion type="multiple" className="w-full space-y-3">
+                  {consultingServices.map((service) => (
+                    <AccordionItem 
+                      key={service.id} 
+                      value={service.id} 
+                      className="border border-border rounded-lg px-4 bg-background"
+                    >
+                      <AccordionTrigger className="hover:no-underline py-4">
+                        <h3 className="font-semibold text-base text-left">{service.title}</h3>
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Blade 2: Property and Facility Management */}
+        <section className="pt-12 pb-16 md:pt-[72px] md:pb-[80px] px-6 md:px-8 bg-secondary/30">
+          <div className="max-w-[1240px] mx-auto">
+            <div className="flex flex-col items-center text-center">
+              <div className="relative overflow-hidden rounded-lg mb-8 w-full max-w-2xl">
                 <img
                   src={howWeDeliver}
                   alt="Facility management and maintenance services"
                   className="w-full aspect-[5/4] object-cover"
                 />
               </div>
+              
+              <h2 className="text-2xl md:text-3xl mb-6">Property and Facility Management</h2>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl leading-relaxed">
+                Scheduled maintenance and rapid response to keep operations smooth.
+              </p>
+              
+              <Button size="lg" asChild>
+                <Link to="/contact">Request Service 24/7</Link>
+              </Button>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
             <div className="flex flex-wrap gap-4 justify-center">
