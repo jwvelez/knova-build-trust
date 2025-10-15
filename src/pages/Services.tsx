@@ -189,7 +189,7 @@ const Services = () => {
         </section>
 
         {/* Blade 2: Consulting and Permitting */}
-        <section className="pt-8 pb-12 md:pt-10 md:pb-[72px] px-6 md:px-8 bg-secondary/30">
+        <section className="pt-12 pb-12 md:pt-20 md:pb-20 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl mb-3 text-accent">Consulting and Permitting</h2>
@@ -250,7 +250,7 @@ const Services = () => {
         <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link to="/contact">Contact Us</Link>
               </Button>
