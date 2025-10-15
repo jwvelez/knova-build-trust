@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileFooterCTA from "@/components/MobileFooterCTA";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Building2, Wrench, Zap, Droplets, Flame, Settings, Heart, Clock, CheckCircle, Award, Phone } from "lucide-react";
@@ -68,8 +69,9 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pb-20 md:pb-0">
       <Header />
+      <MobileFooterCTA />
 
       <main className="flex-1">
         {/* Hero */}

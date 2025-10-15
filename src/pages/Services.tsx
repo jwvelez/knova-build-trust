@@ -1,73 +1,90 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileFooterCTA from "@/components/MobileFooterCTA";
 import { Button } from "@/components/ui/button";
-import * as Icons from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import fullWidthServices from "@/assets/full-width-services.jpg";
+import howWeDeliver from "@/assets/how-we-deliver.jpg";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-type Service = {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  icon_url?: string | null;
-};
+import { Wrench, Phone } from "lucide-react";
 
 const Services = () => {
-  const [services, setServices] = useState<Service[]>([]);
+  const generalConstructionServices = [
+    {
+      title: "Energy-Efficient HVAC Systems",
+      description: "We design, install, and service high-efficiency HVAC systems that support electrification and measurably improve air quality.",
+    },
+    {
+      title: "Electrical and Low-Voltage Systems",
+      description: "We deliver modern power distribution, service upgrades, lighting and controls, and structured cabling built for today's electrical loads.",
+    },
+    {
+      title: "Plumbing and Piping Systems",
+      description: "We install and repair domestic water, sanitary, and gas systems to code while minimizing disruption to occupants.",
+    },
+    {
+      title: "Fire and Life Safety",
+      description: "We design, install, and maintain sprinkler systems that meet fire codes and protect people and assets.",
+    },
+    {
+      title: "Structured Cabling and Networks",
+      description: "We deploy structured cabling and network infrastructure that provides reliable connectivity for housing, offices, and clinics.",
+    },
+    {
+      title: "Building Envelope and Roofing",
+      description: "We install new roofing and perform targeted envelope repairs that extend service life and prevent water intrusion.",
+    },
+    {
+      title: "Structural Steel and Metals",
+      description: "We fabricate and install structural steel, reinforcements, and secure gates with precision and durability.",
+    },
+    {
+      title: "High-Efficiency Boiler Systems",
+      description: "We install and service hydronic and steam boilers with modern controls that deliver efficient, dependable heat.",
+    },
+  ];
 
-  useEffect(() => {
-    loadServices();
-  }, []);
-
-  const loadServices = async () => {
-    const { data, error } = await supabase
-      .from("cms_services")
-      .select("*")
-      .eq("status", "published")
-      .order("display_order", { ascending: true });
-
-    if (!error && data) {
-      setServices(data);
-    }
-  };
-
-  const getIcon = (iconName: string) => {
-    const Icon = (Icons as any)[iconName];
-    return Icon || Icons.Circle;
-  };
+  const consultingServices = [
+    {
+      title: "Consulting",
+      description: "Expert building code consulting to preempt compliance issues and accelerate project timelines. We provide strategic guidance for all structures, from landmarked buildings to innovative new constructions.",
+    },
+    {
+      title: "Approvals & Permits",
+      description: "Seasoned project managers and permit expediters secure timely approvals, ensuring seamless progress for minor alterations or complex, long-term construction projects.",
+    },
+    {
+      title: "Violations",
+      description: "Experienced violation resolution for issues from ECB, DOB, FDNY, and other agencies. We analyze and develop effective strategies to clear violations and get your project back on track.",
+    },
+  ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col pb-20 md:pb-0">
       <Header />
+      <MobileFooterCTA />
 
       <main className="flex-1">
-        {/* Hero with Image and Overlay */}
+        {/* Hero */}
         <section className="relative">
           <div className="w-full relative">
             <img
               src={fullWidthServices}
               alt="Construction and building systems"
-              className="w-full h-[420px] md:h-[600px] object-cover"
+              className="w-full h-[600px] md:h-[900px] object-cover"
             />
-            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
-            
+            <div className="absolute inset-0 bg-primary/80"></div>
             <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
+              <div className="w-full max-w-4xl bg-white/95 rounded-2xl">
                 <div className="p-8 md:p-12 lg:p-16">
-                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
-                    Building systems that just work
-                  </h1>
-                  <p className="text-base text-muted-foreground max-w-2xl">
+                  <p className="overline">WHAT WE DO</p>
+                  <h1 className="mb-4">Building systems that just work</h1>
+                  <p className="text-lg text-muted-foreground max-w-2xl">
                     Comprehensive construction and MEP services backed by deep technical expertise and proven reliability
                   </p>
                 </div>
@@ -76,54 +93,122 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Accordion */}
+        {/* Three Column Layout */}
         <section className="section-padding">
-          <div className="container-narrow max-w-4xl">
-            <h2 className="text-2xl md:text-3xl mb-2">Comprehensive Services</h2>
-            <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
-              From general construction to specialized MEP systems, we deliver integrated solutions that meet your project needs
-            </p>
-            
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {services.map((service) => {
-                const Icon = getIcon(service.icon);
-                return (
-                  <AccordionItem 
-                    key={service.id} 
-                    value={service.id} 
-                    className="border border-border rounded-lg px-6 bg-background hover:shadow-sm transition-shadow"
-                  >
-                    <AccordionTrigger className="hover:no-underline py-6">
-                      <div className="flex items-center gap-4 text-left">
-                        {service.icon_url ? (
-                          <img 
-                            src={service.icon_url} 
-                            alt="" 
-                            className="h-7 w-7 flex-shrink-0 object-contain"
-                          />
-                        ) : (
-                          <Icon className="h-7 w-7 text-accent stroke-[2px] flex-shrink-0" />
-                        )}
-                        <h3 className="font-bold text-[20px] md:text-[20px] text-[19px]">{service.title}</h3>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-6 pl-11">
-                      <p className="text-base text-muted-foreground leading-relaxed">{service.description}</p>
-                    </AccordionContent>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
+          <div className="container-narrow">
+            <div className="grid lg:grid-cols-3 gap-12">
+              
+              {/* Column 1: General Construction */}
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-[28px] leading-[36px] mb-3">General Construction</h2>
+                  <p className="text-muted-foreground mb-8">
+                    Ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities, managed end-to-end with rigorous quality control and compliance
+                  </p>
+                </div>
+
+                <Accordion type="multiple" className="w-full space-y-3">
+                  {generalConstructionServices.map((service, i) => (
+                    <AccordionItem 
+                      key={i} 
+                      value={`gc-${i}`}
+                      className="border border-border rounded-xl overflow-hidden"
+                    >
+                      <AccordionTrigger className="px-5 py-4 hover:no-underline hover:bg-accent/5 transition-colors">
+                        <div className="flex items-start gap-3 text-left">
+                          <Wrench className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <span className="font-semibold">{service.title}</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-5 pb-4 pt-2">
+                        <p className="text-muted-foreground leading-relaxed pl-8">
+                          {service.description}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+
+              {/* Column 2: Consulting and Permitting */}
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-[28px] leading-[36px] mb-3">Consulting and Permitting</h2>
+                  <p className="text-muted-foreground mb-8">
+                    Design coordination, engineering oversight, permits, and violation resolution
+                  </p>
+                </div>
+
+                <Accordion type="multiple" className="w-full space-y-3">
+                  {consultingServices.map((service, i) => (
+                    <AccordionItem 
+                      key={i} 
+                      value={`cs-${i}`}
+                      className="border border-border rounded-xl overflow-hidden"
+                    >
+                      <AccordionTrigger className="px-5 py-4 hover:no-underline hover:bg-accent/5 transition-colors">
+                        <div className="flex items-start gap-3 text-left">
+                          <Wrench className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <span className="font-semibold">{service.title}</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-5 pb-4 pt-2">
+                        <p className="text-muted-foreground leading-relaxed pl-8">
+                          {service.description}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+
+              {/* Column 3: Property and Facility Management */}
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-[28px] leading-[36px] mb-3">Property and Facility Management</h2>
+                  <p className="text-muted-foreground mb-6">
+                    Scheduled maintenance and rapid response to keep operations smooth.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="relative aspect-[5/4] overflow-hidden rounded-2xl">
+                    <img 
+                      src={howWeDeliver} 
+                      alt="Facility management and maintenance"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="space-y-4">
+                    <Button size="lg" className="w-full" asChild>
+                      <Link to="/contact">Request Service 24/7</Link>
+                    </Button>
+                    <a 
+                      href="tel:2015255365" 
+                      className="flex items-center justify-center gap-2 text-accent hover:text-primary transition-colors font-semibold"
+                    >
+                      <Phone className="h-5 w-5" />
+                      <span>(201) 525-5365</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Page CTAs */}
         <section className="section-padding bg-secondary/30">
-          <div className="container-narrow text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
-            <Button size="lg" asChild>
-              <Link to="/contact">Contact Us Today</Link>
-            </Button>
+          <div className="container-narrow text-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button asChild size="lg">
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+              <Button asChild size="lg" variant="ghost">
+                <Link to="/contact">Ask an Expert</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

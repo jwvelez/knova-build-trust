@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
@@ -6,7 +6,16 @@ import knovaLogo from "@/assets/knova.svg";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { label: "Who We Are", path: "/who-we-are" },
@@ -18,7 +27,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-background border-b border-border">
+    <header className={`sticky top-0 z-50 bg-background border-b border-border transition-shadow duration-200 ${scrolled ? 'shadow-md' : ''}`}>
       <div className="container-narrow">
         <div className="flex items-center justify-between py-[12px] md:py-[15px]">
           {/* Logo */}
