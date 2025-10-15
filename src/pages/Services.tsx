@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire } from "lucide-react";
 import fullWidthServices from "@/assets/full-width-services.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
+import consultingMeeting from "@/assets/consulting-meeting.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -191,36 +192,48 @@ const Services = () => {
         {/* Blade 2: Consulting and Permitting */}
         <section className="pt-12 pb-12 md:pt-20 md:pb-20 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-[1240px] mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl mb-3 text-accent">Consulting and Permitting</h2>
-              <p className="text-base text-muted-foreground max-w-3xl mx-auto">
-                We provide design coordination, engineering oversight, permits, and strategic violation resolution to keep your project compliant and on schedule.
-              </p>
-            </div>
-            
-            <div className="max-w-2xl mx-auto">
-              <Accordion type="multiple" className="w-full space-y-3">
-                {consultingServices.map((service) => {
-                  const Icon = service.icon;
-                  return (
-                    <AccordionItem 
-                      key={service.id} 
-                      value={service.id} 
-                      className="border border-border rounded-lg px-4 bg-background"
-                    >
-                      <AccordionTrigger className="hover:no-underline py-4">
-                        <div className="flex items-center gap-3 text-left">
-                          <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
-                          <h3 className="font-semibold text-base">{service.title}</h3>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-4 pl-8">
-                        <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  );
-                })}
-              </Accordion>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Left column - text content */}
+              <div>
+                <div className="mb-8">
+                  <h2 className="text-2xl md:text-3xl mb-3 text-accent">Consulting and Permitting</h2>
+                  <p className="text-base text-muted-foreground">
+                    We provide design coordination, engineering oversight, permits, and strategic violation resolution to keep your project compliant and on schedule.
+                  </p>
+                </div>
+                
+                <Accordion type="multiple" className="w-full space-y-3">
+                  {consultingServices.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <AccordionItem 
+                        key={service.id} 
+                        value={service.id} 
+                        className="border border-border rounded-lg px-4 bg-background"
+                      >
+                        <AccordionTrigger className="hover:no-underline py-4">
+                          <div className="flex items-center gap-3 text-left">
+                            <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
+                            <h3 className="font-semibold text-base">{service.title}</h3>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pl-8">
+                          <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                    );
+                  })}
+                </Accordion>
+              </div>
+
+              {/* Right column - image */}
+              <div className="hidden md:block">
+                <img
+                  src={consultingMeeting}
+                  alt="Construction consulting and permitting services"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
             </div>
           </div>
         </section>
