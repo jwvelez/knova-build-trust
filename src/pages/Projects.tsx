@@ -274,7 +274,7 @@ const Projects = () => {
                       <ul className="space-y-3">
                         {project.details.map((detail, idx) => (
                           <li key={idx} className="flex items-start gap-3 text-base">
-                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
                             <span className="text-muted-foreground leading-relaxed">{detail}</span>
                           </li>
                         ))}
@@ -310,10 +310,10 @@ const Projects = () => {
                           </>
                         )}
                       </div>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {project.details.map((detail, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-sm">
-                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" />
+                          <li key={idx} className="flex items-start gap-3 text-base">
+                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
                             <span className="text-muted-foreground leading-relaxed">{detail}</span>
                           </li>
                         ))}
