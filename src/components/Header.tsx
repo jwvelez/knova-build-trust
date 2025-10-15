@@ -48,7 +48,7 @@ const Header = () => {
               <span>(201) 525-5365</span>
             </a>
             <Button asChild size="lg">
-              <Link to="/contact">Request a Bid</Link>
+              <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
 
@@ -71,7 +71,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-[16px] font-medium py-2 transition-colors ${
+                className={`text-[19px] font-medium py-2 transition-colors ${
                   isActive(item.path) ? "text-primary" : "text-muted-foreground"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -80,12 +80,12 @@ const Header = () => {
               </Link>
             ))}
             <div className="pt-4 border-t border-border flex flex-col gap-3">
-              <Button asChild className="w-full">
+              <Button asChild className="w-full text-[19px]">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                   Contact Us Today
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="w-full border-2 border-primary text-primary bg-white hover:bg-primary hover:text-white">
+              <Button asChild variant="ghost" className="w-full text-[19px]">
                 <a href="tel:2015255365">
                   <Phone className="h-4 w-4" />
                   <span>(201) 525-5365</span>
