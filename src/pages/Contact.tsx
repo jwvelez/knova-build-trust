@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { toast } from "sonner";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -19,9 +18,8 @@ const Contact = () => {
     location: "",
     timeline: "",
     budget: "",
-    message: "",
+    message: ""
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Request submitted! We'll be in touch soon.");
@@ -33,23 +31,23 @@ const Contact = () => {
       location: "",
       timeline: "",
       budget: "",
-      message: "",
+      message: ""
     });
   };
-
   const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
-  return (
-    <div className="min-h-screen flex flex-col pb-20 md:pb-0">
+  return <div className="min-h-screen flex flex-col pb-20 md:pb-0">
       <Header />
 
       <main className="flex-1">
         {/* Hero */}
         <section className="pt-10 pb-10 md:pt-12 md:pb-12 bg-secondary/30">
           <div className="container-narrow text-left md:text-center">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Contact</p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-left">Contact</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
               Let's discuss your project
             </h1>
@@ -123,46 +121,24 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-base">Name *</Label>
-                    <Input
-                      id="name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => handleChange("name", e.target.value)}
-                      placeholder="Your name"
-                      className="h-12 text-base"
-                    />
+                    <Input id="name" required value={formData.name} onChange={e => handleChange("name", e.target.value)} placeholder="Your name" className="h-12 text-base" />
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-base">Email *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => handleChange("email", e.target.value)}
-                        placeholder="your@email.com"
-                        className="h-12 text-base"
-                      />
+                      <Input id="email" type="email" required value={formData.email} onChange={e => handleChange("email", e.target.value)} placeholder="your@email.com" className="h-12 text-base" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="phone" className="text-base">Phone</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleChange("phone", e.target.value)}
-                        placeholder="(555) 123-4567"
-                        className="h-12 text-base"
-                      />
+                      <Input id="phone" type="tel" value={formData.phone} onChange={e => handleChange("phone", e.target.value)} placeholder="(555) 123-4567" className="h-12 text-base" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="projectType" className="text-base">Project Type *</Label>
-                    <Select value={formData.projectType} onValueChange={(value) => handleChange("projectType", value)}>
+                    <Select value={formData.projectType} onValueChange={value => handleChange("projectType", value)}>
                       <SelectTrigger id="projectType" className="h-12 text-base">
                         <SelectValue placeholder="Select project type" />
                       </SelectTrigger>
@@ -180,48 +156,23 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="location" className="text-base">Location</Label>
-                      <Input
-                        id="location"
-                        value={formData.location}
-                        onChange={(e) => handleChange("location", e.target.value)}
-                        placeholder="City, State"
-                        className="h-12 text-base"
-                      />
+                      <Input id="location" value={formData.location} onChange={e => handleChange("location", e.target.value)} placeholder="City, State" className="h-12 text-base" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="timeline" className="text-base">Timeline</Label>
-                      <Input
-                        id="timeline"
-                        value={formData.timeline}
-                        onChange={(e) => handleChange("timeline", e.target.value)}
-                        placeholder="e.g., Q2 2025"
-                        className="h-12 text-base"
-                      />
+                      <Input id="timeline" value={formData.timeline} onChange={e => handleChange("timeline", e.target.value)} placeholder="e.g., Q2 2025" className="h-12 text-base" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="budget" className="text-base">Budget Range</Label>
-                    <Input
-                      id="budget"
-                      value={formData.budget}
-                      onChange={(e) => handleChange("budget", e.target.value)}
-                      placeholder="Optional"
-                      className="h-12 text-base"
-                    />
+                    <Input id="budget" value={formData.budget} onChange={e => handleChange("budget", e.target.value)} placeholder="Optional" className="h-12 text-base" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-base">Project Details *</Label>
-                    <Textarea
-                      id="message"
-                      required
-                      value={formData.message}
-                      onChange={(e) => handleChange("message", e.target.value)}
-                      placeholder="Tell us about your project scope and requirements..."
-                      className="min-h-36 text-base"
-                    />
+                    <Textarea id="message" required value={formData.message} onChange={e => handleChange("message", e.target.value)} placeholder="Tell us about your project scope and requirements..." className="min-h-36 text-base" />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full">
@@ -235,8 +186,6 @@ const Contact = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
