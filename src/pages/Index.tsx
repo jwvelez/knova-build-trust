@@ -242,7 +242,7 @@ const Index = () => {
                 {/* Right Column - Blue Box */}
                 <div className="bg-[#1E3480] flex flex-col items-center justify-center p-14 lg:p-16">
                   <img
-                    src="/src/assets/knova-reverse.svg"
+                    src="/knova-reverse.svg"
                     alt="KNova Contractors"
                     className="h-32 lg:h-40"
                   />
@@ -294,7 +294,7 @@ const Index = () => {
             {/* Right Column - Blue Box */}
             <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 py-12">
               <img
-                src="/src/assets/knova-reverse.svg"
+                src="/knova-reverse.svg"
                 alt="KNova Contractors"
                 className="h-24"
               />
