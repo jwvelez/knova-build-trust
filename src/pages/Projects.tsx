@@ -28,21 +28,6 @@ const Projects = () => {
       image: projectOffice,
     },
     {
-      title: "Residential Apartment — Manhattan",
-      year: "2024",
-      category: "Housing",
-      size: "1,200 sf",
-      details: [
-        "Full gut renovation from studs",
-        "New plumbing throughout with upgraded fixtures",
-        "High-efficiency HVAC installation",
-        "Complete electrical rewiring and panel upgrade",
-        "Delivered two weeks ahead of schedule",
-        "Improved comfort and energy efficiency"
-      ],
-      image: projectOffice,
-    },
-    {
       title: "Community Health Centers Expansion — Bronx",
       year: "2022–2023",
       category: "Healthcare",
@@ -71,6 +56,20 @@ const Projects = () => {
         "Durable finishes and easy-maintenance systems"
       ],
       image: projectDaycare,
+    },
+    {
+      title: "Supermarket Buildouts — Bronx & Brooklyn",
+      year: "2012–2013",
+      category: "Commercial",
+      size: "Various",
+      details: [
+        "White Plains Rd, Bronx — 13,800 sf supermarket with co-located day care",
+        "210 Clarkson Ave, Brooklyn — 14,000 sf supermarket with day care",
+        "257 Drakes Ave, Brooklyn — 6,170 sf supermarket",
+        "GC + MEP delivery including plumbing, sprinklers, HVAC, and electrical",
+        "Clean inspections and tenant-ready turnover"
+      ],
+      image: projectOffice,
     },
   ];
 

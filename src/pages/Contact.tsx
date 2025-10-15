@@ -119,7 +119,7 @@ const Contact = () => {
 
               {/* Request Form */}
               <Card className="p-8 border-border">
-                <h2 className="text-2xl font-semibold mb-6">Request a Bid</h2>
+                <h2 className="text-2xl font-semibold mb-6">Contact Us</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-base">Name *</Label>

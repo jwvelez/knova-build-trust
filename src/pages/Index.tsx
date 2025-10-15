@@ -146,7 +146,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.15] md:leading-tight lg:leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] md:leading-[1.1] lg:leading-[1.1]">
                 {content.hero_heading || "Construction you can trust, building systems that just work"}
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
@@ -154,7 +154,7 @@ const Index = () => {
               </p>
               <div className="flex flex-wrap gap-4 md:flex-nowrap">
                 <Button size="lg" asChild className="flex-1 md:flex-initial">
-                  <Link to="/contact">{content.hero_cta_primary || "Request a bid"}</Link>
+                  <Link to="/contact">{content.hero_cta_primary || "Contact Us"}</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="flex-1 md:flex-initial">
                   <Link to="/services">{content.hero_cta_secondary || "Explore services"}</Link>
@@ -253,7 +253,7 @@ const Index = () => {
                     Building trust. Delivering quality.
                   </p>
                   <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
-                    <Link to="/contact">Request a bid</Link>
+                    <Link to="/contact">Contact Us</Link>
                   </Button>
                 </div>
               </div>
@@ -306,7 +306,7 @@ const Index = () => {
                 Building trust. Delivering quality.
               </p>
               <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
-                <Link to="/contact">Request a bid</Link>
+                <Link to="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>
