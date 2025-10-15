@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Landmark } from "lucide-react";
+import { Heart, Users, PawPrint } from "lucide-react";
 import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
 const WhoWeAre = () => {
@@ -167,7 +167,7 @@ const WhoWeAre = () => {
             <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10 text-left">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Heart className="h-6 w-6 text-accent" />
+                  <PawPrint className="h-6 w-6 text-accent" />
                 </div>
                 <div className="text-left">
                   <h3 className="text-xl font-semibold mb-2">Office & Field Assistance</h3>
@@ -175,7 +175,7 @@ const WhoWeAre = () => {
                     Luna and Lady — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.
                   </p>
                   <a
-                    href="#"
+                    href="https://lunaladycleaning.com"
                     className="text-base text-accent hover:underline inline-flex items-center gap-2 font-medium"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -206,7 +206,7 @@ const WhoWeAre = () => {
               {/* Social Impact */}
               <div>
                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                  <Landmark className="h-6 w-6 text-accent" />
+                  <Heart className="h-6 w-6 text-accent" />
                 </div>
                 <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">SOCIAL IMPACT</p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
