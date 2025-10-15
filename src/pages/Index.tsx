@@ -145,7 +145,7 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] md:leading-[1.1] lg:leading-[1.1]">
-                {content.hero_heading || "Construction you can trust, building systems that just work"}
+                {content.hero_heading || "Building trust. Delivering quality."}
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
                 {content.hero_description || "MBE-certified, licensed, and insured general contractor for New York and New Jersey with deep HVAC, electrical, and plumbing expertise"}
@@ -206,7 +206,7 @@ const Index = () => {
                 {/* Left Column - White Box */}
                 <div className="bg-[#FAFAFA] p-14 lg:p-16">
                   <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">
-                    {content.how_we_deliver_eyebrow || "Our Approach"}
+                    {content.how_we_deliver_eyebrow || "OUR APPROACH"}
                   </p>
                   <h2 className="text-3xl lg:text-4xl mb-2 text-primary">
                     {content.how_we_deliver_heading || "How we deliver"}
@@ -219,21 +219,21 @@ const Index = () => {
                 <div className="flex items-start gap-4">
                       <Hammer className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership — from preconstruction to closeout</h3>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">GC leadership: from preconstruction to closeout</h3>
                         <p className="text-lg text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <Zap className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">MEP depth: HVAC, electrical, plumbing delivered right</h3>
                         <p className="text-lg text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
                       <Shield className="h-8 w-8 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                       <div>
-                        <h3 className="text-[21px] font-bold mb-2 text-primary">Compliance first — predictable schedules and inspections</h3>
+                        <h3 className="text-[21px] font-bold mb-2 text-primary">Compliance first: predictable schedules and inspections</h3>
                         <p className="text-lg text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
                       </div>
                     </div>
@@ -245,14 +245,13 @@ const Index = () => {
                   <img
                     src="/src/assets/knova-reverse.svg"
                     alt="KNova Contractors"
-                    className="h-32 lg:h-40 mb-6"
+                    className="h-32 lg:h-40"
                   />
-                  <p className="text-white text-2xl font-bold italic text-center mb-10">
-                    Building trust. Delivering quality.
-                  </p>
-                  <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
-                    <Link to="/contact">Contact Us</Link>
-                  </Button>
+                  <div className="mt-12">
+                    <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
+                      <Link to="/contact">Contact Us</Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -264,7 +263,7 @@ const Index = () => {
           <div className="w-full">
             {/* Left Column - White Box */}
             <div className="bg-[#FAFAFA] p-8 py-12">
-              <p className="uppercase text-xs tracking-wider text-accent font-medium mb-3">Our Approach</p>
+              <p className="uppercase text-xs tracking-wider text-accent font-medium mb-3">OUR APPROACH</p>
               <h2 className="text-2xl mb-2 text-primary">How we deliver</h2>
               <p className="text-base text-muted-foreground mb-6 max-w-2xl">Proven process, predictable outcomes at every stage</p>
               
@@ -272,21 +271,21 @@ const Index = () => {
                 <div className="flex items-start gap-3 mb-[10px]">
                   <Hammer className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-base font-bold mb-1 text-primary">GC leadership — from preconstruction to closeout</h3>
+                    <h3 className="text-base font-bold mb-1 text-primary">GC leadership: from preconstruction to closeout</h3>
                     <p className="text-sm text-muted-foreground">Full lifecycle support: budgeting, scheduling, and on-site coordination</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 mb-[10px]">
                   <Zap className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-base font-bold mb-1 text-primary">MEP depth — HVAC, electrical, plumbing delivered right</h3>
+                    <h3 className="text-base font-bold mb-1 text-primary">MEP depth: HVAC, electrical, plumbing delivered right</h3>
                     <p className="text-sm text-muted-foreground">In-house expertise for integrated mechanical and electrical systems</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Shield className="h-6 w-6 text-accent stroke-[2px] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-base font-bold mb-1 text-primary">Compliance first — predictable schedules and inspections</h3>
+                    <h3 className="text-base font-bold mb-1 text-primary">Compliance first: predictable schedules and inspections</h3>
                     <p className="text-sm text-muted-foreground">EPA, NYC DOB, MBE certified. Proactive permitting and inspections management</p>
                   </div>
                 </div>
@@ -294,18 +293,17 @@ const Index = () => {
             </div>
 
             {/* Right Column - Blue Box */}
-            <div className="bg-[#1E3480] flex flex-col items-start justify-center p-8 py-12">
+            <div className="bg-[#1E3480] flex flex-col items-center justify-center p-8 py-12">
               <img
                 src="/src/assets/knova-reverse.svg"
                 alt="KNova Contractors"
-                className="h-24 mb-4"
+                className="h-24"
               />
-              <p className="text-white text-xl font-bold italic mb-6">
-                Building trust. Delivering quality.
-              </p>
-              <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
-                <Link to="/contact">Contact Us</Link>
-              </Button>
+              <div className="mt-8">
+                <Button size="lg" variant="secondary" asChild className="bg-white hover:bg-white/90 text-primary w-full">
+                  <Link to="/contact">Contact Us</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
