@@ -188,34 +188,37 @@ const WhoWeAre = () => {
           </div>
         </section>
 
-        {/* Consultants */}
+        {/* Consultants & Social Impact */}
         <section className="py-12 md:py-16 px-6 md:px-8 bg-secondary/30">
-          <div className="max-w-4xl mx-auto">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">CONSULTANTS & SUBJECT EXPERTS</p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We collaborate with experienced consultants and subject-matter experts to accelerate approvals, resolve complex site conditions, and deliver compliant, predictable outcomes.
-            </p>
-          </div>
-        </section>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* Consultants */}
+              <div>
+                <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">CONSULTANTS & SUBJECT EXPERTS</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  We collaborate with experienced consultants and subject-matter experts to accelerate approvals, resolve complex site conditions, and deliver compliant, predictable outcomes.
+                </p>
+              </div>
 
-        {/* Social Impact */}
-        <section className="py-12 md:py-16 px-6 md:px-8 bg-background">
-          <div className="max-w-4xl mx-auto">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">SOCIAL IMPACT</p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              As a family-owned company rooted in humble beginnings, our faith and values guide our work. In 2018, we donated land to a local church in the Dominican Republic to enable a new temple and community center. As we grow, we reinvest in the communities we serve—because building better places starts with investing in people.
-            </p>
+              {/* Social Impact */}
+              <div>
+                <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">SOCIAL IMPACT</p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  As a family-owned company rooted in humble beginnings, our faith and values guide our work. In 2018, we donated land to a local church in the Dominican Republic to enable a new temple and community center. As we grow, we reinvest in the communities we serve—because building better places starts with investing in people.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Certifications */}
-        <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
           <div className="max-w-6xl mx-auto">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">CERTIFICATIONS</p>
             <h2 className="text-3xl md:text-4xl mb-8 text-primary">Professional credentials</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {certifications.map((cert, i) => (
-                <div key={i} className="flex items-center gap-3 p-4 bg-secondary/30 rounded-lg">
+                <div key={i} className="flex items-center gap-3 p-4 bg-background rounded-lg border border-border">
                   <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
                   <span className="text-sm font-medium">{cert}</span>
                 </div>
