@@ -6,7 +6,7 @@ import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2,
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImage from "@/assets/hero-construction-team.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
@@ -163,12 +163,11 @@ const Index = () => {
               <div className="relative overflow-hidden rounded-lg">
                 <img
                   src={heroImage}
-                  alt="Construction team collaborating on site"
+                  alt="KNova construction team leaders"
                   className="w-full h-[500px] lg:h-[700px] object-cover object-center"
                   loading="eager"
                   style={{ objectPosition: 'center' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white"></div>
               </div>
             </div>
           </div>
