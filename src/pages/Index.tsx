@@ -145,10 +145,10 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8 animate-fade-in">
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] md:leading-[1.1] lg:leading-[1.1]">
-                {content.hero_heading || "Building trust. Delivering quality."}
+                Building trust. Delivering quality.
               </h1>
               <p className="text-lg text-muted-foreground max-w-xl">
-                {content.hero_description || "MBE-certified, licensed, and insured general contractor for New York and New Jersey with deep HVAC, electrical, and plumbing expertise"}
+                KNova Contractors is a licensed, insured, and MBE-certified general contractor serving New York and New Jersey, specializing in HVAC, electrical, and plumbing systems.
               </p>
               <div className="flex flex-wrap gap-4 md:flex-nowrap">
                 <Button size="lg" asChild className="flex-1 md:flex-initial">
@@ -164,7 +164,7 @@ const Index = () => {
                 <img
                   src={heroImage}
                   alt="KNova construction team leaders"
-                  className="w-full h-[500px] lg:h-[700px] object-cover object-center"
+                  className="w-full h-[500px] lg:h-[700px] object-cover object-center rounded-lg"
                   loading="eager"
                   style={{ objectPosition: 'center' }}
                 />
