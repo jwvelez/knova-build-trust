@@ -500,7 +500,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Social Impact */}
-            <div className="bg-white p-12 rounded-lg border border-border flex flex-col h-full">
+            <div className="bg-white p-6 md:p-12 rounded-lg border border-border flex flex-col h-full">
               <h2 className="text-2xl font-bold mb-4">We build for people, not just places</h2>
               <p className="text-muted-foreground leading-relaxed flex-grow mb-6">
                 Family-owned and community-minded with a commitment to reinvest locally. In 2018 we donated land in the Dominican Republic to support a new temple and community center. As we grow, we aim that our work lifts neighborhoods along with our projects.
@@ -514,7 +514,7 @@ const Index = () => {
             </div>
 
             {/* 24/7 Service */}
-            <Card className="p-12 bg-primary text-primary-foreground flex flex-col h-full">
+            <Card className="p-6 md:p-12 bg-primary text-primary-foreground flex flex-col h-full">
               <h2 className="text-2xl font-bold mb-4">Reactive when you need it, preventive before you do</h2>
               <p className="mb-6 opacity-90 flex-grow">
                 Facility management, preventive programs, and 24/7 response that keep buildings running
