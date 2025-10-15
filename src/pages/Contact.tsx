@@ -57,7 +57,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Info & Form */}
-        <section className="section-padding">
+        <section className="pt-10 pb-20 md:pt-12 md:pb-24 lg:pt-16 lg:pb-32">
           <div className="container-narrow">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Contact Information */}
