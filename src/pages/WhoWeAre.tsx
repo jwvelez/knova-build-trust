@@ -70,13 +70,15 @@ const WhoWeAre = () => {
 
         {/* Overview */}
         <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xl md:text-2xl font-semibold text-foreground mb-6" style={{ lineHeight: '1.7' }}>
-              KNova Contractors is a Certified Minority Business Enterprise (MBE), licensed and insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
-            </p>
-            <p className="text-xl md:text-2xl text-foreground" style={{ lineHeight: '1.7' }}>
-              We also partner with property management companies to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing. We keep schedules tight and deliver quality results on budget and on schedule.
-            </p>
+          <div className="max-w-[1240px] mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+              <p className="text-xl md:text-2xl font-semibold text-foreground" style={{ lineHeight: '1.7' }}>
+                KNova Contractors is a Certified Minority Business Enterprise (MBE), licensed and insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
+              </p>
+              <p className="text-xl md:text-2xl text-foreground" style={{ lineHeight: '1.7' }}>
+                We also partner with property management companies to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing. We keep schedules tight and deliver quality results on budget and on schedule.
+              </p>
+            </div>
           </div>
         </section>
 
