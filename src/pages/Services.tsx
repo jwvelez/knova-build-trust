@@ -101,8 +101,8 @@ const Services = () => {
             />
             <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
             
-            <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
+            <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4 md:px-0">
+              <div className="w-full max-w-4xl md:ml-[calc((100vw-1280px)/2+48px)]" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-10">
                   <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground leading-[1.1]">
@@ -248,7 +248,7 @@ const Services = () => {
               
               <h2 className="text-2xl md:text-3xl mb-6 text-accent">Property and Facility Management</h2>
               
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl leading-relaxed">
+              <p className="text-xl md:text-[23px] text-muted-foreground mb-8 max-w-2xl leading-relaxed">
                 Scheduled maintenance and rapid response to keep operations smooth.
               </p>
               

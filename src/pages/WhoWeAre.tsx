@@ -50,8 +50,8 @@ const WhoWeAre = () => {
               loading="lazy"
             />
             <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
-            <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.95)' }}>
+            <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4 md:px-0">
+              <div className="w-full max-w-4xl md:ml-[calc((100vw-1280px)/2+48px)]" style={{ backgroundColor: 'rgba(250, 250, 250, 0.95)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
                   <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">About us</p>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
