@@ -26,7 +26,7 @@ const Projects = () => {
 
   const featuredProjects = [
     {
-      title: "Commercial Office — Manhattan",
+      title: "Commercial Office: Manhattan",
       year: "2025",
       category: "commercial",
       size: "7,800 sf",
@@ -41,7 +41,7 @@ const Projects = () => {
       image: projectOffice,
     },
     {
-      title: "Community Health Centers Expansion — Bronx",
+      title: "Community Health Centers Expansion: Bronx",
       year: "2022–2023",
       category: "healthcare",
       size: "12,000 sf and 13,800 sf",
@@ -56,7 +56,7 @@ const Projects = () => {
       image: projectHealth,
     },
     {
-      title: "Day Care Centers Expansion — Bronx & Brooklyn",
+      title: "Day Care Centers Expansion: Bronx & Brooklyn",
       year: "2012–2013",
       category: "education",
       size: "15,000 sf each",
@@ -71,14 +71,14 @@ const Projects = () => {
       image: projectDaycare,
     },
     {
-      title: "Supermarket Buildouts — Bronx & Brooklyn",
+      title: "Supermarket Buildouts: Bronx & Brooklyn",
       year: "2012–2013",
       category: "restaurants-retail",
       size: "Various",
       details: [
-        "White Plains Rd, Bronx — 13,800 sf with co-located day care (TDC $4M, 2013)",
-        "210 Clarkson Ave, Brooklyn — 14,000 sf with day care (TDC $4M, 2013)",
-        "257 Drakes Ave, Brooklyn — 6,170 sf supermarket (TDC $600K, 2012)",
+        "White Plains Rd, Bronx: 13,800 sf with co-located day care (TDC $4M, 2013)",
+        "210 Clarkson Ave, Brooklyn: 14,000 sf with day care (TDC $4M, 2013)",
+        "257 Drakes Ave, Brooklyn: 6,170 sf supermarket (TDC $600K, 2012)",
         "GC + MEP delivery: plumbing, sprinklers, HVAC, and electrical",
         "Clean inspections and tenant-ready turnover"
       ],
@@ -88,7 +88,7 @@ const Projects = () => {
 
   const additionalProjects = [
     {
-      title: "Mixed-Use — 495 Flatbush Ave, Brooklyn",
+      title: "Mixed-Use: 495 Flatbush Ave, Brooklyn",
       year: "2022",
       category: "mixed-use",
       size: "118,000 sf",
@@ -100,7 +100,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Mixed-Use — 774 Broadway, Brooklyn",
+      title: "Mixed-Use: 774 Broadway, Brooklyn",
       year: "2025",
       category: "mixed-use",
       size: "56,357 sf",
@@ -112,7 +112,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Restaurant Rehabilitation — 2458 Webster Ave, Bronx",
+      title: "Restaurant Rehabilitation: 2458 Webster Ave, Bronx",
       year: "2017",
       category: "restaurants-retail",
       size: "16,000 sf",
@@ -123,7 +123,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Restaurant Renovation — 10 Reed St, Manhattan",
+      title: "Restaurant Renovation: 10 Reed St, Manhattan",
       year: "2007",
       category: "restaurants-retail",
       size: "8,000 sf",
@@ -134,7 +134,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Restaurant Renovation — 3795 Tenth Ave, Manhattan",
+      title: "Restaurant Renovation: 3795 Tenth Ave, Manhattan",
       year: "2016",
       category: "restaurants-retail",
       size: "9,800 sf",
@@ -145,7 +145,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Juvenile Center Buildout — 3030 Bruner Ave, Bronx",
+      title: "Juvenile Center Buildout: 3030 Bruner Ave, Bronx",
       year: "2017",
       category: "education",
       size: "9,891 sf",
@@ -156,7 +156,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Juvenile Center Buildout — 133-23 127th St, Ozone Park, Queens",
+      title: "Juvenile Center Buildout: 133-23 127th St, Ozone Park, Queens",
       year: "—",
       category: "education",
       size: "10,294 sf",
@@ -167,7 +167,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Mixed-Use Renovation — 276 Hudson St, Hackensack, NJ",
+      title: "Mixed-Use Renovation: 276 Hudson St, Hackensack, NJ",
       year: "2019",
       category: "mixed-use",
       tdc: "$500K",
@@ -177,7 +177,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Residential Rehabilitation — 983 Amsterdam Ave, Manhattan",
+      title: "Residential Rehabilitation: 983 Amsterdam Ave, Manhattan",
       year: "2019",
       category: "housing",
       size: "10 units",
@@ -188,7 +188,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Residential + Commercial Rehabilitation — 1196 Metropolitan Ave, Brooklyn",
+      title: "Residential + Commercial Rehabilitation: 1196 Metropolitan Ave, Brooklyn",
       year: "2013",
       category: "housing",
       size: "6 units + 2 commercial floors",
