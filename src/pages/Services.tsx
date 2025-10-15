@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire } from "lucide-react";
 import heroHvac from "@/assets/hero-hvac.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
-import consultingMeeting from "@/assets/consulting-meeting.jpg";
+import consultingTeam from "@/assets/consulting-team.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -229,7 +229,7 @@ const Services = () => {
               {/* Right column - image */}
               <div className="hidden md:block">
                 <img
-                  src={consultingMeeting}
+                  src={consultingTeam}
                   alt="Construction consulting and permitting services"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -262,7 +262,7 @@ const Services = () => {
         {/* CTA Section */}
         <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
+            <h2 className="text-3xl md:text-4xl mb-8 text-primary mx-auto">Ready to start your project?</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link to="/contact">Contact Us</Link>

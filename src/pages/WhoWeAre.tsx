@@ -236,7 +236,7 @@ const WhoWeAre = () => {
         {/* CTA Section */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
+            <h2 className="text-3xl md:text-4xl mb-8 text-primary mx-auto">Ready to start your project?</h2>
             <Button size="lg" asChild>
               <Link to="/contact">Contact Us Today</Link>
             </Button>
