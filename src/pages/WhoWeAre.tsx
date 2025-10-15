@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart } from "lucide-react";
+import { Heart, Users, Landmark } from "lucide-react";
 import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
 const WhoWeAre = () => {
@@ -72,7 +72,7 @@ const WhoWeAre = () => {
             <p className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed mb-6">
               KNova Contractors is a Certified Minority Business Enterprise (MBE), licensed and insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
             </p>
-            <p className="text-xl md:text-2xl font-semibold text-foreground leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground leading-relaxed">
               We also partner with property management companies to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing. We keep schedules tight and deliver quality results on budget and on schedule.
             </p>
           </div>
@@ -194,6 +194,9 @@ const WhoWeAre = () => {
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
               {/* Consultants */}
               <div>
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                  <Users className="h-6 w-6 text-accent" />
+                </div>
                 <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">CONSULTANTS & SUBJECT EXPERTS</p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   We collaborate with experienced consultants and subject-matter experts to accelerate approvals, resolve complex site conditions, and deliver compliant, predictable outcomes.
@@ -202,6 +205,9 @@ const WhoWeAre = () => {
 
               {/* Social Impact */}
               <div>
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                  <Landmark className="h-6 w-6 text-accent" />
+                </div>
                 <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">SOCIAL IMPACT</p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   As a family-owned company rooted in humble beginnings, our faith and values guide our work. In 2018, we donated land to a local church in the Dominican Republic to enable a new temple and community center. As we grow, we reinvest in the communities we serve—because building better places starts with investing in people.

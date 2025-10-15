@@ -129,9 +129,9 @@ const Services = () => {
         {/* Blade 1: General Construction */}
         <section className="pt-8 pb-12 md:pt-10 md:pb-[72px] px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
-            <div className="text-center mb-8">
+            <div className="mb-8">
               <h2 className="text-2xl md:text-3xl mb-3 text-accent">General Construction</h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base text-muted-foreground max-w-3xl">
                 We deliver ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities with end-to-end quality control.
               </p>
             </div>
@@ -193,7 +193,7 @@ const Services = () => {
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl mb-3 text-accent">Consulting and Permitting</h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base text-muted-foreground max-w-3xl mx-auto">
                 We provide design coordination, engineering oversight, permits, and strategic violation resolution to keep your project compliant and on schedule.
               </p>
             </div>
@@ -247,7 +247,7 @@ const Services = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 md:py-20 px-6 md:px-8 bg-background">
+        <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
             <div className="flex flex-wrap gap-4 justify-center">
