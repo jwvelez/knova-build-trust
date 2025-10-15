@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
@@ -6,16 +6,7 @@ import knovaLogo from "@/assets/knova.svg";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navItems = [
     { label: "Who We Are", path: "/who-we-are" },
@@ -27,7 +18,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className={`sticky top-0 z-50 bg-background border-b border-border transition-shadow duration-200 ${scrolled ? 'shadow-md' : ''}`}>
+    <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container-narrow">
         <div className="flex items-center justify-between py-[12px] md:py-[15px]">
           {/* Logo */}
@@ -57,7 +48,7 @@ const Header = () => {
               <span>(201) 525-5365</span>
             </a>
             <Button asChild size="lg">
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">Request a Bid</Link>
             </Button>
           </div>
 
@@ -80,7 +71,7 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-[19px] font-medium py-2 transition-colors ${
+                className={`text-[16px] font-medium py-2 transition-colors ${
                   isActive(item.path) ? "text-primary" : "text-muted-foreground"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -89,12 +80,12 @@ const Header = () => {
               </Link>
             ))}
             <div className="pt-4 border-t border-border flex flex-col gap-3">
-              <Button asChild className="w-full text-[19px]">
+              <Button asChild className="w-full">
                 <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                   Contact Us Today
                 </Link>
               </Button>
-              <Button asChild variant="ghost" className="w-full text-[19px]">
+              <Button asChild variant="outline" className="w-full border-2 border-primary text-primary bg-white hover:bg-primary hover:text-white">
                 <a href="tel:2015255365">
                   <Phone className="h-4 w-4" />
                   <span>(201) 525-5365</span>

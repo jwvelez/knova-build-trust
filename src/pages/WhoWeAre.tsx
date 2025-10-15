@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MobileFooterCTA from "@/components/MobileFooterCTA";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Target, Users as UsersIcon, Shield, Award } from "lucide-react";
+import { Heart } from "lucide-react";
 import fullWidthWhoWeAre from "@/assets/full-width-who-we-are.jpg";
 
 const WhoWeAre = () => {
@@ -19,35 +18,30 @@ const WhoWeAre = () => {
 
   const values = [
     {
-      icon: UsersIcon,
       title: "People",
       desc: "Build environments where communities thrive",
     },
     {
-      icon: Target,
       title: "Quality",
       desc: "Pursue excellence with continuous improvement",
     },
     {
-      icon: Shield,
       title: "Integrity",
       desc: "Do the right thing and own the outcome",
     },
     {
-      icon: Award,
       title: "Stewardship",
       desc: "Exceed expectations to create lasting value",
     },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col pb-20 md:pb-0">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <MobileFooterCTA />
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative">
+        <section className="py-0 relative">
           <div className="w-full relative">
             <img
               src={fullWidthWhoWeAre}
@@ -55,13 +49,15 @@ const WhoWeAre = () => {
               className="w-full h-[420px] md:h-[600px] object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-primary/80"></div>
+            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
             <div className="absolute inset-0 flex items-center justify-center px-4">
-              <div className="w-full max-w-4xl bg-white/95 rounded-2xl">
+              <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
                 <div className="p-8 md:p-12 lg:p-16">
-                  <p className="overline">ABOUT US</p>
-                  <h1 className="mb-4">Building Trust. Delivering Quality.</h1>
-                  <p className="text-lg text-muted-foreground max-w-2xl">
+                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">About us</p>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground">
+                    Building Trust. Delivering Quality.
+                  </h1>
+                  <p className="text-base text-muted-foreground max-w-2xl">
                     MBE-certified general contractor with deep MEP expertise serving New York and New Jersey
                   </p>
                 </div>
@@ -71,11 +67,18 @@ const WhoWeAre = () => {
         </section>
 
         {/* Overview */}
-        <section className="section-padding">
+        <section className="section-padding bg-[#1E3480]">
           <div className="container-narrow max-w-4xl">
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p>
-                KNova Contractors is a Certified Minority Business Enterprise (MBE), licensed and insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients. We partner with property management teams to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing. We keep schedules tight and deliver quality results on budget and on schedule.
+            <h2 className="text-2xl md:text-3xl mb-6 text-white">Overview</h2>
+            <div className="prose prose-lg max-w-none space-y-4 leading-relaxed">
+              <p className="text-lg text-white">
+                KNova Contractors is a Certified Minority Business Enterprise and a licensed, insured general contractor serving New York and New Jersey. We deliver code-compliant, high-value projects for nonprofits, government agencies, housing developers, and commercial, industrial, and private residential clients.
+              </p>
+              <p className="text-lg text-white">
+                We partner with property management teams to provide facility management, preventive maintenance, and 24/7 reactive service. Our GC-led delivery is strengthened by advanced MEP capabilities and proven acumen in HVAC, electrical, and plumbing.
+              </p>
+              <p className="text-lg text-white">
+                We keep schedules tight and deliver quality results on budget and on schedule.
               </p>
             </div>
           </div>
@@ -84,13 +87,13 @@ const WhoWeAre = () => {
         {/* Our Story */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow max-w-4xl">
-            <p className="overline">OUR STORY</p>
-            <h2 className="mb-6">Building since 2009 with the same values</h2>
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p>
+            <h2 className="text-2xl md:text-3xl mb-2">Our Story</h2>
+            <p className="text-lg text-muted-foreground mb-6">Building since 2009 with the same values</p>
+            <div className="space-y-4 leading-relaxed">
+              <p className="text-lg text-[#1E3480]">
                 Founded in 2009 with a small crew of electricians, carpenters, and painters. Today we build, renovate, and manage properties across New York and New Jersey.
               </p>
-              <p className="font-semibold">
+              <p className="font-medium text-[#1E3480] text-lg">
                 The mindset from day one still applies: build well, operate better, and treat clients like long-term partners.
               </p>
             </div>
@@ -99,21 +102,20 @@ const WhoWeAre = () => {
 
         {/* Mission & Values */}
         <section className="section-padding">
-          <div className="container-narrow">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <p className="overline">MISSION & VALUES</p>
-              <h2 className="mb-4">What drives our work</h2>
-              <p className="text-xl font-semibold text-foreground mb-8">
+          <div className="container-narrow max-w-6xl">
+            <div className="mb-12">
+              <h2 className="text-2xl md:text-3xl mb-2">Mission & Values</h2>
+              <p className="text-lg text-muted-foreground mb-6">What drives our work</p>
+              <p className="text-xl md:text-2xl font-semibold text-primary mb-8">
                 Mission: Build trusted spaces that perform
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, i) => (
-                <Card key={i} className="p-6 text-center border-2 hover:border-accent transition-all duration-200 rounded-2xl">
-                  <value.icon className="h-10 w-10 text-accent mx-auto mb-4" strokeWidth={1.5} />
-                  <h4 className="font-semibold mb-2">{value.title}</h4>
-                  <p className="text-sm text-muted-foreground">{value.desc}</p>
+                <Card key={i} className="p-6 border-border">
+                  <h3 className="font-semibold text-xl mb-3">{value.title}</h3>
+                  <p className="text-base text-muted-foreground">{value.desc}</p>
                 </Card>
               ))}
             </div>
@@ -122,46 +124,69 @@ const WhoWeAre = () => {
 
         {/* Leadership */}
         <section className="section-padding bg-secondary/30">
-          <div className="container-narrow">
-            <div className="max-w-3xl mx-auto mb-16">
-              <p className="overline">LEADERSHIP TEAM</p>
-              <h2 className="mb-4">Accountability at the top, reliability in the field</h2>
-            </div>
+          <div className="container-narrow max-w-6xl">
+            <h2 className="text-2xl md:text-3xl mb-2">Leadership</h2>
+            <p className="text-lg text-muted-foreground mb-12">Experience you can trust</p>
 
-            <div className="grid lg:grid-cols-2 gap-8 mb-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Keily J. Nova */}
-              <Card className="p-8 rounded-2xl border-2">
-                <h3 className="mb-2">Keily J. Nova</h3>
-                <p className="text-accent font-semibold mb-4">Founder & President</p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Keily brings 20+ years of construction and MEP leadership, guiding projects from RFP through closeout with hands-on oversight that ensures quality, compliance, and predictable outcomes.
-                </p>
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold mb-1">Keily J. Nova</h3>
+                  <p className="text-base text-accent font-medium">Founder and President</p>
+                </div>
+                <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+                  <p>
+                    Keily brings 20+ years in construction with deep MEP expertise that anchors KNova's delivery. Licensed in New York and New Jersey, he leads field operations with a focus on safety, quality, and performance.
+                  </p>
+                  <p>
+                    His background spans high-efficiency HVAC design and retrofits including heat pumps and ventilation, electrical power distribution and lighting controls, and plumbing and piping for domestic water, sanitary, and gas.
+                  </p>
+                  <p>
+                    Teams rely on his clear direction, precise coordination, and clean handoffs. He has managed ground-up builds and full gut renovations across residential, commercial, institutional, and medical facilities.
+                  </p>
+                  <p>
+                    Keily is known for disciplined scheduling, code-first execution, and tenant-safe phasing that reduces downtime. He sets standards on site, communicates issues early, and drives projects to close with minimal punch lists and predictable outcomes.
+                  </p>
+                </div>
               </Card>
 
               {/* Lymaris Albors */}
-              <Card className="p-8 rounded-2xl border-2">
-                <h3 className="mb-2">Lymaris Albors</h3>
-                <p className="text-accent font-semibold mb-4">Co-Founder</p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Lymaris brings 20+ years managing complex commercial and residential projects with expertise across housing, education, healthcare, and multi-purpose art spaces.
-                </p>
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-semibold mb-1">Lymaris Albors</h3>
+                  <p className="text-base text-accent font-medium">Co-Founder</p>
+                </div>
+                <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+                  <p>
+                    Lymaris brings 20+ years of nonprofit executive leadership to KNova, guiding growth with a focus on quality, compliance, and sustainability. Her expertise in operations and strategic partnerships helps deliver projects with integrity and accountability.
+                  </p>
+                  <p>
+                    Formerly CEO of one of the nation's largest Hispanic-led nonprofits, she oversaw a multi-state network with $650M in revenue and $1.3B in assets.
+                  </p>
+                  <p>
+                    She also brings a strong foundation in construction, affordable, supportive, and transitional housing development, property and asset management, and capital expansions for primary and behavioral health care and community facilities, including nursing homes, senior centers, and multi-purpose art spaces.
+                  </p>
+                </div>
               </Card>
             </div>
 
             {/* Office & Field Assistance */}
-            <Card className="p-8 bg-accent/5 border-2 border-accent/20 rounded-2xl max-w-2xl mx-auto">
+            <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10">
               <div className="flex items-start gap-4">
-                <Heart className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <Heart className="h-6 w-6 text-accent" />
+                </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Office & Field Assistance</h4>
-                  <p className="text-muted-foreground mb-3">
-                    <strong>Luna and Lady</strong> — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.
+                  <h3 className="text-xl font-semibold mb-2">Office & Field Assistance</h3>
+                  <p className="text-base text-muted-foreground mb-4">
+                    Luna and Lady — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.
                   </p>
-                  <a 
-                    href="https://lunaandladycleaningservices.com" 
-                    target="_blank" 
+                  <a
+                    href="#"
+                    className="text-base text-accent hover:underline inline-flex items-center gap-2 font-medium"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent hover:underline font-medium"
                   >
                     Visit Luna and Lady Cleaning Services →
                   </a>
@@ -174,17 +199,26 @@ const WhoWeAre = () => {
         {/* Certifications */}
         <section className="section-padding">
           <div className="container-narrow max-w-4xl">
-            <h3 className="text-center mb-8 font-semibold">Certifications</h3>
-            <div className="flex flex-wrap justify-center gap-3">
+            <h2 className="text-2xl md:text-3xl mb-2">Certifications</h2>
+            <p className="text-base text-muted-foreground mb-8">Licensed and compliant across all work</p>
+            <div className="grid md:grid-cols-2 gap-4">
               {certifications.map((cert, i) => (
-                <span
-                  key={i}
-                  className="px-5 py-2.5 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20"
-                >
-                  {cert}
-                </span>
+                <div key={i} className="flex items-center gap-3 p-4 bg-secondary/30 rounded-lg">
+                  <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
+                  <span className="text-sm font-medium">{cert}</span>
+                </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="section-padding bg-secondary/30">
+          <div className="container-narrow text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
+            <Button size="lg" asChild>
+              <Link to="/contact">Contact Us Today</Link>
+            </Button>
           </div>
         </section>
       </main>

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MobileFooterCTA from "@/components/MobileFooterCTA";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import projectOffice from "@/assets/project-office.jpg";
@@ -9,6 +8,9 @@ import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
 
 const Projects = () => {
+
+  
+
   const projects = [
     {
       title: "Commercial Office — Manhattan",
@@ -22,6 +24,21 @@ const Projects = () => {
         "Complete electrical system upgrade",
         "Tenant-ready, flexible workspace design",
         "Fully compliant with NYC DOB requirements"
+      ],
+      image: projectOffice,
+    },
+    {
+      title: "Residential Apartment — Manhattan",
+      year: "2024",
+      category: "Housing",
+      size: "1,200 sf",
+      details: [
+        "Full gut renovation from studs",
+        "New plumbing throughout with upgraded fixtures",
+        "High-efficiency HVAC installation",
+        "Complete electrical rewiring and panel upgrade",
+        "Delivered two weeks ahead of schedule",
+        "Improved comfort and energy efficiency"
       ],
       image: projectOffice,
     },
@@ -55,86 +72,71 @@ const Projects = () => {
       ],
       image: projectDaycare,
     },
-    {
-      title: "Supermarket Buildouts — Bronx & Brooklyn",
-      year: "2012–2013",
-      category: "Restaurants & Retail",
-      size: "Various",
-      details: [
-        "White Plains Rd (13,800 sf with co-located day care)",
-        "210 Clarkson Ave (14,000 sf with day care)",
-        "257 Drakes Ave (6,170 sf)",
-        "GC + MEP delivery including plumbing, sprinklers, HVAC, and electrical",
-        "Clean inspections and tenant-ready turnover"
-      ],
-      image: projectOffice,
-    },
   ];
 
+
   return (
-    <div className="min-h-screen flex flex-col pb-20 md:pb-0">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <MobileFooterCTA />
 
       <main className="flex-1">
         {/* Hero */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow">
-            <p className="overline">SELECTED WORK</p>
-            <h1 className="mb-4">Results over rhetoric</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Recent work showcasing our commitment to quality and performance across sectors
-            </p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Selected work</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
+              Results over rhetoric
+            </h1>
           </div>
         </section>
 
-        {/* Projects List */}
+        {/* Projects Grid */}
         <section className="section-padding">
           <div className="container-narrow">
+            <h2 className="text-2xl md:text-3xl mb-2">
+              Featured Projects
+            </h2>
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+              Recent work showcasing our commitment to quality and performance across diverse sectors
+            </p>
+            
             <div className="space-y-16">
-              {projects.map((project, i) => (
-                <Card 
-                  key={i} 
-                  className="overflow-hidden border-2 rounded-2xl hover:border-accent hover:shadow-lg transition-all duration-200 cursor-pointer"
-                >
-                  <div className="grid md:grid-cols-2 gap-0">
-                    {/* Image */}
-                    <div className="relative overflow-hidden aspect-video md:aspect-auto">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="p-8 lg:p-12">
-                      <div className="mb-4">
-                        <span className="px-4 py-1.5 bg-accent/10 text-accent text-sm font-semibold rounded-full border border-accent/20">
+            {projects.map((project, i) => (
+              <div key={i} className="border-b border-accent/20 pb-16 last:border-b-0 last:pb-0">
+                <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                  <div className="relative overflow-hidden rounded-lg group">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full">
                           {project.category}
                         </span>
                       </div>
-                      
-                      <h3 className="mb-3">{project.title}</h3>
-                      
-                      <div className="flex items-center gap-2 text-accent font-semibold mb-6">
-                        <span>{project.year}</span>
-                        <span>•</span>
-                        <span>{project.size}</span>
+                      <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="text-accent font-medium">{project.year}</span>
+                        <span className="text-accent">•</span>
+                        <span className="text-accent font-medium">{project.size}</span>
                       </div>
-                      
-                      <ul className="space-y-3">
-                        {project.details.map((detail, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-2.5 flex-shrink-0" />
-                            <span className="text-muted-foreground leading-relaxed">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
+                    <ul className="space-y-3">
+                      {project.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-base">
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                          <span className="text-muted-foreground leading-relaxed">{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </Card>
-              ))}
+                </div>
+              </div>
+            ))}
             </div>
           </div>
         </section>
@@ -142,9 +144,9 @@ const Projects = () => {
         {/* CTA Section */}
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow text-center max-w-3xl mx-auto">
-            <h2 className="mb-8">Ready to start your project?</h2>
+            <h2 className="text-3xl md:text-4xl mb-8 text-primary">Ready to start your project?</h2>
             <Button size="lg" asChild>
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">Contact Us Today</Link>
             </Button>
           </div>
         </section>
