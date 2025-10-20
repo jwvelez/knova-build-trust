@@ -147,7 +147,7 @@ const Services = () => {
             
             <div className="grid md:grid-cols-3 gap-8 md:gap-12">
               {/* General Construction */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center bg-[#1a2461] rounded-lg p-8">
                 <div className="w-20 h-20 mb-4 flex items-center justify-center">
                   <Building2 className="h-12 w-12 text-white stroke-[1.5]" />
                 </div>
@@ -162,7 +162,7 @@ const Services = () => {
               </div>
 
               {/* Consulting & Permitting */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center bg-[#1a2461] rounded-lg p-8">
                 <div className="w-20 h-20 mb-4 flex items-center justify-center">
                   <Cable className="h-12 w-12 text-white stroke-[1.5]" />
                 </div>
@@ -177,7 +177,7 @@ const Services = () => {
               </div>
 
               {/* Facility Maintenance */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center bg-[#1a2461] rounded-lg p-8">
                 <div className="w-20 h-20 mb-4 flex items-center justify-center">
                   <Wrench className="h-12 w-12 text-white stroke-[1.5]" />
                 </div>
@@ -310,10 +310,10 @@ const Services = () => {
           <div className="max-w-[1240px] mx-auto">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">WHAT WE DO</p>
             <h2 className="text-2xl md:text-3xl mb-3 text-foreground">Facility Maintenance & Emergency Response</h2>
-            <p className="text-base text-muted-foreground mb-6">
+            <p className="text-[17px] text-muted-foreground mb-6">
               Scheduled preventive maintenance and rapid response to keep operations smooth.
             </p>
-            <p className="text-base text-foreground mb-8 max-w-3xl">
+            <p className="text-[17px] text-foreground mb-8 max-w-3xl">
               KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance. If you are a property owner, landlord, facility manager, or co-op board member who needs a trusted vendor, we tailor solutions to your building and priorities. Our approach saves time, controls costs, and simplifies operations.
             </p>
 
@@ -321,8 +321,8 @@ const Services = () => {
             <div className="hidden md:block">
               <Tabs defaultValue="preventive" className="w-full">
                 <TabsList className="grid w-full max-w-2xl grid-cols-2 mb-8">
-                  <TabsTrigger value="preventive">Preventive Maintenance</TabsTrigger>
-                  <TabsTrigger value="reactive">Reactive Maintenance Services</TabsTrigger>
+                  <TabsTrigger value="preventive" className="text-[17px]">Preventive Maintenance</TabsTrigger>
+                  <TabsTrigger value="reactive" className="text-[17px]">Reactive Maintenance Services</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="preventive" className="space-y-6">
@@ -495,73 +495,77 @@ const Services = () => {
                   
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Scenarios</h3>
-                    <Accordion type="multiple" className="w-full space-y-3">
-                      <AccordionItem value="hvac-failure" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">HVAC failure</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We repair or replace heating and cooling equipment to restore safe, comfortable conditions during peak weather.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <Accordion type="multiple" className="w-full space-y-3">
+                        <AccordionItem value="hvac-failure" className="border border-border rounded-lg px-4 bg-background">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <h4 className="font-semibold text-base text-left">HVAC failure</h4>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-4">
+                            <p className="text-[15px] text-muted-foreground leading-relaxed">
+                              We repair or replace heating and cooling equipment to restore safe, comfortable conditions during peak weather.
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                        
+                        <AccordionItem value="plumbing-issues" className="border border-border rounded-lg px-4 bg-background">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <h4 className="font-semibold text-base text-left">Plumbing issues</h4>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-4">
+                            <p className="text-[15px] text-muted-foreground leading-relaxed">
+                              We respond to burst pipes, major leaks, and urgent plumbing failures to limit water damage.
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                        
+                        <AccordionItem value="power-outages" className="border border-border rounded-lg px-4 bg-background">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <h4 className="font-semibold text-base text-left">Power outages</h4>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-4">
+                            <p className="text-[15px] text-muted-foreground leading-relaxed">
+                              We troubleshoot electrical failures and coordinate generator support to restore power.
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
                       
-                      <AccordionItem value="plumbing-issues" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Plumbing issues</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We respond to burst pipes, major leaks, and urgent plumbing failures to limit water damage.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="power-outages" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Power outages</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We troubleshoot electrical failures and coordinate generator support to restore power.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="structural-damage" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Structural damage</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We address storm and impact damage and coordinate safe, code-compliant repairs.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="fire-safety" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Fire and life safety</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We service affected fire alarms and sprinkler systems to confirm proper operation.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="disaster-response" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Disaster response</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We provide emergency services and site cleanup as needed, including snow removal.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
+                      <Accordion type="multiple" className="w-full space-y-3">
+                        <AccordionItem value="structural-damage" className="border border-border rounded-lg px-4 bg-background">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <h4 className="font-semibold text-base text-left">Structural damage</h4>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-4">
+                            <p className="text-[15px] text-muted-foreground leading-relaxed">
+                              We address storm and impact damage and coordinate safe, code-compliant repairs.
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                        
+                        <AccordionItem value="fire-safety" className="border border-border rounded-lg px-4 bg-background">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <h4 className="font-semibold text-base text-left">Fire and life safety</h4>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-4">
+                            <p className="text-[15px] text-muted-foreground leading-relaxed">
+                              We service affected fire alarms and sprinkler systems to confirm proper operation.
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                        
+                        <AccordionItem value="disaster-response" className="border border-border rounded-lg px-4 bg-background">
+                          <AccordionTrigger className="hover:no-underline py-4">
+                            <h4 className="font-semibold text-base text-left">Disaster response</h4>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-4">
+                            <p className="text-[15px] text-muted-foreground leading-relaxed">
+                              We provide emergency services and site cleanup as needed, including snow removal.
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    </div>
                   </div>
                 </TabsContent>
               </Tabs>
