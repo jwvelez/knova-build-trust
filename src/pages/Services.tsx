@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire } from "lucide-react";
+import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire, DollarSign, Clock, Leaf, Shield, Calendar, Lightbulb, Plug, Eye, Home, ArrowUp, LifeBuoy, AlertTriangle, CloudRain, Siren } from "lucide-react";
 import heroHvac from "@/assets/hero-hvac.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
 import consultingTeam from "@/assets/consulting-team.jpg";
@@ -248,333 +248,246 @@ const Services = () => {
         {/* Blade 3: Facility Maintenance & Emergency Response */}
         <section id="facility-maintenance" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
-            <div className="text-center mb-10">
-              
-              <h2 className="text-2xl md:text-3xl mb-4 mx-auto text-[#428ebd]">Facility Maintenance & Emergency Response</h2>
-              <p className="text-muted-foreground mb-6 max-w-3xl mx-auto text-lg font-medium">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl mb-6 mx-auto text-[#428ebd]">Facility Maintenance & Emergency Response</h2>
+              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium">
                 Scheduled preventive maintenance and rapid response to keep operations smooth.
               </p>
-              <p className="text-[17px] text-foreground max-w-3xl mx-auto">
+              <p className="text-base text-foreground max-w-3xl mx-auto leading-relaxed">
                 KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance. If you are a property owner, landlord, facility manager, or co-op board member who needs a trusted vendor, we tailor solutions to your building and priorities. Our approach saves time, controls costs, and simplifies operations.
               </p>
             </div>
 
-            {/* Desktop: Tabs, Mobile: Accordions */}
-            <div className="hidden md:block">
-              <Tabs defaultValue="preventive" className="w-full">
-                <TabsList className="grid w-full max-w-2xl grid-cols-2 mb-10 mx-auto">
-                  <TabsTrigger value="preventive" className="text-[17px]">Preventive Maintenance</TabsTrigger>
-                  <TabsTrigger value="reactive" className="text-[17px]">Reactive Maintenance Services</TabsTrigger>
-                </TabsList>
-                
-                <TabsContent value="preventive" className="space-y-8">
-                  <p className="text-base text-foreground max-w-4xl">
-                    Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
-                  </p>
-                  
-                  <div className="grid md:grid-cols-2 gap-12">
-                    <div className="space-y-4">
-                      <h3 className="font-semibold text-2xl">Benefits</h3>
-                      <Accordion type="multiple" className="w-full space-y-3">
-                      <AccordionItem value="cost-savings" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Cost savings</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            Preventive maintenance turns unpredictable repair expenses into planned, budgetable work and reduces rush fees, overtime, and downtime costs.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="minimized-downtime" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Minimized downtime</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            A proactive plan lowers the chance of unexpected outages and service disruptions so operations continue without interruption.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="energy-efficiency" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Improved energy efficiency</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            Well-maintained equipment runs more efficiently, which reduces energy use and utility costs.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="enhanced-safety" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Enhanced safety</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            Routine inspections identify hazards early and support compliance with safety and regulatory requirements.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="resource-planning" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Better resource planning</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            Planned service allows accurate forecasting and scheduling across teams, parts, and budgets.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
+            {/* Preventive Maintenance Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4">Preventive Maintenance</h3>
+                <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+                  Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
+                </p>
+              </div>
+              
+              {/* Benefits */}
+              <div className="mb-16">
+                <h4 className="text-xl font-semibold text-center mb-10">Benefits</h4>
+                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <DollarSign className="h-10 w-10 text-accent stroke-[1.5]" />
                     </div>
-                    
-                    <div className="space-y-4">
-                      <h3 className="font-semibold text-2xl">Common Services</h3>
-                      <Accordion type="multiple" className="w-full space-y-3">
-                      <AccordionItem value="hvac-systems" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">HVAC systems</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We inspect, clean, and calibrate equipment to maintain performance, air quality, and efficiency.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="electrical-systems" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Electrical systems</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We service panels, wiring, and fixtures to prevent hazards and keep power stable.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="plumbing-systems" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Plumbing systems</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We clean and inspect drains and piping to prevent clogs, leaks, and water damage.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="lighting-systems" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Lighting systems</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We maintain interior and exterior lighting and support LED retrofits to improve safety and reduce costs.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="safety-equipment" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Safety equipment</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We check fire alarms, sprinkler systems, and extinguishers to keep life-safety systems ready.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="exterior-maintenance" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Exterior maintenance</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We inspect roofs, windows, facades, and lots to prevent water intrusion and exterior failures.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="vertical-transport" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">Vertical transportation</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We coordinate servicing of elevators and escalators for safe, reliable operation.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      
-                      <AccordionItem value="general-upkeep" className="border border-border rounded-lg px-4 bg-background">
-                        <AccordionTrigger className="hover:no-underline py-4">
-                          <h4 className="font-semibold text-base text-left">General upkeep</h4>
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-4">
-                          <p className="text-[15px] text-muted-foreground leading-relaxed">
-                            We perform scheduled walkthroughs of building assets including floors, walls, doors, and gates.
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
-                      </Accordion>
-                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Cost savings</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Preventive maintenance turns unpredictable repair expenses into planned, budgetable work and reduces rush fees, overtime, and downtime costs.
+                    </p>
                   </div>
                   
-                  <p className="text-base text-foreground">
-                    Our goal is to increase equipment lifespan and deliver safe, compliant buildings that support tenant well-being.
-                  </p>
-                </TabsContent>
-                
-                <TabsContent value="reactive" className="space-y-8">
-                  <p className="text-base text-foreground max-w-4xl">
-                    Reactive maintenance addresses failures after they occur. While it is not a primary strategy for critical assets, it is essential for emergencies and unplanned events. When issues arise, we mobilize fast.
-                  </p>
-                  
-                  <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Scenarios</h3>
-                    <div className="grid md:grid-cols-2 gap-12">
-                      <Accordion type="multiple" className="w-full space-y-3">
-                        <AccordionItem value="hvac-failure" className="border border-border rounded-lg px-4 bg-background">
-                          <AccordionTrigger className="hover:no-underline py-4">
-                            <h4 className="font-semibold text-base text-left">HVAC failure</h4>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-4">
-                            <p className="text-[15px] text-muted-foreground leading-relaxed">
-                              We repair or replace heating and cooling equipment to restore safe, comfortable conditions during peak weather.
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                        
-                        <AccordionItem value="plumbing-issues" className="border border-border rounded-lg px-4 bg-background">
-                          <AccordionTrigger className="hover:no-underline py-4">
-                            <h4 className="font-semibold text-base text-left">Plumbing issues</h4>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-4">
-                            <p className="text-[15px] text-muted-foreground leading-relaxed">
-                              We respond to burst pipes, major leaks, and urgent plumbing failures to limit water damage.
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                        
-                        <AccordionItem value="power-outages" className="border border-border rounded-lg px-4 bg-background">
-                          <AccordionTrigger className="hover:no-underline py-4">
-                            <h4 className="font-semibold text-base text-left">Power outages</h4>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-4">
-                            <p className="text-[15px] text-muted-foreground leading-relaxed">
-                              We troubleshoot electrical failures and coordinate generator support to restore power.
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                      
-                      <Accordion type="multiple" className="w-full space-y-3">
-                        <AccordionItem value="structural-damage" className="border border-border rounded-lg px-4 bg-background">
-                          <AccordionTrigger className="hover:no-underline py-4">
-                            <h4 className="font-semibold text-base text-left">Structural damage</h4>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-4">
-                            <p className="text-[15px] text-muted-foreground leading-relaxed">
-                              We address storm and impact damage and coordinate safe, code-compliant repairs.
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                        
-                        <AccordionItem value="fire-safety" className="border border-border rounded-lg px-4 bg-background">
-                          <AccordionTrigger className="hover:no-underline py-4">
-                            <h4 className="font-semibold text-base text-left">Fire and life safety</h4>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-4">
-                            <p className="text-[15px] text-muted-foreground leading-relaxed">
-                              We service affected fire alarms and sprinkler systems to confirm proper operation.
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                        
-                        <AccordionItem value="disaster-response" className="border border-border rounded-lg px-4 bg-background">
-                          <AccordionTrigger className="hover:no-underline py-4">
-                            <h4 className="font-semibold text-base text-left">Disaster response</h4>
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-4">
-                            <p className="text-[15px] text-muted-foreground leading-relaxed">
-                              We provide emergency services and site cleanup as needed, including snow removal.
-                            </p>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Clock className="h-10 w-10 text-accent stroke-[1.5]" />
                     </div>
+                    <h5 className="font-semibold text-lg mb-3">Minimized downtime</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      A proactive plan lowers the chance of unexpected outages and service disruptions so operations continue without interruption.
+                    </p>
                   </div>
-                </TabsContent>
-              </Tabs>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Leaf className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Improved energy efficiency</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Well-maintained equipment runs more efficiently, which reduces energy use and utility costs.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6 md:col-start-2">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Shield className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Enhanced safety</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Routine inspections identify hazards early and support compliance with safety and regulatory requirements.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Calendar className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Better resource planning</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Planned service allows accurate forecasting and scheduling across teams, parts, and budgets.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Common Services */}
+              <div>
+                <h4 className="text-xl font-semibold text-center mb-10">Common Services</h4>
+                <div className="grid md:grid-cols-4 gap-6">
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Wind className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">HVAC systems</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We inspect, clean, and calibrate equipment to maintain performance, air quality, and efficiency.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Plug className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">Electrical systems</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We service panels, wiring, and fixtures to prevent hazards and keep power stable.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Droplet className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">Plumbing systems</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We clean and inspect drains and piping to prevent clogs, leaks, and water damage.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Lightbulb className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">Lighting systems</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We maintain interior and exterior lighting and support LED retrofits to improve safety and reduce costs.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Eye className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">Safety equipment</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We check fire alarms, sprinkler systems, and extinguishers to keep life-safety systems ready.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Home className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">Exterior maintenance</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We inspect roofs, windows, facades, and lots to prevent water intrusion and exterior failures.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <ArrowUp className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">Vertical transportation</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We coordinate servicing of elevators and escalators for safe, reliable operation.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-5">
+                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
+                      <Wrench className="h-9 w-9 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-base mb-2">General upkeep</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We perform scheduled walkthroughs of building assets including floors, walls, doors, and gates.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-base text-center text-muted-foreground mt-12 max-w-3xl mx-auto">
+                Our goal is to increase equipment lifespan and deliver safe, compliant buildings that support tenant well-being.
+              </p>
             </div>
 
-            {/* Mobile: Accordions */}
-            <div className="md:hidden space-y-4">
-              <Accordion type="multiple" className="w-full space-y-3">
-                <AccordionItem value="preventive" className="border border-border rounded-lg px-4 bg-background">
-                  <AccordionTrigger className="hover:no-underline py-4">
-                    <h3 className="font-semibold text-lg text-left">Preventive Maintenance</h3>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-4 space-y-4">
-                    <p className="text-base text-foreground">
-                      Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
+            {/* Reactive Maintenance Section */}
+            <div className="mb-20">
+              <div className="text-center mb-12">
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4">Reactive Maintenance Services</h3>
+                <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+                  Reactive maintenance addresses failures after they occur. While it is not a primary strategy for critical assets, it is essential for emergencies and unplanned events. When issues arise, we mobilize fast.
+                </p>
+              </div>
+              
+              {/* Scenarios */}
+              <div>
+                <h4 className="text-xl font-semibold text-center mb-10">Scenarios</h4>
+                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Wind className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">HVAC failure</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We repair or replace heating and cooling equipment to restore safe, comfortable conditions during peak weather.
                     </p>
-                    
-                    <h4 className="font-semibold">Benefits</h4>
-                    <ul className="space-y-2 list-disc pl-5">
-                      <li><strong>Cost savings:</strong> Preventive maintenance turns unpredictable repair expenses into planned, budgetable work and reduces rush fees, overtime, and downtime costs.</li>
-                      <li><strong>Minimized downtime:</strong> A proactive plan lowers the chance of unexpected outages and service disruptions so operations continue without interruption.</li>
-                      <li><strong>Improved energy efficiency:</strong> Well-maintained equipment runs more efficiently, which reduces energy use and utility costs.</li>
-                      <li><strong>Enhanced safety:</strong> Routine inspections identify hazards early and support compliance with safety and regulatory requirements.</li>
-                      <li><strong>Better resource planning:</strong> Planned service allows accurate forecasting and scheduling across teams, parts, and budgets.</li>
-                    </ul>
-                    
-                    <h4 className="font-semibold mt-4">Common Services</h4>
-                    <ul className="space-y-2 list-disc pl-5">
-                      <li><strong>HVAC systems:</strong> We inspect, clean, and calibrate equipment to maintain performance, air quality, and efficiency.</li>
-                      <li><strong>Electrical systems:</strong> We service panels, wiring, and fixtures to prevent hazards and keep power stable.</li>
-                      <li><strong>Plumbing systems:</strong> We clean and inspect drains and piping to prevent clogs, leaks, and water damage.</li>
-                      <li><strong>Lighting systems:</strong> We maintain interior and exterior lighting and support LED retrofits to improve safety and reduce costs.</li>
-                      <li><strong>Safety equipment:</strong> We check fire alarms, sprinkler systems, and extinguishers to keep life-safety systems ready.</li>
-                      <li><strong>Exterior maintenance:</strong> We inspect roofs, windows, facades, and lots to prevent water intrusion and exterior failures.</li>
-                      <li><strong>Vertical transportation:</strong> We coordinate servicing of elevators and escalators for safe, reliable operation.</li>
-                      <li><strong>General upkeep:</strong> We perform scheduled walkthroughs of building assets including floors, walls, doors, and gates.</li>
-                    </ul>
-                    
-                    <p className="text-base text-foreground">
-                      Our goal is to increase equipment lifespan and deliver safe, compliant buildings that support tenant well-being.
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Droplet className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Plumbing issues</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We respond to burst pipes, major leaks, and urgent plumbing failures to limit water damage.
                     </p>
-                  </AccordionContent>
-                </AccordionItem>
-                
-                <AccordionItem value="reactive" className="border border-border rounded-lg px-4 bg-background">
-                  <AccordionTrigger className="hover:no-underline py-4">
-                    <h3 className="font-semibold text-lg text-left">Reactive Maintenance Services</h3>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-4 space-y-4">
-                    <p className="text-base text-foreground">
-                      Reactive maintenance addresses failures after they occur. While it is not a primary strategy for critical assets, it is essential for emergencies and unplanned events. When issues arise, we mobilize fast.
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Zap className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Power outages</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We troubleshoot electrical failures and coordinate generator support to restore power.
                     </p>
-                    
-                    <h4 className="font-semibold">Scenarios</h4>
-                    <ul className="space-y-2 list-disc pl-5">
-                      <li><strong>HVAC failure:</strong> We repair or replace heating and cooling equipment to restore safe, comfortable conditions during peak weather.</li>
-                      <li><strong>Plumbing issues:</strong> We respond to burst pipes, major leaks, and urgent plumbing failures to limit water damage.</li>
-                      <li><strong>Power outages:</strong> We troubleshoot electrical failures and coordinate generator support to restore power.</li>
-                      <li><strong>Structural damage:</strong> We address storm and impact damage and coordinate safe, code-compliant repairs.</li>
-                      <li><strong>Fire and life safety:</strong> We service affected fire alarms and sprinkler systems to confirm proper operation.</li>
-                      <li><strong>Disaster response:</strong> We provide emergency services and site cleanup as needed, including snow removal.</li>
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <AlertTriangle className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Structural damage</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We address storm and impact damage and coordinate safe, code-compliant repairs.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <Flame className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Fire and life safety</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We service affected fire alarms and sprinkler systems to confirm proper operation.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center text-center p-6">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <CloudRain className="h-10 w-10 text-accent stroke-[1.5]" />
+                    </div>
+                    <h5 className="font-semibold text-lg mb-3">Disaster response</h5>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      We provide emergency services and site cleanup as needed, including snow removal.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* CTA Box */}
