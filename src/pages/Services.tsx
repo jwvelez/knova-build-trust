@@ -6,19 +6,8 @@ import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire } fr
 import heroHvac from "@/assets/hero-hvac.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
 import consultingTeam from "@/assets/consulting-team.jpg";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const Services = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -32,97 +21,80 @@ const Services = () => {
       });
     }
   };
-
-  const generalConstructionServices = [
-    {
-      id: "hvac",
-      title: "Energy-Efficient HVAC Systems",
-      description: "We design, install, and service high-efficiency HVAC systems that support electrification and measurably improve indoor air quality.",
-      icon: Wind,
-    },
-    {
-      id: "electrical",
-      title: "Electrical and Low-Voltage Systems",
-      description: "We deliver modern power distribution, service upgrades, lighting and controls, and structured cabling sized for today's electrical loads.",
-      icon: Zap,
-    },
-    {
-      id: "plumbing",
-      title: "Plumbing and Piping Systems",
-      description: "We install and repair domestic water, sanitary, and gas systems to code while minimizing disruption to occupants.",
-      icon: Droplet,
-    },
-    {
-      id: "fire",
-      title: "Fire and Life Safety",
-      description: "We design, install, and maintain sprinkler systems that meet fire codes and protect people and assets.",
-      icon: Flame,
-    },
-    {
-      id: "cabling",
-      title: "Structured Cabling and Networks",
-      description: "We deploy structured cabling and network infrastructure that provides reliable connectivity for housing, offices, and clinics.",
-      icon: Cable,
-    },
-    {
-      id: "envelope",
-      title: "Building Envelope and Roofing",
-      description: "We install new roofing and perform targeted envelope repairs that extend service life and prevent water intrusion.",
-      icon: Building2,
-    },
-    {
-      id: "steel",
-      title: "Structural Steel and Metals",
-      description: "We fabricate and install structural steel, reinforcements, and secure gates with precision and durability.",
-      icon: Wrench,
-    },
-    {
-      id: "boilers",
-      title: "High-Efficiency Boiler Systems",
-      description: "We install and service hydronic and steam boilers with modern controls that deliver efficient, dependable heat.",
-      icon: Fire,
-    },
-  ];
-
-  const consultingServices = [
-    {
-      id: "consulting",
-      title: "Consulting",
-      description: "Expert building code consulting to preempt compliance issues and accelerate project timelines. We provide strategic guidance for all structures, from landmarked buildings to innovative new constructions.",
-      icon: Building2,
-    },
-    {
-      id: "approvals",
-      title: "Approvals & Permits",
-      description: "Seasoned project managers and permit expediters secure timely approvals, ensuring seamless progress for minor alterations or complex, long-term construction projects.",
-      icon: Cable,
-    },
-    {
-      id: "violations",
-      title: "Violations",
-      description: "Experienced violation resolution for issues from ECB, DOB, FDNY, and other agencies. We analyze and develop effective strategies to clear violations and get your project back on track.",
-      icon: Wrench,
-    },
-  ];
-
-  return (
-    <div className="min-h-screen flex flex-col pb-20 md:pb-0">
+  const generalConstructionServices = [{
+    id: "hvac",
+    title: "Energy-Efficient HVAC Systems",
+    description: "We design, install, and service high-efficiency HVAC systems that support electrification and measurably improve indoor air quality.",
+    icon: Wind
+  }, {
+    id: "electrical",
+    title: "Electrical and Low-Voltage Systems",
+    description: "We deliver modern power distribution, service upgrades, lighting and controls, and structured cabling sized for today's electrical loads.",
+    icon: Zap
+  }, {
+    id: "plumbing",
+    title: "Plumbing and Piping Systems",
+    description: "We install and repair domestic water, sanitary, and gas systems to code while minimizing disruption to occupants.",
+    icon: Droplet
+  }, {
+    id: "fire",
+    title: "Fire and Life Safety",
+    description: "We design, install, and maintain sprinkler systems that meet fire codes and protect people and assets.",
+    icon: Flame
+  }, {
+    id: "cabling",
+    title: "Structured Cabling and Networks",
+    description: "We deploy structured cabling and network infrastructure that provides reliable connectivity for housing, offices, and clinics.",
+    icon: Cable
+  }, {
+    id: "envelope",
+    title: "Building Envelope and Roofing",
+    description: "We install new roofing and perform targeted envelope repairs that extend service life and prevent water intrusion.",
+    icon: Building2
+  }, {
+    id: "steel",
+    title: "Structural Steel and Metals",
+    description: "We fabricate and install structural steel, reinforcements, and secure gates with precision and durability.",
+    icon: Wrench
+  }, {
+    id: "boilers",
+    title: "High-Efficiency Boiler Systems",
+    description: "We install and service hydronic and steam boilers with modern controls that deliver efficient, dependable heat.",
+    icon: Fire
+  }];
+  const consultingServices = [{
+    id: "consulting",
+    title: "Consulting",
+    description: "Expert building code consulting to preempt compliance issues and accelerate project timelines. We provide strategic guidance for all structures, from landmarked buildings to innovative new constructions.",
+    icon: Building2
+  }, {
+    id: "approvals",
+    title: "Approvals & Permits",
+    description: "Seasoned project managers and permit expediters secure timely approvals, ensuring seamless progress for minor alterations or complex, long-term construction projects.",
+    icon: Cable
+  }, {
+    id: "violations",
+    title: "Violations",
+    description: "Experienced violation resolution for issues from ECB, DOB, FDNY, and other agencies. We analyze and develop effective strategies to clear violations and get your project back on track.",
+    icon: Wrench
+  }];
+  return <div className="min-h-screen flex flex-col pb-20 md:pb-0">
       <Header />
 
       <main className="flex-1">
         {/* Hero with Image and Overlay */}
         <section className="relative">
           <div className="w-full relative">
-            <img
-              src={heroHvac}
-              alt="Construction and building systems"
-              className="w-full h-[420px] md:h-[600px] object-cover"
-            />
-            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
+            <img src={heroHvac} alt="Construction and building systems" className="w-full h-[420px] md:h-[600px] object-cover" />
+            <div className="absolute inset-0" style={{
+            backgroundColor: 'rgba(0, 2, 14, 0.6)'
+          }}></div>
             
             <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4 md:px-0">
               <div className="container-narrow w-full">
-                <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
+                <div className="w-full max-w-4xl" style={{
+                backgroundColor: 'rgba(250, 250, 250, 0.9)'
+              }}>
                 <div className="p-10">
                   <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground leading-[1.1]">
@@ -139,7 +111,9 @@ const Services = () => {
         </section>
 
         {/* Our Services Anchor Blade */}
-        <section className="py-12 md:py-16 px-6 md:px-8" style={{ backgroundColor: '#202d7c' }}>
+        <section className="py-12 md:py-16 px-6 md:px-8" style={{
+        backgroundColor: '#202d7c'
+      }}>
           <div className="max-w-[1240px] mx-auto text-center">
             <p className="uppercase text-sm tracking-wider text-white/80 font-medium mb-4">OUR SERVICES</p>
             <h2 className="text-3xl md:text-4xl mb-4 text-white mx-auto">Comprehensive construction and MEP expertise</h2>
@@ -152,11 +126,7 @@ const Services = () => {
                   <Building2 className="h-12 w-12 text-white stroke-[1.5]" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">General Construction</h3>
-                <Button 
-                  variant="outline" 
-                  className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]"
-                  onClick={() => scrollToSection('gc')}
-                >
+                <Button variant="outline" className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]" onClick={() => scrollToSection('gc')}>
                   Read More →
                 </Button>
               </div>
@@ -167,11 +137,7 @@ const Services = () => {
                   <Cable className="h-12 w-12 text-white stroke-[1.5]" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Consulting & Permitting</h3>
-                <Button 
-                  variant="outline" 
-                  className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]"
-                  onClick={() => scrollToSection('consulting')}
-                >
+                <Button variant="outline" className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]" onClick={() => scrollToSection('consulting')}>
                   Read More →
                 </Button>
               </div>
@@ -182,11 +148,7 @@ const Services = () => {
                   <Wrench className="h-12 w-12 text-white stroke-[1.5]" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Facility Maintenance & Emergency Response</h3>
-                <Button 
-                  variant="outline" 
-                  className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]"
-                  onClick={() => scrollToSection('facility-maintenance')}
-                >
+                <Button variant="outline" className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]" onClick={() => scrollToSection('facility-maintenance')}>
                   Read More →
                 </Button>
               </div>
@@ -199,7 +161,7 @@ const Services = () => {
           <div className="max-w-[1240px] mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl md:text-3xl mb-3 text-accent">General Construction</h2>
-              <p className="text-base text-muted-foreground max-w-3xl">
+              <p className="text-muted-foreground max-w-3xl font-medium text-lg">
                 We deliver ground-up builds and full gut renovations for residential, commercial, institutional, and medical facilities with end-to-end quality control.
               </p>
             </div>
@@ -207,14 +169,9 @@ const Services = () => {
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               {/* Left column - first 4 services */}
               <Accordion type="multiple" className="w-full space-y-3">
-                {generalConstructionServices.slice(0, 4).map((service) => {
-                  const Icon = service.icon;
-                  return (
-                    <AccordionItem 
-                      key={service.id} 
-                      value={service.id} 
-                      className="border border-border rounded-lg px-4 bg-background"
-                    >
+                {generalConstructionServices.slice(0, 4).map(service => {
+                const Icon = service.icon;
+                return <AccordionItem key={service.id} value={service.id} className="border border-border rounded-lg px-4 bg-background">
                       <AccordionTrigger className="hover:no-underline py-4">
                         <div className="flex items-center gap-3 text-left">
                           <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
@@ -224,21 +181,15 @@ const Services = () => {
                       <AccordionContent className="pb-4 pl-8">
                         <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
                       </AccordionContent>
-                    </AccordionItem>
-                  );
-                })}
+                    </AccordionItem>;
+              })}
               </Accordion>
 
               {/* Right column - last 4 services */}
               <Accordion type="multiple" className="w-full space-y-3">
-                {generalConstructionServices.slice(4, 8).map((service) => {
-                  const Icon = service.icon;
-                  return (
-                    <AccordionItem 
-                      key={service.id} 
-                      value={service.id} 
-                      className="border border-border rounded-lg px-4 bg-background"
-                    >
+                {generalConstructionServices.slice(4, 8).map(service => {
+                const Icon = service.icon;
+                return <AccordionItem key={service.id} value={service.id} className="border border-border rounded-lg px-4 bg-background">
                       <AccordionTrigger className="hover:no-underline py-4">
                         <div className="flex items-center gap-3 text-left">
                           <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
@@ -248,9 +199,8 @@ const Services = () => {
                       <AccordionContent className="pb-4 pl-8">
                         <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
                       </AccordionContent>
-                    </AccordionItem>
-                  );
-                })}
+                    </AccordionItem>;
+              })}
               </Accordion>
             </div>
           </div>
@@ -264,20 +214,15 @@ const Services = () => {
               <div>
                 <div className="mb-8">
                   <h2 className="text-2xl md:text-3xl mb-3 text-accent">Consulting and Permitting</h2>
-                  <p className="text-base text-muted-foreground">
+                  <p className="text-muted-foreground font-medium text-lg">
                     We provide design coordination, engineering oversight, permits, and strategic violation resolution to keep your project compliant and on schedule.
                   </p>
                 </div>
                 
                 <Accordion type="multiple" className="w-full space-y-3">
-                  {consultingServices.map((service) => {
-                    const Icon = service.icon;
-                    return (
-                      <AccordionItem 
-                        key={service.id} 
-                        value={service.id} 
-                        className="border border-border rounded-lg px-4 bg-background"
-                      >
+                  {consultingServices.map(service => {
+                  const Icon = service.icon;
+                  return <AccordionItem key={service.id} value={service.id} className="border border-border rounded-lg px-4 bg-background">
                         <AccordionTrigger className="hover:no-underline py-4">
                           <div className="flex items-center gap-3 text-left">
                             <Icon className="h-5 w-5 text-accent stroke-[2px] flex-shrink-0" />
@@ -287,19 +232,14 @@ const Services = () => {
                         <AccordionContent className="pb-4 pl-8">
                           <p className="text-[15px] text-muted-foreground leading-relaxed">{service.description}</p>
                         </AccordionContent>
-                      </AccordionItem>
-                    );
-                  })}
+                      </AccordionItem>;
+                })}
                 </Accordion>
               </div>
 
               {/* Right column - image */}
               <div className="hidden md:block">
-                <img
-                  src={consultingTeam}
-                  alt="Construction consulting and permitting services"
-                  className="w-full h-full object-cover rounded-lg"
-                />
+                <img src={consultingTeam} alt="Construction consulting and permitting services" className="w-full h-full object-cover rounded-lg" />
               </div>
             </div>
           </div>
@@ -309,9 +249,9 @@ const Services = () => {
         <section id="facility-maintenance" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-10">
-              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">WHAT WE DO</p>
-              <h2 className="text-2xl md:text-3xl mb-4 text-foreground mx-auto">Facility Maintenance & Emergency Response</h2>
-              <p className="text-[17px] text-muted-foreground mb-6 max-w-3xl mx-auto">
+              
+              <h2 className="text-2xl md:text-3xl mb-4 mx-auto text-[#428ebd]">Facility Maintenance & Emergency Response</h2>
+              <p className="text-muted-foreground mb-6 max-w-3xl mx-auto text-lg font-medium">
                 Scheduled preventive maintenance and rapid response to keep operations smooth.
               </p>
               <p className="text-[17px] text-foreground max-w-3xl mx-auto">
@@ -334,7 +274,7 @@ const Services = () => {
                   
                   <div className="grid md:grid-cols-2 gap-12">
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold">Benefits</h3>
+                      <h3 className="font-semibold text-2xl">Benefits</h3>
                       <Accordion type="multiple" className="w-full space-y-3">
                       <AccordionItem value="cost-savings" className="border border-border rounded-lg px-4 bg-background">
                         <AccordionTrigger className="hover:no-underline py-4">
@@ -394,7 +334,7 @@ const Services = () => {
                     </div>
                     
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold">Common Services</h3>
+                      <h3 className="font-semibold text-2xl">Common Services</h3>
                       <Accordion type="multiple" className="w-full space-y-3">
                       <AccordionItem value="hvac-systems" className="border border-border rounded-lg px-4 bg-background">
                         <AccordionTrigger className="hover:no-underline py-4">
@@ -638,16 +578,14 @@ const Services = () => {
             </div>
 
             {/* CTA Box */}
-            <div className="mt-12 max-w-[700px] mx-auto text-center rounded-lg p-8" style={{ backgroundColor: '#202d7c' }}>
+            <div className="mt-12 max-w-[700px] mx-auto text-center rounded-lg p-8" style={{
+            backgroundColor: '#202d7c'
+          }}>
               <h3 className="text-2xl font-semibold text-white mb-3">24/7 Facility Emergency Services</h3>
               <p className="text-white/90 mb-6">
                 Our 24/7 service provides on-call technical support for unexpected incidents across critical building systems, with immediate, professional response at any time.
               </p>
-              <Button 
-                size="lg" 
-                className="bg-white text-[#202d7c] hover:bg-white/90" 
-                asChild
-              >
+              <Button size="lg" className="bg-white text-[#202d7c] hover:bg-white/90" asChild>
                 <Link to="/contact">Request 24/7 Service</Link>
               </Button>
             </div>
@@ -671,8 +609,6 @@ const Services = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Services;
