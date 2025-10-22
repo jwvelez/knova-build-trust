@@ -308,31 +308,34 @@ const Services = () => {
         {/* Blade 3: Facility Maintenance & Emergency Response */}
         <section id="facility-maintenance" className="pt-12 pb-16 md:pt-[72px] md:pb-[80px] px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">WHAT WE DO</p>
-            <h2 className="text-2xl md:text-3xl mb-3 text-foreground">Facility Maintenance & Emergency Response</h2>
-            <p className="text-[17px] text-muted-foreground mb-6">
-              Scheduled preventive maintenance and rapid response to keep operations smooth.
-            </p>
-            <p className="text-[17px] text-foreground mb-8 max-w-3xl">
-              KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance. If you are a property owner, landlord, facility manager, or co-op board member who needs a trusted vendor, we tailor solutions to your building and priorities. Our approach saves time, controls costs, and simplifies operations.
-            </p>
+            <div className="text-center mb-10">
+              <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">WHAT WE DO</p>
+              <h2 className="text-2xl md:text-3xl mb-4 text-foreground">Facility Maintenance & Emergency Response</h2>
+              <p className="text-[17px] text-muted-foreground mb-6 max-w-3xl mx-auto">
+                Scheduled preventive maintenance and rapid response to keep operations smooth.
+              </p>
+              <p className="text-[17px] text-foreground max-w-3xl mx-auto">
+                KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance. If you are a property owner, landlord, facility manager, or co-op board member who needs a trusted vendor, we tailor solutions to your building and priorities. Our approach saves time, controls costs, and simplifies operations.
+              </p>
+            </div>
 
             {/* Desktop: Tabs, Mobile: Accordions */}
             <div className="hidden md:block">
               <Tabs defaultValue="preventive" className="w-full">
-                <TabsList className="grid w-full max-w-2xl grid-cols-2 mb-8">
+                <TabsList className="grid w-full max-w-2xl grid-cols-2 mb-10 mx-auto">
                   <TabsTrigger value="preventive" className="text-[17px]">Preventive Maintenance</TabsTrigger>
                   <TabsTrigger value="reactive" className="text-[17px]">Reactive Maintenance Services</TabsTrigger>
                 </TabsList>
                 
-                <TabsContent value="preventive" className="space-y-6">
-                  <p className="text-base text-foreground">
+                <TabsContent value="preventive" className="space-y-8">
+                  <p className="text-base text-foreground max-w-4xl">
                     Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
                   </p>
                   
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Benefits</h3>
-                    <Accordion type="multiple" className="w-full space-y-3">
+                  <div className="grid md:grid-cols-2 gap-12">
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-semibold">Benefits</h3>
+                      <Accordion type="multiple" className="w-full space-y-3">
                       <AccordionItem value="cost-savings" className="border border-border rounded-lg px-4 bg-background">
                         <AccordionTrigger className="hover:no-underline py-4">
                           <h4 className="font-semibold text-base text-left">Cost savings</h4>
@@ -388,11 +391,11 @@ const Services = () => {
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
-                  </div>
-                  
-                  <div className="space-y-4 mt-8">
-                    <h3 className="text-lg font-semibold">Common Services</h3>
-                    <Accordion type="multiple" className="w-full space-y-3">
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-semibold">Common Services</h3>
+                      <Accordion type="multiple" className="w-full space-y-3">
                       <AccordionItem value="hvac-systems" className="border border-border rounded-lg px-4 bg-background">
                         <AccordionTrigger className="hover:no-underline py-4">
                           <h4 className="font-semibold text-base text-left">HVAC systems</h4>
@@ -480,22 +483,23 @@ const Services = () => {
                           </p>
                         </AccordionContent>
                       </AccordionItem>
-                    </Accordion>
+                      </Accordion>
+                    </div>
                   </div>
                   
-                  <p className="text-base text-foreground mt-6">
+                  <p className="text-base text-foreground">
                     Our goal is to increase equipment lifespan and deliver safe, compliant buildings that support tenant well-being.
                   </p>
                 </TabsContent>
                 
-                <TabsContent value="reactive" className="space-y-6">
-                  <p className="text-base text-foreground">
+                <TabsContent value="reactive" className="space-y-8">
+                  <p className="text-base text-foreground max-w-4xl">
                     Reactive maintenance addresses failures after they occur. While it is not a primary strategy for critical assets, it is essential for emergencies and unplanned events. When issues arise, we mobilize fast.
                   </p>
                   
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Scenarios</h3>
-                    <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Scenarios</h3>
+                    <div className="grid md:grid-cols-2 gap-12">
                       <Accordion type="multiple" className="w-full space-y-3">
                         <AccordionItem value="hvac-failure" className="border border-border rounded-lg px-4 bg-background">
                           <AccordionTrigger className="hover:no-underline py-4">
