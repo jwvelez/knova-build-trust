@@ -156,7 +156,7 @@ const Index = () => {
                   <Link to="/contact">{content.hero_cta_primary || "Contact Us"}</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="flex-1 md:flex-initial">
-                  <Link to="/services">{content.hero_cta_secondary || "Explore services"}</Link>
+                  <Link to="/services">{content.hero_cta_secondary || "View Our Services"}</Link>
                 </Button>
               </div>
             </div>
@@ -341,7 +341,7 @@ const Index = () => {
           <div className="mt-12 text-center">
             <Button variant="outline" size="lg" asChild>
               <Link to="/services" className="group">
-                See all services
+                See All Services
                 <ArrowRight className="ml-2 h-4 w-4 arrow-shift" />
               </Link>
             </Button>

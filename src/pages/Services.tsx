@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Wind, Zap, Droplet, Flame, Cable, Building2, Wrench, Flame as Fire, DollarSign, Clock, Leaf, Shield, Calendar, Lightbulb, Plug, Eye, Home, ArrowUp, LifeBuoy, AlertTriangle, CloudRain, Siren } from "lucide-react";
 import heroHvac from "@/assets/hero-hvac.jpg";
 import howWeDeliver from "@/assets/how-we-deliver.jpg";
@@ -272,57 +273,47 @@ const Services = () => {
               
                   {/* Benefits */}
                   <div className="mb-16">
-                    <h4 className="text-2xl font-semibold text-center mb-10">Benefits</h4>
+                  <h4 className="text-2xl font-semibold text-center mb-10">Benefits</h4>
                 <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <DollarSign className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <DollarSign className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Cost savings</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Preventive maintenance turns unpredictable repair expenses into planned, budgetable work and reduces rush fees, overtime, and downtime costs.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Clock className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Clock className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Minimized downtime</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       A proactive plan lowers the chance of unexpected outages and service disruptions so operations continue without interruption.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Leaf className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Leaf className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Improved energy efficiency</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Well-maintained equipment runs more efficiently, which reduces energy use and utility costs.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Shield className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border md:col-start-2">
+                    <Shield className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Enhanced safety</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Routine inspections identify hazards early and support compliance with safety and regulatory requirements.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Calendar className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Calendar className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Better resource planning</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       Planned service allows accurate forecasting and scheduling across teams, parts, and budgets.
                     </p>
-                  </div>
+                  </Card>
                 </div>
               </div>
               
@@ -330,85 +321,69 @@ const Services = () => {
               <div>
                 <h4 className="text-2xl font-semibold text-center mb-10">Common Services</h4>
                 <div className="grid md:grid-cols-4 gap-6">
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Wind className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Wind className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">HVAC systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We inspect, clean, and calibrate equipment to maintain performance, air quality, and efficiency.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Plug className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Plug className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Electrical systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We service panels, wiring, and fixtures to prevent hazards and keep power stable.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Droplet className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Droplet className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Plumbing systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We clean and inspect drains and piping to prevent clogs, leaks, and water damage.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Lightbulb className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Lightbulb className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Lighting systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We maintain interior and exterior lighting and support LED retrofits to improve safety and reduce costs.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Eye className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Eye className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Safety equipment</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We check fire alarms, sprinkler systems, and extinguishers to keep life-safety systems ready.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Home className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Home className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Exterior maintenance</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We inspect roofs, windows, facades, and lots to prevent water intrusion and exterior failures.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <ArrowUp className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <ArrowUp className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Vertical transportation</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We coordinate servicing of elevators and escalators for safe, reliable operation.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-5">
-                    <div className="w-14 h-14 mb-3 flex items-center justify-center">
-                      <Wrench className="h-9 w-9 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Wrench className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">General upkeep</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We perform scheduled walkthroughs of building assets including floors, walls, doors, and gates.
                     </p>
-                  </div>
+                  </Card>
                 </div>
               </div>
               
@@ -429,68 +404,56 @@ const Services = () => {
                   <div>
                     <h4 className="text-2xl font-semibold text-center mb-10">Scenarios</h4>
                 <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Wind className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Wind className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">HVAC failure</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We repair or replace heating and cooling equipment to restore safe, comfortable conditions during peak weather.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Droplet className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Droplet className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Plumbing issues</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We respond to burst pipes, major leaks, and urgent plumbing failures to limit water damage.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Zap className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Zap className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Power outages</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We troubleshoot electrical failures and coordinate generator support to restore power.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <AlertTriangle className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <AlertTriangle className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Structural damage</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We address storm and impact damage and coordinate safe, code-compliant repairs.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <Flame className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <Flame className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Fire and life safety</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We service affected fire alarms and sprinkler systems to confirm proper operation.
                     </p>
-                  </div>
+                  </Card>
                   
-                  <div className="flex flex-col items-center text-center p-6">
-                    <div className="w-16 h-16 mb-4 flex items-center justify-center">
-                      <CloudRain className="h-10 w-10 text-accent stroke-[1.5]" />
-                    </div>
+                  <Card className="p-6 border-border">
+                    <CloudRain className="h-9 w-9 mb-4 text-accent stroke-[2px]" />
                     <h5 className="font-semibold text-lg mb-3">Disaster response</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We provide emergency services and site cleanup as needed, including snow removal.
                     </p>
-                    </div>
-                  </div>
+                  </Card>
                 </div>
               </div>
+                </div>
               </TabsContent>
             </Tabs>
 
