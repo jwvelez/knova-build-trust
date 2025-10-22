@@ -19,16 +19,31 @@ import {
   FormDescription,
 } from "@/components/ui/form";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowLeft, Upload, X } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ArrowLeft, Upload, X, Plus, Trash2 } from "lucide-react";
+
+const contentSectionSchema = z.object({
+  icon: z.string().min(1, "Icon is required"),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().min(1, "Description is required"),
+});
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
   slug: z.string().min(1, "Slug is required"),
   description: z.string().min(1, "Description is required"),
   icon: z.string().min(1, "Icon is required"),
+  service_type: z.enum(['general', 'facility_management']).default('general'),
+  hero_title: z.string().optional(),
+  hero_subtitle: z.string().optional(),
   details: z.string().optional(),
   featured: z.boolean().default(false),
   display_order: z.number().int().min(0).default(0),
+  content: z.object({
+    benefits: z.array(contentSectionSchema).default([]),
+    common_services: z.array(contentSectionSchema).default([]),
+    scenarios: z.array(contentSectionSchema).default([]),
+  }).default({ benefits: [], common_services: [], scenarios: [] }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -49,9 +64,17 @@ const ServiceForm = () => {
       slug: "",
       description: "",
       icon: "",
+      service_type: "general",
+      hero_title: "",
+      hero_subtitle: "",
       details: "",
       featured: false,
       display_order: 0,
+      content: {
+        benefits: [],
+        common_services: [],
+        scenarios: [],
+      },
     },
   });
 
@@ -72,14 +95,24 @@ const ServiceForm = () => {
       if (error) throw error;
 
       if (data) {
+        const content = (data.content as any) || { benefits: [], common_services: [], scenarios: [] };
+        
         form.reset({
           title: data.title,
           slug: data.slug,
           description: data.description,
           icon: data.icon,
+          service_type: (data.service_type as any) || "general",
+          hero_title: data.hero_title || "",
+          hero_subtitle: data.hero_subtitle || "",
           details: data.details || "",
           featured: data.featured || false,
           display_order: data.display_order || 0,
+          content: {
+            benefits: content.benefits || [],
+            common_services: content.common_services || [],
+            scenarios: content.scenarios || [],
+          },
         });
         
         if (data.icon_url) {
@@ -180,7 +213,17 @@ const ServiceForm = () => {
         const { error } = await supabase
           .from("cms_services")
           .update({
-            ...values,
+            title: values.title,
+            slug: values.slug,
+            description: values.description,
+            icon: values.icon,
+            service_type: values.service_type,
+            hero_title: values.hero_title,
+            hero_subtitle: values.hero_subtitle,
+            details: values.details,
+            featured: values.featured,
+            display_order: values.display_order,
+            content: values.content,
             icon_url: icon_url || undefined
           })
           .eq("id", id);
@@ -199,10 +242,14 @@ const ServiceForm = () => {
             slug: values.slug,
             description: values.description,
             icon: values.icon,
+            service_type: values.service_type,
+            hero_title: values.hero_title,
+            hero_subtitle: values.hero_subtitle,
             details: values.details,
             featured: values.featured,
             display_order: values.display_order,
             status: "draft" as const,
+            content: values.content,
             icon_url: icon_url || undefined
           }]);
 
@@ -353,6 +400,56 @@ const ServiceForm = () => {
 
               <FormField
                 control={form.control}
+                name="service_type"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Service Type</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select service type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="general">General Construction</SelectItem>
+                        <SelectItem value="facility_management">Facility Management</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="hero_title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Hero Title (Optional)</FormLabel>
+                    <FormControl>
+                      <Input {...field} placeholder="Leave empty to use main title" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="hero_subtitle"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Hero Subtitle (Optional)</FormLabel>
+                    <FormControl>
+                      <Textarea {...field} rows={2} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="details"
                 render={({ field }) => (
                   <FormItem>
@@ -364,6 +461,263 @@ const ServiceForm = () => {
                   </FormItem>
                 )}
               />
+
+              {/* Content Sections */}
+              <div className="space-y-6 border-t pt-6">
+                <h3 className="text-lg font-semibold">Content Sections</h3>
+
+                {/* Benefits */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <FormLabel>Benefits</FormLabel>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const current = form.getValues("content.benefits");
+                        form.setValue("content.benefits", [
+                          ...current,
+                          { icon: "", title: "", description: "" },
+                        ]);
+                      }}
+                    >
+                      <Plus className="h-4 w-4 mr-2" />
+                      Add Benefit
+                    </Button>
+                  </div>
+                  {form.watch("content.benefits").map((_, index) => (
+                    <Card key={index}>
+                      <CardContent className="p-4 space-y-4">
+                        <div className="flex justify-between items-center">
+                          <h4 className="font-medium">Benefit {index + 1}</h4>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              const current = form.getValues("content.benefits");
+                              form.setValue(
+                                "content.benefits",
+                                current.filter((_, i) => i !== index)
+                              );
+                            }}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name={`content.benefits.${index}.icon`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Icon</FormLabel>
+                              <FormControl>
+                                <Input {...field} placeholder="e.g., Shield" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`content.benefits.${index}.title`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Title</FormLabel>
+                              <FormControl>
+                                <Input {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`content.benefits.${index}.description`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Description</FormLabel>
+                              <FormControl>
+                                <Textarea {...field} rows={3} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Common Services */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <FormLabel>Common Services</FormLabel>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const current = form.getValues("content.common_services");
+                        form.setValue("content.common_services", [
+                          ...current,
+                          { icon: "", title: "", description: "" },
+                        ]);
+                      }}
+                    >
+                      <Plus className="h-4 w-4 mr-2" />
+                      Add Service
+                    </Button>
+                  </div>
+                  {form.watch("content.common_services").map((_, index) => (
+                    <Card key={index}>
+                      <CardContent className="p-4 space-y-4">
+                        <div className="flex justify-between items-center">
+                          <h4 className="font-medium">Service {index + 1}</h4>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              const current = form.getValues("content.common_services");
+                              form.setValue(
+                                "content.common_services",
+                                current.filter((_, i) => i !== index)
+                              );
+                            }}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name={`content.common_services.${index}.icon`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Icon</FormLabel>
+                              <FormControl>
+                                <Input {...field} placeholder="e.g., Wrench" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`content.common_services.${index}.title`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Title</FormLabel>
+                              <FormControl>
+                                <Input {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`content.common_services.${index}.description`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Description</FormLabel>
+                              <FormControl>
+                                <Textarea {...field} rows={3} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Scenarios */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <FormLabel>Scenarios</FormLabel>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const current = form.getValues("content.scenarios");
+                        form.setValue("content.scenarios", [
+                          ...current,
+                          { icon: "", title: "", description: "" },
+                        ]);
+                      }}
+                    >
+                      <Plus className="h-4 w-4 mr-2" />
+                      Add Scenario
+                    </Button>
+                  </div>
+                  {form.watch("content.scenarios").map((_, index) => (
+                    <Card key={index}>
+                      <CardContent className="p-4 space-y-4">
+                        <div className="flex justify-between items-center">
+                          <h4 className="font-medium">Scenario {index + 1}</h4>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              const current = form.getValues("content.scenarios");
+                              form.setValue(
+                                "content.scenarios",
+                                current.filter((_, i) => i !== index)
+                              );
+                            }}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name={`content.scenarios.${index}.icon`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Icon</FormLabel>
+                              <FormControl>
+                                <Input {...field} placeholder="e.g., Building" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`content.scenarios.${index}.title`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Title</FormLabel>
+                              <FormControl>
+                                <Input {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`content.scenarios.${index}.description`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Description</FormLabel>
+                              <FormControl>
+                                <Textarea {...field} rows={3} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
 
               <FormField
                 control={form.control}

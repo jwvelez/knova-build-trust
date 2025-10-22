@@ -259,16 +259,20 @@ export type Database = {
       }
       cms_services: {
         Row: {
+          content: Json | null
           created_at: string
           created_by: string | null
           description: string
           details: string | null
           display_order: number | null
           featured: boolean | null
+          hero_subtitle: string | null
+          hero_title: string | null
           icon: string
           icon_url: string | null
           id: string
           published_at: string | null
+          service_type: string | null
           slug: string
           status: Database["public"]["Enums"]["content_status"]
           title: string
@@ -277,16 +281,20 @@ export type Database = {
           version: number
         }
         Insert: {
+          content?: Json | null
           created_at?: string
           created_by?: string | null
           description: string
           details?: string | null
           display_order?: number | null
           featured?: boolean | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
           icon: string
           icon_url?: string | null
           id?: string
           published_at?: string | null
+          service_type?: string | null
           slug: string
           status?: Database["public"]["Enums"]["content_status"]
           title: string
@@ -295,16 +303,20 @@ export type Database = {
           version?: number
         }
         Update: {
+          content?: Json | null
           created_at?: string
           created_by?: string | null
           description?: string
           details?: string | null
           display_order?: number | null
           featured?: boolean | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
           icon?: string
           icon_url?: string | null
           id?: string
           published_at?: string | null
+          service_type?: string | null
           slug?: string
           status?: Database["public"]["Enums"]["content_status"]
           title?: string
@@ -427,10 +439,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      can_edit: {
-        Args: Record<PropertyKey, never>
-        Returns: boolean
-      }
+      can_edit: { Args: never; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
