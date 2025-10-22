@@ -116,23 +116,28 @@ const Services = () => {
         <section className="py-12 md:py-16 px-6 md:px-8" style={{ backgroundColor: '#202d7c' }}>
           <div className="max-w-[1240px] mx-auto text-center">
             <p className="uppercase text-sm tracking-wider text-white/80 font-medium mb-4">OUR SERVICES</p>
-            <h2 className="text-3xl md:text-4xl mb-4 text-white mx-auto">{pageSettings.services_section_title || 'Comprehensive construction and MEP expertise'}</h2>
-            <p className="text-base text-white/90 mb-12">{pageSettings.services_section_description || 'Choose a category to learn more'}</p>
+            <h2 className="text-3xl md:text-4xl mb-12 text-white mx-auto">{pageSettings.services_section_title || 'Comprehensive construction and MEP expertise'}</h2>
             
             <div className="grid md:grid-cols-3 gap-8 md:gap-12">
               {getServicesByCategory('service_anchor').map((anchor) => {
                 const Icon = getIcon(anchor.icon);
                 return (
-                  <div key={anchor.id} className="flex flex-col items-center bg-[#1a2461] rounded-lg p-8">
+                  <button 
+                    key={anchor.id} 
+                    onClick={() => scrollToSection(anchor.slug)}
+                    className="flex flex-col items-center bg-[#1a2461] rounded-lg p-8 hover:bg-[#1a2461]/90 transition-colors cursor-pointer w-full"
+                  >
                     <div className="w-20 h-20 mb-4 flex items-center justify-center">
                       <Icon className="h-12 w-12 text-white stroke-[1.5]" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{anchor.title}</h3>
-                    <Button variant="outline" className="mt-4 bg-white text-[#202d7c] border-white hover:bg-white/90 hover:text-[#202d7c]" 
-                      onClick={() => scrollToSection(anchor.slug)}>
-                      Read More →
-                    </Button>
-                  </div>
+                    <div className="mt-4 text-white flex items-center gap-2">
+                      Read More
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </button>
                 );
               })}
             </div>
@@ -183,9 +188,9 @@ const Services = () => {
         {/* Facility Maintenance */}
         <section id="fm-anchor" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl mb-6 text-[#428ebd] text-center">{pageSettings.fm_title || 'Facility Maintenance & Emergency Response'}</h2>
-              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium">{pageSettings.fm_description}</p>
+            <div className="mb-16">
+              <h2 className="text-2xl md:text-3xl mb-3 text-accent">{pageSettings.fm_title || 'Facility Maintenance & Emergency Response'}</h2>
+              <p className="text-muted-foreground max-w-3xl font-medium text-lg">{pageSettings.fm_description}</p>
             </div>
 
             {isMobile ? (
@@ -248,7 +253,7 @@ const Services = () => {
               </Tabs>
             )}
 
-            <div className="mt-12 max-w-[900px] mx-auto text-center rounded-lg p-8" style={{ backgroundColor: '#202d7c' }}>
+            <div className="mt-[40px] max-w-[900px] mx-auto text-center rounded-lg p-8" style={{ backgroundColor: '#202d7c' }}>
               <h3 className="text-2xl font-semibold text-white mb-3">{pageSettings.emergency_cta_title || '24/7 Facility Emergency Services'}</h3>
               <p className="text-white/90 mb-6">{pageSettings.emergency_cta_description}</p>
               <Button size="lg" className="bg-white text-[#202d7c] hover:bg-white/90" asChild>
