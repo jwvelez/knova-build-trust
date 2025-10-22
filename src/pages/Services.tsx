@@ -195,7 +195,7 @@ const Services = () => {
         </section>
 
         {/* Blade 1: General Construction */}
-        <section id="gc" className="pt-8 pb-12 md:pt-10 md:pb-[72px] px-6 md:px-8 bg-background">
+        <section id="gc" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
             <div className="mb-8">
               <h2 className="text-2xl md:text-3xl mb-3 text-accent">General Construction</h2>
@@ -257,7 +257,7 @@ const Services = () => {
         </section>
 
         {/* Blade 2: Consulting and Permitting */}
-        <section id="consulting" className="pt-12 pb-12 md:pt-20 md:pb-20 px-6 md:px-8 bg-secondary/30">
+        <section id="consulting" className="pt-24 pb-24 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-[1240px] mx-auto">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Left column - text content */}
@@ -306,7 +306,7 @@ const Services = () => {
         </section>
 
         {/* Blade 3: Facility Maintenance & Emergency Response */}
-        <section id="facility-maintenance" className="pt-12 pb-16 md:pt-[72px] md:pb-[80px] px-6 md:px-8 bg-background">
+        <section id="facility-maintenance" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-10">
               <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">WHAT WE DO</p>
@@ -655,7 +655,7 @@ const Services = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 md:py-20 px-6 md:px-8 bg-secondary/30">
+        <section className="pt-24 pb-24 px-6 md:px-8 bg-secondary/30">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-8 text-primary mx-auto">Ready to start your project?</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
