@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { supabase } from "@/integrations/supabase/client";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
@@ -13,6 +15,47 @@ const Projects = () => {
   const [searchParams] = useSearchParams();
   const initialFilter = searchParams.get('filter') || 'all';
   const [activeFilter, setActiveFilter] = useState(initialFilter);
+  const [loading, setLoading] = useState(true);
+  const [featuredProjects, setFeaturedProjects] = useState<any[]>([]);
+  const [additionalProjects, setAdditionalProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("cms_projects")
+        .select("*")
+        .eq("status", "published")
+        .order("display_order");
+
+      if (error) throw error;
+      
+      if (data) {
+        const featured = data.filter(p => p.featured);
+        const additional = data.filter(p => !p.featured);
+        
+        // Map image URLs to actual imports
+        const imageMap: Record<string, string> = {
+          'project-office.jpg': projectOffice,
+          'project-health.jpg': projectHealth,
+          'project-daycare.jpg': projectDaycare,
+        };
+        
+        setFeaturedProjects(featured.map(p => ({
+          ...p,
+          image: p.image_url && imageMap[p.image_url] ? imageMap[p.image_url] : projectOffice
+        })));
+        setAdditionalProjects(additional);
+      }
+    } catch (error) {
+      console.error("Error loading projects:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const filters = [
     { id: 'all', label: 'All' },
@@ -22,182 +65,6 @@ const Projects = () => {
     { id: 'commercial', label: 'Commercial' },
     { id: 'mixed-use', label: 'Mixed-Use' },
     { id: 'restaurants-retail', label: 'Restaurants & Retail' },
-  ];
-
-  const featuredProjects = [
-    {
-      title: "Commercial Office: Manhattan",
-      year: "2025",
-      category: "commercial",
-      size: "7,800 sf",
-      details: [
-        "Steel framing and structural work",
-        "New kitchen and bathroom installations",
-        "Upgraded HVAC with modern controls",
-        "Complete electrical system upgrade",
-        "Tenant-ready, flexible workspace design",
-        "NYC DOB compliant"
-      ],
-      image: projectOffice,
-    },
-    {
-      title: "Community Health Centers Expansion: Bronx",
-      year: "2022–2023",
-      category: "healthcare",
-      size: "12,000 sf and 13,800 sf",
-      details: [
-        "Two FQHC facilities expanded simultaneously",
-        "Integrated data and telecom systems",
-        "Added capacity for primary care services",
-        "Upgraded HVAC for improved air quality",
-        "Electrical infrastructure modernization",
-        "Coordinated phasing to maintain operations"
-      ],
-      image: projectHealth,
-    },
-    {
-      title: "Day Care Centers Expansion: Bronx & Brooklyn",
-      year: "2012–2013",
-      category: "education",
-      size: "15,000 sf each",
-      details: [
-        "One new build and one renovation/expansion",
-        "Safe, modern environments for children",
-        "Full code compliance including accessibility",
-        "Age-appropriate HVAC and ventilation",
-        "Energy-efficient lighting and electrical systems",
-        "Durable finishes and easy-maintenance systems"
-      ],
-      image: projectDaycare,
-    },
-    {
-      title: "Supermarket Buildouts: Bronx & Brooklyn",
-      year: "2012–2013",
-      category: "restaurants-retail",
-      size: "Various",
-      details: [
-        "White Plains Rd, Bronx: 13,800 sf with co-located day care (TDC $4M, 2013)",
-        "210 Clarkson Ave, Brooklyn: 14,000 sf with day care (TDC $4M, 2013)",
-        "257 Drakes Ave, Brooklyn: 6,170 sf supermarket (TDC $600K, 2012)",
-        "GC + MEP delivery: plumbing, sprinklers, HVAC, and electrical",
-        "Clean inspections and tenant-ready turnover"
-      ],
-      image: projectOffice,
-    },
-  ];
-
-  const additionalProjects = [
-    {
-      title: "Mixed-Use: 495 Flatbush Ave, Brooklyn",
-      year: "2022",
-      category: "mixed-use",
-      size: "118,000 sf",
-      tdc: "$10M",
-      details: [
-        "Office, retail, gym, and school spaces",
-        "GC + consulting, plumbing, sprinklers, HVAC, and electrical",
-        "Modernized systems and fully code-compliant delivery"
-      ],
-    },
-    {
-      title: "Mixed-Use: 774 Broadway, Brooklyn",
-      year: "2025",
-      category: "mixed-use",
-      size: "56,357 sf",
-      tdc: "$6M",
-      details: [
-        "New construction mixed-use program",
-        "GC + consulting, plumbing, sprinklers, HVAC, and electrical",
-        "Turnkey systems and code-compliant occupancy"
-      ],
-    },
-    {
-      title: "Restaurant Rehabilitation: 2458 Webster Ave, Bronx",
-      year: "2017",
-      category: "restaurants-retail",
-      size: "16,000 sf",
-      details: [
-        "Full rehabilitation with MEP upgrades and sprinklers",
-        "GC + consulting, plumbing, HVAC, and electrical",
-        "Safer operations and modern code compliance"
-      ],
-    },
-    {
-      title: "Restaurant Renovation: 10 Read St, Manhattan",
-      year: "2007",
-      category: "restaurants-retail",
-      size: "8,000 sf",
-      details: [
-        "Interior renovation with HVAC and electrical upgrades",
-        "Sprinkler coordination and code compliance",
-        "Tenant-ready turnover"
-      ],
-    },
-    {
-      title: "Restaurant Renovation: 3795 Tenth Ave, Manhattan",
-      year: "2016",
-      category: "restaurants-retail",
-      size: "9,800 sf",
-      details: [
-        "Interior renovation and MEP modernization",
-        "Sprinkler coordination and code compliance",
-        "Improved comfort and efficiency"
-      ],
-    },
-    {
-      title: "Juvenile Center Buildout: 3030 Bruner Ave, Bronx",
-      year: "2017",
-      category: "education",
-      size: "9,891 sf",
-      tdc: "$2.7M",
-      details: [
-        "Complete buildout with GC + MEP",
-        "Secure, code-compliant facility delivery"
-      ],
-    },
-    {
-      title: "Juvenile Center Buildout: 133-23 127th St, Ozone Park, Queens",
-      year: "—",
-      category: "education",
-      size: "10,294 sf",
-      tdc: "$3.8M",
-      details: [
-        "Complete buildout with GC + MEP",
-        "Agency coordination and inspections"
-      ],
-    },
-    {
-      title: "Mixed-Use Renovation: 276 Hudson St, Hackensack, NJ",
-      year: "2019",
-      category: "mixed-use",
-      tdc: "$500K",
-      details: [
-        "Building-wide renovation with MEP and sprinklers",
-        "Safer, modernized systems and finishes"
-      ],
-    },
-    {
-      title: "Residential Rehabilitation: 983 Amsterdam Ave, Manhattan",
-      year: "2019",
-      category: "housing",
-      size: "10 units",
-      tdc: "$300K",
-      details: [
-        "Unit rehab with plumbing, HVAC, and electrical upgrades",
-        "Compliance-focused delivery, minimal disruption"
-      ],
-    },
-    {
-      title: "Residential + Commercial Rehabilitation: 1196 Metropolitan Ave, Brooklyn",
-      year: "2013",
-      category: "housing",
-      size: "6 units + 2 commercial floors",
-      tdc: "$300K",
-      details: [
-        "Multi-use rehabilitation with MEP and sprinklers",
-        "Code-compliant handoff and improved building performance"
-      ],
-    },
   ];
 
   const filteredFeaturedProjects = activeFilter === 'all' 
@@ -251,42 +118,49 @@ const Projects = () => {
             </div>
             
             {/* Featured Projects */}
-            <div className="space-y-16 mb-20">
-              {filteredFeaturedProjects.map((project, i) => (
-                <div key={i} className="border-b border-accent/20 pb-16 last:border-b-0 last:pb-0">
-                  <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-                    <div className="relative overflow-hidden rounded-lg group">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
-                        <div className="flex items-center gap-2 text-sm mb-4">
-                          <span className="text-accent font-medium">{project.year}</span>
-                          <span className="text-accent">•</span>
-                          <span className="text-accent font-medium">{project.size}</span>
-                        </div>
+            {loading ? (
+              <div className="space-y-16 mb-20">
+                <Skeleton className="h-96" />
+                <Skeleton className="h-96" />
+              </div>
+            ) : (
+              <div className="space-y-16 mb-20">
+                {filteredFeaturedProjects.map((project, i) => (
+                  <div key={i} className="border-b border-accent/20 pb-16 last:border-b-0 last:pb-0">
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                      <div className="relative overflow-hidden rounded-lg group">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
                       </div>
-                      <ul className="space-y-3">
-                        {project.details.map((detail, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-base">
-                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
-                            <span className="text-muted-foreground leading-relaxed">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="space-y-6">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
+                          <div className="flex items-center gap-2 text-sm mb-4">
+                            <span className="text-accent font-medium">{project.year}</span>
+                            <span className="text-accent">•</span>
+                            <span className="text-accent font-medium">{project.size}</span>
+                          </div>
+                        </div>
+                        <ul className="space-y-3">
+                          {project.details.map((detail: string, idx: number) => (
+                            <li key={idx} className="flex items-start gap-3 text-base">
+                              <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
+                              <span className="text-muted-foreground leading-relaxed">{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             {/* Additional Projects */}
-            {filteredAdditionalProjects.length > 0 && (
+            {!loading && filteredAdditionalProjects.length > 0 && (
               <>
                 <h2 className="text-2xl md:text-3xl mb-8">
                   Additional Projects
@@ -303,15 +177,9 @@ const Projects = () => {
                             <span>{project.size}</span>
                           </>
                         )}
-                        {project.tdc && (
-                          <>
-                            <span>•</span>
-                            <span>TDC {project.tdc}</span>
-                          </>
-                        )}
                       </div>
                       <ul className="space-y-3">
-                        {project.details.map((detail, idx) => (
+                        {project.details.map((detail: string, idx: number) => (
                           <li key={idx} className="flex items-start gap-3 text-base">
                             <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
                             <span className="text-muted-foreground leading-relaxed">{detail}</span>
