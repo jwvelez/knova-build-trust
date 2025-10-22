@@ -37,16 +37,26 @@ const Projects = () => {
         const featured = data.filter(p => p.featured);
         const additional = data.filter(p => !p.featured);
         
-        // Map image URLs to actual imports
-        const imageMap: Record<string, string> = {
-          'project-office.jpg': projectOffice,
-          'project-health.jpg': projectHealth,
-          'project-daycare.jpg': projectDaycare,
+        // Map old local filenames to imports, otherwise use the URL directly
+        const getImageUrl = (imageUrl: string | null) => {
+          if (!imageUrl) return projectOffice;
+          
+          // If it's a full URL (uploaded file), use it directly
+          if (imageUrl.startsWith('http')) return imageUrl;
+          
+          // Otherwise map old filenames to local imports
+          const imageMap: Record<string, string> = {
+            'project-office.jpg': projectOffice,
+            'project-health.jpg': projectHealth,
+            'project-daycare.jpg': projectDaycare,
+          };
+          
+          return imageMap[imageUrl] || projectOffice;
         };
         
         setFeaturedProjects(featured.map(p => ({
           ...p,
-          image: p.image_url && imageMap[p.image_url] ? imageMap[p.image_url] : projectOffice
+          image: getImageUrl(p.image_url)
         })));
         setAdditionalProjects(additional);
       }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2, Heart, GraduationCap, Users, Store, ShoppingBag, Building, Wrench, Shield } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -130,8 +131,39 @@ const Index = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          {/* Hero Skeleton */}
+          <section className="pt-8 pb-8 md:pt-16 md:pb-16 lg:pt-24 lg:pb-24 bg-gradient-to-br from-accent/5 to-accent/10">
+            <div className="container-narrow">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="space-y-8">
+                  <Skeleton className="h-32 w-full" />
+                  <Skeleton className="h-24 w-3/4" />
+                  <div className="flex gap-4">
+                    <Skeleton className="h-12 w-32" />
+                    <Skeleton className="h-12 w-32" />
+                  </div>
+                </div>
+                <Skeleton className="h-[500px] lg:h-[700px] rounded-lg" />
+              </div>
+            </div>
+          </section>
+          
+          {/* Content Skeleton */}
+          <section className="section-padding">
+            <div className="container-narrow space-y-12">
+              <Skeleton className="h-96 w-full" />
+              <div className="grid md:grid-cols-3 gap-6">
+                <Skeleton className="h-64" />
+                <Skeleton className="h-64" />
+                <Skeleton className="h-64" />
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
       </div>
     );
   }
