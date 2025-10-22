@@ -310,7 +310,7 @@ const Services = () => {
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-10">
               <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">WHAT WE DO</p>
-              <h2 className="text-2xl md:text-3xl mb-4 text-foreground">Facility Maintenance & Emergency Response</h2>
+              <h2 className="text-2xl md:text-3xl mb-4 text-foreground mx-auto">Facility Maintenance & Emergency Response</h2>
               <p className="text-[17px] text-muted-foreground mb-6 max-w-3xl mx-auto">
                 Scheduled preventive maintenance and rapid response to keep operations smooth.
               </p>
