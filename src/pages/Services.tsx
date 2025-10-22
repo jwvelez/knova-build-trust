@@ -250,12 +250,8 @@ const Services = () => {
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl mb-6 mx-auto text-center text-[#428ebd]">Facility Maintenance & Emergency Response</h2>
-              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium text-center">
-                Scheduled preventive maintenance and rapid response to keep operations smooth.
-              </p>
-              <p className="text-base text-foreground max-w-3xl mx-auto leading-relaxed text-center">
-                KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance. If you are a property owner, landlord, facility manager, or co-op board member who needs a trusted vendor, we tailor solutions to your building and priorities. Our approach saves time, controls costs, and simplifies operations.
-              </p>
+              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium text-center">KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance, delivering scheduled preventive care and rapid response to keep operations smooth. Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs. If you’re a property owner, landlord, facility manager, or co-op board member, we tailor solutions to your building and priorities to save time, control costs, and simplify operations.</p>
+              
             </div>
 
             <Tabs defaultValue="preventive" className="w-full">
@@ -269,9 +265,7 @@ const Services = () => {
 
                 <div className="mb-20">
                   <div className="text-center mb-12">
-                    <p className="text-base text-muted-foreground max-w-3xl mx-auto text-center">
-                      Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
-                    </p>
+                    
                   </div>
               
                   {/* Benefits */}
@@ -416,9 +410,7 @@ const Services = () => {
                 </div>
               </div>
               
-              <p className="text-base text-center text-muted-foreground mt-12 max-w-3xl mx-auto">
-                Our goal is to increase equipment lifespan and deliver safe, compliant buildings that support tenant well-being.
-              </p>
+              
             </div>
             </TabsContent>
 
