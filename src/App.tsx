@@ -17,6 +17,9 @@ import AdminProjects from "./pages/admin/Projects";
 import ProjectForm from "./pages/admin/ProjectForm";
 import AdminServices from "./pages/admin/Services";
 import ServiceForm from "./pages/admin/ServiceForm";
+import ServicePageEditor from "./pages/admin/ServicePageEditor";
+import ServiceItems from "./pages/admin/ServiceItems";
+import ServiceItemForm from "./pages/admin/ServiceItemForm";
 import Pages from "./pages/admin/Pages";
 import PageForm from "./pages/admin/PageForm";
 import HomePageEditor from "./pages/admin/HomePageEditor";
@@ -56,6 +59,10 @@ const App = () => (
             <Route path="services" element={<AdminServices />} />
             <Route path="services/new" element={<ServiceForm />} />
             <Route path="services/:id" element={<ServiceForm />} />
+            <Route path="services-page" element={<ServicePageEditor />} />
+            <Route path="service-items" element={<ServiceItems />} />
+            <Route path="service-items/new" element={<ServiceItemForm />} />
+            <Route path="service-items/:id" element={<ServiceItemForm />} />
             <Route path="media" element={<Media />} />
             <Route path="users" element={<Users />} />
             <Route path="settings" element={<Settings />} />

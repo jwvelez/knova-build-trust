@@ -257,18 +257,110 @@ export type Database = {
         }
         Relationships: []
       }
+      cms_service_page: {
+        Row: {
+          consulting_description: string | null
+          consulting_image: string | null
+          consulting_title: string | null
+          created_at: string | null
+          emergency_cta_button_text: string | null
+          emergency_cta_description: string | null
+          emergency_cta_title: string | null
+          final_cta_button1_text: string | null
+          final_cta_button2_text: string | null
+          final_cta_title: string | null
+          fm_description: string | null
+          fm_preventive_title: string | null
+          fm_reactive_description: string | null
+          fm_reactive_title: string | null
+          fm_title: string | null
+          gc_description: string | null
+          gc_title: string | null
+          hero_description: string | null
+          hero_eyebrow: string | null
+          hero_image: string | null
+          hero_title: string | null
+          id: string
+          services_section_description: string | null
+          services_section_title: string | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          consulting_description?: string | null
+          consulting_image?: string | null
+          consulting_title?: string | null
+          created_at?: string | null
+          emergency_cta_button_text?: string | null
+          emergency_cta_description?: string | null
+          emergency_cta_title?: string | null
+          final_cta_button1_text?: string | null
+          final_cta_button2_text?: string | null
+          final_cta_title?: string | null
+          fm_description?: string | null
+          fm_preventive_title?: string | null
+          fm_reactive_description?: string | null
+          fm_reactive_title?: string | null
+          fm_title?: string | null
+          gc_description?: string | null
+          gc_title?: string | null
+          hero_description?: string | null
+          hero_eyebrow?: string | null
+          hero_image?: string | null
+          hero_title?: string | null
+          id?: string
+          services_section_description?: string | null
+          services_section_title?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          consulting_description?: string | null
+          consulting_image?: string | null
+          consulting_title?: string | null
+          created_at?: string | null
+          emergency_cta_button_text?: string | null
+          emergency_cta_description?: string | null
+          emergency_cta_title?: string | null
+          final_cta_button1_text?: string | null
+          final_cta_button2_text?: string | null
+          final_cta_title?: string | null
+          fm_description?: string | null
+          fm_preventive_title?: string | null
+          fm_reactive_description?: string | null
+          fm_reactive_title?: string | null
+          fm_title?: string | null
+          gc_description?: string | null
+          gc_title?: string | null
+          hero_description?: string | null
+          hero_eyebrow?: string | null
+          hero_image?: string | null
+          hero_title?: string | null
+          id?: string
+          services_section_description?: string | null
+          services_section_title?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       cms_services: {
         Row: {
+          category: string | null
+          content: Json | null
           created_at: string
           created_by: string | null
           description: string
           details: string | null
           display_order: number | null
           featured: boolean | null
+          hero_subtitle: string | null
+          hero_title: string | null
           icon: string
           icon_url: string | null
           id: string
           published_at: string | null
+          service_type: string | null
           slug: string
           status: Database["public"]["Enums"]["content_status"]
           title: string
@@ -277,16 +369,21 @@ export type Database = {
           version: number
         }
         Insert: {
+          category?: string | null
+          content?: Json | null
           created_at?: string
           created_by?: string | null
           description: string
           details?: string | null
           display_order?: number | null
           featured?: boolean | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
           icon: string
           icon_url?: string | null
           id?: string
           published_at?: string | null
+          service_type?: string | null
           slug: string
           status?: Database["public"]["Enums"]["content_status"]
           title: string
@@ -295,16 +392,21 @@ export type Database = {
           version?: number
         }
         Update: {
+          category?: string | null
+          content?: Json | null
           created_at?: string
           created_by?: string | null
           description?: string
           details?: string | null
           display_order?: number | null
           featured?: boolean | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
           icon?: string
           icon_url?: string | null
           id?: string
           published_at?: string | null
+          service_type?: string | null
           slug?: string
           status?: Database["public"]["Enums"]["content_status"]
           title?: string
@@ -427,10 +529,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      can_edit: {
-        Args: Record<PropertyKey, never>
-        Returns: boolean
-      }
+      can_edit: { Args: never; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
