@@ -184,7 +184,7 @@ const Services = () => {
         <section id="fm-anchor" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl mb-6 text-[#428ebd]">{pageSettings.fm_title || 'Facility Maintenance & Emergency Response'}</h2>
+              <h2 className="text-3xl md:text-4xl mb-6 text-[#428ebd] text-center">{pageSettings.fm_title || 'Facility Maintenance & Emergency Response'}</h2>
               <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium">{pageSettings.fm_description}</p>
             </div>
 
