@@ -249,27 +249,34 @@ const Services = () => {
         <section id="facility-maintenance" className="pt-24 pb-24 px-6 md:px-8 bg-background">
           <div className="max-w-[1240px] mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl mb-6 mx-auto text-[#428ebd]">Facility Maintenance & Emergency Response</h2>
-              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium">
+              <h2 className="text-3xl md:text-4xl mb-6 mx-auto text-center text-[#428ebd]">Facility Maintenance & Emergency Response</h2>
+              <p className="text-muted-foreground mb-8 max-w-3xl mx-auto text-xl font-medium text-center">
                 Scheduled preventive maintenance and rapid response to keep operations smooth.
               </p>
-              <p className="text-base text-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base text-foreground max-w-3xl mx-auto leading-relaxed text-center">
                 KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance. If you are a property owner, landlord, facility manager, or co-op board member who needs a trusted vendor, we tailor solutions to your building and priorities. Our approach saves time, controls costs, and simplifies operations.
               </p>
             </div>
 
-            {/* Preventive Maintenance Section */}
-            <div className="mb-20">
-              <div className="text-center mb-12">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4">Preventive Maintenance</h3>
-                <p className="text-base text-muted-foreground max-w-3xl mx-auto">
-                  Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
-                </p>
-              </div>
+            <Tabs defaultValue="preventive" className="w-full">
+              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 mb-12">
+                <TabsTrigger value="preventive">Preventive Maintenance</TabsTrigger>
+                <TabsTrigger value="reactive">Reactive Maintenance Services</TabsTrigger>
+              </TabsList>
+
+              {/* Preventive Maintenance Tab */}
+              <TabsContent value="preventive" className="mt-0">
+
+                <div className="mb-20">
+                  <div className="text-center mb-12">
+                    <p className="text-base text-muted-foreground max-w-3xl mx-auto text-center">
+                      Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs.
+                    </p>
+                  </div>
               
-              {/* Benefits */}
-              <div className="mb-16">
-                <h4 className="text-xl font-semibold text-center mb-10">Benefits</h4>
+                  {/* Benefits */}
+                  <div className="mb-16">
+                    <h4 className="text-2xl font-semibold text-center mb-10">Benefits</h4>
                 <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                   <div className="flex flex-col items-center text-center p-6">
                     <div className="w-16 h-16 mb-4 flex items-center justify-center">
@@ -325,7 +332,7 @@ const Services = () => {
               
               {/* Common Services */}
               <div>
-                <h4 className="text-xl font-semibold text-center mb-10">Common Services</h4>
+                <h4 className="text-2xl font-semibold text-center mb-10">Common Services</h4>
                 <div className="grid md:grid-cols-4 gap-6">
                   <div className="flex flex-col items-center text-center p-5">
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
@@ -413,19 +420,20 @@ const Services = () => {
                 Our goal is to increase equipment lifespan and deliver safe, compliant buildings that support tenant well-being.
               </p>
             </div>
+            </TabsContent>
 
-            {/* Reactive Maintenance Section */}
-            <div className="mb-20">
-              <div className="text-center mb-12">
-                <h3 className="text-2xl md:text-3xl font-semibold mb-4">Reactive Maintenance Services</h3>
-                <p className="text-base text-muted-foreground max-w-3xl mx-auto">
-                  Reactive maintenance addresses failures after they occur. While it is not a primary strategy for critical assets, it is essential for emergencies and unplanned events. When issues arise, we mobilize fast.
-                </p>
-              </div>
+              {/* Reactive Maintenance Tab */}
+              <TabsContent value="reactive" className="mt-0">
+                <div className="mb-20">
+                  <div className="text-center mb-12">
+                    <p className="text-base text-muted-foreground max-w-3xl mx-auto text-center">
+                      Reactive maintenance addresses failures after they occur. While it is not a primary strategy for critical assets, it is essential for emergencies and unplanned events. When issues arise, we mobilize fast.
+                    </p>
+                  </div>
               
-              {/* Scenarios */}
-              <div>
-                <h4 className="text-xl font-semibold text-center mb-10">Scenarios</h4>
+                  {/* Scenarios */}
+                  <div>
+                    <h4 className="text-2xl font-semibold text-center mb-10">Scenarios</h4>
                 <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                   <div className="flex flex-col items-center text-center p-6">
                     <div className="w-16 h-16 mb-4 flex items-center justify-center">
@@ -485,16 +493,18 @@ const Services = () => {
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We provide emergency services and site cleanup as needed, including snow removal.
                     </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              </TabsContent>
+            </Tabs>
 
             {/* CTA Box */}
-            <div className="mt-12 max-w-[700px] mx-auto text-center rounded-lg p-8" style={{
+            <div className="mt-12 max-w-[900px] mx-auto text-center rounded-lg p-8" style={{
             backgroundColor: '#202d7c'
           }}>
-              <h3 className="text-2xl font-semibold text-white mb-3">24/7 Facility Emergency Services</h3>
+              <h3 className="text-2xl font-semibold text-white mb-3 text-center">24/7 Facility Emergency Services</h3>
               <p className="text-white/90 mb-6">
                 Our 24/7 service provides on-call technical support for unexpected incidents across critical building systems, with immediate, professional response at any time.
               </p>
