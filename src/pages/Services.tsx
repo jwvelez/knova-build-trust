@@ -95,14 +95,16 @@ const Services = () => {
                 <div className="w-full max-w-4xl" style={{
                 backgroundColor: 'rgba(250, 250, 250, 0.9)'
               }}>
-                <div className="p-10">
-                  <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground leading-[1.1]">
-                    Building systems that just work
-                  </h1>
-                  <p className="text-base text-muted-foreground max-w-2xl">
-                    Comprehensive construction and MEP services backed by deep technical expertise and proven reliability
-                  </p>
+                <div className="p-[30px]">
+                  <div className="max-w-[700px]">
+                    <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">What we do</p>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground leading-[1.1]">
+                      Building systems that just work
+                    </h1>
+                    <p className="text-base text-muted-foreground">
+                      Comprehensive construction and MEP services backed by deep technical expertise and proven reliability
+                    </p>
+                  </div>
                 </div>
                 </div>
               </div>
