@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Award } from "lucide-react";
+import { Mail, Phone, MapPin, Award, ChevronDown } from "lucide-react";
 import knovaReverseLogo from "@/assets/knova-reverse.svg";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -51,7 +51,7 @@ const Footer = () => {
               <Award className="h-4 w-4" />
               Licenses & Certifications
             </span>
-            <span className={`transition-transform ${showCerts ? 'rotate-180' : ''}`}>▼</span>
+            <ChevronDown className={`h-4 w-4 transition-transform ${showCerts ? 'rotate-180' : ''}`} />
           </Button>
           
           {showCerts && (
