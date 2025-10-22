@@ -520,9 +520,9 @@ const Index = () => {
               <p className="mb-6 opacity-90 flex-grow">
                 Facility management, preventive programs, and 24/7 response that keep buildings running
               </p>
-              <div className="mt-auto flex flex-col items-end justify-end space-y-4">
+                <div className="mt-auto flex flex-col items-end justify-end space-y-4">
                 <Button size="lg" variant="secondary" asChild className="w-full">
-                  <Link to="/contact">Request Service 24/7</Link>
+                  <Link to="/contact">Contact Us</Link>
                 </Button>
                 <div className="flex items-center justify-center gap-2 text-sm w-full">
                   <Phone className="h-4 w-4" />

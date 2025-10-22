@@ -123,7 +123,7 @@ const Projects = () => {
       ],
     },
     {
-      title: "Restaurant Renovation: 10 Reed St, Manhattan",
+      title: "Restaurant Renovation: 10 Read St, Manhattan",
       year: "2007",
       category: "restaurants-retail",
       size: "8,000 sf",

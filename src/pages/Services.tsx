@@ -304,7 +304,7 @@ const Services = () => {
                     </p>
                   </div>
                   
-                  <div className="flex flex-col items-center text-center p-6 md:col-start-2">
+                  <div className="flex flex-col items-center text-center p-6">
                     <div className="w-16 h-16 mb-4 flex items-center justify-center">
                       <Shield className="h-10 w-10 text-accent stroke-[1.5]" />
                     </div>
@@ -334,7 +334,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Wind className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">HVAC systems</h5>
+                    <h5 className="font-semibold text-lg mb-3">HVAC systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We inspect, clean, and calibrate equipment to maintain performance, air quality, and efficiency.
                     </p>
@@ -344,7 +344,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Plug className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">Electrical systems</h5>
+                    <h5 className="font-semibold text-lg mb-3">Electrical systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We service panels, wiring, and fixtures to prevent hazards and keep power stable.
                     </p>
@@ -354,7 +354,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Droplet className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">Plumbing systems</h5>
+                    <h5 className="font-semibold text-lg mb-3">Plumbing systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We clean and inspect drains and piping to prevent clogs, leaks, and water damage.
                     </p>
@@ -364,7 +364,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Lightbulb className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">Lighting systems</h5>
+                    <h5 className="font-semibold text-lg mb-3">Lighting systems</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We maintain interior and exterior lighting and support LED retrofits to improve safety and reduce costs.
                     </p>
@@ -374,7 +374,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Eye className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">Safety equipment</h5>
+                    <h5 className="font-semibold text-lg mb-3">Safety equipment</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We check fire alarms, sprinkler systems, and extinguishers to keep life-safety systems ready.
                     </p>
@@ -384,7 +384,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Home className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">Exterior maintenance</h5>
+                    <h5 className="font-semibold text-lg mb-3">Exterior maintenance</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We inspect roofs, windows, facades, and lots to prevent water intrusion and exterior failures.
                     </p>
@@ -394,7 +394,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <ArrowUp className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">Vertical transportation</h5>
+                    <h5 className="font-semibold text-lg mb-3">Vertical transportation</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We coordinate servicing of elevators and escalators for safe, reliable operation.
                     </p>
@@ -404,7 +404,7 @@ const Services = () => {
                     <div className="w-14 h-14 mb-3 flex items-center justify-center">
                       <Wrench className="h-9 w-9 text-accent stroke-[1.5]" />
                     </div>
-                    <h5 className="font-semibold text-base mb-2">General upkeep</h5>
+                    <h5 className="font-semibold text-lg mb-3">General upkeep</h5>
                     <p className="text-sm text-muted-foreground leading-relaxed">
                       We perform scheduled walkthroughs of building assets including floors, walls, doors, and gates.
                     </p>

@@ -129,7 +129,7 @@ const WhoWeAre = () => {
               <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold mb-1">Keily J. Nova</h3>
-                  <p className="text-base text-accent font-medium">Founder and President</p>
+                  <p className="text-base text-accent font-medium">Owner & President</p>
                 </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>
@@ -151,7 +151,6 @@ const WhoWeAre = () => {
               <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold mb-1">Lymaris Albors</h3>
-                  <p className="text-base text-accent font-medium">Co-Founder</p>
                 </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                   <p>

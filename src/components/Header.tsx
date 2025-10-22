@@ -48,7 +48,7 @@ const Header = () => {
               <span>(201) 525-5365</span>
             </a>
             <Button asChild size="lg">
-              <Link to="/contact">Request a Bid</Link>
+              <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
 
