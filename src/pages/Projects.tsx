@@ -34,8 +34,9 @@ const Projects = () => {
       if (error) throw error;
       
       if (data) {
-        const featured = data.filter(p => p.featured);
-        const additional = data.filter(p => !p.featured);
+        // Separate projects based on whether they have images
+        const projectsWithImages = data.filter(p => p.image_url);
+        const projectsWithoutImages = data.filter(p => !p.image_url);
         
         // Map old local filenames to imports, otherwise use the URL directly
         const getImageUrl = (imageUrl: string | null) => {
@@ -54,11 +55,11 @@ const Projects = () => {
           return imageMap[imageUrl] || projectOffice;
         };
         
-        setFeaturedProjects(featured.map(p => ({
+        setFeaturedProjects(projectsWithImages.map(p => ({
           ...p,
           image: getImageUrl(p.image_url)
         })));
-        setAdditionalProjects(additional);
+        setAdditionalProjects(projectsWithoutImages);
       }
     } catch (error) {
       console.error("Error loading projects:", error);
@@ -127,78 +128,88 @@ const Projects = () => {
               ))}
             </div>
             
-            {/* Featured Projects */}
+            {/* Projects with Images - Full Width Layout */}
             {loading ? (
               <div className="space-y-16 mb-20">
                 <Skeleton className="h-96" />
                 <Skeleton className="h-96" />
               </div>
             ) : (
-              <div className="space-y-16 mb-20">
-                {filteredFeaturedProjects.map((project, i) => (
-                  <div key={i} className="border-b border-accent/20 pb-16 last:border-b-0 last:pb-0">
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-                      <div className="relative overflow-hidden rounded-lg group">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="space-y-6">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
-                          <div className="flex items-center gap-2 text-sm mb-4">
-                            <span className="text-accent font-medium">{project.year}</span>
-                            <span className="text-accent">•</span>
-                            <span className="text-accent font-medium">{project.size}</span>
+              <>
+                {filteredFeaturedProjects.length > 0 && (
+                  <div className="space-y-16 mb-20">
+                    {filteredFeaturedProjects.map((project, i) => (
+                      <div key={i} className="border-b border-accent/20 pb-16 last:border-b-0 last:pb-0">
+                        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                          <div className="relative overflow-hidden rounded-lg group">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                          <div className="space-y-6">
+                            <div>
+                              <h3 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h3>
+                              <div className="flex items-center gap-2 text-sm mb-4">
+                                <span className="text-accent font-medium">{project.year}</span>
+                                {project.size && (
+                                  <>
+                                    <span className="text-accent">•</span>
+                                    <span className="text-accent font-medium">{project.size}</span>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                            <ul className="space-y-3">
+                              {project.details.map((detail: string, idx: number) => (
+                                <li key={idx} className="flex items-start gap-3 text-base">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
+                                  <span className="text-muted-foreground leading-relaxed">{detail}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
-                        <ul className="space-y-3">
-                          {project.details.map((detail: string, idx: number) => (
-                            <li key={idx} className="flex items-start gap-3 text-base">
-                              <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
-                              <span className="text-muted-foreground leading-relaxed">{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
+                )}
 
-            {/* Additional Projects */}
-            {!loading && filteredAdditionalProjects.length > 0 && (
-              <>
-                <h2 className="text-2xl md:text-3xl mb-8">
-                  Additional Projects
-                </h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                  {filteredAdditionalProjects.map((project, i) => (
-                    <Card key={i} className="p-6 border-border">
-                      <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                      <div className="flex flex-wrap items-center gap-2 text-sm mb-4 text-accent font-medium">
-                        <span>{project.year}</span>
-                        {project.size && (
-                          <>
-                            <span>•</span>
-                            <span>{project.size}</span>
-                          </>
-                        )}
-                      </div>
-                      <ul className="space-y-3">
-                        {project.details.map((detail: string, idx: number) => (
-                          <li key={idx} className="flex items-start gap-3 text-base">
-                            <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
-                            <span className="text-muted-foreground leading-relaxed">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </Card>
-                  ))}
-                </div>
+                {/* Projects without Images - Compact Card Layout */}
+                {filteredAdditionalProjects.length > 0 && (
+                  <>
+                    {filteredFeaturedProjects.length > 0 && (
+                      <h2 className="text-2xl md:text-3xl mb-8">
+                        Additional Projects
+                      </h2>
+                    )}
+                    <div className="grid md:grid-cols-2 gap-8">
+                      {filteredAdditionalProjects.map((project, i) => (
+                        <Card key={i} className="p-6 border-border">
+                          <h3 className="text-xl font-bold mb-3">{project.title}</h3>
+                          <div className="flex flex-wrap items-center gap-2 text-sm mb-4 text-accent font-medium">
+                            <span>{project.year}</span>
+                            {project.size && (
+                              <>
+                                <span>•</span>
+                                <span>{project.size}</span>
+                              </>
+                            )}
+                          </div>
+                          <ul className="space-y-3">
+                            {project.details.map((detail: string, idx: number) => (
+                              <li key={idx} className="flex items-start gap-3 text-base">
+                                <span className="h-1.5 w-1.5 rounded-full bg-accent mt-[0.6rem] flex-shrink-0" />
+                                <span className="text-muted-foreground leading-relaxed">{detail}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </Card>
+                      ))}
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>
