@@ -142,7 +142,7 @@ const Services = () => {
         <section className="py-12 md:py-16 px-6 md:px-8" style={{ backgroundColor: '#202d7c' }}>
           <div className="max-w-[1240px] mx-auto text-center">
             <p className="uppercase text-sm tracking-wider text-white/80 font-medium mb-4">OUR SERVICES</p>
-            <h2 className="text-3xl md:text-4xl mb-4 text-white">Comprehensive construction and MEP expertise</h2>
+            <h2 className="text-3xl md:text-4xl mb-4 text-white mx-auto">Comprehensive construction and MEP expertise</h2>
             <p className="text-base text-white/90 mb-12">Choose a category to learn more</p>
             
             <div className="grid md:grid-cols-3 gap-8 md:gap-12">
