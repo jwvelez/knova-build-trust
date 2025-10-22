@@ -90,30 +90,25 @@ const Contact = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* 24/7 Service Card */}
-                <Card className="p-6 bg-background border-2 border-primary">
-                  <div className="flex items-start gap-3 mb-4">
-                    <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-primary mb-1">24/7 Service & Emergency Dispatch</h3>
-                      <p className="text-sm text-primary/80">
-                        Emergency repairs and troubleshooting available around the clock
-                      </p>
-                    </div>
-                  </div>
-                  <a href="tel:2015255365" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium">
-                    <Phone className="h-4 w-4" />
-                    <span>(201) 525-5365</span>
-                  </a>
-                  <div className="pl-8">
-                    <a href="tel:1234567890" className="text-lg font-semibold text-primary hover:text-accent transition-colors">
-                      (123) 456-7890
-                    </a>
-                  </div>
-                </Card>
               </div>
+
+              {/* 24/7 Service Card */}
+              <Card className="p-6 bg-background border-2 border-primary mt-5">
+                <div className="flex items-start gap-3 mb-4">
+                  <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-primary mb-1 text-base">24/7 Service & Emergency Dispatch</h3>
+                    <p className="text-sm text-primary/80">
+                      Emergency repairs and troubleshooting available around the clock
+                    </p>
+                  </div>
+                </div>
+                <a href="tel:2015255365" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                  <Phone className="h-5 w-5" />
+                  <span className="text-lg font-bold">(201) 525-5365</span>
+                </a>
+              </Card>
+            </div>
 
               {/* Request Form */}
               <Card className="p-8 border-border">

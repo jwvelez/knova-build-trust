@@ -54,7 +54,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden bg-[#1E3480] p-3 flex items-center justify-center"
+            className="lg:hidden bg-[#1E3480] p-3 flex items-center justify-center rounded-md"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
