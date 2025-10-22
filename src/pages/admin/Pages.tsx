@@ -72,6 +72,15 @@ const Pages = () => {
     if (page.slug === "home") {
       return `/admin/pages/home/edit`;
     }
+    if (page.slug === "services") {
+      return `/admin/pages/services/edit`;
+    }
+    if (page.slug === "who-we-are") {
+      return `/admin/pages/who-we-are/edit`;
+    }
+    if (page.slug === "contact") {
+      return `/admin/pages/contact/edit`;
+    }
     return `/admin/pages/${page.id}`;
   };
 

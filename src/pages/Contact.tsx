@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -7,9 +7,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+
 const Contact = () => {
+  const [loading, setLoading] = useState(true);
+  const [content, setContent] = useState<any>({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,6 +23,27 @@ const Contact = () => {
     location: "",
     message: ""
   });
+
+  useEffect(() => {
+    loadContent();
+  }, []);
+
+  const loadContent = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("cms_pages")
+        .select("sections")
+        .eq("slug", "contact")
+        .maybeSingle();
+
+      if (error) throw error;
+      if (data?.sections) setContent(data.sections);
+    } catch (error) {
+      console.error("Error loading content:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Request submitted! We'll be in touch soon.");
@@ -36,6 +62,28 @@ const Contact = () => {
       [field]: value
     }));
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col pb-20 md:pb-0">
+        <Header />
+        <main className="flex-1">
+          <section className="pt-10 pb-10 md:pt-12 md:pb-12 bg-secondary/30">
+            <div className="container-narrow">
+              <Skeleton className="h-32 w-3/4" />
+            </div>
+          </section>
+          <section className="pt-10 pb-20">
+            <div className="container-narrow">
+              <Skeleton className="h-96" />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return <div className="min-h-screen flex flex-col pb-20 md:pb-0">
       <Header />
 
@@ -43,9 +91,9 @@ const Contact = () => {
         {/* Hero */}
         <section className="pt-10 pb-10 md:pt-12 md:pb-12 bg-secondary/30">
           <div className="container-narrow text-left md:text-center">
-            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-left">Contact</p>
+            <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4 text-left">{content.hero_eyebrow || 'Contact'}</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8 ml-0">
-              Let's discuss your project
+              {content.hero_heading || "Let's discuss your project"}
             </h1>
           </div>
         </section>
@@ -64,8 +112,8 @@ const Contact = () => {
                       <div>
                         <p className="font-medium mb-1">Address</p>
                         <p className="text-muted-foreground">
-                          252 Hudson St<br />
-                          Hackensack, NJ 07601
+                          {content.address_line_1 || '252 Hudson St'}<br />
+                          {content.address_line_2 || 'Hackensack, NJ 07601'}
                         </p>
                       </div>
                     </div>
@@ -74,8 +122,8 @@ const Contact = () => {
                       <Phone className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
                       <div>
                         <p className="font-medium mb-1">Phone</p>
-                        <a href="tel:2015255365" className="text-muted-foreground hover:text-accent transition-colors">
-                          (201) 525-5365
+                        <a href={`tel:${(content.phone || '(201) 525-5365').replace(/[^0-9]/g, '')}`} className="text-muted-foreground hover:text-accent transition-colors">
+                          {content.phone || '(201) 525-5365'}
                         </a>
                       </div>
                     </div>
@@ -84,8 +132,8 @@ const Contact = () => {
                       <Mail className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
                       <div>
                         <p className="font-medium mb-1">Email</p>
-                        <a href="mailto:info@knovacontractors.com" className="text-muted-foreground hover:text-accent transition-colors">
-                          info@knovacontractors.com
+                        <a href={`mailto:${content.email || 'info@knovacontractors.com'}`} className="text-muted-foreground hover:text-accent transition-colors">
+                          {content.email || 'info@knovacontractors.com'}
                         </a>
                       </div>
                     </div>
@@ -97,15 +145,15 @@ const Contact = () => {
                 <div className="flex items-start gap-3 mb-4">
                   <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="font-semibold text-primary mb-1 text-base">24/7 Service & Emergency Dispatch</h3>
+                    <h3 className="font-semibold text-primary mb-1 text-base">{content.emergency_service_title || '24/7 Service & Emergency Dispatch'}</h3>
                     <p className="text-sm text-primary/80">
-                      Emergency repairs and troubleshooting available around the clock
+                      {content.emergency_service_description || 'Emergency repairs and troubleshooting available around the clock'}
                     </p>
                   </div>
                 </div>
-                <a href="tel:2015255365" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                <a href={`tel:${(content.emergency_service_phone || '(201) 525-5365').replace(/[^0-9]/g, '')}`} className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
                   <Phone className="h-5 w-5" />
-                  <span className="text-lg font-bold">(201) 525-5365</span>
+                  <span className="text-lg font-bold">{content.emergency_service_phone || '(201) 525-5365'}</span>
                 </a>
               </Card>
             </div>

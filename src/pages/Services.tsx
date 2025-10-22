@@ -25,12 +25,12 @@ const Services = () => {
 
   const loadData = async () => {
     try {
-      const [settingsRes, servicesRes] = await Promise.all([
-        supabase.from("cms_service_page").select("*").single(),
+      const [pageRes, servicesRes] = await Promise.all([
+        supabase.from("cms_pages").select("sections").eq("slug", "services").maybeSingle(),
         supabase.from("cms_services").select("*").eq("status", "published").order("display_order")
       ]);
 
-      if (settingsRes.data) setPageSettings(settingsRes.data);
+      if (pageRes.data?.sections) setPageSettings(pageRes.data.sections);
       if (servicesRes.data) setServices(servicesRes.data);
     } catch (error) {
       console.error("Error loading data:", error);
