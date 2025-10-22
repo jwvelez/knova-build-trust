@@ -18,11 +18,8 @@ interface FooterSettings {
   address_line_2: string;
   phone: string;
   email: string;
-  company_heading: string;
-  company_tagline: string;
   company_description: string;
-  quick_links_heading: string;
-  certifications_heading: string;
+  links_heading: string;
   certifications: string[];
   copyright_text: string;
 }
@@ -169,20 +166,6 @@ const FooterEditor = () => {
         <Card className="p-6 space-y-6">
           <h2 className="text-xl font-semibold">Company Description</h2>
           <div className="space-y-2">
-            <Label>Company Heading</Label>
-            <Input
-              value={settings.company_heading}
-              onChange={(e) => updateField("company_heading", e.target.value)}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label>Tagline</Label>
-            <Input
-              value={settings.company_tagline}
-              onChange={(e) => updateField("company_tagline", e.target.value)}
-            />
-          </div>
-          <div className="space-y-2">
             <Label>Description</Label>
             <Textarea
               value={settings.company_description || ""}
@@ -198,8 +181,8 @@ const FooterEditor = () => {
           <div className="space-y-2">
             <Label>Quick Links Heading</Label>
             <Input
-              value={settings.quick_links_heading}
-              onChange={(e) => updateField("quick_links_heading", e.target.value)}
+              value={settings.links_heading}
+              onChange={(e) => updateField("links_heading", e.target.value)}
             />
           </div>
           <div className="bg-muted p-4 rounded-lg">
@@ -212,13 +195,6 @@ const FooterEditor = () => {
         {/* Certifications */}
         <Card className="p-6 space-y-6">
           <h2 className="text-xl font-semibold">Certifications</h2>
-          <div className="space-y-2">
-            <Label>Certifications Heading</Label>
-            <Input
-              value={settings.certifications_heading}
-              onChange={(e) => updateField("certifications_heading", e.target.value)}
-            />
-          </div>
           <div className="space-y-4">
             <Label>Certifications List</Label>
             {settings.certifications.map((cert, index) => (

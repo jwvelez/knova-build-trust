@@ -160,19 +160,19 @@ const WhoWeAre = () => {
                     Formerly CEO of one of the nation's largest Hispanic-led nonprofits, she oversaw a multi-state network with $650M in revenue and $1.3B in assets.
                   </p>
                   <p>
-                    She also brings a strong foundation in construction, affordable, supportive, and transitional housing development, property and asset management, and capital expansions for primary and behavioral health care and community facilities, including nursing homes, senior centers, and multi-purpose art spaces.
+                    She also brings a strong foundation in construction, affordable, supportive, and transitional housing development, property and asset management, and capital expansions for primary and behavioral health care and community facilities, including senior housing and aging-in-place initiatives, nursing homes, senior centers, and multi-purpose art spaces.
                   </p>
                 </div>
               </Card>
             </div>
 
             {/* Office & Field Assistance */}
-            <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10 text-left">
-              <div className="flex items-start gap-4">
+            <Card className="mt-8 p-8 lg:p-10 border-border bg-gradient-to-br from-accent/5 to-accent/10">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
                 <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
                   <PawPrint className="h-6 w-6 text-accent" />
                 </div>
-                <div className="text-left">
+                <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2">Office & Field Assistance</h3>
                   <p className="text-base text-muted-foreground mb-4">
                     Luna and Lady — our on-site morale officers and the namesake of a side business we own, Luna and Lady Cleaning Services.

@@ -18,21 +18,18 @@ interface HomepageSettings {
   hero_cta_primary: string;
   hero_cta_secondary: string;
   hero_image: string;
-  trust_badges: string[];
-  how_we_deliver_eyebrow: string;
-  how_we_deliver_heading: string;
-  how_we_deliver_description: string;
-  how_we_deliver_image: string;
-  logo_image: string;
-  value_prop_1_icon: string;
-  value_prop_1_title: string;
-  value_prop_1_description: string;
-  value_prop_2_icon: string;
-  value_prop_2_title: string;
-  value_prop_2_description: string;
-  value_prop_3_icon: string;
-  value_prop_3_title: string;
-  value_prop_3_description: string;
+  deliver_eyebrow: string;
+  deliver_heading: string;
+  deliver_description: string;
+  deliver_value_1_icon: string;
+  deliver_value_1_title: string;
+  deliver_value_1_description: string;
+  deliver_value_2_icon: string;
+  deliver_value_2_title: string;
+  deliver_value_2_description: string;
+  deliver_value_3_icon: string;
+  deliver_value_3_title: string;
+  deliver_value_3_description: string;
   services_eyebrow: string;
   services_heading: string;
   services_description: string;
@@ -40,14 +37,10 @@ interface HomepageSettings {
   industries_eyebrow: string;
   industries_heading: string;
   industries_description: string;
-  interstitial_1_url: string;
+  interstitial_1_image: string;
   interstitial_1_alt: string;
-  interstitial_2_url: string;
+  interstitial_2_image: string;
   interstitial_2_alt: string;
-  projects_eyebrow: string;
-  projects_heading: string;
-  projects_description: string;
-  projects_cta_text: string;
   final_cta_heading: string;
   final_cta_button_text: string;
 }
@@ -107,13 +100,6 @@ const HomepageEditor = () => {
 
   const updateField = (field: keyof HomepageSettings, value: any) => {
     setSettings((prev) => prev ? { ...prev, [field]: value } : null);
-  };
-
-  const updateTrustBadge = (index: number, value: string) => {
-    if (!settings) return;
-    const newBadges = [...settings.trust_badges];
-    newBadges[index] = value;
-    updateField("trust_badges", newBadges);
   };
 
   if (loading) {
@@ -200,16 +186,6 @@ const HomepageEditor = () => {
                 placeholder="Leave empty to use default"
               />
             </div>
-            <div className="space-y-4">
-              <Label>Trust Badges</Label>
-              {settings.trust_badges.map((badge, index) => (
-                <Input
-                  key={index}
-                  value={badge}
-                  onChange={(e) => updateTrustBadge(index, e.target.value)}
-                />
-              ))}
-            </div>
           </Card>
         </TabsContent>
 
@@ -219,22 +195,22 @@ const HomepageEditor = () => {
             <div className="space-y-2">
               <Label>Eyebrow Text</Label>
               <Input
-                value={settings.how_we_deliver_eyebrow}
-                onChange={(e) => updateField("how_we_deliver_eyebrow", e.target.value)}
+                value={settings.deliver_eyebrow}
+                onChange={(e) => updateField("deliver_eyebrow", e.target.value)}
               />
             </div>
             <div className="space-y-2">
               <Label>Section Heading</Label>
               <Input
-                value={settings.how_we_deliver_heading}
-                onChange={(e) => updateField("how_we_deliver_heading", e.target.value)}
+                value={settings.deliver_heading}
+                onChange={(e) => updateField("deliver_heading", e.target.value)}
               />
             </div>
             <div className="space-y-2">
               <Label>Section Description</Label>
               <Textarea
-                value={settings.how_we_deliver_description || ""}
-                onChange={(e) => updateField("how_we_deliver_description", e.target.value)}
+                value={settings.deliver_description || ""}
+                onChange={(e) => updateField("deliver_description", e.target.value)}
                 rows={3}
               />
             </div>
@@ -244,22 +220,22 @@ const HomepageEditor = () => {
               <div className="space-y-2">
                 <Label>Icon Name</Label>
                 <Input
-                  value={settings.value_prop_1_icon}
-                  onChange={(e) => updateField("value_prop_1_icon", e.target.value)}
+                  value={settings.deliver_value_1_icon}
+                  onChange={(e) => updateField("deliver_value_1_icon", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Title</Label>
                 <Input
-                  value={settings.value_prop_1_title || ""}
-                  onChange={(e) => updateField("value_prop_1_title", e.target.value)}
+                  value={settings.deliver_value_1_title || ""}
+                  onChange={(e) => updateField("deliver_value_1_title", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Description</Label>
                 <Textarea
-                  value={settings.value_prop_1_description || ""}
-                  onChange={(e) => updateField("value_prop_1_description", e.target.value)}
+                  value={settings.deliver_value_1_description || ""}
+                  onChange={(e) => updateField("deliver_value_1_description", e.target.value)}
                   rows={2}
                 />
               </div>
@@ -270,22 +246,22 @@ const HomepageEditor = () => {
               <div className="space-y-2">
                 <Label>Icon Name</Label>
                 <Input
-                  value={settings.value_prop_2_icon}
-                  onChange={(e) => updateField("value_prop_2_icon", e.target.value)}
+                  value={settings.deliver_value_2_icon}
+                  onChange={(e) => updateField("deliver_value_2_icon", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Title</Label>
                 <Input
-                  value={settings.value_prop_2_title || ""}
-                  onChange={(e) => updateField("value_prop_2_title", e.target.value)}
+                  value={settings.deliver_value_2_title || ""}
+                  onChange={(e) => updateField("deliver_value_2_title", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Description</Label>
                 <Textarea
-                  value={settings.value_prop_2_description || ""}
-                  onChange={(e) => updateField("value_prop_2_description", e.target.value)}
+                  value={settings.deliver_value_2_description || ""}
+                  onChange={(e) => updateField("deliver_value_2_description", e.target.value)}
                   rows={2}
                 />
               </div>
@@ -296,22 +272,22 @@ const HomepageEditor = () => {
               <div className="space-y-2">
                 <Label>Icon Name</Label>
                 <Input
-                  value={settings.value_prop_3_icon}
-                  onChange={(e) => updateField("value_prop_3_icon", e.target.value)}
+                  value={settings.deliver_value_3_icon}
+                  onChange={(e) => updateField("deliver_value_3_icon", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Title</Label>
                 <Input
-                  value={settings.value_prop_3_title || ""}
-                  onChange={(e) => updateField("value_prop_3_title", e.target.value)}
+                  value={settings.deliver_value_3_title || ""}
+                  onChange={(e) => updateField("deliver_value_3_title", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Description</Label>
                 <Textarea
-                  value={settings.value_prop_3_description || ""}
-                  onChange={(e) => updateField("value_prop_3_description", e.target.value)}
+                  value={settings.deliver_value_3_description || ""}
+                  onChange={(e) => updateField("deliver_value_3_description", e.target.value)}
                   rows={2}
                 />
               </div>
@@ -400,8 +376,8 @@ const HomepageEditor = () => {
               <div className="space-y-2">
                 <Label>Image URL</Label>
                 <Input
-                  value={settings.interstitial_1_url || ""}
-                  onChange={(e) => updateField("interstitial_1_url", e.target.value)}
+                  value={settings.interstitial_1_image || ""}
+                  onChange={(e) => updateField("interstitial_1_image", e.target.value)}
                   placeholder="Leave empty to use default"
                 />
               </div>
@@ -419,8 +395,8 @@ const HomepageEditor = () => {
               <div className="space-y-2">
                 <Label>Image URL</Label>
                 <Input
-                  value={settings.interstitial_2_url || ""}
-                  onChange={(e) => updateField("interstitial_2_url", e.target.value)}
+                  value={settings.interstitial_2_image || ""}
+                  onChange={(e) => updateField("interstitial_2_image", e.target.value)}
                   placeholder="Leave empty to use default"
                 />
               </div>

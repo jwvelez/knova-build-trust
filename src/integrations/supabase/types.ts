@@ -50,6 +50,300 @@ export type Database = {
         }
         Relationships: []
       }
+      cms_contact_info: {
+        Row: {
+          address_line_1: string | null
+          address_line_2: string | null
+          created_at: string | null
+          email: string | null
+          emergency_service_cta: string | null
+          emergency_service_description: string | null
+          emergency_service_phone: string | null
+          emergency_service_title: string | null
+          form_company_label: string | null
+          form_email_label: string | null
+          form_message_label: string | null
+          form_name_label: string | null
+          form_phone_label: string | null
+          form_service_label: string | null
+          form_submit_text: string | null
+          hero_eyebrow: string | null
+          hero_heading: string | null
+          id: string
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          address_line_1?: string | null
+          address_line_2?: string | null
+          created_at?: string | null
+          email?: string | null
+          emergency_service_cta?: string | null
+          emergency_service_description?: string | null
+          emergency_service_phone?: string | null
+          emergency_service_title?: string | null
+          form_company_label?: string | null
+          form_email_label?: string | null
+          form_message_label?: string | null
+          form_name_label?: string | null
+          form_phone_label?: string | null
+          form_service_label?: string | null
+          form_submit_text?: string | null
+          hero_eyebrow?: string | null
+          hero_heading?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          address_line_1?: string | null
+          address_line_2?: string | null
+          created_at?: string | null
+          email?: string | null
+          emergency_service_cta?: string | null
+          emergency_service_description?: string | null
+          emergency_service_phone?: string | null
+          emergency_service_title?: string | null
+          form_company_label?: string | null
+          form_email_label?: string | null
+          form_message_label?: string | null
+          form_name_label?: string | null
+          form_phone_label?: string | null
+          form_service_label?: string | null
+          form_submit_text?: string | null
+          hero_eyebrow?: string | null
+          hero_heading?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      cms_footer_content: {
+        Row: {
+          address_line_1: string | null
+          address_line_2: string | null
+          certifications: string[] | null
+          company_description: string | null
+          contact_heading: string | null
+          copyright_text: string | null
+          created_at: string | null
+          email: string | null
+          id: string
+          links_heading: string | null
+          logo_url: string | null
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          address_line_1?: string | null
+          address_line_2?: string | null
+          certifications?: string[] | null
+          company_description?: string | null
+          contact_heading?: string | null
+          copyright_text?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          links_heading?: string | null
+          logo_url?: string | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          address_line_1?: string | null
+          address_line_2?: string | null
+          certifications?: string[] | null
+          company_description?: string | null
+          contact_heading?: string | null
+          copyright_text?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          links_heading?: string | null
+          logo_url?: string | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      cms_homepage_industries: {
+        Row: {
+          created_at: string | null
+          detail: string
+          display_order: number | null
+          filter_link: string | null
+          icon: string
+          id: string
+          label: string
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          detail: string
+          display_order?: number | null
+          filter_link?: string | null
+          icon: string
+          id?: string
+          label: string
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          detail?: string
+          display_order?: number | null
+          filter_link?: string | null
+          icon?: string
+          id?: string
+          label?: string
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      cms_homepage_sections: {
+        Row: {
+          created_at: string | null
+          deliver_description: string | null
+          deliver_eyebrow: string | null
+          deliver_heading: string | null
+          deliver_value_1_description: string | null
+          deliver_value_1_icon: string | null
+          deliver_value_1_title: string | null
+          deliver_value_2_description: string | null
+          deliver_value_2_icon: string | null
+          deliver_value_2_title: string | null
+          deliver_value_3_description: string | null
+          deliver_value_3_icon: string | null
+          deliver_value_3_title: string | null
+          final_cta_button_text: string | null
+          final_cta_heading: string | null
+          hero_cta_primary: string | null
+          hero_cta_secondary: string | null
+          hero_description: string | null
+          hero_heading: string
+          hero_image: string | null
+          id: string
+          industries_description: string | null
+          industries_eyebrow: string | null
+          industries_heading: string | null
+          interstitial_1_alt: string | null
+          interstitial_1_image: string | null
+          interstitial_2_alt: string | null
+          interstitial_2_image: string | null
+          services_cta_text: string | null
+          services_description: string | null
+          services_eyebrow: string | null
+          services_heading: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          deliver_description?: string | null
+          deliver_eyebrow?: string | null
+          deliver_heading?: string | null
+          deliver_value_1_description?: string | null
+          deliver_value_1_icon?: string | null
+          deliver_value_1_title?: string | null
+          deliver_value_2_description?: string | null
+          deliver_value_2_icon?: string | null
+          deliver_value_2_title?: string | null
+          deliver_value_3_description?: string | null
+          deliver_value_3_icon?: string | null
+          deliver_value_3_title?: string | null
+          final_cta_button_text?: string | null
+          final_cta_heading?: string | null
+          hero_cta_primary?: string | null
+          hero_cta_secondary?: string | null
+          hero_description?: string | null
+          hero_heading: string
+          hero_image?: string | null
+          id?: string
+          industries_description?: string | null
+          industries_eyebrow?: string | null
+          industries_heading?: string | null
+          interstitial_1_alt?: string | null
+          interstitial_1_image?: string | null
+          interstitial_2_alt?: string | null
+          interstitial_2_image?: string | null
+          services_cta_text?: string | null
+          services_description?: string | null
+          services_eyebrow?: string | null
+          services_heading?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          deliver_description?: string | null
+          deliver_eyebrow?: string | null
+          deliver_heading?: string | null
+          deliver_value_1_description?: string | null
+          deliver_value_1_icon?: string | null
+          deliver_value_1_title?: string | null
+          deliver_value_2_description?: string | null
+          deliver_value_2_icon?: string | null
+          deliver_value_2_title?: string | null
+          deliver_value_3_description?: string | null
+          deliver_value_3_icon?: string | null
+          deliver_value_3_title?: string | null
+          final_cta_button_text?: string | null
+          final_cta_heading?: string | null
+          hero_cta_primary?: string | null
+          hero_cta_secondary?: string | null
+          hero_description?: string | null
+          hero_heading?: string
+          hero_image?: string | null
+          id?: string
+          industries_description?: string | null
+          industries_eyebrow?: string | null
+          industries_heading?: string | null
+          interstitial_1_alt?: string | null
+          interstitial_1_image?: string | null
+          interstitial_2_alt?: string | null
+          interstitial_2_image?: string | null
+          services_cta_text?: string | null
+          services_description?: string | null
+          services_eyebrow?: string | null
+          services_heading?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      cms_homepage_services: {
+        Row: {
+          created_at: string | null
+          description: string
+          display_order: number | null
+          icon: string
+          id: string
+          status: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          display_order?: number | null
+          icon: string
+          id?: string
+          status?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          display_order?: number | null
+          icon?: string
+          id?: string
+          status?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       cms_media: {
         Row: {
           alt_text: string | null
@@ -98,6 +392,36 @@ export type Database = {
           uploaded_by?: string | null
           url?: string
           width?: number | null
+        }
+        Relationships: []
+      }
+      cms_navigation: {
+        Row: {
+          created_at: string | null
+          display_order: number | null
+          id: string
+          label: string
+          path: string
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          label: string
+          path: string
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          label?: string
+          path?: string
+          status?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -497,6 +821,129 @@ export type Database = {
           entity_type?: string
           id?: string
           version?: number
+        }
+        Relationships: []
+      }
+      cms_who_we_are: {
+        Row: {
+          certifications: string[] | null
+          certifications_heading: string | null
+          consultants_description: string | null
+          consultants_heading: string | null
+          created_at: string | null
+          cta_button_text: string | null
+          cta_heading: string | null
+          hero_description: string | null
+          hero_eyebrow: string | null
+          hero_heading: string | null
+          hero_image: string | null
+          id: string
+          leader_1_bio: string | null
+          leader_1_image: string | null
+          leader_1_name: string | null
+          leader_1_title: string | null
+          leader_2_bio: string | null
+          leader_2_image: string | null
+          leader_2_name: string | null
+          leader_2_title: string | null
+          leadership_heading: string | null
+          mission_heading: string | null
+          office_assistance_description: string | null
+          office_assistance_heading: string | null
+          office_assistance_link: string | null
+          overview_paragraph_1: string | null
+          overview_paragraph_2: string | null
+          social_impact_description: string | null
+          social_impact_heading: string | null
+          updated_at: string | null
+          value_1_description: string | null
+          value_1_title: string | null
+          value_2_description: string | null
+          value_2_title: string | null
+          value_3_description: string | null
+          value_3_title: string | null
+          value_4_description: string | null
+          value_4_title: string | null
+        }
+        Insert: {
+          certifications?: string[] | null
+          certifications_heading?: string | null
+          consultants_description?: string | null
+          consultants_heading?: string | null
+          created_at?: string | null
+          cta_button_text?: string | null
+          cta_heading?: string | null
+          hero_description?: string | null
+          hero_eyebrow?: string | null
+          hero_heading?: string | null
+          hero_image?: string | null
+          id?: string
+          leader_1_bio?: string | null
+          leader_1_image?: string | null
+          leader_1_name?: string | null
+          leader_1_title?: string | null
+          leader_2_bio?: string | null
+          leader_2_image?: string | null
+          leader_2_name?: string | null
+          leader_2_title?: string | null
+          leadership_heading?: string | null
+          mission_heading?: string | null
+          office_assistance_description?: string | null
+          office_assistance_heading?: string | null
+          office_assistance_link?: string | null
+          overview_paragraph_1?: string | null
+          overview_paragraph_2?: string | null
+          social_impact_description?: string | null
+          social_impact_heading?: string | null
+          updated_at?: string | null
+          value_1_description?: string | null
+          value_1_title?: string | null
+          value_2_description?: string | null
+          value_2_title?: string | null
+          value_3_description?: string | null
+          value_3_title?: string | null
+          value_4_description?: string | null
+          value_4_title?: string | null
+        }
+        Update: {
+          certifications?: string[] | null
+          certifications_heading?: string | null
+          consultants_description?: string | null
+          consultants_heading?: string | null
+          created_at?: string | null
+          cta_button_text?: string | null
+          cta_heading?: string | null
+          hero_description?: string | null
+          hero_eyebrow?: string | null
+          hero_heading?: string | null
+          hero_image?: string | null
+          id?: string
+          leader_1_bio?: string | null
+          leader_1_image?: string | null
+          leader_1_name?: string | null
+          leader_1_title?: string | null
+          leader_2_bio?: string | null
+          leader_2_image?: string | null
+          leader_2_name?: string | null
+          leader_2_title?: string | null
+          leadership_heading?: string | null
+          mission_heading?: string | null
+          office_assistance_description?: string | null
+          office_assistance_heading?: string | null
+          office_assistance_link?: string | null
+          overview_paragraph_1?: string | null
+          overview_paragraph_2?: string | null
+          social_impact_description?: string | null
+          social_impact_heading?: string | null
+          updated_at?: string | null
+          value_1_description?: string | null
+          value_1_title?: string | null
+          value_2_description?: string | null
+          value_2_title?: string | null
+          value_3_description?: string | null
+          value_3_title?: string | null
+          value_4_description?: string | null
+          value_4_title?: string | null
         }
         Relationships: []
       }

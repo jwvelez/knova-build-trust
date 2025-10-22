@@ -19,7 +19,6 @@ interface WhoWeAreSettings {
   hero_image: string;
   overview_paragraph_1: string;
   overview_paragraph_2: string;
-  mission_eyebrow: string;
   mission_heading: string;
   value_1_title: string;
   value_1_description: string;
@@ -29,7 +28,6 @@ interface WhoWeAreSettings {
   value_3_description: string;
   value_4_title: string;
   value_4_description: string;
-  leadership_eyebrow: string;
   leadership_heading: string;
   leader_1_name: string;
   leader_1_title: string;
@@ -41,13 +39,11 @@ interface WhoWeAreSettings {
   leader_2_image: string;
   office_assistance_heading: string;
   office_assistance_description: string;
-  office_assistance_link_text: string;
-  office_assistance_link_url: string;
-  consultants_eyebrow: string;
+  office_assistance_link: string;
+  consultants_heading: string;
   consultants_description: string;
-  social_impact_eyebrow: string;
+  social_impact_heading: string;
   social_impact_description: string;
-  certifications_eyebrow: string;
   certifications_heading: string;
   certifications: string[];
   cta_heading: string;
@@ -219,13 +215,6 @@ const WhoWeAreEditor = () => {
         <TabsContent value="values">
           <Card className="p-6 space-y-6">
             <div className="space-y-2">
-              <Label>Section Eyebrow</Label>
-              <Input
-                value={settings.mission_eyebrow}
-                onChange={(e) => updateField("mission_eyebrow", e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
               <Label>Section Heading</Label>
               <Input
                 value={settings.mission_heading || ""}
@@ -285,13 +274,6 @@ const WhoWeAreEditor = () => {
 
         <TabsContent value="leadership">
           <Card className="p-6 space-y-6">
-            <div className="space-y-2">
-              <Label>Section Eyebrow</Label>
-              <Input
-                value={settings.leadership_eyebrow}
-                onChange={(e) => updateField("leadership_eyebrow", e.target.value)}
-              />
-            </div>
             <div className="space-y-2">
               <Label>Section Heading</Label>
               <Input
@@ -388,17 +370,10 @@ const WhoWeAreEditor = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Link Text</Label>
-                <Input
-                  value={settings.office_assistance_link_text}
-                  onChange={(e) => updateField("office_assistance_link_text", e.target.value)}
-                />
-              </div>
-              <div className="space-y-2">
                 <Label>Link URL</Label>
                 <Input
-                  value={settings.office_assistance_link_url}
-                  onChange={(e) => updateField("office_assistance_link_url", e.target.value)}
+                  value={settings.office_assistance_link}
+                  onChange={(e) => updateField("office_assistance_link", e.target.value)}
                 />
               </div>
             </div>
@@ -406,10 +381,10 @@ const WhoWeAreEditor = () => {
             <div className="border-t pt-6 space-y-4">
               <h3 className="font-semibold text-lg">Consultants</h3>
               <div className="space-y-2">
-                <Label>Eyebrow</Label>
+                <Label>Heading</Label>
                 <Input
-                  value={settings.consultants_eyebrow}
-                  onChange={(e) => updateField("consultants_eyebrow", e.target.value)}
+                  value={settings.consultants_heading}
+                  onChange={(e) => updateField("consultants_heading", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
@@ -425,10 +400,10 @@ const WhoWeAreEditor = () => {
             <div className="border-t pt-6 space-y-4">
               <h3 className="font-semibold text-lg">Social Impact</h3>
               <div className="space-y-2">
-                <Label>Eyebrow</Label>
+                <Label>Heading</Label>
                 <Input
-                  value={settings.social_impact_eyebrow}
-                  onChange={(e) => updateField("social_impact_eyebrow", e.target.value)}
+                  value={settings.social_impact_heading}
+                  onChange={(e) => updateField("social_impact_heading", e.target.value)}
                 />
               </div>
               <div className="space-y-2">
@@ -446,10 +421,10 @@ const WhoWeAreEditor = () => {
         <TabsContent value="certs">
           <Card className="p-6 space-y-6">
             <div className="space-y-2">
-              <Label>Section Eyebrow</Label>
+              <Label>Section Heading</Label>
               <Input
-                value={settings.certifications_eyebrow}
-                onChange={(e) => updateField("certifications_eyebrow", e.target.value)}
+                value={settings.certifications_heading || ""}
+                onChange={(e) => updateField("certifications_heading", e.target.value)}
               />
             </div>
             <div className="space-y-2">

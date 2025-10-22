@@ -18,20 +18,17 @@ interface ContactSettings {
   address_line_2: string;
   phone: string;
   email: string;
-  service_247_heading: string;
-  service_247_description: string;
-  service_247_phone: string;
-  form_heading: string;
+  emergency_service_title: string;
+  emergency_service_description: string;
+  emergency_service_phone: string;
+  emergency_service_cta: string;
   form_name_label: string;
   form_email_label: string;
   form_phone_label: string;
-  form_project_type_label: string;
-  form_location_label: string;
-  form_timeline_label: string;
-  form_budget_label: string;
+  form_company_label: string;
+  form_service_label: string;
   form_message_label: string;
-  form_submit_button: string;
-  form_success_message: string;
+  form_submit_text: string;
 }
 
 const ContactEditor = () => {
@@ -179,41 +176,41 @@ const ContactEditor = () => {
 
         {/* 24/7 Service Card */}
         <Card className="p-6 space-y-6">
-          <h2 className="text-xl font-semibold">24/7 Service Card</h2>
+          <h2 className="text-xl font-semibold">24/7 Emergency Service Card</h2>
           <div className="space-y-2">
-            <Label>Heading</Label>
+            <Label>Title</Label>
             <Input
-              value={settings.service_247_heading}
-              onChange={(e) => updateField("service_247_heading", e.target.value)}
+              value={settings.emergency_service_title}
+              onChange={(e) => updateField("emergency_service_title", e.target.value)}
             />
           </div>
           <div className="space-y-2">
             <Label>Description</Label>
             <Textarea
-              value={settings.service_247_description || ""}
-              onChange={(e) => updateField("service_247_description", e.target.value)}
+              value={settings.emergency_service_description || ""}
+              onChange={(e) => updateField("emergency_service_description", e.target.value)}
               rows={3}
             />
           </div>
           <div className="space-y-2">
-            <Label>24/7 Service Phone</Label>
+            <Label>Emergency Phone</Label>
             <Input
-              value={settings.service_247_phone}
-              onChange={(e) => updateField("service_247_phone", e.target.value)}
+              value={settings.emergency_service_phone}
+              onChange={(e) => updateField("emergency_service_phone", e.target.value)}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>CTA Button Text</Label>
+            <Input
+              value={settings.emergency_service_cta}
+              onChange={(e) => updateField("emergency_service_cta", e.target.value)}
             />
           </div>
         </Card>
 
         {/* Form Labels */}
         <Card className="p-6 space-y-6">
-          <h2 className="text-xl font-semibold">Form Labels</h2>
-          <div className="space-y-2">
-            <Label>Form Heading</Label>
-            <Input
-              value={settings.form_heading}
-              onChange={(e) => updateField("form_heading", e.target.value)}
-            />
-          </div>
+          <h2 className="text-xl font-semibold">Form Field Labels</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label>Name Field Label</Label>
@@ -237,35 +234,21 @@ const ContactEditor = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label>Project Type Label</Label>
+              <Label>Company Field Label</Label>
               <Input
-                value={settings.form_project_type_label}
-                onChange={(e) => updateField("form_project_type_label", e.target.value)}
+                value={settings.form_company_label}
+                onChange={(e) => updateField("form_company_label", e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <Label>Location Label</Label>
+              <Label>Service Type Label</Label>
               <Input
-                value={settings.form_location_label}
-                onChange={(e) => updateField("form_location_label", e.target.value)}
+                value={settings.form_service_label}
+                onChange={(e) => updateField("form_service_label", e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <Label>Timeline Label</Label>
-              <Input
-                value={settings.form_timeline_label}
-                onChange={(e) => updateField("form_timeline_label", e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>Budget Label</Label>
-              <Input
-                value={settings.form_budget_label}
-                onChange={(e) => updateField("form_budget_label", e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label>Message Label</Label>
+              <Label>Message Field Label</Label>
               <Input
                 value={settings.form_message_label}
                 onChange={(e) => updateField("form_message_label", e.target.value)}
@@ -275,15 +258,8 @@ const ContactEditor = () => {
           <div className="space-y-2">
             <Label>Submit Button Text</Label>
             <Input
-              value={settings.form_submit_button}
-              onChange={(e) => updateField("form_submit_button", e.target.value)}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label>Success Message</Label>
-            <Input
-              value={settings.form_success_message}
-              onChange={(e) => updateField("form_success_message", e.target.value)}
+              value={settings.form_submit_text}
+              onChange={(e) => updateField("form_submit_text", e.target.value)}
             />
           </div>
         </Card>

@@ -16,8 +16,6 @@ const Contact = () => {
     phone: "",
     projectType: "",
     location: "",
-    timeline: "",
-    budget: "",
     message: ""
   });
   const handleSubmit = (e: React.FormEvent) => {
@@ -29,8 +27,6 @@ const Contact = () => {
       phone: "",
       projectType: "",
       location: "",
-      timeline: "",
-      budget: "",
       message: ""
     });
   };
@@ -124,27 +120,33 @@ const Contact = () => {
                 <h2 className="text-2xl font-semibold mb-6">Contact Us</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-base">Name *</Label>
-                    <Input id="name" required value={formData.name} onChange={e => handleChange("name", e.target.value)} placeholder="Your name" className="h-12 text-base" />
+                    <Label htmlFor="name" className="text-base">
+                      Name <span className="text-destructive">*</span>
+                    </Label>
+                    <Input id="name" required value={formData.name} onChange={e => handleChange("name", e.target.value)} placeholder="Your name" className="h-12 text-base placeholder:text-muted-foreground" />
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-base">Email *</Label>
-                      <Input id="email" type="email" required value={formData.email} onChange={e => handleChange("email", e.target.value)} placeholder="your@email.com" className="h-12 text-base" />
+                      <Label htmlFor="email" className="text-base">
+                        Email <span className="text-destructive">*</span>
+                      </Label>
+                      <Input id="email" type="email" required value={formData.email} onChange={e => handleChange("email", e.target.value)} placeholder="your@email.com" className="h-12 text-base placeholder:text-muted-foreground" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="phone" className="text-base">Phone</Label>
-                      <Input id="phone" type="tel" value={formData.phone} onChange={e => handleChange("phone", e.target.value)} placeholder="(555) 123-4567" className="h-12 text-base" />
+                      <Input id="phone" type="tel" value={formData.phone} onChange={e => handleChange("phone", e.target.value)} placeholder="(555) 123-4567" className="h-12 text-base placeholder:text-muted-foreground" />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="projectType" className="text-base">Project Type *</Label>
-                    <Select value={formData.projectType} onValueChange={value => handleChange("projectType", value)}>
+                    <Label htmlFor="projectType" className="text-base">
+                      Project Type <span className="text-destructive">*</span>
+                    </Label>
+                    <Select value={formData.projectType} onValueChange={value => handleChange("projectType", value)} required>
                       <SelectTrigger id="projectType" className="h-12 text-base">
-                        <SelectValue placeholder="Select project type" />
+                        <SelectValue placeholder="Select project type" className="placeholder:text-muted-foreground" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="general-construction">General Construction</SelectItem>
@@ -157,26 +159,16 @@ const Contact = () => {
                     </Select>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="location" className="text-base">Location</Label>
-                      <Input id="location" value={formData.location} onChange={e => handleChange("location", e.target.value)} placeholder="City, State" className="h-12 text-base" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="timeline" className="text-base">Timeline</Label>
-                      <Input id="timeline" value={formData.timeline} onChange={e => handleChange("timeline", e.target.value)} placeholder="e.g., Q2 2025" className="h-12 text-base" />
-                    </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="location" className="text-base">Location</Label>
+                    <Input id="location" value={formData.location} onChange={e => handleChange("location", e.target.value)} placeholder="City, State" className="h-12 text-base placeholder:text-muted-foreground" />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="budget" className="text-base">Budget Range</Label>
-                    <Input id="budget" value={formData.budget} onChange={e => handleChange("budget", e.target.value)} placeholder="Optional" className="h-12 text-base" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-base">Project Details *</Label>
-                    <Textarea id="message" required value={formData.message} onChange={e => handleChange("message", e.target.value)} placeholder="Tell us about your project scope and requirements..." className="min-h-36 text-base" />
+                    <Label htmlFor="message" className="text-base">
+                      Project Details <span className="text-destructive">*</span>
+                    </Label>
+                    <Textarea id="message" required value={formData.message} onChange={e => handleChange("message", e.target.value)} placeholder="Tell us about your project scope and requirements..." className="min-h-36 text-base placeholder:text-muted-foreground" />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full">
