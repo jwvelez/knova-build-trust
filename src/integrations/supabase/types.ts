@@ -206,6 +206,7 @@ export type Database = {
       cms_homepage_sections: {
         Row: {
           created_at: string | null
+          deliver_background_image: string | null
           deliver_description: string | null
           deliver_eyebrow: string | null
           deliver_heading: string | null
@@ -241,6 +242,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          deliver_background_image?: string | null
           deliver_description?: string | null
           deliver_eyebrow?: string | null
           deliver_heading?: string | null
@@ -276,6 +278,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          deliver_background_image?: string | null
           deliver_description?: string | null
           deliver_eyebrow?: string | null
           deliver_heading?: string | null

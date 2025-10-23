@@ -21,6 +21,7 @@ interface HomepageSettings {
   deliver_eyebrow: string;
   deliver_heading: string;
   deliver_description: string;
+  deliver_background_image: string;
   deliver_value_1_icon: string;
   deliver_value_1_title: string;
   deliver_value_1_description: string;
@@ -242,6 +243,33 @@ const HomepageEditor = () => {
         {/* How We Deliver Tab */}
         <TabsContent value="how-we-deliver">
           <Card className="p-6 space-y-6">
+            <div className="space-y-2">
+              <Label>Background Image</Label>
+              <div className="flex gap-2">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => e.target.files?.[0] && handleImageUpload("deliver_background_image", e.target.files[0])}
+                  disabled={uploading}
+                  className="flex-1"
+                />
+                {settings.deliver_background_image && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    onClick={() => removeImage("deliver_background_image")}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+              {settings.deliver_background_image && (
+                <div className="mt-2">
+                  <img src={settings.deliver_background_image} alt="How We Deliver Background" className="h-32 w-auto object-cover rounded" />
+                </div>
+              )}
+            </div>
             <div className="space-y-2">
               <Label>Eyebrow Text</Label>
               <Input

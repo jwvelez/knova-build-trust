@@ -7,14 +7,14 @@ import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2,
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/hero-construction-team.jpg";
+import heroImageDefault from "@/assets/hero-construction-team.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
-import interstitial1 from "@/assets/interstitial-1.jpg";
-import interstitial2 from "@/assets/interstitial-2.jpg";
+import interstitial1Default from "@/assets/interstitial-1.jpg";
+import interstitial2Default from "@/assets/interstitial-2.jpg";
 import fullWidthServices from "@/assets/full-width-services.jpg";
-import howWeDeliver from "@/assets/how-we-deliver.jpg";
+import howWeDeliverDefault from "@/assets/how-we-deliver.jpg";
 import knovaReverse from "@/assets/knova-reverse.svg";
 
 
@@ -28,17 +28,27 @@ const Index = () => {
 
   const loadContent = async () => {
     try {
-      const { data, error } = await supabase
+      const { data: sectionsData, error: sectionsError } = await supabase
         .from("cms_pages")
         .select("sections")
         .eq("slug", "home")
         .maybeSingle();
 
-      if (error) throw error;
+      if (sectionsError) throw sectionsError;
       
-      if (data?.sections) {
-        setContent(data.sections);
-      }
+      const { data: homepageData, error: homepageError } = await supabase
+        .from("cms_homepage_sections")
+        .select("*")
+        .maybeSingle();
+
+      if (homepageError) throw homepageError;
+
+      const combinedContent = {
+        ...(sectionsData?.sections as any || {}),
+        ...(homepageData || {})
+      };
+      
+      setContent(combinedContent);
     } catch (error) {
       console.error("Error loading homepage content:", error);
     } finally {
@@ -195,7 +205,7 @@ const Index = () => {
             <div className="relative">
               <div className="relative overflow-hidden rounded-lg">
                 <img
-                  src={heroImage}
+                  src={content.hero_image || heroImageDefault}
                   alt="KNova construction team leaders"
                   className="w-full h-[500px] lg:h-[700px] object-cover object-center rounded-lg"
                   loading="eager"
@@ -224,7 +234,7 @@ const Index = () => {
         {/* Desktop: Image with overlay */}
         <div className="hidden md:block w-full relative">
           <img
-            src={howWeDeliver}
+            src={content.deliver_background_image || howWeDeliverDefault}
             alt="Construction and building systems"
             className="w-full h-[600px] lg:h-[900px] object-cover"
             loading="lazy"
@@ -385,8 +395,8 @@ const Index = () => {
       <section className="py-0 bg-secondary/30">
         <div className="w-full">
           <img
-            src={interstitial1}
-            alt="Construction team at work"
+            src={content.interstitial_1_image || interstitial1Default}
+            alt={content.interstitial_1_alt || "Construction team at work"}
             className="w-full h-64 md:h-80 object-cover"
             loading="lazy"
           />
@@ -473,8 +483,8 @@ const Index = () => {
       <section className="py-0 bg-secondary/30">
         <div className="w-full">
           <img
-            src={interstitial2}
-            alt="Building systems installation"
+            src={content.interstitial_2_image || interstitial2Default}
+            alt={content.interstitial_2_alt || "Building systems installation"}
             className="w-full h-64 md:h-80 object-cover"
             loading="lazy"
           />
