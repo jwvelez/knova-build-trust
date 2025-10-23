@@ -253,7 +253,8 @@ const Services = () => {
 
             <div className="mt-[40px] max-w-[900px] mx-auto text-center rounded-lg p-8" style={{ backgroundColor: '#202d7c' }}>
               <h3 className="text-2xl font-semibold text-white mb-3">{pageSettings.emergency_cta_title || '24/7 Facility Emergency Services'}</h3>
-              <p className="text-white/90 mb-6">{pageSettings.emergency_cta_description}</p>
+              <p className="text-white/90 mb-6 text-center">Our 24/7 service provides on-call technical support for unexpected incidents across critical building systems, with immediate, professional response at any time.</p>
+              <p className="text-white/90 mb-6 text-center">{pageSettings.emergency_cta_description}</p>
               <Button size="lg" className="bg-white text-[#202d7c] hover:bg-white/90" asChild>
                 <Link to="/contact">{pageSettings.emergency_cta_button_text || 'Request 24/7 Service'}</Link>
               </Button>
