@@ -190,7 +190,7 @@ const Services = () => {
           <div className="max-w-[1240px] mx-auto">
             <div className="mb-16 text-center">
               <h2 className="text-2xl md:text-3xl mb-3 text-accent mx-auto">{pageSettings.fm_title || 'Facility Maintenance & Emergency Response'}</h2>
-              <p className="text-muted-foreground max-w-3xl font-medium text-lg mx-auto">{pageSettings.fm_description || 'Proactive programs and rapid response to keep facilities reliable and reduce downtime.'}</p>
+              <p className="text-muted-foreground max-w-3xl font-medium text-lg mx-auto">{pageSettings.fm_description || 'KNova Contractors provides boutique-style facility operations with preventive and reactive maintenance, delivering scheduled preventive care and rapid response to keep operations smooth. Performing regular maintenance helps catch and resolve issues before they become failures, extending equipment life and reducing unplanned costs. If you\'re a property owner, landlord, facility manager, or co-op board member, we tailor solutions to your building and priorities to save time, control costs, and simplify operations.'}</p>
             </div>
 
             {isMobile ? (
