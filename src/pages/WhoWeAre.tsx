@@ -58,15 +58,14 @@ const WhoWeAre = () => {
   const loadContent = async () => {
     try {
       const { data, error } = await supabase
-        .from("cms_pages")
-        .select("sections")
-        .eq("slug", "who-we-are")
-        .single();
+        .from("cms_who_we_are")
+        .select("*")
+        .maybeSingle();
 
       if (error) throw error;
 
-      if (data?.sections) {
-        setContent(data.sections as WhoWeAreContent);
+      if (data) {
+        setContent(data as WhoWeAreContent);
       }
     } catch (error) {
       console.error("Error loading Who We Are content:", error);
