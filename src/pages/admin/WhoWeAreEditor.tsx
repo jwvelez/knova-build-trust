@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 
 interface WhoWeAreSettings {
   id?: string;
@@ -54,6 +54,7 @@ const WhoWeAreEditor = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [settings, setSettings] = useState<WhoWeAreSettings | null>(null);
 
   useEffect(() => {
@@ -112,6 +113,36 @@ const WhoWeAreEditor = () => {
     const newCerts = [...settings.certifications];
     newCerts[index] = value;
     updateField("certifications", newCerts);
+  };
+
+  const handleImageUpload = async (field: keyof WhoWeAreSettings, file: File) => {
+    try {
+      setUploading(true);
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `who-we-are/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('cms-media')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('cms-media')
+        .getPublicUrl(filePath);
+
+      updateField(field, publicUrl);
+      toast.success("Image uploaded successfully");
+    } catch (error: any) {
+      toast.error("Upload failed: " + error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const removeImage = (field: keyof WhoWeAreSettings) => {
+    updateField(field, "");
   };
 
   if (loading) {
@@ -181,12 +212,31 @@ const WhoWeAreEditor = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label>Hero Image URL</Label>
-              <Input
-                value={settings.hero_image || ""}
-                onChange={(e) => updateField("hero_image", e.target.value)}
-                placeholder="Leave empty to use default"
-              />
+              <Label>Hero Image</Label>
+              <div className="flex gap-2">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => e.target.files?.[0] && handleImageUpload("hero_image", e.target.files[0])}
+                  disabled={uploading}
+                  className="flex-1"
+                />
+                {settings.hero_image && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    onClick={() => removeImage("hero_image")}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+              {settings.hero_image && (
+                <div className="mt-2">
+                  <img src={settings.hero_image} alt="Hero" className="h-32 w-auto object-cover rounded" />
+                </div>
+              )}
             </div>
           </Card>
         </TabsContent>
@@ -307,11 +357,31 @@ const WhoWeAreEditor = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Image URL (optional)</Label>
-                <Input
-                  value={settings.leader_1_image || ""}
-                  onChange={(e) => updateField("leader_1_image", e.target.value)}
-                />
+                <Label>Image</Label>
+                <div className="flex gap-2">
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => e.target.files?.[0] && handleImageUpload("leader_1_image", e.target.files[0])}
+                    disabled={uploading}
+                    className="flex-1"
+                  />
+                  {settings.leader_1_image && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => removeImage("leader_1_image")}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+                {settings.leader_1_image && (
+                  <div className="mt-2">
+                    <img src={settings.leader_1_image} alt="Leader 1" className="h-32 w-auto object-cover rounded" />
+                  </div>
+                )}
               </div>
             </div>
 
@@ -340,11 +410,31 @@ const WhoWeAreEditor = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Image URL (optional)</Label>
-                <Input
-                  value={settings.leader_2_image || ""}
-                  onChange={(e) => updateField("leader_2_image", e.target.value)}
-                />
+                <Label>Image</Label>
+                <div className="flex gap-2">
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => e.target.files?.[0] && handleImageUpload("leader_2_image", e.target.files[0])}
+                    disabled={uploading}
+                    className="flex-1"
+                  />
+                  {settings.leader_2_image && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => removeImage("leader_2_image")}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+                {settings.leader_2_image && (
+                  <div className="mt-2">
+                    <img src={settings.leader_2_image} alt="Leader 2" className="h-32 w-auto object-cover rounded" />
+                  </div>
+                )}
               </div>
             </div>
           </Card>

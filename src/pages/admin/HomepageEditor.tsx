@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Upload, X } from "lucide-react";
 
 interface HomepageSettings {
   id?: string;
@@ -49,6 +49,7 @@ const HomepageEditor = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [settings, setSettings] = useState<HomepageSettings | null>(null);
 
   useEffect(() => {
@@ -100,6 +101,36 @@ const HomepageEditor = () => {
 
   const updateField = (field: keyof HomepageSettings, value: any) => {
     setSettings((prev) => prev ? { ...prev, [field]: value } : null);
+  };
+
+  const handleImageUpload = async (field: keyof HomepageSettings, file: File) => {
+    try {
+      setUploading(true);
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `homepage/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('cms-media')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('cms-media')
+        .getPublicUrl(filePath);
+
+      updateField(field, publicUrl);
+      toast.success("Image uploaded successfully");
+    } catch (error: any) {
+      toast.error("Upload failed: " + error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const removeImage = (field: keyof HomepageSettings) => {
+    updateField(field, "");
   };
 
   if (loading) {
@@ -179,12 +210,31 @@ const HomepageEditor = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <Label>Hero Image URL</Label>
-              <Input
-                value={settings.hero_image || ""}
-                onChange={(e) => updateField("hero_image", e.target.value)}
-                placeholder="Leave empty to use default"
-              />
+              <Label>Hero Image</Label>
+              <div className="flex gap-2">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => e.target.files?.[0] && handleImageUpload("hero_image", e.target.files[0])}
+                  disabled={uploading}
+                  className="flex-1"
+                />
+                {settings.hero_image && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    onClick={() => removeImage("hero_image")}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+              {settings.hero_image && (
+                <div className="mt-2">
+                  <img src={settings.hero_image} alt="Hero" className="h-32 w-auto object-cover rounded" />
+                </div>
+              )}
             </div>
           </Card>
         </TabsContent>
@@ -374,12 +424,31 @@ const HomepageEditor = () => {
             <div className="space-y-4">
               <h3 className="font-semibold text-lg">Interstitial Image 1</h3>
               <div className="space-y-2">
-                <Label>Image URL</Label>
-                <Input
-                  value={settings.interstitial_1_image || ""}
-                  onChange={(e) => updateField("interstitial_1_image", e.target.value)}
-                  placeholder="Leave empty to use default"
-                />
+                <Label>Image</Label>
+                <div className="flex gap-2">
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => e.target.files?.[0] && handleImageUpload("interstitial_1_image", e.target.files[0])}
+                    disabled={uploading}
+                    className="flex-1"
+                  />
+                  {settings.interstitial_1_image && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => removeImage("interstitial_1_image")}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+                {settings.interstitial_1_image && (
+                  <div className="mt-2">
+                    <img src={settings.interstitial_1_image} alt="Interstitial 1" className="h-32 w-auto object-cover rounded" />
+                  </div>
+                )}
               </div>
               <div className="space-y-2">
                 <Label>Alt Text</Label>
@@ -393,12 +462,31 @@ const HomepageEditor = () => {
             <div className="border-t pt-6 space-y-4">
               <h3 className="font-semibold text-lg">Interstitial Image 2</h3>
               <div className="space-y-2">
-                <Label>Image URL</Label>
-                <Input
-                  value={settings.interstitial_2_image || ""}
-                  onChange={(e) => updateField("interstitial_2_image", e.target.value)}
-                  placeholder="Leave empty to use default"
-                />
+                <Label>Image</Label>
+                <div className="flex gap-2">
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => e.target.files?.[0] && handleImageUpload("interstitial_2_image", e.target.files[0])}
+                    disabled={uploading}
+                    className="flex-1"
+                  />
+                  {settings.interstitial_2_image && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => removeImage("interstitial_2_image")}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
+                {settings.interstitial_2_image && (
+                  <div className="mt-2">
+                    <img src={settings.interstitial_2_image} alt="Interstitial 2" className="h-32 w-auto object-cover rounded" />
+                  </div>
+                )}
               </div>
               <div className="space-y-2">
                 <Label>Alt Text</Label>

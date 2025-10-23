@@ -87,14 +87,6 @@ const SortableProjectItem = ({ project, onPublish, onDelete }: SortableProjectIt
           </div>
 
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => onPublish(project.id, project.status)}
-            >
-              <Eye className="h-4 w-4 mr-1" />
-              {project.status === "published" ? "Unpublish" : "Publish"}
-            </Button>
             <Link to={`/admin/projects/${project.id}`}>
               <Button variant="outline" size="sm">
                 <Edit className="h-4 w-4" />
@@ -106,6 +98,14 @@ const SortableProjectItem = ({ project, onPublish, onDelete }: SortableProjectIt
               onClick={() => onDelete(project.id)}
             >
               <Trash2 className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => onPublish(project.id, project.status)}
+            >
+              <Eye className="h-4 w-4 mr-1" />
+              {project.status === "published" ? "Unpublish" : "Publish"}
             </Button>
           </div>
         </div>

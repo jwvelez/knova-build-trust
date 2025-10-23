@@ -139,14 +139,6 @@ const Services = () => {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handlePublish(service.id, service.status)}
-                  >
-                    <Eye className="h-4 w-4 mr-1" />
-                    {service.status === "published" ? "Unpublish" : "Publish"}
-                  </Button>
                   <Link to={`/admin/services/${service.id}`}>
                     <Button variant="outline" size="sm">
                       <Edit className="h-4 w-4" />

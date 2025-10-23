@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface ServicesPageSettings {
@@ -37,6 +37,7 @@ interface ServicesPageSettings {
 const ServicesPageEditor = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [pageId, setPageId] = useState<string>("");
   const [settings, setSettings] = useState<ServicesPageSettings>({
     hero_eyebrow: "",
@@ -131,6 +132,43 @@ const ServicesPageEditor = () => {
     setSettings((prev) => ({ ...prev, [field]: value }));
   };
 
+  const handleImageUpload = async (field: keyof ServicesPageSettings, file: File) => {
+    try {
+      setUploading(true);
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `services/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('cms-media')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('cms-media')
+        .getPublicUrl(filePath);
+
+      updateField(field, publicUrl);
+      toast({
+        title: "Success",
+        description: "Image uploaded successfully",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Upload failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const removeImage = (field: keyof ServicesPageSettings) => {
+    updateField(field, "");
+  };
+
   if (loading) {
     return (
       <div className="space-y-6">
@@ -200,12 +238,31 @@ const ServicesPageEditor = () => {
             />
           </div>
           <div>
-            <label className="text-sm font-medium mb-2 block">Hero Image URL</label>
-            <Input
-              value={settings.hero_image}
-              onChange={(e) => updateField("hero_image", e.target.value)}
-              placeholder="Image URL"
-            />
+            <label className="text-sm font-medium mb-2 block">Hero Image</label>
+            <div className="flex gap-2">
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => e.target.files?.[0] && handleImageUpload("hero_image", e.target.files[0])}
+                disabled={uploading}
+                className="flex-1"
+              />
+              {settings.hero_image && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={() => removeImage("hero_image")}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+            {settings.hero_image && (
+              <div className="mt-2">
+                <img src={settings.hero_image} alt="Hero" className="h-32 w-auto object-cover rounded" />
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -282,12 +339,31 @@ const ServicesPageEditor = () => {
             />
           </div>
           <div>
-            <label className="text-sm font-medium mb-2 block">Image URL</label>
-            <Input
-              value={settings.consulting_image}
-              onChange={(e) => updateField("consulting_image", e.target.value)}
-              placeholder="Image URL"
-            />
+            <label className="text-sm font-medium mb-2 block">Consulting Image</label>
+            <div className="flex gap-2">
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => e.target.files?.[0] && handleImageUpload("consulting_image", e.target.files[0])}
+                disabled={uploading}
+                className="flex-1"
+              />
+              {settings.consulting_image && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="icon"
+                  onClick={() => removeImage("consulting_image")}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+            {settings.consulting_image && (
+              <div className="mt-2">
+                <img src={settings.consulting_image} alt="Consulting" className="h-32 w-auto object-cover rounded" />
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>

@@ -123,14 +123,6 @@ const Pages = () => {
                 </div>
 
                 <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handlePublish(page.id, page.status)}
-                  >
-                    <Eye className="h-4 w-4 mr-1" />
-                    {page.status === "published" ? "Unpublish" : "Publish"}
-                  </Button>
                   <Link to={getEditLink(page)}>
                     <Button variant="outline" size="sm">
                       <Edit className="h-4 w-4" />
