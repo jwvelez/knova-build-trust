@@ -96,15 +96,13 @@ const Services = () => {
             <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 2, 14, 0.6)' }}></div>
             <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4 md:px-0">
               <div className="container-narrow w-full">
-                <div className="w-full max-w-4xl" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
-                  <div className="p-[30px]">
-                    <div className="max-w-[700px]">
-                      <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">{pageSettings.hero_eyebrow || 'What we do'}</p>
-                      <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-foreground leading-[1.1]">
-                        {pageSettings.hero_title || 'Building systems that just work'}
-                      </h1>
-                      <p className="text-base text-muted-foreground">{pageSettings.hero_description || 'Comprehensive construction and MEP services'}</p>
-                    </div>
+                <div className="w-full max-w-4xl p-[30px]" style={{ backgroundColor: 'rgba(250, 250, 250, 0.9)' }}>
+                  <div className="max-w-[700px]">
+                    <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">{pageSettings.hero_eyebrow || 'What we do'}</p>
+                    <h1 className="text-[34px] leading-[38px] md:text-5xl md:leading-[1.1] lg:text-6xl lg:leading-[1.1] mb-4 text-foreground">
+                      {pageSettings.hero_title || 'Building systems that just work'}
+                    </h1>
+                    <p className="text-base text-muted-foreground">{pageSettings.hero_description || 'Comprehensive construction and MEP services'}</p>
                   </div>
                 </div>
               </div>

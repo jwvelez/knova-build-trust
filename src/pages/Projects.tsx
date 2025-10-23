@@ -95,7 +95,7 @@ const Projects = () => {
         <section className="section-padding bg-secondary/30">
           <div className="container-narrow">
             <p className="uppercase text-sm tracking-wider text-accent font-medium mb-4">Projects</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
+            <h1 className="text-[34px] leading-[38px] md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight mb-8">
               Work that speaks for itself
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
