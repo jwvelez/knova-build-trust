@@ -18,7 +18,7 @@ import {
   FormMessage,
   FormDescription,
 } from "@/components/ui/form";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Upload, X } from "lucide-react";
 
 const formSchema = z.object({
   // Hero Section
@@ -28,6 +28,7 @@ const formSchema = z.object({
   hero_cta_primary: z.string().optional(),
   hero_cta_secondary: z.string().optional(),
   hero_phone: z.string().optional(),
+  hero_image: z.string().optional(),
   
   // Trust Badges
   trust_badges: z.string().optional(),
@@ -36,6 +37,7 @@ const formSchema = z.object({
   how_we_deliver_eyebrow: z.string().optional(),
   how_we_deliver_heading: z.string().optional(),
   how_we_deliver_description: z.string().optional(),
+  how_we_deliver_background_image: z.string().optional(),
   value_prop_1_title: z.string().optional(),
   value_prop_1_desc: z.string().optional(),
   value_prop_2_title: z.string().optional(),
@@ -58,6 +60,10 @@ const formSchema = z.object({
   projects_heading: z.string().optional(),
   projects_description: z.string().optional(),
   
+  // Interstitial Images
+  interstitial_1_image: z.string().optional(),
+  interstitial_2_image: z.string().optional(),
+  
   // CTA
   cta_heading: z.string().optional(),
   cta_description: z.string().optional(),
@@ -70,6 +76,7 @@ const HomePageEditor = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [pageId, setPageId] = useState<string | null>(null);
 
   const form = useForm<FormValues>({
@@ -81,10 +88,12 @@ const HomePageEditor = () => {
       hero_cta_primary: "Request a bid",
       hero_cta_secondary: "Explore services",
       hero_phone: "(201) 525-5365",
+      hero_image: "",
       trust_badges: "MBE certified, Fully licensed and insured, NYC DOB compliant, EPA Certified Firm",
       how_we_deliver_eyebrow: "Our Approach",
       how_we_deliver_heading: "How we deliver",
       how_we_deliver_description: "Proven process, predictable outcomes at every stage",
+      how_we_deliver_background_image: "",
       value_prop_1_title: "GC leadership — from preconstruction to closeout",
       value_prop_1_desc: "Full lifecycle support: budgeting, scheduling, and on-site coordination",
       value_prop_2_title: "MEP depth — HVAC, electrical, plumbing delivered right",
@@ -100,6 +109,8 @@ const HomePageEditor = () => {
       projects_eyebrow: "Results over rhetoric",
       projects_heading: "Featured Projects",
       projects_description: "Recent work showcasing our commitment to quality and performance",
+      interstitial_1_image: "",
+      interstitial_2_image: "",
       cta_heading: "Let's Build Something Great Together",
       cta_description: "Ready to start your project? Get in touch with our team today.",
       cta_button_text: "Request a Consultation",
@@ -147,10 +158,12 @@ const HomePageEditor = () => {
           hero_cta_primary: sectionsData.hero_cta_primary || "",
           hero_cta_secondary: sectionsData.hero_cta_secondary || "",
           hero_phone: sectionsData.hero_phone || "",
+          hero_image: sectionsData.hero_image || "",
           trust_badges: sectionsData.trust_badges || "",
           how_we_deliver_eyebrow: sectionsData.how_we_deliver_eyebrow || "",
           how_we_deliver_heading: sectionsData.how_we_deliver_heading || "",
           how_we_deliver_description: sectionsData.how_we_deliver_description || "",
+          how_we_deliver_background_image: sectionsData.how_we_deliver_background_image || "",
           value_prop_1_title: sectionsData.value_prop_1_title || "",
           value_prop_1_desc: sectionsData.value_prop_1_desc || "",
           value_prop_2_title: sectionsData.value_prop_2_title || "",
@@ -166,6 +179,8 @@ const HomePageEditor = () => {
           projects_eyebrow: sectionsData.projects_eyebrow || "",
           projects_heading: sectionsData.projects_heading || "",
           projects_description: sectionsData.projects_description || "",
+          interstitial_1_image: sectionsData.interstitial_1_image || "",
+          interstitial_2_image: sectionsData.interstitial_2_image || "",
           cta_heading: sectionsData.cta_heading || "",
           cta_description: sectionsData.cta_description || "",
           cta_button_text: sectionsData.cta_button_text || "",
@@ -205,10 +220,12 @@ const HomePageEditor = () => {
           hero_cta_primary: values.hero_cta_primary,
           hero_cta_secondary: values.hero_cta_secondary,
           hero_phone: values.hero_phone,
+          hero_image: values.hero_image,
           trust_badges: values.trust_badges,
           how_we_deliver_eyebrow: values.how_we_deliver_eyebrow,
           how_we_deliver_heading: values.how_we_deliver_heading,
           how_we_deliver_description: values.how_we_deliver_description,
+          how_we_deliver_background_image: values.how_we_deliver_background_image,
           value_prop_1_title: values.value_prop_1_title,
           value_prop_1_desc: values.value_prop_1_desc,
           value_prop_2_title: values.value_prop_2_title,
@@ -224,6 +241,8 @@ const HomePageEditor = () => {
           projects_eyebrow: values.projects_eyebrow,
           projects_heading: values.projects_heading,
           projects_description: values.projects_description,
+          interstitial_1_image: values.interstitial_1_image,
+          interstitial_2_image: values.interstitial_2_image,
           cta_heading: values.cta_heading,
           cta_description: values.cta_description,
           cta_button_text: values.cta_button_text,
@@ -264,6 +283,43 @@ const HomePageEditor = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleImageUpload = async (field: keyof FormValues, file: File) => {
+    try {
+      setUploading(true);
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `homepage/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('cms-media')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('cms-media')
+        .getPublicUrl(filePath);
+
+      form.setValue(field, publicUrl);
+      toast({
+        title: "Image uploaded",
+        description: "Image has been uploaded successfully.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Upload failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const removeImage = (field: keyof FormValues) => {
+    form.setValue(field, "");
   };
 
   return (
@@ -372,6 +428,43 @@ const HomePageEditor = () => {
 
               <FormField
                 control={form.control}
+                name="hero_image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Hero Image</FormLabel>
+                    <FormControl>
+                      <div className="space-y-2">
+                        <div className="flex gap-2">
+                          <Input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => e.target.files?.[0] && handleImageUpload("hero_image", e.target.files[0])}
+                            disabled={uploading}
+                            className="flex-1"
+                          />
+                          {field.value && (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="icon"
+                              onClick={() => removeImage("hero_image")}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          )}
+                        </div>
+                        {field.value && (
+                          <img src={field.value} alt="Hero" className="h-32 w-auto object-cover rounded" />
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="trust_badges"
                 render={({ field }) => (
                   <FormItem>
@@ -429,6 +522,43 @@ const HomePageEditor = () => {
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                       <Textarea {...field} rows={2} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="how_we_deliver_background_image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Background Image</FormLabel>
+                    <FormControl>
+                      <div className="space-y-2">
+                        <div className="flex gap-2">
+                          <Input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => e.target.files?.[0] && handleImageUpload("how_we_deliver_background_image", e.target.files[0])}
+                            disabled={uploading}
+                            className="flex-1"
+                          />
+                          {field.value && (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="icon"
+                              onClick={() => removeImage("how_we_deliver_background_image")}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          )}
+                        </div>
+                        {field.value && (
+                          <img src={field.value} alt="Background" className="h-32 w-auto object-cover rounded" />
+                        )}
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -669,6 +799,88 @@ const HomePageEditor = () => {
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                       <Textarea {...field} rows={2} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </CardContent>
+          </Card>
+
+          {/* Interstitial Images Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Interstitial Images</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <FormField
+                control={form.control}
+                name="interstitial_1_image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Interstitial Image 1</FormLabel>
+                    <FormControl>
+                      <div className="space-y-2">
+                        <div className="flex gap-2">
+                          <Input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => e.target.files?.[0] && handleImageUpload("interstitial_1_image", e.target.files[0])}
+                            disabled={uploading}
+                            className="flex-1"
+                          />
+                          {field.value && (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="icon"
+                              onClick={() => removeImage("interstitial_1_image")}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          )}
+                        </div>
+                        {field.value && (
+                          <img src={field.value} alt="Interstitial 1" className="h-32 w-auto object-cover rounded" />
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="interstitial_2_image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Interstitial Image 2</FormLabel>
+                    <FormControl>
+                      <div className="space-y-2">
+                        <div className="flex gap-2">
+                          <Input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => e.target.files?.[0] && handleImageUpload("interstitial_2_image", e.target.files[0])}
+                            disabled={uploading}
+                            className="flex-1"
+                          />
+                          {field.value && (
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="icon"
+                              onClick={() => removeImage("interstitial_2_image")}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          )}
+                        </div>
+                        {field.value && (
+                          <img src={field.value} alt="Interstitial 2" className="h-32 w-auto object-cover rounded" />
+                        )}
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
