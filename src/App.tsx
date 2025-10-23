@@ -22,6 +22,7 @@ import ServiceItemForm from "./pages/admin/ServiceItemForm";
 import HomepageEditor from "./pages/admin/HomepageEditor";
 import WhoWeAreEditor from "./pages/admin/WhoWeAreEditor";
 import ContactEditor from "./pages/admin/ContactEditor";
+import ServicesPageEditor from "./pages/admin/ServicesPageEditor";
 import NavigationEditor from "./pages/admin/NavigationEditor";
 import FooterEditor from "./pages/admin/FooterEditor";
 import Pages from "./pages/admin/Pages";
@@ -56,9 +57,9 @@ const App = () => (
             <Route path="pages" element={<Pages />} />
             <Route path="pages/new" element={<PageForm />} />
             <Route path="pages/home/edit" element={<HomePageEditor />} />
-            <Route path="pages/services/edit" element={<PageForm />} />
-            <Route path="pages/who-we-are/edit" element={<PageForm />} />
-            <Route path="pages/contact/edit" element={<PageForm />} />
+            <Route path="pages/services/edit" element={<ServicesPageEditor />} />
+            <Route path="pages/who-we-are/edit" element={<WhoWeAreEditor />} />
+            <Route path="pages/contact/edit" element={<ContactEditor />} />
             <Route path="pages/:id" element={<PageForm />} />
             <Route path="projects" element={<AdminProjects />} />
             <Route path="projects/new" element={<ProjectForm />} />
