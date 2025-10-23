@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import knovaLogo from "@/assets/knova.svg";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [contactPhone, setContactPhone] = useState("(201) 525-5365");
+  const [logoUrl, setLogoUrl] = useState(knovaLogo);
   const location = useLocation();
 
   const navItems = [
@@ -15,6 +18,27 @@ const Header = () => {
     { label: "Contact", path: "/contact" },
   ];
 
+  useEffect(() => {
+    loadSettings();
+  }, []);
+
+  const loadSettings = async () => {
+    try {
+      const { data } = await supabase
+        .from("cms_site_settings")
+        .select("contact_phone, logo_url")
+        .limit(1)
+        .maybeSingle();
+
+      if (data) {
+        if (data.contact_phone) setContactPhone(data.contact_phone);
+        if (data.logo_url) setLogoUrl(data.logo_url);
+      }
+    } catch (error) {
+      console.error("Error loading site settings:", error);
+    }
+  };
+
   const isActive = (path: string) => location.pathname === path;
 
   return (
@@ -23,7 +47,7 @@ const Header = () => {
         <div className="flex items-center justify-between py-[12px] md:py-[15px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={knovaLogo} alt="KNova Contractors" className="h-[49px] md:h-[65px]" />
+            <img src={logoUrl} alt="KNova Contractors" className="h-[49px] md:h-[65px]" />
           </Link>
 
           {/* Desktop Nav */}
@@ -43,9 +67,9 @@ const Header = () => {
 
           {/* Desktop CTA + Phone */}
           <div className="hidden lg:flex items-center gap-6">
-            <a href="tel:2015255365" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+            <a href={`tel:${contactPhone.replace(/\D/g, '')}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
               <Phone className="h-4 w-4" />
-              <span>(201) 525-5365</span>
+              <span>{contactPhone}</span>
             </a>
             <Button asChild size="lg">
               <Link to="/contact">Contact Us</Link>
@@ -86,9 +110,9 @@ const Header = () => {
                 </Link>
               </Button>
               <Button asChild variant="outline" className="w-full border-2 border-primary text-primary bg-white hover:bg-primary hover:text-white">
-                <a href="tel:2015255365">
+                <a href={`tel:${contactPhone.replace(/\D/g, '')}`}>
                   <Phone className="h-4 w-4" />
-                  <span>(201) 525-5365</span>
+                  <span>{contactPhone}</span>
                 </a>
               </Button>
             </div>

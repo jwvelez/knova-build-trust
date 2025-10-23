@@ -1,20 +1,68 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Award, ChevronDown } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import knovaReverseLogo from "@/assets/knova-reverse.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const [showCerts, setShowCerts] = useState(false);
+  const [settings, setSettings] = useState({
+    logo_url: knovaReverseLogo,
+    contact_email: "info@knovacontractors.com",
+    contact_phone: "(201) 525-5365",
+    address: "252 Hudson St\nHackensack, NJ 07601",
+    copyright_text: "© {year} KNova Contractors, Inc. All rights reserved.",
+    company_description: "Building Trust. Delivering Quality.",
+  });
   
-  const certifications = [
+  const [certifications, setCertifications] = useState([
     "EPA Certified Firm NAT-F220339-1",
     "MBE 66751",
     "NYC DCA HIC 1453885-DCA",
     "NYC DOB GC 605715",
     "Mechanical Refrigeration 1818006017",
     "NYC DOB Reg 002869",
-  ];
+  ]);
+
+  useEffect(() => {
+    loadSettings();
+  }, []);
+
+  const loadSettings = async () => {
+    try {
+      const { data: siteSettings } = await supabase
+        .from("cms_site_settings")
+        .select("logo_url, contact_email, contact_phone, address")
+        .limit(1)
+        .maybeSingle();
+
+      const { data: footerContent } = await supabase
+        .from("cms_footer_content")
+        .select("*")
+        .limit(1)
+        .maybeSingle();
+
+      if (siteSettings || footerContent) {
+        setSettings({
+          logo_url: footerContent?.logo_url || siteSettings?.logo_url || knovaReverseLogo,
+          contact_email: footerContent?.email || siteSettings?.contact_email || "info@knovacontractors.com",
+          contact_phone: footerContent?.phone || siteSettings?.contact_phone || "(201) 525-5365",
+          address: footerContent?.address_line_1 && footerContent?.address_line_2 
+            ? `${footerContent.address_line_1}\n${footerContent.address_line_2}`
+            : siteSettings?.address || "252 Hudson St\nHackensack, NJ 07601",
+          copyright_text: footerContent?.copyright_text || "© {year} KNova Contractors, Inc. All rights reserved.",
+          company_description: footerContent?.company_description || "Building Trust. Delivering Quality.",
+        });
+
+        if (footerContent?.certifications && footerContent.certifications.length > 0) {
+          setCertifications(footerContent.certifications);
+        }
+      }
+    } catch (error) {
+      console.error("Error loading footer settings:", error);
+    }
+  };
 
   const quickLinks = [
     { label: "Who We Are", path: "/who-we-are" },
@@ -71,7 +119,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 md:gap-12">
           {/* Logo - Centered on mobile */}
           <div className="flex justify-center md:justify-start">
-            <img src={knovaReverseLogo} alt="KNova Contractors" style={{ width: '200px' }} />
+            <img src={settings.logo_url} alt="KNova Contractors" style={{ width: '200px' }} />
           </div>
 
           {/* Desktop: Three columns */}
@@ -82,18 +130,18 @@ const Footer = () => {
               <div className="space-y-3 text-[15px] opacity-90">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                  <span>252 Hudson St<br />Hackensack, NJ 07601</span>
+                  <span dangerouslySetInnerHTML={{ __html: settings.address.replace(/\n/g, '<br />') }} />
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <a href="tel:2015255365" className="hover:text-accent transition-colors">
-                    (201) 525-5365
+                  <a href={`tel:${settings.contact_phone.replace(/\D/g, '')}`} className="hover:text-accent transition-colors">
+                    {settings.contact_phone}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <a href="mailto:info@knovacontractors.com" className="hover:text-accent transition-colors">
-                    info@knovacontractors.com
+                  <a href={`mailto:${settings.contact_email}`} className="hover:text-accent transition-colors">
+                    {settings.contact_email}
                   </a>
                 </div>
               </div>
@@ -118,7 +166,7 @@ const Footer = () => {
             {/* Description */}
             <div>
               <h2 className="text-xl font-bold mb-3">KNova Contractors</h2>
-              <p className="text-[15px] opacity-90 mb-4">Building Trust. Delivering Quality.</p>
+              <p className="text-[15px] opacity-90 mb-4">{settings.company_description}</p>
               <p className="text-[13px] opacity-75">
                 MBE-certified general contractor serving New York and New Jersey
               </p>
@@ -133,18 +181,18 @@ const Footer = () => {
               <div className="space-y-3 text-[15px] opacity-90">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                  <span>252 Hudson St<br />Hackensack, NJ 07601</span>
+                  <span dangerouslySetInnerHTML={{ __html: settings.address.replace(/\n/g, '<br />') }} />
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <a href="tel:2015255365" className="hover:text-accent transition-colors">
-                    (201) 525-5365
+                  <a href={`tel:${settings.contact_phone.replace(/\D/g, '')}`} className="hover:text-accent transition-colors">
+                    {settings.contact_phone}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <a href="mailto:info@knovacontractors.com" className="hover:text-accent transition-colors">
-                    info@knovacontractors.com
+                  <a href={`mailto:${settings.contact_email}`} className="hover:text-accent transition-colors">
+                    {settings.contact_email}
                   </a>
                 </div>
               </div>
@@ -169,7 +217,7 @@ const Footer = () => {
             {/* Description - Below Quick Links on Mobile */}
             <div>
               <h2 className="text-xl font-bold mb-3">KNova Contractors</h2>
-              <p className="text-[15px] opacity-90 mb-4">Building Trust. Delivering Quality.</p>
+              <p className="text-[15px] opacity-90 mb-4">{settings.company_description}</p>
               <p className="text-[13px] opacity-75">
                 MBE-certified general contractor serving New York and New Jersey
               </p>
@@ -180,7 +228,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/20">
           <p className="text-xs opacity-75 text-center">
-            © {new Date().getFullYear()} KNova Contractors, Inc. All rights reserved.
+            {settings.copyright_text.replace('{year}', new Date().getFullYear().toString())}
           </p>
         </div>
       </div>

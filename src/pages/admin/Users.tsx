@@ -35,25 +35,21 @@ const Users = () => {
 
   const loadUsers = async () => {
     try {
-      const { data: userRoles, error: rolesError } = await supabase
-        .from("user_roles")
-        .select("*");
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        throw new Error("Not authenticated");
+      }
 
-      if (rolesError) throw rolesError;
-
-      const usersMap = new Map<string, UserWithRole>();
-
-      userRoles?.forEach((ur) => {
-        usersMap.set(ur.user_id, {
-          id: ur.user_id,
-          email: `User ${ur.user_id.slice(0, 8)}`,
-          created_at: ur.created_at,
-          role: ur.role,
-          role_id: ur.id,
-        });
+      const response = await supabase.functions.invoke('list-auth-users', {
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
       });
 
-      setUsers(Array.from(usersMap.values()));
+      if (response.error) throw response.error;
+
+      setUsers(response.data.users || []);
     } catch (error: any) {
       toast({
         title: "Error loading users",
@@ -165,7 +161,7 @@ const Users = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <p className="font-medium">User ID: {user.id.slice(0, 8)}...</p>
+                      <p className="font-medium">{user.email}</p>
                       {user.role && (
                         <Badge variant={getRoleBadgeVariant(user.role)}>
                           {user.role}
