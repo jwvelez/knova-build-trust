@@ -20,6 +20,7 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isResetMode, setIsResetMode] = useState(false);
 
   useEffect(() => {
     // Check if user is already logged in
@@ -75,13 +76,57 @@ const Auth = () => {
     }
   };
 
+  const handleResetPassword = async () => {
+    try {
+      setLoading(true);
+      
+      // Validate email
+      const emailSchema = z.string().email("Invalid email address");
+      emailSchema.parse(email);
+
+      const redirectUrl = `${window.location.origin}/auth`;
+
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: redirectUrl,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Reset email sent!",
+        description: "Check your email for the password reset link.",
+      });
+      
+      setIsResetMode(false);
+      setEmail("");
+    } catch (error: any) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: error.message || "Failed to send reset email",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-secondary/30 px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <img src={knovaLogo} alt="Knova" className="h-12 mx-auto mb-6" />
           <CardTitle>CMS Admin</CardTitle>
-          <CardDescription>Sign in to manage your content</CardDescription>
+          <CardDescription>
+            {isResetMode ? "Reset your password" : "Sign in to manage your content"}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -96,24 +141,41 @@ const Auth = () => {
                 disabled={loading}
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="login-password">Password</Label>
-              <Input
-                id="login-password"
-                type="password"
-                placeholder="••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={loading}
-              />
-            </div>
+            {!isResetMode && (
+              <div className="space-y-2">
+                <Label htmlFor="login-password">Password</Label>
+                <Input
+                  id="login-password"
+                  type="password"
+                  placeholder="••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={loading}
+                  onKeyDown={(e) => e.key === 'Enter' && handleAuth()}
+                />
+              </div>
+            )}
             <Button
               className="w-full"
-              onClick={handleAuth}
+              onClick={isResetMode ? handleResetPassword : handleAuth}
               disabled={loading}
             >
-              {loading ? "Signing in..." : "Sign In"}
+              {loading 
+                ? (isResetMode ? "Sending reset link..." : "Signing in...") 
+                : (isResetMode ? "Send Reset Link" : "Sign In")
+              }
             </Button>
+            <button
+              type="button"
+              onClick={() => {
+                setIsResetMode(!isResetMode);
+                setPassword("");
+              }}
+              disabled={loading}
+              className="w-full text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              {isResetMode ? "Back to sign in" : "Forgot password?"}
+            </button>
           </div>
         </CardContent>
       </Card>
