@@ -194,9 +194,9 @@ const WhoWeAre = () => {
               {content.leadership_heading || "Accountability at the top, reliability in the field"}
             </h2>
 
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="flex justify-center">
               {/* Keily J. Nova */}
-              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left">
+              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left max-w-2xl w-full">
                 <div className="mb-6">
                   <h3 className="text-2xl font-semibold mb-1">
                     {content.leader_1_name || "Keily J. Nova"}
@@ -207,23 +207,6 @@ const WhoWeAre = () => {
                 </div>
                 <div className="space-y-4 text-base leading-relaxed text-muted-foreground whitespace-pre-line">
                   {content.leader_1_bio || "Keily brings 20+ years in construction with deep MEP expertise that anchors KNova's delivery. Licensed in New York and New Jersey, he leads field operations with a focus on safety, quality, and performance.\n\nHis background spans high-efficiency HVAC design and retrofits including heat pumps and ventilation, electrical power distribution and lighting controls, and plumbing and piping for domestic water, sanitary, and gas.\n\nTeams rely on his clear direction, precise coordination, and clean handoffs. He has managed ground-up builds and full gut renovations across residential, commercial, institutional, and medical facilities.\n\nKeily is known for disciplined scheduling, code-first execution, and tenant-safe phasing that reduces downtime. He sets standards on site, communicates issues early, and drives projects to close with minimal punch lists and predictable outcomes."}
-                </div>
-              </Card>
-
-              {/* Lymaris Albors */}
-              <Card className="p-8 lg:p-10 border-border bg-background transition-shadow text-left">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold mb-1">
-                    {content.leader_2_name || "Lymaris Albors"}
-                  </h3>
-                  {content.leader_2_title && (
-                    <p className="text-base text-accent font-medium">
-                      {content.leader_2_title}
-                    </p>
-                  )}
-                </div>
-                <div className="space-y-4 text-base leading-relaxed text-muted-foreground whitespace-pre-line">
-                  {content.leader_2_bio || "Lymaris brings 20+ years of nonprofit executive leadership to KNova, guiding growth with a focus on quality, compliance, and sustainability. Her expertise in operations and strategic partnerships helps deliver projects with integrity and accountability.\n\nFormerly CEO of one of the nation's largest Hispanic-led nonprofits, she oversaw a multi-state network with $650M in revenue and $1.3B in assets.\n\nShe also brings a strong foundation in construction, affordable, supportive, and transitional housing development, property and asset management, and capital expansions for primary and behavioral health care and community facilities, including senior housing and aging-in-place initiatives, nursing homes, senior centers, and multi-purpose art spaces."}
                 </div>
               </Card>
             </div>
