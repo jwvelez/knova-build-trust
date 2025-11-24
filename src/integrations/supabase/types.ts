@@ -976,7 +976,54 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      cms_media_public: {
+        Row: {
+          alt_text: string | null
+          caption: string | null
+          created_at: string | null
+          dominant_color: string | null
+          filename: string | null
+          height: number | null
+          id: string | null
+          metadata: Json | null
+          mime_type: string | null
+          size_bytes: number | null
+          storage_path: string | null
+          url: string | null
+          width: number | null
+        }
+        Insert: {
+          alt_text?: string | null
+          caption?: string | null
+          created_at?: string | null
+          dominant_color?: string | null
+          filename?: string | null
+          height?: number | null
+          id?: string | null
+          metadata?: Json | null
+          mime_type?: string | null
+          size_bytes?: number | null
+          storage_path?: string | null
+          url?: string | null
+          width?: number | null
+        }
+        Update: {
+          alt_text?: string | null
+          caption?: string | null
+          created_at?: string | null
+          dominant_color?: string | null
+          filename?: string | null
+          height?: number | null
+          id?: string | null
+          metadata?: Json | null
+          mime_type?: string | null
+          size_bytes?: number | null
+          storage_path?: string | null
+          url?: string | null
+          width?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       can_edit: { Args: never; Returns: boolean }
