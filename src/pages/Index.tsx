@@ -11,7 +11,7 @@ import heroImageDefault from "@/assets/hero-construction-team.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
-import interstitial1Default from "@/assets/interstitial-1.jpg";
+import interstitial1Default from "@/assets/interstitial-architecture.jpg";
 import interstitial2Default from "@/assets/interstitial-2.jpg";
 import fullWidthServices from "@/assets/full-width-services.jpg";
 import howWeDeliverDefault from "@/assets/how-we-deliver.jpg";
