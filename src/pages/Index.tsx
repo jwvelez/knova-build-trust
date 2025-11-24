@@ -7,7 +7,7 @@ import { ArrowRight, Check, Phone, Hammer, Wind, Zap, Droplet, Flame, Building2,
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
-import heroImageDefault from "@/assets/hero-construction-team.jpg";
+import heroImageDefault from "@/assets/hero-construction-new.jpg";
 import projectOffice from "@/assets/project-office.jpg";
 import projectHealth from "@/assets/project-health.jpg";
 import projectDaycare from "@/assets/project-daycare.jpg";
